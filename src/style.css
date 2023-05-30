@@ -1,0 +1,36 @@
+
+/* footer  */
+
+.footer {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  background-color: rgb(221, 255, 221);
+  height: 70px;
+  z-index: -1;
+  text-align: right;
+}
+
+.footerNav {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  color: rgb(94, 94, 94);
+}
+
+.footLinks {
+  margin: .5% 3% .5% 0%;
+  font-size: 14px;
+}
+
+.footLinks:hover {
+  cursor: pointer;
+}
+
+.copyright {
+  margin-top: 10px;
+  color: rgb(151, 151, 151);
+  font-size: 12px;
+  margin-right: 3%;
+}
