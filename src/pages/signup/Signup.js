@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom"
 import { validateEmail } from '../../utils/helpers';
 import { validatePassword } from '../../utils/helpers';
-import './Signup.css'
 const lifeLineHome = require('../assets/LifeLine2.png')
 
-export default function Home() {
+export default function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -28,8 +27,12 @@ export default function Home() {
       e.preventDefault();
   
       // check to see if the email is valid
-      if (!validateEmail(email) || !validatePassword(password)) {
-        setErrorMessage('*Your Password or Email is invalid');
+      if (!validateEmail(email)) {
+        setErrorMessage('*Please use a valid Email');
+        return;
+      }
+      if (!validatePassword(password)) {
+        setErrorMessage('*Password must be 8 or more characters');
         return;
       }
   
@@ -41,6 +44,7 @@ export default function Home() {
 return (
       <>
       <div className="homeBlock">
+        <div className='mainblock'> 
         <figure>
           <img className="lifeLineIcon"src={lifeLineHome} alt='icon for the brand life line'></img>
         </figure>
@@ -80,7 +84,16 @@ return (
         </form>
         
       </div>
-      
+      <footer className="footer">
+        <nav className="footerNav">
+          <p className="footLinks">Sign Up</p>
+          <p className="footLinks">Log In</p>
+          <p className="footLinks">About</p>
+          <p className="footLinks">Developers</p>
+        </nav>
+        <p className="copyright">Meta © 2023 Life Line</p>
+      </footer>
+      </div>
       </>
   );
 }

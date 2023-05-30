@@ -1,0 +1,124 @@
+:root {
+    --bordercolor: rgb(197, 197, 197);
+    --backgroundFill: rgb(246, 247, 252);
+}
+
+html {
+    background-color: rgb(255, 255, 255);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0px;
+}
+
+.mainProfileBlock {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.profileblock {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 5vh 0vw;
+}
+
+.profileHeader, .profileBox, .recentBox, .friendBox, .suggestBox {
+    border: 1px solid var(--bordercolor);
+    width: 90%;
+    height: 40px;
+    margin-bottom: 5vh;
+}
+
+.profileBox {
+    height: 300px;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--bordercolor);
+    border-radius: 5px;
+    padding-bottom: 20px;
+}
+
+.profilePicBox {
+    margin-right: 10px;
+    border: 1px solid black;
+    width: 300px;
+    height: 100%;
+}
+
+.profilePic {
+    max-width: 250px;
+    max-height: 250px;
+    border-radius: 50%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.bioBox {
+    height: 100%;
+    width: 70%;
+    margin-right: 3%;
+    display: flex;
+    flex-direction: column;
+}
+
+.contactDesc {
+    display: flex;
+    flex-direction: row;
+    border-radius: 5px;
+    min-width: -webkit-fill-available;
+    min-width: -moz-fit-content;
+    min-width: fit-content;
+    height: 100%;
+    margin-right: 20px;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--backgroundFill);
+    box-shadow: 3px 3px 7px var(--bordercolor);
+}
+
+.flexRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 20%;
+    margin: 20px 0px 20px 20px;
+}
+
+.contactMini {
+    border: 1px solid var(--bordercolor);
+    margin-bottom: 0px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    width: 29%;
+    box-shadow: 3px 3px 7px var(--bordercolor);
+}
+
+.contactHead, .contactName, .contactDate, .contactLoc {
+    margin: 5px 0px;
+
+}
+
+.contactHead {
+    color: grey;
+    font-size: 12px;
+}
+
+.bioDesc{
+    padding: 0vh 3vw;
+    border-radius: 5px;
+    line-height: 1.6;
+    overflow: auto;
+    margin: 0px;
+    margin-left: 20px;
+    border: 1px solid var(--bordercolor);
+    box-shadow: 3px 3px 7px var(--bordercolor);
+}
