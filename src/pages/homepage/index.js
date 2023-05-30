@@ -41,6 +41,7 @@ export default function Home() {
 return (
       <>
       <div className="homeBlock">
+        <div className='mainblock'> 
         <figure>
           <img className="lifeLineIcon"src={lifeLineHome} alt='icon for the brand life line'></img>
         </figure>
@@ -78,7 +79,16 @@ return (
           <Link to="/signup"><button className="createButton" type="button">Create a New Account</button></Link>
 
         </form>
-        
+        </div>
+        <footer className="footer">
+        <nav className="footerNav">
+          <p className="footLinks">Sign Up</p>
+          <p className="footLinks">Log In</p>
+          <p className="footLinks">About</p>
+          <p className="footLinks">Developers</p>
+        </nav>
+        <p className="copyright">Meta © 2023 Life Line</p>
+      </footer>
       </div>
       </>
   );

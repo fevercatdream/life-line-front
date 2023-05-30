@@ -12,12 +12,17 @@ body {
 }
 
 .homeBlock {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: space-between;
+}
+
+.mainblock {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content:space-evenly;
-    margin-top: 13vh;
-    padding: 0% 15% 0% 5%;
+    padding: 15vh 10vw 5vh 6vw;
 }
 
 /* Form CSS */
@@ -96,3 +101,37 @@ body {
     color: rgb(114, 114, 114);
 }
 
+
+/* footer  */
+
+.footer {
+    position: relative;
+    align-self: baseline;
+    width: 100%;
+    background-color: rgb(227, 250, 227);
+    height: 70px;
+    text-align: right;
+  }
+  
+  .footerNav {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    color: rgb(94, 94, 94);
+  }
+  
+  .footLinks {
+    margin: .5% 3% .5% 0%;
+    font-size: 14px;
+  }
+  
+  .footLinks:hover {
+    cursor: pointer;
+  }
+  
+  .copyright {
+    margin-top: 10px;
+    color: rgb(151, 151, 151);
+    font-size: 12px;
+    margin-right: 3%;
+  }
