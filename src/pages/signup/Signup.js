@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom"
 import { validateEmail } from '../../utils/helpers';
 import { validatePassword } from '../../utils/helpers';
-import './style.css'
+import './Signup.css'
 const lifeLineHome = require('../assets/LifeLine2.png')
 
 export default function Home() {
@@ -70,16 +70,17 @@ return (
             )}
           </div>
 
-          <button className="loginButton" type="button" onClick={handleFormSubmit}>Log in</button>
+          <button className="createButton" type="button" onClick={handleFormSubmit}>Create a New Account</button>
 
           <hr className="loginDivider"></hr>
           <p className="dividerOr">OR</p>
 
-          <Link to="/signup"><button className="createButton" type="button">Create a New Account</button></Link>
+          <Link to="/"><button className="loginButton" type="button">Log in</button></Link>
 
         </form>
         
       </div>
+      
       </>
   );
 }

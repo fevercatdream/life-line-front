@@ -1,15 +1,21 @@
 import React from "react";
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from './pages/homepage/index.js';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Homepage from './pages/homepage/index.js';
 import Timeline from './pages/timeline/Timeline.js';
 import Profile from './pages/profile/Profile.js';
 import Friends from './pages/friends/Friends.js';
+import Signup from './pages/signup/Signup.js';
 import './style.css';
 
 function App() {
   return (
     <>
-    <HomePage />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Homepage/>}/>
+        <Route path="/signup" element={<Signup/>}/>
+      </Routes>
+    </BrowserRouter>
     <footer className="footer">
         <nav className="footerNav">
           <p className="footLinks">Sign Up</p>
