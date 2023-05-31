@@ -10,42 +10,48 @@ export default function Profile() {
 
             <div className='profileblock'> 
                 <header className='profileHeader'>
-                    <p>header</p>
-                </header>
-                <div className='profileBox'>
-                            <div className='profilePicBox'>
-                                <img className='profilePic' src="http://placekitten.com/300/300"></img>
-                            </div>
-                            
-                    <div className='bioBox'>
-                            <div className='flexRow'>
-                                <div className='contactMini'>
-                                    <p className='contactHead'>Name:</p>
-                                    <p className='contactName'>Snowball McKitten</p>
-                                </div>
-                                <div className='contactMini'>
-                                    <p className='contactHead'>Birth Date:</p>
-                                    <p className='contactDate'>May 1<sup>st</sup>, 2023</p>
-                                </div>
-                                <div className='contactMini'>
-                                <p className='contactHead'>Birth Place:</p>
-                                <p className='contactLoc'>Seattle, Washington</p>
-                                </div>
-                            </div>
-                            <div className='bioDesc'>
-                                <h3>About Me:</h3>
-                                <p>Hi, my name is Snowball and I am a very tiny kitten. I come from a long line of hunting cats and my favorite toy is the yarn ball.Hi, my name is Snowball and I am a very tiny kitten. I come from a long line of hunting cats and my favorite toy is the yarn ball.Hi, my name is Snowball and I am a very tiny kitten. I come from a long line of hunting cats and my favorite toy is the yarn ball.Hi, my name is Snowball and I am a very tiny kitten. I come from a long line of hunting cats and my favorite toy is the yarn ball.Hi, my name is Snowball and I am a very tiny kitten. I come from a long line of hunting cats and my favorite toy is the yarn ball. Hi, my name is Snowball and I am a very tiny kitten. I come from a long line of hunting cats and my favorite toy is the yarn ball.Hi, my name is Snowball and I am a very tiny kitten. I come from a long line of hunting cats and my favorite toy is the yarn ball.</p>
-                            </div>
+                    <div className='horizontal'>
+                        <button className='profileOptions'>+</button>
+                        <h1 className='LifeLine'>Life Line</h1>
                     </div>
-                </div>
-                <div className='recentBox'>
-                    <p>recent events</p>
-                </div>
-                <div className='friendBox'>
-                    <p>friends</p>
-                </div>
-                <div className='suggestBox'>
-                    <p>suggested friends</p>
+                    <div>
+                        <input type="text" className='searchBar' placeholder='search'></input>
+                        <button className='searchButton'>+</button>
+                    </div>
+                </header>
+                <div className='profilePicBox'>
+                    <div className='profileBox'>
+                        <img className='profilePic' src="http://placekitten.com/300/300" />
+                        <hr className="sidebarHr"/>
+                        <div className='flexColumn'>
+                            <p className='contactHead'>Name:</p>
+                            <p className='contactName'>Snowball McKitten</p>
+                            <p className='contactHead'>Birth Date:</p>
+                            <p className='contactDate'>May 1<sup>st</sup>, 2023</p>
+                            <p className='contactHead'>Birth Place:</p>
+                            <p className='contactLoc'>Seattle, Washington</p>
+                        </div>
+                        <hr className="sidebarHr"/>
+                        <p className='mayKnow'>Users you may know:</p>
+                        <div className='suggestBox'>
+                            <img className='suggestFriend1' src='http://placekitten.com/150/150'></img>
+                            <img className='suggestFriend2' src='http://placekitten.com/150/150'></img>
+                            <img className='suggestFriend3' src='http://placekitten.com/150/150'></img>
+                            <img className='suggestFriend4' src='http://placekitten.com/150/150'></img>
+                        </div>
+                        <button className='blockedUsers'>Blocked Users</button>
+                    </div>
+                <div className='bioBox'>
+                    <div className='notifBox'>
+                        <p>Notifications</p>
+                    </div>
+                    <div className='recentBox'>
+                        <p>Recent Events</p>
+                        <button className='go2TimeLine'>Time Line</button>
+                    </div>
+                    <div className='friendBox'>
+                        <p>friends</p>
+                    </div>
                 </div>
             </div>
 
@@ -59,7 +65,8 @@ export default function Profile() {
             </nav>
             <p className="copyright">Meta © 2023 Life Line</p>
         </footer>
-      </div>
+        </div>
+        </div>
         </>
         );
       }
