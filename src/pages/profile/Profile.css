@@ -1,11 +1,11 @@
 :root {
     --bordercolor: rgb(197, 197, 197);
-    --backgroundFill: rgb(246, 247, 252);
+    --backgroundFill: rgb(239, 241, 250);
 }
 
 html {
-    background-color: rgb(255, 255, 255);
-    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(248, 248, 248);
+    font-family: 'Work Sans', sans-serif;
 }
 
 body {
@@ -19,106 +19,230 @@ body {
     justify-content: space-between;
 }
 
+/* search bar and profile edit button */
+
+.profileHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+    height: 40px;
+    margin-bottom: 3vh;
+    align-items: center;
+}
+
+.horizontal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.LifeLine {
+    margin: 0px;
+    margin-left: 20px;
+    font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+.profileOptions {
+    height: 30px;
+    width: 30px; 
+    border: 1px solid var(--bordercolor);
+    border-radius: 5px;
+    background-color: white;
+} 
+
+.searchButton {
+    height: 30px;
+    width: 30px;
+    border-radius: 5px;
+    margin-left: 10px;
+    border: 1px solid var(--bordercolor);
+    background-color: white;
+}
+
+.profileOptions:hover, .searchButton:hover {
+    cursor: pointer;
+}
+
+.searchBar {
+    height: 20px;
+    width: 380px;
+    border-radius: 15px;
+    background-color: var(--backgroundFill);
+    border: 1px solid var(--bordercolor);
+    padding: 5px 20px;
+}
+
+/* lower profile */
+
 .profileblock {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 5vh 0vw;
-}
-
-.profileHeader, .profileBox, .recentBox, .friendBox, .suggestBox {
-    border: 1px solid var(--bordercolor);
-    width: 90%;
-    height: 40px;
-    margin-bottom: 5vh;
-}
-
-.profileBox {
-    height: 300px;
-    border: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid var(--bordercolor);
-    border-radius: 5px;
-    padding-bottom: 20px;
+    padding: 5vh 0vw 0vh 0vw;
 }
 
 .profilePicBox {
-    margin-right: 10px;
-    border: 1px solid black;
-    width: 300px;
-    height: 100%;
+    margin: 0px 2%;
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin-bottom: 30px;
 }
 
-.profilePic {
-    max-width: 250px;
-    max-height: 250px;
-    border-radius: 50%;
-    margin-left: 10%;
-    margin-right: 10%;
-}
+/* left side bar */
 
-.bioBox {
-    height: 100%;
-    width: 70%;
-    margin-right: 3%;
+.profileBox {
+    height: fit-content;
     display: flex;
     flex-direction: column;
-}
-
-.contactDesc {
-    display: flex;
-    flex-direction: row;
-    border-radius: 5px;
-    min-width: -webkit-fill-available;
-    min-width: -moz-fit-content;
-    min-width: fit-content;
-    height: 100%;
-    margin-right: 20px;
-    justify-content: center;
+    min-width: 275px;
+    max-width: 275px;
+    padding-bottom: 20px;
     align-items: center;
-    background-color: var(--backgroundFill);
-    box-shadow: 3px 3px 7px var(--bordercolor);
+    border-radius: 15px;
+    box-shadow: 4px 4px 10px var(--bordercolor);
+    background-color: white;
 }
 
-.flexRow {
+/* profile picture */
+
+.profilePic {
+    max-width: 230px;
+    max-height: 230px;
+    border-radius: 15px;    
+    margin: 10% 5% 5% 5%;
+}
+
+.sidebarHr {
+    width: 85%;
+}
+
+.mayKnow {
+    font-size: 14px;
+    align-self: flex-start;
+    margin: 5px 5px 10px 25px;
+
+}
+
+.suggestBox {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    height: 20%;
-    margin: 20px 0px 20px 20px;
-}
-
-.contactMini {
-    border: 1px solid var(--bordercolor);
+    flex-wrap: wrap;
+    margin-top: 5px;
     margin-bottom: 0px;
-    padding: 5px 10px;
-    border-radius: 5px;
-    width: 29%;
-    box-shadow: 3px 3px 7px var(--bordercolor);
+    width: 100%;
+    height: 235px;
+    justify-content:space-evenly;
 }
 
-.contactHead, .contactName, .contactDate, .contactLoc {
-    margin: 5px 0px;
+.suggestFriend1, .suggestFriend2, .suggestFriend3, .suggestFriend4 {
+    height: 105px;
+    width: 105px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
 
+.suggestFriend1:hover, .suggestFriend2:hover, .suggestFriend3:hover, .suggestFriend4:hover {
+    cursor: pointer;
+}
+
+.blockedUsers {
+    align-self: flex-end;
+    display: flex;
+    align-items: center;
+    margin-right: 2vw;
+    margin-top: 15px;
+    height: 25px;
+    border-radius: 15px;
+    border: none;
+    background-color: rgb(223, 47, 47);
+    color: white;
+    padding: 10px;
+}
+
+.blockedUsers:hover {
+    cursor: pointer;
+}
+
+/* bio text box */
+
+.flexColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 85%;
+    height: 150px;
+    margin: 5px;
+}
+
+/* bio box  */
+
+.about {
+    align-self: baseline;
+    padding-left: 22px;
 }
 
 .contactHead {
     color: grey;
-    font-size: 12px;
+    font-size: 14px;
 }
 
-.bioDesc{
-    padding: 0vh 3vw;
-    border-radius: 5px;
-    line-height: 1.6;
+.bioDesc {
     overflow: auto;
+    width: 85%;
+    margin: 5px;
+    height: 300px;
+    padding-left: 10px;
+}
+
+.bioBox {
+    height: 100%;
+    width: 77%;
+    margin-left: 3%;
+    padding-top: 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.bioP {
+    margin: 0px;
+}
+
+.contactHead, .contactName, .contactDate, .contactLoc {
+    margin: 5px 5px;
+}
+
+/* right feed bar */
+
+.recentBox, .friendBox, .notifBox{
+    padding: 0vh 3vw;
+    border-radius: 10px;
+    line-height: 1.6;
     margin: 0px;
     margin-left: 20px;
-    border: 1px solid var(--bordercolor);
-    box-shadow: 3px 3px 7px var(--bordercolor);
+    box-shadow: 4px 4px 10px var(--bordercolor);
+    background-color: white;
 }
+
+.recentBox, .friendBox, .notifBox {
+    margin-bottom: 20px;
+}
+
+.recentBox {
+    height: 510px;
+}
+
+.friendBox {
+    height: 200px;
+}
+
+.notifBox {
+    display: flex;
+    align-items: center;
+    height: 45px;
+}
+
+
+
