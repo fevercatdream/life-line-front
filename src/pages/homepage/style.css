@@ -111,21 +111,20 @@ body {
     position: relative;
     align-self: baseline;
     width: 100%;
-    background-color: rgb(227, 250, 227);
+    background-color: var(--bordercolor);
     height: 70px;
     text-align: right;
   }
-  
+
   .footerNav {
     display: flex;
     flex-direction: row;
     justify-content: right;
-    color: rgb(94, 94, 94);
   }
   
   .footLinks {
     margin: .5% 3% .5% 0%;
-    font-size: 14px;
+    font-size: 16px;
   }
   
   .footLinks:hover {
@@ -133,8 +132,7 @@ body {
   }
   
   .copyright {
-    margin-top: 10px;
-    color: rgb(151, 151, 151);
-    font-size: 12px;
+    margin-top: 5px;
+    font-size: 14px;
     margin-right: 3%;
   }
