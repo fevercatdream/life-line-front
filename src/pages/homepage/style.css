@@ -22,7 +22,10 @@ body {
 .mainblock {
     display: flex;
     flex-direction: row;
-    padding: 15vh 10vw 5vh 6vw;
+    padding: 10vh 10vw 5vh 10vw;
+    align-items: center;
+    align-self: center;
+    height: 100%;
 }
 
 /* Form CSS */
@@ -34,10 +37,10 @@ body {
 
 .loginForm {
     position: relative;
-    min-width: 400px;
-    min-height: 450px;
-    max-width: 400px;
-    max-height: 450px;
+    min-width: 450px;
+    min-height: 500px;
+    max-width: 450px;
+    max-height: 500px;
     border: 1px solid var(--bordercolor);
     display: block;
     text-align: center;
@@ -94,8 +97,8 @@ body {
 
 .dividerOr {
     position: absolute;
-    top: 305px;
-    left: 175px;
+    top: 310px;
+    left: 205px;
     background-color: white;
     padding: 3px 10px;
     color: rgb(114, 114, 114);
