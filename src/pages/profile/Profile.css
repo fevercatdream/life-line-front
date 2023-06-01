@@ -1,6 +1,7 @@
 :root {
-    --bordercolor: rgb(197, 197, 197);
+    --bordercolor: rgb(218, 218, 218);
     --backgroundFill: rgb(239, 241, 250);
+    --colorBlock: #70abc7;
 }
 
 html {
@@ -16,7 +17,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: rgb(248, 248, 248);
+    /* background-color: rgb(248, 248, 248); */
+    background-color: white;
     margin-left: auto;
     margin-right: auto;
 }
@@ -30,8 +32,9 @@ body {
     align-self: baseline;
     width: 1575px;
     height: 40px;
-    margin-bottom: 3vh;
+    margin-bottom: 6vh;
     align-items: center;
+    z-index: 1;
 }
 
 .horizontal {
@@ -42,8 +45,9 @@ body {
 
 .LifeLine {
     margin: 0px;
-    margin-left: 5px;
+    margin-left: 10px;
     font-family: 'Alegreya Sans SC', sans-serif;
+    color: white;
 }
 
 .profileOptions {
@@ -56,6 +60,15 @@ body {
 
 .profileOptions:hover, .searchButton:hover {
     cursor: pointer;
+}
+
+.navBackground {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100px;
+    background-color: var(--colorBlock);
 }
 
 /* lower profile */
@@ -71,7 +84,10 @@ body {
     width: 1600px;
     padding: 5vh 5vw;
     background-color: rgb(248, 248, 248);
+    background-color: white;
 }
+
+/* left side bar */
 
 .profilePicBox {
     margin: 0px 1%;
@@ -81,49 +97,174 @@ body {
     margin-bottom: 30px;
 }
 
-/* left side bar */
-
 .profileBox {
-    height: fit-content;
     display: flex;
     flex-direction: column;
     min-width: 315px;
     max-width: 315px;
-    min-height: 870px;
     padding-bottom: 20px;
     align-items: center;
     border-radius: 15px;
-    box-shadow: 4px 4px 10px var(--bordercolor);
-    background-color: white;
+
 }
 
 /* profile picture */
 
 .profilePic {
-    max-width: 230px;
-    max-height: 230px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 300px;
+    max-width: 300px;
+    height: 320px;
     border-radius: 15px;    
-    margin: 10% 5% 5% 5%;
+    margin: 10px;
+    margin-top: 0px;
+    background-color: rgb(248, 248, 248);
+    box-shadow: 4px 4px 10px var(--bordercolor);
 }
 
-.sidebarHr {
-    width: 85%;
+.editIcon, .editIcon2 {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -60px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid var(--bordercolor);
+    background-color: white;
+    z-index: 2;
 }
 
-.mayKnow {
+.editIcon2 {
+    top: -225px;
+}
+
+.editIcon:hover, .editIcon2 {
+    cursor: pointer;
+}
+
+.profileImg {
+    max-width: 250px;
+    max-height: 250px;
+    border-radius: 15px;  
+    margin: 30px 0px 30px 0px;  
+}
+
+.contactName {
+    color: white;
+    z-index: 1;
+    font-size: 20px;
+    margin: 0px;
+}
+
+.colorBlock1, .colorBlock4, .colorBlock5 {
+    position: absolute;
+    background-color: var(--colorBlock);
+    margin-top: 310px;
+    height: 40px;
+    width: 300px;
+    border-radius: 0px 0px 15px 15px;
+    box-shadow: 4px 4px 10px var(--bordercolor);
+}
+
+/* bio text box */
+
+.bioColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 5px;
+    min-width: 300px;
+    max-width: 300px;
+    height: 220px;
+    border-radius: 15px 15px 0px 0px;    
+    margin-top: 40px;
+    background-color: rgb(248, 248, 248);
+    box-shadow: 4px 4px 10px var(--bordercolor);
+    padding: 10px 0px;
+    margin-bottom: 50px;
+}
+
+.bioWhite {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: white;
+    border: 1px solid var(--bordercolor);
+    width: 250px;
+    margin-left: 20px;
+    height: 220px;
+    padding-top: 10px;
+    margin-top: 10px;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.about {
+    align-self: baseline;
+    padding-left: 22px;
+}
+
+.contactHead {
+    color: grey;
     font-size: 14px;
-    align-self: flex-start;
-    margin: 15px 5px 20px 25px;
 }
+
+.contactHead, .contactDate, .contactLoc, .contactNow {
+    margin: 5px;
+    margin-left: 30px;
+}
+
+.contactBio {
+    position: absolute;
+    color: white;
+    z-index: 1;
+    font-size: 20px;
+    margin: 0px;
+    margin-top: 260px;
+    margin-left: 95px;
+}
+
+.colorBlock4 {
+    margin-top: 260px;
+}
+
+/* suggested users */
 
 .suggestBox {
     display: flex;
     flex-wrap: wrap;
     margin-top: 5px;
     margin-bottom: 0px;
-    width: 100%;
-    height: 235px;
+    min-width: 300px;
+    max-width: 300px;
+    height: 290px;
     justify-content:space-evenly;
+    background-color: rgb(248, 248, 248);
+    border-radius: 15px 15px 0px 0px;
+    padding-top: 30px;   
+}
+
+.mayKnow {
+    position: absolute;
+    color: white;
+    z-index: 1;
+    font-size: 20px;
+    margin: 0px;
+    margin-top: 10px;
+    margin-left: 55px;
+}
+
+.colorBlock5 {
+    margin-top: 985px;
+}
+
+.colorBlock5:hover {
+    cursor: pointer;
 }
 
 .suggestFriend1, .suggestFriend2, .suggestFriend3, .suggestFriend4 {
@@ -139,54 +280,7 @@ body {
     opacity: 100%;
 }
 
-.blockedUsers {
-    align-self: flex-end;
-    display: flex;
-    align-items: center;
-    margin-right: 2vw;
-    margin-top: 15px;
-    height: 25px;
-    border-radius: 15px;
-    border: none;
-    background-color: rgb(223, 47, 47);
-    color: white;
-    padding: 10px;
-}
-
-.blockedUsers:hover {
-    cursor: pointer;
-}
-
-/* bio text box */
-
-.bioColumn {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 85%;
-    height: fit-content;
-    margin: 5px;
-}
-
-/* bio box  */
-
-.about {
-    align-self: baseline;
-    padding-left: 22px;
-}
-
-.contactHead {
-    color: grey;
-    font-size: 14px;
-}
-
-.bioDesc {
-    overflow: auto;
-    width: 85%;
-    margin: 5px;
-    height: 300px;
-    padding-left: 10px;
-}
+/* right feed bar */
 
 .bioBox {
     height: 100%;
@@ -197,16 +291,6 @@ body {
     flex-direction: column;
 }
 
-.bioP {
-    margin: 0px;
-}
-
-.contactHead, .contactName, .contactDate, .contactLoc, .contactNow {
-    margin: 5px 5px;
-}
-
-/* right feed bar */
-
 .notifSearchBox {
     display: flex;
     align-items: center;
@@ -216,10 +300,11 @@ body {
     line-height: 1.6;
     margin: 0px;
     margin-top: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     min-width: 1010px;
     max-width: 1300px;
     margin-left: 20px;
+    
 }
 
 .notifEvent {
@@ -233,6 +318,7 @@ body {
     width: 600px;
     border-radius: 10px;
     box-shadow: 4px 4px 10px var(--bordercolor);
+    background-color: rgb(248, 248, 248);
 }
 
 .notifys:hover {
@@ -265,10 +351,10 @@ body {
     margin: 0px;
     margin-left: 20px;
     box-shadow: 4px 4px 10px var(--bordercolor);
-    background-color: white;
-    margin-bottom: 20px;
+    margin-bottom: 60px;
     min-width: 1010px;
     max-width: 1300px;
+    background-color: rgb(248, 248, 248);
 }
 
 .recentBox {
@@ -279,32 +365,71 @@ body {
     justify-content: space-around;
 }
 
+
+.colorBlock2 {
+    position: absolute;
+    height: 50px;
+    margin-top: 460px;
+    width: 1215px;
+    border-radius: 0px 0px 10px 10px;
+    background-color: var(--colorBlock);
+    z-index: 1;
+    box-shadow: 4px 4px 10px var(--bordercolor);
+}
+
+.recentText {
+    position: absolute;
+    margin-top: 470px;
+    margin-left: -1030px;
+    font-size: 20px;
+    color: white;
+    z-index: 1;
+}
+
+.textBar {
+    margin: 0px;
+}
+
 .recentCard {
-    height: 490px;
+    height: 430px;
     width: 500px;
-    margin: 10px;
+    margin: 0px;
+    margin-left: 10px;
+    padding: 20px 20px 20px 20px;
+    z-index: 1;
+    background-color: white;
+    border-radius: 3px;
+    border: 1px solid var(--bordercolor);
 }
 
 .recentMedia {
-    border: 1px solid var(--bordercolor);
-    border-radius: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
 }
 
 .recentCaption {
-    border: 1px solid var(--bordercolor);
-    padding: 10px;
-    height: 70px;
+    padding: 5px;
+    height: 45px;
     overflow-y: auto;
     border-radius: 5px;
+    background-color: white;
 }
 
 .recentComReac{
     height: 40px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    padding: 0px 10px;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0px 0px 0px 0px;
+}
+
+.comments2, .likes2 {
+    margin: 0px;
+    margin-right: 10px;
+}
+
+.likes {
+    margin-left: 20px;
 }
 
 .comments:hover {
@@ -316,25 +441,25 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    width: 50%;
+    width: 60%;
     min-width: 450px;
     max-width: 650px;
-    height: 470px;
-    margin: 10px 10px 10px 10px;
-    padding: 10px;
+    height: 445px;
+    margin: -5px 0px 10px 30px;
+    padding: 00px 0px 10px 0px;
 }
 
-.recentMany1, .recentMany2 {
+.recentMany1, .recentMany2, .recentMany3, .recentMany4 {
     display: flex;
     align-items: end;
-    width: 48%;
-    height: 40%;
-    margin: 1%;
-}
-
-.recentMany2 {
-    display: flex;
-    align-items: baseline;
+    flex-direction: column;
+    width: 44%;
+    height: 195px;
+    padding: 5px 5px 10px 5px;
+    margin: 1.5% 1.5%;
+    background-color: white;
+    border: 1px solid var(--bordercolor);
+    border-radius: 3px;
 }
 
 .recentMediaSmall {
@@ -348,11 +473,10 @@ body {
 /* Friend Box */
 
 .friendBox {
-    padding: 20px;
     height: 210px;
     display: flex;
     flex-direction: column;
-    padding: 20px 30px;
+    padding: 0px 30px 30px 30px;
 }
 
 .friendHeader {
@@ -363,6 +487,14 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-top: 0px;
+}
+
+.friendHeaderRow {
+    z-index: 1;
+    color: white;
+    font-size: 20px;
+    margin-top: 15px;
 }
 
 .viewMore {
@@ -371,13 +503,51 @@ body {
 
 .friendCard {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
+justify-content: end;
     margin: 20px;
+    background-color: black;
+    border-radius: 10px;
 }
 
 .friendSmall {
     border-radius: 10px;
+    opacity: 70%;
 }
+
+.friendName, .friendLocation {
+    position: absolute;
+    color: white;
+    width: 115px;
+    height: 25px;
+    overflow: hidden;
+    text-align: end;
+    margin: 0px;
+    margin-bottom: 5px;
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+.friendName {
+    margin-bottom: 30px;
+}
+
+.friendSmall:hover {
+    opacity: 90%;
+}
+
+.colorBlock3 {
+    position: absolute;
+    height: 50px;
+    margin-top: 195px;
+    margin-left: -32px;
+    width: 1215px;
+    border-radius: 0px 0px 10px 10px;
+    background-color: var(--colorBlock);
+    z-index: 1;
+    box-shadow: 4px 4px 10px var(--bordercolor);
+}
+
 
 
 
