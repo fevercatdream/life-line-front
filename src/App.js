@@ -5,7 +5,6 @@ import Timeline from './pages/timeline/Timeline.js';
 import Profile from './pages/profile/Profile.js';
 import Friends from './pages/friends/Friends.js';
 import Signup from './pages/signup/Signup.js';
-import './style.css';
 
 function App() {
   return (

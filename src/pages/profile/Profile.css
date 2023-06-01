@@ -4,7 +4,6 @@
 }
 
 html {
-    background-color: rgb(248, 248, 248);
     font-family: 'Work Sans', sans-serif;
 }
 
@@ -13,10 +12,13 @@ body {
 }
 
 .mainProfileBlock {
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    background-color: rgb(248, 248, 248);
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* search bar and profile edit button */
@@ -25,7 +27,8 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 90%;
+    align-self: baseline;
+    width: 1575px;
     height: 40px;
     margin-bottom: 3vh;
     align-items: center;
@@ -39,7 +42,7 @@ body {
 
 .LifeLine {
     margin: 0px;
-    margin-left: 20px;
+    margin-left: 5px;
     font-family: 'Alegreya Sans SC', sans-serif;
 }
 
@@ -51,26 +54,8 @@ body {
     background-color: white;
 } 
 
-.searchButton {
-    height: 30px;
-    width: 30px;
-    border-radius: 5px;
-    margin-left: 10px;
-    border: 1px solid var(--bordercolor);
-    background-color: white;
-}
-
 .profileOptions:hover, .searchButton:hover {
     cursor: pointer;
-}
-
-.searchBar {
-    height: 20px;
-    width: 380px;
-    border-radius: 15px;
-    background-color: var(--backgroundFill);
-    border: 1px solid var(--bordercolor);
-    padding: 5px 20px;
 }
 
 /* lower profile */
@@ -80,15 +65,19 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    padding: 5vh 0vw 0vh 0vw;
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1600px;
+    padding: 5vh 5vw;
+    background-color: rgb(248, 248, 248);
 }
 
 .profilePicBox {
-    margin: 0px 2%;
+    margin: 0px 1%;
     display: flex;
     flex-direction: row;
-    width: 90%;
+    width: 100%;
     margin-bottom: 30px;
 }
 
@@ -98,8 +87,9 @@ body {
     height: fit-content;
     display: flex;
     flex-direction: column;
-    min-width: 275px;
-    max-width: 275px;
+    min-width: 315px;
+    max-width: 315px;
+    min-height: 870px;
     padding-bottom: 20px;
     align-items: center;
     border-radius: 15px;
@@ -123,8 +113,7 @@ body {
 .mayKnow {
     font-size: 14px;
     align-self: flex-start;
-    margin: 5px 5px 10px 25px;
-
+    margin: 15px 5px 20px 25px;
 }
 
 .suggestBox {
@@ -138,14 +127,16 @@ body {
 }
 
 .suggestFriend1, .suggestFriend2, .suggestFriend3, .suggestFriend4 {
-    height: 105px;
-    width: 105px;
+    height: 115px;
+    width: 115px;
     margin-bottom: 20px;
     border-radius: 10px;
+    opacity: 85%;
 }
 
 .suggestFriend1:hover, .suggestFriend2:hover, .suggestFriend3:hover, .suggestFriend4:hover {
     cursor: pointer;
+    opacity: 100%;
 }
 
 .blockedUsers {
@@ -168,12 +159,12 @@ body {
 
 /* bio text box */
 
-.flexColumn {
+.bioColumn {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     width: 85%;
-    height: 150px;
+    height: fit-content;
     margin: 5px;
 }
 
@@ -200,7 +191,7 @@ body {
 .bioBox {
     height: 100%;
     width: 77%;
-    margin-left: 3%;
+    margin-left: 2%;
     padding-top: 0px;
     display: flex;
     flex-direction: column;
@@ -210,39 +201,185 @@ body {
     margin: 0px;
 }
 
-.contactHead, .contactName, .contactDate, .contactLoc {
+.contactHead, .contactName, .contactDate, .contactLoc, .contactNow {
     margin: 5px 5px;
 }
 
 /* right feed bar */
 
-.recentBox, .friendBox, .notifBox{
-    padding: 0vh 3vw;
+.notifSearchBox {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    justify-content: space-between;
+    padding: 0px;
+    line-height: 1.6;
+    margin: 0px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    min-width: 1010px;
+    max-width: 1300px;
+    margin-left: 20px;
+}
+
+.notifEvent {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-left: 10px;
+    height: 50px;
+    width: 600px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px var(--bordercolor);
+}
+
+.notifys:hover {
+    cursor: pointer;
+}
+
+.searchButton {
+    height: 30px;
+    width: 30px;
+    border-radius: 5px;
+    margin-left: 10px;
+    border: 1px solid var(--bordercolor);
+    background-color: white;
+}
+
+.searchBar {
+    height: 20px;
+    width: 380px;
+    border-radius: 15px;
+    background-color: var(--backgroundFill);
+    border: 1px solid var(--bordercolor);
+    padding: 5px 20px;
+}
+
+/* Recent Box */
+
+.recentBox, .friendBox {
     border-radius: 10px;
     line-height: 1.6;
     margin: 0px;
     margin-left: 20px;
     box-shadow: 4px 4px 10px var(--bordercolor);
     background-color: white;
-}
-
-.recentBox, .friendBox, .notifBox {
     margin-bottom: 20px;
+    min-width: 1010px;
+    max-width: 1300px;
 }
 
 .recentBox {
-    height: 510px;
+    padding: 20px;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
+
+.recentCard {
+    height: 490px;
+    width: 500px;
+    margin: 10px;
+}
+
+.recentMedia {
+    border: 1px solid var(--bordercolor);
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.recentCaption {
+    border: 1px solid var(--bordercolor);
+    padding: 10px;
+    height: 70px;
+    overflow-y: auto;
+    border-radius: 5px;
+}
+
+.recentComReac{
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0px 10px;
+}
+
+.comments:hover {
+    cursor: pointer;
+}
+
+.recentManyDiv {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 50%;
+    min-width: 450px;
+    max-width: 650px;
+    height: 470px;
+    margin: 10px 10px 10px 10px;
+    padding: 10px;
+}
+
+.recentMany1, .recentMany2 {
+    display: flex;
+    align-items: end;
+    width: 48%;
+    height: 40%;
+    margin: 1%;
+}
+
+.recentMany2 {
+    display: flex;
+    align-items: baseline;
+}
+
+.recentMediaSmall {
+    width: 100%;
+}
+
+.recentCard:hover, .recentMediaSmall:hover, .viewMore, .friendCard {
+    cursor: pointer;
+}
+
+/* Friend Box */
 
 .friendBox {
-    height: 200px;
+    padding: 20px;
+    height: 210px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 30px;
 }
 
-.notifBox {
+.friendHeader {
+    margin: 0px;
+}
+
+.friendRow, .friendHeaderRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.viewMore {
+    margin: 0px;
+}
+
+.friendCard {
     display: flex;
     align-items: center;
-    height: 45px;
+    margin: 20px;
 }
+
+.friendSmall {
+    border-radius: 10px;
+}
+
+
 
 
 
