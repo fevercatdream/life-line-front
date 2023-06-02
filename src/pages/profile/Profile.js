@@ -1,14 +1,34 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom"
 import './Profile.css'
+import Carousel from 'react-gallery-carousel';
+import 'react-gallery-carousel/dist/index.css';
 
 export default function Profile() {
 
+    // Array for gallery slider images
+    const images = [9, 8, 7, 6, 5].map((number) => ({
+        src: `https://placedog.net/${number}00/${number}00?id=${number}`,
+        // srcset: `https://placedog.net/400/240?id=1 400w, https://placedog.net/700/420?id=1 700w, https://placedog.net/1000/600?id=1 1000w`,
+        // sizes: '(max-width: 1000px) 400px, (max-width: 2000px) 700px, 1000px',
+        alt: `Dogs are domesticated mammals, not natural wild animals. They were originally bred from wolves. They have been bred by humans for a long time, and were the first animals ever to be domesticated.`,
+        // thumbnail: `https://placedog.net/100/60?id=1`
+      }));
+
+    //   Code for spawning and removing gallery Modal
+      const blackSpawn = document.getElementById('blackOut');
+      const modalSpawn = document.getElementById('modalBox1');
+
+      function spawnModal () {
+        blackSpawn.classList.toggle("hidden");
+        modalSpawn.classList.toggle("hidden");
+      };
+      
     return (
         <>
         <div className="mainProfileBlock">
-
             <div className='profileblock'> 
+            <div id='blackOut' className="blackOut hidden" onClick={spawnModal}></div>
                 <div className='navBackground'></div>
                 <header className='profileHeader'>
                     <div className='horizontal'>
@@ -40,7 +60,7 @@ export default function Profile() {
                                 <p className='contactHead'>Birth Place:</p>
                                 <p className='contactLoc'>Seattle, Washington</p>
                                 <p className='contactHead'>Current Location:</p>
-                                <p className='contactNow'>Burlington, Washington Burlington, Washington</p>
+                                <p className='contactNow'>Burlington, Washington</p>
                             </div>
                             <p className='contactBio'>Profile Info</p>
                         </div>
@@ -69,7 +89,7 @@ export default function Profile() {
                         </div>
                     </div>
                     <div className='recentBox'>
-                        <figure className='recentCard'>
+                        <figure id="recentCard" className='recentCard' onClick={spawnModal}>
                             <img className='recentMedia' src="https://dummyimage.com/500x325/000/aaa" />
                             <figcaption className='recentCaption'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</figcaption>
                             <div className='recentComReac'>
@@ -77,7 +97,6 @@ export default function Profile() {
                                 <p className='likes'><b>Likes: </b>15</p>
                             </div>
                         </figure>
-                        {/* <div className='colorBlock'></div> */}
                         <div className='colorBlock2'></div>
                         <div className='recentText'><p class="textBar">Recent Events</p></div>
                         <div className='recentManyDiv'>
@@ -119,31 +138,6 @@ export default function Profile() {
                                 <p className='friendName'>Name is too long for this box</p>
                                 <p className='friendLocation'>Location is too long for this box</p>
                             </figure>
-                            <figure className='friendCard'>
-                                <img className='friendSmall' src='http://placekitten.com/150/150'></img>
-                                <p className='friendName'>Name is too long for this box</p>
-                                <p className='friendLocation'>Location is too long for this box</p>
-                            </figure>
-                            <figure className='friendCard'>
-                                <img className='friendSmall' src='http://placekitten.com/150/150'></img>
-                                <p className='friendName'>Name is too long for this box</p>
-                                <p className='friendLocation'>Location is too long for this box</p>
-                            </figure>
-                            <figure className='friendCard'>
-                                <img className='friendSmall' src='http://placekitten.com/150/150'></img>
-                                <p className='friendName'>Name is too long for this box</p>
-                                <p className='friendLocation'>Location is too long for this box</p>
-                            </figure>
-                            <figure className='friendCard'>
-                                <img className='friendSmall' src='http://placekitten.com/150/150'></img>
-                                <p className='friendName'>Name is too long for this box</p>
-                                <p className='friendLocation'>Location is too long for this box</p>
-                            </figure>
-                            <figure className='friendCard'>
-                                <img className='friendSmall' src='http://placekitten.com/150/150'></img>
-                                <p className='friendName'>Name is too long for this box</p>
-                                <p className='friendLocation'>Location is too long for this box</p>
-                            </figure>
                         </div>
                         <div className='friendHeaderRow'>
                             <p className='friendHeader'>Friend List</p>
@@ -152,6 +146,22 @@ export default function Profile() {
                     </div>
                 </div>
             </div>
+            <figure id="modalBox1" className='modalBox1 hidden'>
+                <div className='sliderMedia'>
+                    <Carousel 
+                    images={images} 
+                    style={{ height: 450, width: 700 }} 
+                    hasIndexBoard="false"
+                    canAutoPlay="false"
+                    hasCaptions="true"
+                    hasMediaButton="topRight"
+                    autoPlayInterval="3000"
+                    hasSizeButton="false"
+                    >
+                    </Carousel>
+                </div>
+                <figcaption className='sliderText'>Dogs are domesticated mammals, not natural wild animals. They were originally bred from wolves. They have been bred by humans for a long time, and were the first animals ever to be domesticated.</figcaption>
+            </figure>
         </div>
         <footer className="footer">
             <nav className="footerNav">
