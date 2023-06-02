@@ -5,30 +5,24 @@ import Carousel from 'react-gallery-carousel';
 import 'react-gallery-carousel/dist/index.css';
 
 export default function Profile() {
+    const [modalVisible, setModalVisible] = useState(false);
 
     // Array for gallery slider images
-    const images = [9, 8, 7, 6, 5].map((number) => ({
+    const images = [9, 8, 7, 6, 5].map((number) => (
+        {
         src: `https://placedog.net/${number}00/${number}00?id=${number}`,
         // srcset: `https://placedog.net/400/240?id=1 400w, https://placedog.net/700/420?id=1 700w, https://placedog.net/1000/600?id=1 1000w`,
         // sizes: '(max-width: 1000px) 400px, (max-width: 2000px) 700px, 1000px',
         alt: `Dogs are domesticated mammals, not natural wild animals. They were originally bred from wolves. They have been bred by humans for a long time, and were the first animals ever to be domesticated.`,
         // thumbnail: `https://placedog.net/100/60?id=1`
-      }));
-
-    //   Code for spawning and removing gallery Modal
-      const blackSpawn = document.getElementById('blackOut');
-      const modalSpawn = document.getElementById('modalBox1');
-
-      function spawnModal () {
-        blackSpawn.classList.toggle("hidden");
-        modalSpawn.classList.toggle("hidden");
-      };
+      }
+      ));
       
     return (
         <>
         <div className="mainProfileBlock">
             <div className='profileblock'> 
-            <div id='blackOut' className="blackOut hidden" onClick={spawnModal}></div>
+            <div id='blackOut' className={modalVisible ? "blackOut" : "blackOut hidden"} onClick={() => setModalVisible(false)}></div>
                 <div className='navBackground'></div>
                 <header className='profileHeader'>
                     <div className='horizontal'>
@@ -89,7 +83,8 @@ export default function Profile() {
                         </div>
                     </div>
                     <div className='recentBox'>
-                        <figure id="recentCard" className='recentCard' onClick={spawnModal}>
+                        <figure id="recentCard" className='recentCard' onClick={() => setModalVisible(true)}>
+
                             <img className='recentMedia' src="https://dummyimage.com/500x325/000/aaa" />
                             <figcaption className='recentCaption'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</figcaption>
                             <div className='recentComReac'>
@@ -146,7 +141,9 @@ export default function Profile() {
                     </div>
                 </div>
             </div>
-            <figure id="modalBox1" className='modalBox1 hidden'>
+            <figure id="modalBox1" className={modalVisible ? "modalBox1" : "modalBox1 hidden"}>
+            {/* onClick={() => setModalVisible(false)} */}
+
                 <div className='sliderMedia'>
                     <Carousel 
                     images={images} 
