@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from './pages/homepage/index.js';
-import Timeline from './pages/timeline/Timeline.js';
+// import Timeline from './pages/timeline/Timeline.js';
 import Profile from './pages/profile/Profile.js';
-import Friends from './pages/friends/Friends.js';
+// import Friends from './pages/friends/Friends.js';
 import Signup from './pages/signup/Signup.js';
 
 function App() {
