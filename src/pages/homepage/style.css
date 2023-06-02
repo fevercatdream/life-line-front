@@ -1,0 +1,138 @@
+:root {
+    --bordercolor: rgb(197, 197, 197);
+}
+
+html {
+    background-color: rgb(255, 255, 255);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0px;
+}
+
+.homeBlock {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: space-between;
+}
+
+.mainblock {
+    display: flex;
+    flex-direction: row;
+    padding: 10vh 10vw 5vh 10vw;
+    align-items: center;
+    align-self: center;
+    height: 100%;
+}
+
+/* Form CSS */
+
+.lifeLineIcon {
+    min-width: 400px;
+    max-width: 80%;
+}
+
+.loginForm {
+    position: relative;
+    min-width: 450px;
+    min-height: 500px;
+    max-width: 450px;
+    max-height: 500px;
+    border: 1px solid var(--bordercolor);
+    display: block;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 5px 5px 10px var(--bordercolor);
+    border-radius: 3px;
+}
+
+.webName {
+    margin-bottom: 5%;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 50px;
+}
+
+.emailLogin, .passwordLogin {
+    height: 30px;
+    width: 70%;
+    border: 2px solid var(--bordercolor);
+    border-radius: 5px;
+    padding-left: 10px;
+    margin-bottom: 6%;
+}
+
+.errorBlock {
+    display: block;
+    margin-top: -13px;
+    height: 45px;
+    color: grey;
+}
+
+.loginButton, .createButton {
+    width: 75%;
+    height: 30px;
+    border-radius: 15px;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    background-color: #2ba5f7;
+}
+
+.createButton {
+    background-color: rgb(92, 189, 92);
+}
+
+.loginButton:hover, .createButton:hover {
+    cursor: pointer;
+}
+
+.loginDivider {
+    width: 80%;
+    margin: 40px;
+}
+
+.dividerOr {
+    position: absolute;
+    top: 310px;
+    left: 205px;
+    background-color: white;
+    padding: 3px 10px;
+    color: rgb(114, 114, 114);
+}
+
+
+/* footer  */
+
+.footer {
+    position: relative;
+    align-self: baseline;
+    width: 100%;
+    background-color: var(--bordercolor);
+    height: 70px;
+    text-align: right;
+  }
+
+  .footerNav {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+  }
+  
+  .footLinks {
+    margin: .5% 3% .5% 0%;
+    font-size: 16px;
+  }
+  
+  .footLinks:hover {
+    cursor: pointer;
+  }
+  
+  .copyright {
+    margin-top: 5px;
+    font-size: 14px;
+    margin-right: 3%;
+  }

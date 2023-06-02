@@ -1,0 +1,99 @@
+import React, { useState } from 'react';
+import { Link } from "react-router-dom"
+import { validateEmail } from '../../utils/helpers';
+import { validatePassword } from '../../utils/helpers';
+const lifeLineHome = require('../assets/LifeLine2.png')
+
+export default function Signup() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleInputChange = (e) => {
+      // Getting the value and name of the input which triggered the change
+      const { target } = e;
+      const inputType = target.name;
+      const inputValue = target.value;
+  
+      // Based on the input type, we set the state of either email or password
+      if (inputType === 'email') {
+        setEmail(inputValue);
+      } else {
+        setPassword(inputValue);
+      }
+    };
+
+    const handleFormSubmit = (e) => {
+      e.preventDefault();
+  
+      // check to see if the email is valid
+      if (!validateEmail(email)) {
+        setErrorMessage('*Please use a valid Email');
+        return;
+      }
+      if (!validatePassword(password)) {
+        setErrorMessage('*Password must be 8 or more characters');
+        return;
+      }
+  
+      // clear out the input after a successful submit
+      setEmail('');
+      setPassword('');
+    };
+
+return (
+      <>
+      <div className="homeBlock">
+        <div className='mainblock'> 
+        <figure>
+          <img className="lifeLineIcon"src={lifeLineHome} alt='icon for the brand life line'></img>
+        </figure>
+        <form className="loginForm">
+          <h1 className="webName">Life Line</h1>
+
+          <input 
+          value={email}
+          className="emailLogin" 
+          type="email" 
+          placeholder='Email Address' 
+          name="email"
+          onChange={handleInputChange}/>
+
+          <input 
+          value={password}
+          className="passwordLogin" 
+          type="password" 
+          placeholder='Password' 
+          name="Password"
+          onChange={handleInputChange}/>
+
+          {/* if validate email or password fails display error message */}
+          <div className="errorBlock">
+            {errorMessage && (
+              <p className="error-text">{errorMessage}</p>
+            )}
+          </div>
+
+          <button className="createButton" type="button" onClick={handleFormSubmit}>Create a New Account</button>
+
+          <hr className="loginDivider"></hr>
+          <p className="dividerOr">OR</p>
+
+          <Link to="/"><button className="loginButton" type="button">Log in</button></Link>
+
+        </form>
+        
+      </div>
+      <footer className="footer">
+        <nav className="footerNav">
+          <p className="footLinks">Sign Up</p>
+          <p className="footLinks">Log In</p>
+          <p className="footLinks">About</p>
+          <p className="footLinks">Developers</p>
+        </nav>
+        <p className="copyright">Meta © 2023 Life Line</p>
+      </footer>
+      </div>
+      </>
+  );
+}
