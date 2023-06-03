@@ -24,7 +24,7 @@ body {
     margin-right: auto;
 }
 
-/* search bar and profile edit button */
+/* profile header and navbar*/
 
 .profileHeader {
     display: flex;
@@ -517,6 +517,12 @@ body {
 
 .viewMore {
     margin: 0px;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    background-color: var(--colorBlock);
+    border: none;
+    font-family: 'Work Sans', sans-serif;
 }
 
 .friendCard {
