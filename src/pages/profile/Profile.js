@@ -30,7 +30,7 @@ export default function Profile() {
                     </div>
                     <div className='navBar'>
                         <button className='go2Profile'>Profile</button>
-                        <button className='go2Friends'>Friends</button>
+                        <Link to="/friends"><button className='go2Friends'>Friends</button></Link>
                         <button className='go2TimeLine'>Time Line</button>
                         <button className='logout'>Logout</button>
                     </div>
@@ -134,7 +134,7 @@ export default function Profile() {
                         </div>
                         <div className='friendHeaderRow'>
                             <p className='friendHeader'>Friend List</p>
-                            <p className='viewMore'>View <span>103</span> more</p>
+                            <Link to="/friends"><button className='viewMore'>View <span>103</span> more</button></Link>
                         </div>
                     </div>
                 </div>
