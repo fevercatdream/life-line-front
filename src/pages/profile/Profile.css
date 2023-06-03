@@ -469,7 +469,7 @@ body {
 
 .recentMany1, .recentMany2, .recentMany3, .recentMany4 {
     display: flex;
-    align-items: end;
+    align-items: flex-end;
     flex-direction: column;
     width: 44%;
     height: 195px;
@@ -528,7 +528,7 @@ body {
 .friendCard {
     display: flex;
     align-items: flex-end;
-    justify-content: end;
+    justify-content: flex-end;
     margin: 20px;
     background-color: black;
     border-radius: 10px;

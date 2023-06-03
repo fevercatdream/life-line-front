@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom"
 import './Profile.css'
 import Carousel from 'react-gallery-carousel';
 import 'react-gallery-carousel/dist/index.css';
@@ -41,7 +41,7 @@ export default function Profile() {
                             <div className='colorBlock1'>
                                 <div className='editIcon'>EDIT</div>
                             </div>
-                            <img className="profileImg" src="http://placekitten.com/300/300" />
+                            <img className="profileImg" src="http://placekitten.com/300/300" alt='placeholder' />
                             <p className='contactName'>Snowball McKitten</p>
                         </div>
                         <div className='bioColumn'>
@@ -59,12 +59,10 @@ export default function Profile() {
                             <p className='contactBio'>Profile Info</p>
                         </div>
                         <div className='suggestBox'>
-                            <img className='suggestFriend1' src='http://placekitten.com/150/150'>
-                                
-                            </img>
-                            <img className='suggestFriend2' src='http://placekitten.com/150/150'></img>
-                            <img className='suggestFriend3' src='http://placekitten.com/150/150'></img>
-                            <img className='suggestFriend4' src='http://placekitten.com/150/150'></img>
+                            <img className='suggestFriend1' src='http://placekitten.com/150/150' alt='placeholder' />
+                            <img className='suggestFriend2' src='http://placekitten.com/150/150' alt='placeholder' />
+                            <img className='suggestFriend3' src='http://placekitten.com/150/150' alt='placeholder' />
+                            <img className='suggestFriend4' src='http://placekitten.com/150/150' alt='placeholder' />
                         </div>
                         <div className='colorBlock5'>
                             <p className='mayKnow'>Users you may know</p>
@@ -85,7 +83,7 @@ export default function Profile() {
                     <div className='recentBox'>
                         <figure id="recentCard" className='recentCard' onClick={() => setModalVisible(true)}>
 
-                            <img className='recentMedia' src="https://dummyimage.com/500x325/000/aaa" />
+                            <img className='recentMedia' src="https://dummyimage.com/500x325/000/aaa" alt='placeholder' />
                             <figcaption className='recentCaption'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</figcaption>
                             <div className='recentComReac'>
                                 <p className='comments'><b>Comments: </b><span>5</span></p>
@@ -96,28 +94,28 @@ export default function Profile() {
                         <div className='recentText'><p class="textBar">Recent Events</p></div>
                         <div className='recentManyDiv'>
                             <figure className='recentMany1'>
-                                <img className='recentMediaSmall' src="https://dummyimage.com/300x200/000/aaa" />
+                                <img className='recentMediaSmall' src="https://dummyimage.com/300x200/000/aaa" alt='placeholder' />
                                 <div className='recentComReac'>
                                     <p className='comments2'><b>Comments: </b><span>5</span></p>
                                     <p className='likes2'><b>Likes: </b>15</p>
                                 </div>
                             </figure>
                             <figure className='recentMany2'>
-                                <img className='recentMediaSmall' src="https://dummyimage.com/300x200/000/aaa" />
+                                <img className='recentMediaSmall' src="https://dummyimage.com/300x200/000/aaa" alt='placeholder' />
                                 <div className='recentComReac'>
                                     <p className='comments2'><b>Comments: </b><span>5</span></p>
                                     <p className='likes2'><b>Likes: </b>15</p>
                                 </div>
                             </figure>
                             <figure className='recentMany3'>
-                                <img className='recentMediaSmall' src="https://dummyimage.com/300x200/000/aaa" />
+                                <img className='recentMediaSmall' src="https://dummyimage.com/300x200/000/aaa" alt='placeholder' />
                                 <div className='recentComReac'>
                                     <p className='comments2'><b>Comments: </b><span>5</span></p>
                                     <p className='likes2'><b>Likes: </b>15</p>
                                 </div>
                             </figure>
                             <figure className='recentMany4'>
-                                <img className='recentMediaSmall' src="https://dummyimage.com/300x200/000/aaa" />
+                                <img className='recentMediaSmall' src="https://dummyimage.com/300x200/000/aaa" alt='placeholder' />
                                 <div className='recentComReac'>
                                     <p className='comments2'><b>Comments: </b><span>5</span></p>
                                     <p className='likes2'><b>Likes: </b>15</p>
@@ -129,7 +127,7 @@ export default function Profile() {
                         <div className='colorBlock3'></div>
                         <div className='friendRow'>
                             <figure className='friendCard'>
-                                <img className='friendSmall' src='http://placekitten.com/150/150'></img>
+                                <img className='friendSmall' src='http://placekitten.com/150/150' alt='placeholder' />
                                 <p className='friendName'>Name is too long for this box</p>
                                 <p className='friendLocation'>Location is too long for this box</p>
                             </figure>
