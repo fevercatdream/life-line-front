@@ -13,7 +13,7 @@ export default function Users()  {
                     <div className='navBar'>
                         <Link to="/profile"><button className='go2Profile'>Profile</button></Link>
                         <button className='go2Friends'>Friends</button>
-                        <button className='go2TimeLine'>Time Line</button>
+                        <Link to="/timeline"><button className='go2TimeLine'>Time Line</button></Link>
                         <button className='logout'>Logout</button>
                     </div>
                 </header>
@@ -25,7 +25,9 @@ export default function Users()  {
                     <Link to="/friends"><button className='tabWords'>Friends</button></Link>
                 </div>
                 <div className='userTab2'><p className='tabWordsUsers'>All Users</p></div>
-                <div className='blockTab2'><button className='tabWordsBlocked'>Blocked Users</button></div>
+                <div className='blockTab2'>
+                    <Link to="/ignored"><button className='tabWordsBlocked'>Blocked Users</button></Link>
+                </div>
             </div>
             <div className='friendSearchBox'>
                 <input type="text" className='searchBar' placeholder='search friends'></input>
