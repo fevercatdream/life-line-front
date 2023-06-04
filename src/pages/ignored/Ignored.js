@@ -13,7 +13,7 @@ export default function Ignored()  {
                     <div className='navBar'>
                         <Link to="/profile"><button className='go2Profile'>Profile</button></Link>
                         <button className='go2Friends'>Friends</button>
-                        <button className='go2TimeLine'>Time Line</button>
+                        <Link to="/timeline"><button className='go2TimeLine'>Time Line</button></Link>
                         <button className='logout'>Logout</button>
                     </div>
                 </header>
