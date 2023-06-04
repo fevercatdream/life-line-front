@@ -3,28 +3,23 @@ import {Link, Navigate} from "react-router-dom"
 import './Profile.css'
 import Carousel from 'react-gallery-carousel';
 import 'react-gallery-carousel/dist/index.css';
+import {backendHost, sendJSONRequest} from "../../utils/helpers";
 
 export default function Profile() {
     const [modalVisible, setModalVisible] = useState(false);
     const [profile, setProfile] = useState();
     const [loading, setLoading] = useState(true);
-
-    const token = localStorage.getItem('token');
+    const [token, setToken] = useState(localStorage.getItem('token'));
 
     const loadData = async () => {
         if (!token) {
             return;
         }
 
-        const res = await fetch('http://localhost:3001/api/profile', {
-            headers: {
-                'Authorization': token,
-            }
-        })
-
+        const res = await sendJSONRequest('GET', '/api/profile', null, true);
         if (res.status !== 200) {
             // handle errors
-            console.log("SEOMTHING WENT WRONG");
+            console.log("somethign went wrong we ");
             return;
         }
 
@@ -33,9 +28,14 @@ export default function Profile() {
         setLoading(false);
     }
 
+    const logout = () => {
+        setToken(null);
+        localStorage.removeItem('token');
+    }
+
     useEffect(() => {
         loadData();
-    }, [])
+    }, [token])
 
     if (!token) {
         return (
@@ -79,14 +79,16 @@ export default function Profile() {
                             <Link to="/friends">
                                 <button className='go2Friends'>Friends</button>
                             </Link>
-                            <Link to="/timeline"><button className='go2TimeLine'>Time Line</button></Link>
-                            <button className='logout'>Logout</button>
+                            <Link to="/timeline">
+                                <button className='go2TimeLine'>Time Line</button>
+                            </Link>
+                            <button className='logout' onClick={logout}>Logout</button>
                         </div>
                     </header>
                     <div className='profilePicBox'>
                         <div className='profileBox'>
-                            <ProfilePic profile={profile} loadData={loadData} token={token} />
-                            <ProfileInfo profile={profile} />
+                            <ProfilePic profile={profile} loadData={loadData} token={token}/>
+                            <ProfileInfo profile={profile}/>
                             <div className='suggestBox'>
                                 {userYouKnowImages}
                             </div>
@@ -215,13 +217,13 @@ export default function Profile() {
 
 function ProfilePic({profile, token, loadData}) {
     const uploadFile = async (e) => {
-        if(!e.target.files){
+        if (!e.target.files) {
             return;
         }
         const file = e.target.files[0];
         const formData = new FormData();
         formData.append('photo', file);
-        const res = await fetch('http://localhost:3001/api/profile/photo', {
+        const res = await fetch(`${backendHost}/api/profile/photo`, {
             method: 'POST',
             headers: {
                 'Authorization': token,
@@ -242,7 +244,7 @@ function ProfilePic({profile, token, loadData}) {
         <div className='profilePic'>
             {picker}
             <div className='colorBlock1'>
-                <div className='editIcon' >EDIT</div>
+                <div className='editIcon'>EDIT</div>
             </div>
             <img className="profileImg" src={profile.profile_url} alt='placeholder'/>
             <p className='contactName'>{profile.name}</p>
