@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {Link, Navigate} from "react-router-dom"
-import { validateEmail } from '../../utils/helpers';
+import {sendJSONRequest, validateEmail} from '../../utils/helpers';
 import { validatePassword } from '../../utils/helpers';
 import './style.css'
 const lifeLineHome = require('../assets/LifeLine2.png')
@@ -36,17 +36,10 @@ export default function Home() {
 
       console.log(email, password);
 
-      const res = await fetch('http://localhost:3001/api/account/token', {
-        method: 'POST',
-        body: JSON.stringify({
-          email: email,
-          password: password,
-        }),
-        headers: {
-          'Content-Type': 'application/json',
-        }
+      const res = await sendJSONRequest('POST', '/api/account/token', {
+        email: email,
+        password: password,
       });
-
       const data = await res.json();
 
       if (res.status !== 200) {
