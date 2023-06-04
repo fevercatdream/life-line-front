@@ -47,8 +47,9 @@ body {
     width: -moz-fit-content;
     width: fit-content;
     background-color: white;
-    overflow: hidden;
 }
+
+/* timeline content */
 
 .timeLineEvent {
     width: 40vw;
@@ -73,14 +74,27 @@ body {
     max-width: 200px;
     max-height: 200px;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .timelineInfo {
     margin-left: 1vw;
 }
 
+.timelineDate {
+    color: black;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+}
+
 .timelineTitle {
     margin: 10px;
+    font-family: 'Work Sans', sans-serif;
+}
+
+.timelineTitle2 {
+    margin-left: 1vw;
+    font-family: 'Work Sans', sans-serif;
 }
 
 .timelineDesc {
@@ -88,10 +102,108 @@ body {
     height: 40%;
     padding: 10px;
     margin: 0px;
+    font-family: 'Work Sans', sans-serif;
 }
 
 .timelineNotif {
     display: flex;
     justify-content: flex-end;
     margin-top: 10px;
+}
+
+/* popup modal css properties */
+
+.hidden, .hidden2 {
+    display: none;
+}
+
+.hover {
+    cursor: pointer;
+}
+
+.blackOut2 {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.534);
+    z-index: 3;
+}
+
+.centerModal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.eventNotifBar {
+    width: 99%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 30px; 
+    margin-top: 10px;
+}
+
+/* comment box  */
+
+.commentSection {
+    border: 1px solid var(--bordercolor);
+    width: 700px;
+    margin-top: 2vh;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.commentSingle {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.friendCommentIcon {
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100px;
+    max-height: 100px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.friendCommentBox {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+
+.friendCommentName {
+    margin: 10px;
+}
+
+.friendCommentText {
+    width: 95%;
+    overflow: auto;
+    padding: 10px;
+    margin: 0px;
+}
+
+/* overiding timeline properties  */
+
+.css-ghevlx-MuiTypography-root-MuiTimelineContent-root {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.css-l4x062-MuiTypography-root-MuiTimelineOppositeContent-root {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.css-1ami7lv-MuiTimelineConnector-root {
+    min-height: 20px;
 }
