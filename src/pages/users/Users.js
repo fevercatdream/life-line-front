@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
-import './Friends.css';
+import './Users.css';
 
-export default function Friends()  {
+export default function Users()  {
     return (
       <>
         <div className="mainFriendBlock">
@@ -21,26 +21,25 @@ export default function Friends()  {
             <div className='navBackground'></div>
 
             <div className='friendNav'>
-                <div className='friendTab'><button className='tabWords'>Friends</button>
+                <div className='friendTab2'>
+                    <Link to="/friends"><button className='tabWords'>Friends</button></Link>
                 </div>
-                <div className='userTab'>
-                    <Link to="/users"><button className='tabWordsUsers2'>All Users</button></Link>
-                </div>
-                <div className='blockTab'><button className='tabWordsBlocked2'>Blocked Users</button></div>
+                <div className='userTab2'><p className='tabWordsUsers'>All Users</p></div>
+                <div className='blockTab2'><button className='tabWordsBlocked'>Blocked Users</button></div>
             </div>
             <div className='friendSearchBox'>
                 <input type="text" className='searchBar' placeholder='search friends'></input>
                 <button className='searchButton'>+</button>
             </div>
-            <div className="allFriends">
-                <figure className='friendCard2'>
-                    <img className="friendPhoto" src="http://placekitten.com/300/300" />
-                    <figcaption className='friendBio'>
-                        <div className='friendBioName'>
+            <div className="allUsers">
+                <figure className='userCard'>
+                    <img className="userPhoto" src="http://placekitten.com/300/300" />
+                    <figcaption className='userBio'>
+                        <div className='userBioName'>
                             <p className='smallerP'>Sneaky Mc'Alleycat</p>
                             <p className='smallerP'>Tacoma, Washington</p>
                         </div>
-                        <button className='deleteFriend'>X</button>
+                        <button className='blockUser'>X</button>
                     </figcaption>
                 </figure>
             </div>

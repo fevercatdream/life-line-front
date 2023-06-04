@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom"
+import {Link, Navigate} from "react-router-dom"
 import { validateEmail } from '../../utils/helpers';
 import { validatePassword } from '../../utils/helpers';
 import './style.css'
@@ -9,6 +9,7 @@ export default function Home() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [doRedirect, setDoRedirect] = useState(false);
 
   const handleInputChange = (e) => {
       // Getting the value and name of the input which triggered the change
@@ -24,19 +25,46 @@ export default function Home() {
       }
     };
 
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = async (e) => {
       e.preventDefault();
   
       // check to see if the email is valid
-      if (!validateEmail(email) || !validatePassword(password)) {
+      if (!validateEmail(email)) {
         setErrorMessage('*Your Password or Email is invalid');
         return;
       }
-  
-      // clear out the input after a successful submit
-      setEmail('');
-      setPassword('');
+
+      console.log(email, password);
+
+      const res = await fetch('http://localhost:3001/api/account/token', {
+        method: 'POST',
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+
+      const data = await res.json();
+
+      if (res.status !== 200) {
+        setErrorMessage(data.message);
+        return;
+      }
+
+      setErrorMessage('');
+      await localStorage.setItem('token', data.token);
+      setDoRedirect(true);
+
     };
+
+    if (doRedirect) {
+      return (
+          <Navigate to={"/profile"} />
+      )
+    }
 
 return (
       <>
