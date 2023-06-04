@@ -19,6 +19,7 @@ function App() {
         <Route path="/friends" element={<Friends/>}/>
         <Route path="/users" element={<Users/>}/>
         <Route path="/ignored" element={<Ignored/>}/>
+        <Route path="/timeline" element={<Timeline/>}/>
       </Routes>
     </BrowserRouter>
     </>
