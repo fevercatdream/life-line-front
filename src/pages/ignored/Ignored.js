@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
-import './Users.css';
+import './Ignored.css';
 
-export default function Users()  {
+export default function Ignored()  {
     return (
       <>
         <div className="mainFriendBlock">
@@ -21,27 +21,27 @@ export default function Users()  {
             <div className='navBackground'></div>
 
             <div className='friendNav'>
-                <div className='friendTab2'>
-                    <Link to="/friends"><button className='tabWords'>Friends</button></Link>
+                <div className='friendTab3'>
+                    <Link to="/friends"><button className='tabWords3'>Friends</button></Link>
                 </div>
-                <div className='userTab2'><p className='tabWordsUsers'>All Users</p></div>
-                <div className='blockTab2'>
-                    <Link to="/ignored"><button className='tabWordsBlocked'>Ignored Users</button></Link>
+                <div className='userTab3'>
+                    <Link to="/users"><button className='tabWordsUsers3'>All Users</button></Link>
                 </div>
+                <div className='blockTab3'><button className='tabWordsBlocked3'>Ignored Users</button></div>
             </div>
             <div className='friendSearchBox'>
                 <input type="text" className='searchBar' placeholder='search friends'></input>
                 <button className='searchButton'>+</button>
             </div>
-            <div className="allUsers">
-                <figure className='userCard'>
-                    <img className="userPhoto" src="http://placekitten.com/300/300" />
-                    <figcaption className='userBio'>
-                        <div className='userBioName'>
+            <div className="allIgnored">
+                <figure className='ignoredCard'>
+                    <img className="ignoredPhoto" src="http://placekitten.com/300/300" />
+                    <figcaption className='ignoredBio'>
+                        <div className='ignoredBioName'>
                             <p className='smallerP'>Sneaky Mc'Alleycat</p>
                             <p className='smallerP'>Tacoma, Washington</p>
                         </div>
-                        <button className='blockUser'>X</button>
+                        <button className='deleteFriend'>X</button>
                     </figcaption>
                 </figure>
             </div>

@@ -86,12 +86,13 @@ body {
     display: flex;
 }
 
-.friendTab2, .userTab2, .blockTab2 {
+.friendTab3, .userTab3, .blockTab3 {
     width: 150px;
-    height: 34px;
+    height: 36px;
     background-color: var(--offWhite);
     border-radius: 10px 10px 0px 0px;
     border: 1px solid var(--bordercolor);
+    border-bottom: none;
     margin-top: 0px;
     z-index: 1;
     position: relative;
@@ -101,29 +102,29 @@ body {
     align-items: center;
 }
 
-.userTab2 {
+.userTab3 {
     border: 1px solid rgb(155, 155, 155);
     border-bottom: none;
-    z-index: 2;
+    z-index: 0;
     height: 35px;
     background-color: var(--colorBlock);
     color: white;
 }
 
-.blockTab2 {
+.blockTab3 {
     border: 1px solid rgb(155, 155, 155);
-    border-bottom: none;
+    border-bottom: 1px solid var(--bordercolor);
+    background-color: rgb(184, 19, 19);
     z-index: 0;
     height: 35px;
-    background-color: rgb(184, 19, 19);
     color: white;
 }
 
-.tabWords:hover, .userTab2:hover, .tabWordsBlocked:hover {
+.tabWords3:hover, .tabWordsBlocked3:hover, .tabWordsUsers3:hover, .userTab:hover{
     cursor: pointer;
 }
 
-.tabWords, .tabWordsBlocked {
+.tabWordsUsers3, .tabWords3, .tabWordsBlocked3 {
     font-weight: bold;
     background-color: var(--offWhite);
     border: none;
@@ -131,15 +132,21 @@ body {
     font-size: 16px;
 }
 
-.tabWordsBlocked {
-    background-color: rgb(184, 19, 19);
+.tabWordsUsers3 {
+    background-color: var(--colorBlock);
     color: white;
 }
 
-.tabWordsUsers {
-    font-weight: bold;
+.tabWordsBlocked3 {
+    background-color: rgb(184, 19, 19);
+    color: white;
+    z-index: 2;
 }
 
+.friendTab3 {
+    border-bottom: 1px solid var(--bordercolor);
+    height: 34px;
+}
 
 /* search bar */
 
@@ -168,11 +175,11 @@ body {
     overflow: hidden;
 }
 
-.allUsers {
+.allIgnored {
     border: 1px solid var(--bordercolor);
     width: 87%;
     padding: 2vw 2vw 0vw 1vw;
-    background-color: #e9f5fa;
+    background-color: rgb(255, 242, 242);
     border-radius: 15px;
     display: flex;
     flex-direction: row;
@@ -181,7 +188,7 @@ body {
     margin-bottom: 40px;
 }
 
-.userCard{
+.ignoredCard {
     margin: 0px;
     border: 1px solid var(--bordercolor);
     width: -moz-fit-content;
@@ -197,14 +204,14 @@ body {
     padding-bottom: 1vw;
 }
 
-.userPhoto {
+.ignoredPhoto {
     max-width: 300px;
     min-width: 200px;
     width: 15vw;
     border-radius: 5px;
 }
 
-.userBio {
+.ignoredBio {
     margin-top: 10px;
     width: 100%;
     text-align: left;
@@ -213,7 +220,7 @@ body {
     align-items: center;
 }
 
-.userBioName {
+.ignoredBioName {
     width: 80%;
     height: 100%;
     overflow: hidden;
@@ -224,7 +231,7 @@ body {
    font-size: 16px; 
 }
 
-.blockUser{
+.deleteFriend {
     width: 40px;
     height: 40px;
 }

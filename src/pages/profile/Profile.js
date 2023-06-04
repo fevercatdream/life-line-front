@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import { Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import './Profile.css'
 import Carousel from 'react-gallery-carousel';
 import 'react-gallery-carousel/dist/index.css';

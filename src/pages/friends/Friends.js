@@ -26,7 +26,9 @@ export default function Friends()  {
                 <div className='userTab'>
                     <Link to="/users"><button className='tabWordsUsers2'>All Users</button></Link>
                 </div>
-                <div className='blockTab'><button className='tabWordsBlocked2'>Blocked Users</button></div>
+                <div className='blockTab'>
+                    <Link to="/ignored"><button className='tabWordsBlocked2'>Ignored Users</button></Link>
+                </div>
             </div>
             <div className='friendSearchBox'>
                 <input type="text" className='searchBar' placeholder='search friends'></input>
