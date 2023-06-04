@@ -577,17 +577,19 @@ body {
 .modalBox1 {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: baseline;
     align-items: center;
-    position: fixed;
+    position: absolute;
     top: 0px;
-    margin-top: 15vh;
+    margin-top: 5vh;
+    padding-top: 5vh;
     width: 800px;
-    height: 600px;
+    height: 85%;
     border: 1px solid var(--bordercolor);
     border-radius: 15px;
     z-index: 3;
     background-color: var(--offWhite);
+    overflow: auto;
 }
 
 .sliderMedia {
