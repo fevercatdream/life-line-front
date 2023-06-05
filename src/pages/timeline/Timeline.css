@@ -236,9 +236,15 @@ body {
     margin: 0px;
 }
 
-.flexRow {
+.flexRow, .flexRow2 {
     display: flex;
     flex-direction: row;
+}
+
+.flexRow2 {
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
 }
 
 .likes2 {
