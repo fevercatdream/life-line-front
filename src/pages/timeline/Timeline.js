@@ -18,8 +18,6 @@ import Typography from '@mui/material/Typography';
 
 export default function TimelineFunc()  {
 
-    const [modalVisible, setModalVisible] = useState(false);
-    const [modalVisible2, setModalVisible2] = useState(false);
     const [eventModalVisible, setEventModalVisible] = useState(false);
 
     // Array for gallery slider images

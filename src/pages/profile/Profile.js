@@ -261,11 +261,12 @@ function ProfilePic({profile, token, loadData}) {
         loadData();
     }
 
-    const picker = <input type={"file"} accept={'image/*'} onChange={uploadFile}/>
+    // const picker = <input type={"file"} accept={'image/*'} onChange={uploadFile}/>
+    // {picker}
 
     return (
         <div className='profilePic'>
-            {picker}
+            
             <div className='colorBlock1'></div>
             <img className="profileImg" src={profile.profile_url} alt='placeholder'/>
             <p className='contactName'>{profile.name}</p>
@@ -277,7 +278,7 @@ function ProfileInfo({profile}) {
     return (
         <div className='bioColumn'>
             <div className='colorBlock4'></div>
-            <ManageAccountsIcon sx={{ fontSize: 35 }} className='editAccount'/>
+            <Link to="/editprofile" className='editAccount'><ManageAccountsIcon sx={{ fontSize: 35 }}/></Link>
             <div className='bioWhite'>
                 <p className='contactHead'>Birth Date:</p>
                 <p className='contactDate'>{profile.birthdate}</p>
