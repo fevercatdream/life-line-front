@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import './Ignored.css';
+import Clear from '@mui/icons-material/Clear';
 
 export default function Ignored()  {
     return (
@@ -41,7 +42,7 @@ export default function Ignored()  {
                             <p className='smallerP'>Sneaky Mc'Alleycat</p>
                             <p className='smallerP'>Tacoma, Washington</p>
                         </div>
-                        <button className='deleteFriend'>X</button>
+                        <button className='deleteFriend'><Clear sx={{ fontSize: 40 }}/></button>
                     </figcaption>
                 </figure>
             </div>

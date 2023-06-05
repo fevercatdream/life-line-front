@@ -206,17 +206,21 @@ body {
     border: 1px solid var(--bordercolor);
 }
 
+.editAccount {
+    align-self: flex-end;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
 .bioWhite {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    background-color: white;
-    border: 1px solid var(--bordercolor);
     width: 250px;
-    margin-left: 20px;
+    margin-left: 10px;
     height: 220px;
     padding-top: 10px;
-    margin-top: 10px;
+    margin-top: -20px;
     border-radius: 10px 10px 0px 0px;
 }
 
@@ -226,8 +230,8 @@ body {
 }
 
 .contactHead {
-    color: grey;
-    font-size: 14px;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
 }
 
 .contactHead, .contactDate, .contactLoc, .contactNow {
@@ -331,15 +335,24 @@ body {
     justify-content: space-around;
     padding-left: 10px;
     height: 50px;
-    width: 600px;
+    width: 250px;
     border-radius: 10px;
     box-shadow: 4px 4px 10px var(--bordercolor);
     background-color: var(--offWhite);
     border: 1px solid var(--bordercolor);
 }
 
-.notifys:hover {
+.notifys {
+    margin: 0px;
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.notifRow {
+    display: flex;
+    flex-direction: row;
     cursor: pointer;
+    align-items: center;
 }
 
 .searchButton {
@@ -438,12 +451,18 @@ body {
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    padding: 0px 0px 0px 0px;
+    padding: 5px 0px 0px 0px;
+    cursor: pointer;
+}
+
+.comments, .likes {
+    padding-right: 10px;
 }
 
 .comments2, .likes2 {
     margin: 0px;
     margin-right: 10px;
+    margin-left: 20px;
 }
 
 .likes {

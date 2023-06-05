@@ -4,6 +4,10 @@ import './Profile.css'
 import Carousel from 'react-gallery-carousel';
 import 'react-gallery-carousel/dist/index.css';
 import {backendHost, sendJSONRequest} from "../../utils/helpers";
+import Chat from '@mui/icons-material/Chat';
+import PersonAddAlt1 from '@mui/icons-material/PersonAddAlt1';
+import Favorite from '@mui/icons-material/Favorite';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 
 export default function Profile() {
     const [modalVisible, setModalVisible] = useState(false);
@@ -99,9 +103,18 @@ export default function Profile() {
                         <div className='bioBox'>
                             <div className='notifSearchBox'>
                                 <div className='notifEvent'>
-                                    <p className='notifys'><b>New Comments:</b> 12</p>
-                                    <p className='notifys'><b>New Likes:</b> 36</p>
-                                    <p className='notifys'><b>New Friend Requests:</b> 7</p>
+                                    <div className='notifRow'>
+                                        <p className='notifys'>12</p>
+                                        <Chat sx={{ fontSize: 25 }} className='commentBtn'/>
+                                    </div>
+                                    <div className='notifRow'>
+                                        <p className='notifys'>36</p>
+                                        <Favorite sx={{ fontSize: 25 }} className='likeBtn'/>
+                                    </div>
+                                    <div className='notifRow'>
+                                        <p className='notifys'>7</p>
+                                        <PersonAddAlt1 sx={{ fontSize: 30 }} className='addBtn'/>
+                                    </div>
                                 </div>
                                 <div>
                                     <input type="text" className='searchBar' placeholder='search friends'></input>
@@ -119,8 +132,10 @@ export default function Profile() {
                                         ut aliquip ex ea commodo consequat.
                                     </figcaption>
                                     <div className='recentComReac'>
-                                        <p className='comments'><b>Comments: </b><span>5</span></p>
-                                        <p className='likes'><b>Likes: </b>15</p>
+                                        <p className='comments'>5</p>
+                                        <Chat sx={{ fontSize: 25 }} className='commentBtn'/>
+                                        <p className='likes'>15</p>
+                                        <Favorite sx={{ fontSize: 25 }} className='likeBtn'/>
                                     </div>
                                 </figure>
                                 <div className='colorBlock2'></div>
@@ -130,32 +145,40 @@ export default function Profile() {
                                         <img className='recentMediaSmall' src="https://dummyimage.com/300x200/000/aaa"
                                              alt='placeholder'/>
                                         <div className='recentComReac'>
-                                            <p className='comments2'><b>Comments: </b><span>5</span></p>
-                                            <p className='likes2'><b>Likes: </b>15</p>
+                                            <p className='comments2'>5</p>
+                                            <Chat sx={{ fontSize: 20 }} className='commentBtn'/>
+                                            <p className='likes2'>15</p>
+                                            <Favorite sx={{ fontSize: 20 }} className='likeBtn'/>
                                         </div>
                                     </figure>
                                     <figure className='recentMany2'>
                                         <img className='recentMediaSmall' src="https://dummyimage.com/300x200/000/aaa"
                                              alt='placeholder'/>
                                         <div className='recentComReac'>
-                                            <p className='comments2'><b>Comments: </b><span>5</span></p>
-                                            <p className='likes2'><b>Likes: </b>15</p>
+                                            <p className='comments2'>5</p>
+                                            <Chat sx={{ fontSize: 20 }} className='commentBtn'/>
+                                            <p className='likes2'>15</p>
+                                            <Favorite sx={{ fontSize: 20 }} className='likeBtn'/>
                                         </div>
                                     </figure>
                                     <figure className='recentMany3'>
                                         <img className='recentMediaSmall' src="https://dummyimage.com/300x200/000/aaa"
                                              alt='placeholder'/>
                                         <div className='recentComReac'>
-                                            <p className='comments2'><b>Comments: </b><span>5</span></p>
-                                            <p className='likes2'><b>Likes: </b>15</p>
+                                            <p className='comments2'>5</p>
+                                            <Chat sx={{ fontSize: 20 }} className='commentBtn'/>
+                                            <p className='likes2'>15</p>
+                                            <Favorite sx={{ fontSize: 20 }} className='likeBtn'/>
                                         </div>
                                     </figure>
                                     <figure className='recentMany4'>
                                         <img className='recentMediaSmall' src="https://dummyimage.com/300x200/000/aaa"
                                              alt='placeholder'/>
                                         <div className='recentComReac'>
-                                            <p className='comments2'><b>Comments: </b><span>5</span></p>
-                                            <p className='likes2'><b>Likes: </b>15</p>
+                                            <p className='comments2'>5</p>
+                                            <Chat sx={{ fontSize: 20 }} className='commentBtn'/>
+                                            <p className='likes2'>15</p>
+                                            <Favorite sx={{ fontSize: 20 }} className='likeBtn'/>
                                         </div>
                                     </figure>
                                 </div>
@@ -243,9 +266,7 @@ function ProfilePic({profile, token, loadData}) {
     return (
         <div className='profilePic'>
             {picker}
-            <div className='colorBlock1'>
-                <div className='editIcon'>EDIT</div>
-            </div>
+            <div className='colorBlock1'></div>
             <img className="profileImg" src={profile.profile_url} alt='placeholder'/>
             <p className='contactName'>{profile.name}</p>
         </div>
@@ -255,9 +276,8 @@ function ProfilePic({profile, token, loadData}) {
 function ProfileInfo({profile}) {
     return (
         <div className='bioColumn'>
-            <div className='colorBlock4'>
-                <div className='editIcon2'>EDIT</div>
-            </div>
+            <div className='colorBlock4'></div>
+            <ManageAccountsIcon sx={{ fontSize: 35 }} className='editAccount'/>
             <div className='bioWhite'>
                 <p className='contactHead'>Birth Date:</p>
                 <p className='contactDate'>{profile.birthdate}</p>
