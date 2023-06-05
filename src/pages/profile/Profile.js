@@ -5,8 +5,8 @@ import Carousel from 'react-gallery-carousel';
 import 'react-gallery-carousel/dist/index.css';
 import {backendHost, sendJSONRequest} from "../../utils/helpers";
 import Chat from '@mui/icons-material/Chat';
-import PersonAddAlt1 from '@mui/icons-material/PersonAddAlt1';
 import Favorite from '@mui/icons-material/Favorite';
+import PersonAddAlt1 from '@mui/icons-material/PersonAddAlt1';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 
 export default function Profile() {
