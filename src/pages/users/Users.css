@@ -199,14 +199,15 @@ body {
 
 .userPhoto {
     max-width: 300px;
-    min-width: 200px;
+    min-width: 250px;
     width: 15vw;
     border-radius: 5px;
+    margin-top: -4vh;
 }
 
 .userBio {
     margin-top: 10px;
-    width: 100%;
+    min-width: 90%;
     text-align: left;
     display: flex;
     justify-content: space-between;
@@ -214,7 +215,7 @@ body {
 }
 
 .userBioName {
-    width: 80%;
+    width: 75%;
     height: 100%;
     overflow: hidden;
 }
@@ -225,6 +226,20 @@ body {
 }
 
 .blockUser{
-    width: 40px;
-    height: 40px;
+    position: relative;
+    background-color: white;
+    border-radius: 50%;
+    align-self: flex-end;
+    margin-top: -.7vh;
+    cursor: pointer;
+    color: rgb(163, 1, 1);
+    margin-right: -.5vw;
+}
+
+.addFriend {
+    min-width: 20%;
+    background-color: white;
+    border: none;
+    text-align: left;
+    cursor: pointer;
 }

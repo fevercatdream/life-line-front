@@ -200,14 +200,15 @@ body {
 
 .friendPhoto {
     max-width: 300px;
-    min-width: 200px;
+    min-width: 250px;
     width: 15vw;
     border-radius: 5px;
+    margin-top: -4vh;
 }
 
 .friendBio {
     margin-top: 10px;
-    width: 100%;
+    min-width: 90%;
     text-align: left;
     display: flex;
     justify-content: space-between;
@@ -215,7 +216,7 @@ body {
 }
 
 .friendBioName {
-    width: 80%;
+    width: 75%;
     height: 100%;
     overflow: hidden;
 }
@@ -225,7 +226,21 @@ body {
    font-size: 16px; 
 }
 
+.blockUser{
+    position: relative;
+    background-color: white;
+    border-radius: 50%;
+    align-self: flex-end;
+    margin-top: -.7vh;
+    cursor: pointer;
+    color: rgb(163, 1, 1);
+    margin-right: -.5vw;
+}
+
 .deleteFriend {
-    width: 40px;
-    height: 40px;
+    min-width: 20%;
+    background-color: white;
+    border: none;
+    text-align: left;
+    cursor: pointer;
 }

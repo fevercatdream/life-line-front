@@ -13,16 +13,11 @@ import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import TimelineDot from '@mui/lab/TimelineDot';
-import FastfoodIcon from '@mui/icons-material/Fastfood';
-import LaptopMacIcon from '@mui/icons-material/LaptopMac';
-import HotelIcon from '@mui/icons-material/Hotel';
-import RepeatIcon from '@mui/icons-material/Repeat';
 import Typography from '@mui/material/Typography';
 
 
 export default function TimelineFunc()  {
 
-    const [modalVisible, setModalVisible] = useState(false);
     const [eventModalVisible, setEventModalVisible] = useState(false);
 
     // Array for gallery slider images
@@ -63,7 +58,7 @@ export default function TimelineFunc()  {
         </header>
         <div className='timelineBlock' >
         <div className='navBackground'></div>
-            <Timeline>
+            <Timeline position='alternate'>
                 <TimelineItem>
                     <TimelineOppositeContent
                         sx={{ m: 'auto 0' }}
@@ -76,19 +71,44 @@ export default function TimelineFunc()  {
                         <TimelineSeparator>
                             <TimelineConnector />
                             <TimelineDot>
-                                <FastfoodIcon 
-                                sx={{ fontSize: 80 }}
-                                className='hover'
-                                onClick={() => {modalVisible ? setModalVisible(false) : setModalVisible(true)}}/>
                             </TimelineDot>
                             <TimelineConnector />
                         </TimelineSeparator>
                         <TimelineContent sx={{ py: '12px', px: 2 }}>
-                            <div className={modalVisible ? "eventSummary hidden" : "eventSummary"}>
-                                <h2 className='timelineTitle2'>Went to Taco Bell</h2>
-                            </div>
                             <div
-                            className={modalVisible ? "timeLineEvent" : "timeLineEvent hidden"}
+                            className="timeLineEvent">
+                                <figure className="noMargin">
+                                    <img className="timelineThumb" src="https://dummyimage.com/300x200/000/aaa" onClick={() => setEventModalVisible(true)}></img>
+                                </figure>
+                                <div className="timelineInfo">
+                                    <h2 className="timelineTitle">Went to Taco Bell</h2>
+                                    <p className="timelineDesc">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    <div className="timelineNotif">
+                                        <p className='comments'><b>Comments: </b><span>5</span></p>
+                                        <p className='likes'><b>Likes: </b>15</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </TimelineContent>
+                </TimelineItem>
+                <TimelineItem>
+                    <TimelineOppositeContent
+                        sx={{ m: 'auto 0' }}
+                        align="right"
+                        variant="body2"
+                        color="text.secondary"
+                        >
+                        <h2 className='timelineDate'>June, 2023</h2>
+                    </TimelineOppositeContent>
+                        <TimelineSeparator>
+                            <TimelineConnector />
+                            <TimelineDot>
+                            </TimelineDot>
+                            <TimelineConnector />
+                        </TimelineSeparator>
+                        <TimelineContent sx={{ py: '12px', px: 2 }}>
+                            <div
+                            className="timeLineEvent2"
                             >
                                 <figure className="noMargin">
                                     <img className="timelineThumb" src="https://dummyimage.com/300x200/000/aaa" onClick={() => setEventModalVisible(true)}></img>
@@ -115,9 +135,6 @@ export default function TimelineFunc()  {
                         <TimelineSeparator>
                         <TimelineConnector />
                         <TimelineDot color="primary">
-                            <LaptopMacIcon 
-                                sx={{ fontSize: 80 }}
-                            />
                         </TimelineDot>
                         <TimelineConnector />
                         </TimelineSeparator>
@@ -139,9 +156,6 @@ export default function TimelineFunc()  {
                         <TimelineSeparator>
                         <TimelineConnector />
                         <TimelineDot color="primary" variant="outlined">
-                            <HotelIcon 
-                            sx={{ fontSize: 80 }}
-                            />
                         </TimelineDot>
                         <TimelineConnector/>
                         </TimelineSeparator>
@@ -163,8 +177,6 @@ export default function TimelineFunc()  {
                         <TimelineSeparator>
                         <TimelineConnector/>
                         <TimelineDot color="secondary">
-                            <RepeatIcon 
-                            sx={{ fontSize: 80 }}/>
                         </TimelineDot>
                         <TimelineConnector />
                         </TimelineSeparator>
@@ -186,8 +198,6 @@ export default function TimelineFunc()  {
                         <TimelineSeparator>
                         <TimelineConnector />
                         <TimelineDot color="secondary">
-                            <RepeatIcon 
-                            sx={{ fontSize: 80 }}/>
                         </TimelineDot>
                         <TimelineConnector />
                         </TimelineSeparator>
