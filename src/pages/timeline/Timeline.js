@@ -15,7 +15,7 @@ import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import Chat from '@mui/icons-material/Chat';
 import Favorite from '@mui/icons-material/Favorite';
-import { TextField } from '@mui/material';
+import Edit from '@mui/icons-material/Edit';
 
 
 export default function TimelineFunc()  {
@@ -84,7 +84,10 @@ export default function TimelineFunc()  {
                                     <img className="timelineThumb" src="https://dummyimage.com/300x200/000/aaa" onClick={() => setEventModalVisible(true)}></img>
                                 </figure>
                                 <div className="timelineInfo">
-                                    <h2 className="timelineTitle">Went to Taco Bell</h2>
+                                    <div className='flexRow2'>
+                                        <h2 className="timelineTitle">Went to Taco Bell</h2>
+                                        <Link to="/editevent"><Edit sx={{ fontSize: 30 }} className='hover'/></Link>
+                                    </div>
                                     <p className="timelineDesc">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                                     <div className="timelineNotif">
                                         <p className='comments'>5</p>
@@ -117,7 +120,10 @@ export default function TimelineFunc()  {
                                     <img className="timelineThumb" src="https://dummyimage.com/300x200/000/aaa" onClick={() => setEventModalVisible(true)}></img>
                                 </figure>
                                 <div className="timelineInfo">
-                                    <h2 className="timelineTitle">Went to Taco Bell</h2>
+                                    <div className='flexRow2'>
+                                        <h2 className="timelineTitle">Went to Taco Bell</h2>
+                                        <Link to="/editevent"><Edit sx={{ fontSize: 30 }} className='hover'/></Link>
+                                    </div>
                                     <p className="timelineDesc">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                                     <div className="timelineNotif">
                                         <p className='comments'>5</p>

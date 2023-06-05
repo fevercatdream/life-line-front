@@ -8,6 +8,7 @@ import Signup from './pages/signup/Signup.js';
 import Users from './pages/users/Users.js';
 import Ignored from './pages/ignored/Ignored.js';
 import EditProfile from './pages/profileEdit/profileEdit.js';
+import EditEvent from './pages/editEvent/editEvent.js';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/ignored" element={<Ignored/>}/>
         <Route path="/timeline" element={<Timeline/>}/>
         <Route path="/editprofile" element={<EditProfile/>}/>
+        <Route path="/editEvent" element={<EditEvent/>}/>
       </Routes>
     </BrowserRouter>
     </>
