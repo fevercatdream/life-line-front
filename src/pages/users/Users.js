@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import './Users.css';
+import PersonAddAlt1 from '@mui/icons-material/PersonAddAlt1';
+import Block from '@mui/icons-material/Block';
 
 export default function Users()  {
     return (
@@ -26,7 +28,7 @@ export default function Users()  {
                 </div>
                 <div className='userTab2'><p className='tabWordsUsers'>All Users</p></div>
                 <div className='blockTab2'>
-                    <Link to="/ignored"><button className='tabWordsBlocked'>Blocked Users</button></Link>
+                    <Link to="/ignored"><button className='tabWordsBlocked'>Ignored Users</button></Link>
                 </div>
             </div>
             <div className='friendSearchBox'>
@@ -35,13 +37,14 @@ export default function Users()  {
             </div>
             <div className="allUsers">
                 <figure className='userCard'>
+                    <Block sx={{ fontSize: 50 }} className='blockUser'/>
                     <img className="userPhoto" src="http://placekitten.com/300/300" />
                     <figcaption className='userBio'>
                         <div className='userBioName'>
                             <p className='smallerP'>Sneaky Mc'Alleycat</p>
                             <p className='smallerP'>Tacoma, Washington</p>
                         </div>
-                        <button className='blockUser'>X</button>
+                        <button className='addFriend'><PersonAddAlt1 sx={{ fontSize: 40 }}/></button>
                     </figcaption>
                 </figure>
             </div>

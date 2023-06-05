@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import './Friends.css';
+import PersonRemove from '@mui/icons-material/PersonRemove';
+import Block from '@mui/icons-material/Block';
 
 export default function Friends()  {
     return (
@@ -36,13 +38,14 @@ export default function Friends()  {
             </div>
             <div className="allFriends">
                 <figure className='friendCard2'>
+                    <Block sx={{ fontSize: 50 }} className='blockUser'/>
                     <img className="friendPhoto" src="http://placekitten.com/300/300" />
                     <figcaption className='friendBio'>
                         <div className='friendBioName'>
                             <p className='smallerP'>Sneaky Mc'Alleycat</p>
                             <p className='smallerP'>Tacoma, Washington</p>
                         </div>
-                        <button className='deleteFriend'>X</button>
+                        <button className='deleteFriend'><PersonRemove sx={{ fontSize: 40 }}/></button>
                     </figcaption>
                 </figure>
             </div>
