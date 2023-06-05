@@ -67,6 +67,7 @@ export default function ProfileEdit() {
                 <button>Upload Thumbnail</button>
                 <input placeholder='Event Title'></input>
                 <textarea placeholder='Event Description'></textarea>
+                <button>Save Event</button>
             </div>
             </div>
             
