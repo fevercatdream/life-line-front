@@ -2,7 +2,7 @@ import * as React from 'react';
 import {useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
 import './Timeline.css';
-
+import { HashLink } from 'react-router-hash-link';
 import Carousel from 'react-gallery-carousel';
 import 'react-gallery-carousel/dist/index.css';
 import Timeline from '@mui/lab/Timeline';
@@ -17,6 +17,7 @@ import Edit from '@mui/icons-material/Edit';
 import LibraryAdd from '@mui/icons-material/LibraryAdd';
 import {sendJSONRequest} from "../../utils/helpers";
 import {Favorite, FavoriteBorder} from "@mui/icons-material";
+import ArrowCircleUp from '@mui/icons-material/ArrowCircleUp';
 
 
 export default function TimelineFunc() {
@@ -62,7 +63,7 @@ export default function TimelineFunc() {
     return (
         <>
             <div className="mainTimelineBlock">
-                <header className='friendHead2'>
+                <header id="friendHead" className='friendHead2'>
                     <div id='blackOut' className={eventModalVisible ? "blackOut2" : "blackOut2 hidden"}
                          onClick={() => setEventModalVisible(false)}></div>
                     <div className='horizontal'>
@@ -81,10 +82,11 @@ export default function TimelineFunc() {
                 </header>
                 <div className='timelineBlock'>
                     <div className='navBackground'></div>
+                    <HashLink smooth to='/timeline/#friendHead' className='toTopBtn'><ArrowCircleUp sx={{ fontSize: 45 }} className='hover'/></HashLink>
                     <Timeline position='alternate'>
-                        <Link to="/newevent" className='newEventBtn'><LibraryAdd sx={{fontSize: 45}} className='hover'/></Link>
-                        {eventEls}
-
+                        <div className='newEventField'>
+                            <Link to="/newevent"><LibraryAdd sx={{ fontSize: 45 }} className='hover newEventBtn'/></Link>
+                        </div>                        {eventEls}
                     </Timeline>
                     <Modal event={activeEvent} visible={eventModalVisible}/>
                 </div>
@@ -237,7 +239,7 @@ function Event({event, toggle, invert}) {
                     <div className="timelineInfo">
                         <div className='flexRow2'>
                             <h2 className="timelineTitle">{event.title}</h2>
-                            <Link to="/editevent"><Edit sx={{fontSize: 30}} className='hover'/></Link>
+                            <Link to="/editevent" className='editIcon3'><Edit sx={{fontSize: 30}} className='hover'/></Link>
                         </div>
                         <p className="timelineDesc">{event.description}</p>
                         <div className="timelineNotif">

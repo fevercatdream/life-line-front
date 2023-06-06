@@ -11,6 +11,8 @@ import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 
 export default function Profile() {
     const [modalVisible, setModalVisible] = useState(false);
+    const [notifVisible, setNotifVisible] = useState(false);
+
     const [profile, setProfile] = useState();
     const [loading, setLoading] = useState(true);
     const [token, setToken] = useState(localStorage.getItem('token'));
@@ -71,8 +73,7 @@ export default function Profile() {
         <>
             <div className="mainProfileBlock">
                 <div className='profileblock'>
-                    <div id='blackOut' className={modalVisible ? "blackOut" : "blackOut hidden"}
-                         onClick={() => setModalVisible(false)}></div>
+                    <div id='blackOut' className={modalVisible ? "blackOut" : "blackOut hidden"} onClick={() => setModalVisible(false)}></div>
                     <div className='navBackground'></div>
                     <header className='profileHeader'>
                         <div className='horizontal'>
@@ -102,7 +103,7 @@ export default function Profile() {
                         </div>
                         <div className='bioBox'>
                             <div className='notifSearchBox'>
-                                <div className='notifEvent'>
+                                <div className='notifEvent' onClick={() => notifVisible ? setNotifVisible(false) : setNotifVisible(true) }>
                                     <div className='notifRow'>
                                         <p className='notifys'>{profile.new_comments}</p>
                                         <Chat sx={{ fontSize: 25 }} className='commentBtn'/>
@@ -120,6 +121,49 @@ export default function Profile() {
                                     <input type="text" className='searchBar' placeholder='search friends'></input>
                                     <button className='searchButton'>+</button>
                                 </div>
+                            </div>
+
+                            <div className={notifVisible ? "commentModal" : "commentModal hidden"}>
+                                {/* This is a single user comment notification  */}
+                                <div className='profileCommentNotif'>
+                                    <div className='flexRow'>
+                                        <img className='friendSmall2' src='http://placekitten.com/150/150' alt='placeholder'></img>
+                                        <div>
+                                            <h3 className='commentNotifUser'>UserName</h3>
+                                            <p className='currentTime'><i>This is the time currently, oh boy!</i></p>
+                                        </div>
+                                    </div>
+                                    <div className='centeredIcon'>
+                                        <Chat sx={{ fontSize: 30 }} className='commentBtn2'/>
+                                    </div>
+                                </div>
+                                {/* This is a single user like notification  */}
+                                <div className='profileLikeNotif'>
+                                    <div className='flexRow'>
+                                        <img className='friendSmall2' src='http://placekitten.com/150/150' alt='placeholder'></img>
+                                        <div>
+                                            <h3 className='commentNotifUser'>UserName</h3>
+                                            <p className='currentTime'><i>This is the time currently, oh boy!</i></p>
+                                        </div>
+                                    </div>
+                                    <div className='centeredIcon'>
+                                        <Favorite sx={{ fontSize: 30 }} className='commentBtn2'/>
+                                    </div>
+                                </div>
+                                {/* This is a single user friend notification  */}
+                                <div className='profileFriendNotif'>
+                                    <div className='flexRow'>
+                                        <img className='friendSmall2' src='http://placekitten.com/150/150' alt='placeholder'></img>
+                                        <div>
+                                            <h3 className='commentNotifUser'>UserName</h3>
+                                            <p className='currentTime'><i>This is the time currently, oh boy!</i></p>
+                                        </div>
+                                    </div>
+                                    <div className='centeredIcon'>
+                                        <PersonAddAlt1 sx={{ fontSize: 30 }} className='commentBtn2'/>
+                                    </div>
+                                </div>
+                                
                             </div>
                             <div className='recentBox'>
                                 <figure id="recentCard" className='recentCard' onClick={() => setModalVisible(true)}>
