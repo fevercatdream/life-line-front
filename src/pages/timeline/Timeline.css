@@ -51,6 +51,30 @@ body {
 
 /* timeline content */
 
+.newEventField {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.newEventBtn, .toTopBtn {
+    margin-bottom: 20px;
+    color: var(--colorBlock);
+    cursor: pointer;
+}
+
+.toTopBtn {
+    position: fixed;
+    bottom: 70px;
+    right: 10px;
+    z-index: 3;
+}
+
+.editIcon3 {
+    color: black;
+}
+
 .timeLineEvent, .timeLineEvent2 {
     width: 40vw;
     height: 200px;

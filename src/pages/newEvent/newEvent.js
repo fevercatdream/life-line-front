@@ -1,11 +1,12 @@
-import React, {useEffect, useState} from 'react';
-import {Link, Navigate} from "react-router-dom"
-import './editEvent.css'
+import React, {useState} from 'react';
+import {Link} from "react-router-dom"
+import './newEvent.css'
 
 import Carousel from 'react-gallery-carousel';
 import 'react-gallery-carousel/dist/index.css';
+import {backendHost} from "../../utils/helpers";
 
-export default function EventEdit() {
+export default function EventNew() {
 
     const images = [9, 8, 7, 6, 5].map((number) => (
         {
@@ -16,6 +17,41 @@ export default function EventEdit() {
             // thumbnail: `https://placedog.net/100/60?id=1`
         }
     ));
+
+    const [file, setFile] = useState();
+    const [title, setTitle] = useState();
+    const [desc, setDesc] = useState();
+    const [eventDate, setEventDate] = useState();
+
+    const filePicker = <input type={'file'} accept={'image/*'} onChange={e => setFile(e.target.files[0])}/>;
+
+    const [inputs, setInputs] = useState([filePicker]);
+
+    const addInput = () => {
+        console.log("adding input");
+        const i = inputs.slice()
+        i.push(filePicker);
+        console.log(inputs);
+        setInputs(i);
+    }
+
+    const submitForm = async (e) => {
+        e.preventDefault();
+        console.log(title, desc, eventDate, file);
+        const f = new FormData();
+        const token = localStorage.getItem('token');
+        f.set('photo', file);
+        f.set('date', eventDate);
+        f.set('title', title);
+        f.set('description', desc);
+        await fetch(`${backendHost}/api/event/create`, {
+            method: 'POST',
+            headers: {
+                'Authorization': token,
+            },
+            body: f,
+        })
+    }
 
     return (
         <>
@@ -35,9 +71,9 @@ export default function EventEdit() {
             <div className='flexRow3'>
             <div className='editBlock2'>
                 <div className='navBackground'></div>
-                <figure id="modalBox3" className="modalBox3">
+                <figure id="modalBox2" className="modalBox2">
                         <div className='sliderMedia'>
-                            <Carousel 
+                            <Carousel
                                 images={images}
                                 style={{height: 450, width: 700}}
                                 hasIndexBoard="false"
@@ -77,7 +113,7 @@ export default function EventEdit() {
                     </figure>
                 <div className="timeLineEvent3">
                     <figure className="noMargin">
-                        <img className="timelineThumb" src="https://dummyimage.com/300x200/000/aaa"></img>
+                        <img className="timelineThumb" src="https://dummyimage.com/300x200/000/aaa" alt={'timeline'}></img>
                     </figure>
                     <div className="timelineInfo">
                         <div className='flexRow2'>
@@ -88,18 +124,17 @@ export default function EventEdit() {
                 </div>
             </div>
             <div className='editEventForm'>
-                <h2 className='editHeader'>Edit your Event</h2>
-                <label for="editPhoto">Choose which images to add:</label>
-                <button className='editPhoto'>Upload Photos</button>
-                <label for="editThumbnail">Change your album cover:</label>
-                <button className='editThumbnail'>Upload Thumbnail</button>
-                <label for="editEventTitle">Change your Event title:</label>
-                <input className='editEventTitle' placeholder='Event Title'></input>
-                <label for="editEventTitle">Change your Event summary:</label>
-                <textarea className='editEventDesc' placeholder='Event Description'></textarea>
-                <label for="editEventDesc">Change the date your Event occured:</label>
-                <input classname="editEventDate" type='date'></input>
-                <button className='updateEventButton'>Save Event</button>
+                <h2 className='editHeader'>Share a new Event</h2>
+                <label htmlFor="editPhoto">Choose which images to upload:</label>
+                <button onClick={addInput}>+</button>
+                {inputs}
+                <label htmlFor="editEventTitle">Title your event:</label>
+                <input className='editEventTitle' placeholder='Event Title' onChange={e => setTitle(e.target.value)}></input>
+                <label htmlFor="editEventTitle">Summarize your event:</label>
+                <textarea className='editEventDesc' placeholder='Event Description' onChange={e => setDesc(e.target.value)}></textarea>
+                <label htmlFor="editEventDesc">Select the date your Event occured:</label>
+                <input className="editEventDate" type='date' onChange={e => setEventDate(e.target.value)}></input>
+                <button className='updateEventButton' onClick={submitForm}>Share Event</button>
             </div>
             </div>
             
