@@ -35,7 +35,7 @@ export default function EventEdit() {
             <div className='flexRow3'>
             <div className='editBlock2'>
                 <div className='navBackground'></div>
-                <figure id="modalBox2" className="modalBox2">
+                <figure id="modalBox3" className="modalBox3">
                         <div className='sliderMedia'>
                             <Carousel 
                                 images={images}
