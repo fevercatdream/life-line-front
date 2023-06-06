@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from "react-router-dom";
 import './Timeline.css';
+import { HashLink } from 'react-router-hash-link';
 
 import Carousel from 'react-gallery-carousel';
 import 'react-gallery-carousel/dist/index.css';
@@ -16,6 +17,8 @@ import TimelineDot from '@mui/lab/TimelineDot';
 import Chat from '@mui/icons-material/Chat';
 import Favorite from '@mui/icons-material/Favorite';
 import Edit from '@mui/icons-material/Edit';
+import LibraryAdd from '@mui/icons-material/LibraryAdd';
+import ArrowCircleUp from '@mui/icons-material/ArrowCircleUp';
 
 
 export default function TimelineFunc()  {
@@ -46,7 +49,7 @@ export default function TimelineFunc()  {
     return (
       <>
       <div className="mainTimelineBlock">
-        <header className='friendHead'>
+        <header id="friendHead" className='friendHead2'>
         <div id='blackOut' className={eventModalVisible ? "blackOut2" : "blackOut2 hidden"}
                          onClick={() => setEventModalVisible(false)}></div>
             <div className='horizontal'>
@@ -61,7 +64,12 @@ export default function TimelineFunc()  {
         </header>
         <div className='timelineBlock' >
         <div className='navBackground'></div>
+        <HashLink smooth to='/timeline/#friendHead' className='toTopBtn'><ArrowCircleUp sx={{ fontSize: 45 }} className='hover'/></HashLink>
             <Timeline position='alternate'>
+                <div className='newEventField'>
+                    <Link to="/newevent"><LibraryAdd sx={{ fontSize: 45 }} className='hover newEventBtn'/></Link>
+                </div>
+                
                 <TimelineItem>
                     <TimelineOppositeContent
                         sx={{ m: 'auto 0' }}
@@ -86,7 +94,7 @@ export default function TimelineFunc()  {
                                 <div className="timelineInfo">
                                     <div className='flexRow2'>
                                         <h2 className="timelineTitle">Went to Taco Bell</h2>
-                                        <Link to="/editevent"><Edit sx={{ fontSize: 30 }} className='hover'/></Link>
+                                        <Link to="/editevent" className='editIcon3'><Edit sx={{ fontSize: 30 }} className='hover'/></Link>
                                     </div>
                                     <p className="timelineDesc">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                                     <div className="timelineNotif">
@@ -122,7 +130,80 @@ export default function TimelineFunc()  {
                                 <div className="timelineInfo">
                                     <div className='flexRow2'>
                                         <h2 className="timelineTitle">Went to Taco Bell</h2>
-                                        <Link to="/editevent"><Edit sx={{ fontSize: 30 }} className='hover'/></Link>
+                                        <Link to="/editevent" className='editIcon3'><Edit sx={{ fontSize: 30 }} className='hover'/></Link>
+                                    </div>
+                                    <p className="timelineDesc">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    <div className="timelineNotif">
+                                        <p className='comments'>5</p>
+                                        <Chat sx={{ fontSize: 25 }} className='commentBtn'/>
+                                        <p className='likes'>15</p>
+                                        <Favorite sx={{ fontSize: 25 }} className='likeBtn'/>
+                                    </div>
+                                </div>
+                            </div>
+                        </TimelineContent>
+                </TimelineItem>
+                <TimelineItem>
+                    <TimelineOppositeContent
+                        sx={{ m: 'auto 0' }}
+                        align="right"
+                        variant="body2"
+                        color="text.secondary"
+                        >
+                        <h2 className='timelineDate'>June, 2023</h2>
+                    </TimelineOppositeContent>
+                        <TimelineSeparator>
+                            <TimelineConnector />
+                            <TimelineDot>
+                            </TimelineDot>
+                            <TimelineConnector />
+                        </TimelineSeparator>
+                        <TimelineContent sx={{ py: '12px', px: 2 }}>
+                            <div
+                            className="timeLineEvent">
+                                <figure className="noMargin">
+                                    <img className="timelineThumb" src="https://dummyimage.com/300x200/000/aaa" onClick={() => setEventModalVisible(true)}></img>
+                                </figure>
+                                <div className="timelineInfo">
+                                    <div className='flexRow2'>
+                                        <h2 className="timelineTitle">Went to Taco Bell</h2>
+                                        <Link to="/editevent" className='editIcon3'><Edit sx={{ fontSize: 30 }} className='hover'/></Link>
+                                    </div>
+                                    <p className="timelineDesc">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    <div className="timelineNotif">
+                                        <p className='comments'>5</p>
+                                        <Chat sx={{ fontSize: 25 }} className='commentBtn'/>
+                                        <p className='likes'>15</p>
+                                        <Favorite sx={{ fontSize: 25 }} className='likeBtn'/>
+                                    </div>
+                                </div>
+                            </div>
+                        </TimelineContent>
+                </TimelineItem>
+                <TimelineItem>
+                    <TimelineOppositeContent
+                        sx={{ m: 'auto 0' }}
+                        align="right"
+                        variant="body2"
+                        color="text.secondary"
+                        >
+                        <h2 className='timelineDate'>June, 2023</h2>
+                    </TimelineOppositeContent>
+                        <TimelineSeparator>
+                            <TimelineConnector />
+                            <TimelineDot>
+                            </TimelineDot>
+                            <TimelineConnector />
+                        </TimelineSeparator>
+                        <TimelineContent sx={{ py: '12px', px: 2 }}>
+                            <div className="timeLineEvent2">
+                                <figure className="noMargin">
+                                    <img className="timelineThumb" src="https://dummyimage.com/300x200/000/aaa" onClick={() => setEventModalVisible(true)}></img>
+                                </figure>
+                                <div className="timelineInfo">
+                                    <div className='flexRow2'>
+                                        <h2 className="timelineTitle">Went to Taco Bell</h2>
+                                        <Link to="/editevent" className='editIcon3'><Edit sx={{ fontSize: 30 }} className='hover'/></Link>
                                     </div>
                                     <p className="timelineDesc">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                                     <div className="timelineNotif">

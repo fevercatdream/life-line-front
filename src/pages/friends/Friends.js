@@ -38,7 +38,6 @@ export default function Friends()  {
             </div>
             <div className="allFriends">
                 <figure className='friendCard2'>
-                    <Block sx={{ fontSize: 50 }} className='blockUser'/>
                     <img className="friendPhoto" src="http://placekitten.com/300/300" />
                     <figcaption className='friendBio'>
                         <div className='friendBioName'>
