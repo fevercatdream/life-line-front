@@ -22,7 +22,7 @@ export default function Users()  {
     return (
       <>
         <div className="mainFriendBlock">
-        <header className='friendHead'>
+        <header className='friendHead2'>
                     <div className='horizontal'>
                         <h1 className='LifeLine'>Life Line</h1>
                     </div>
@@ -35,7 +35,10 @@ export default function Users()  {
                 </header>
         <div className='friendblock'> 
             <div className='navBackground'></div>
-
+            <div className='friendSearchBox2'>
+                <input type="text" className='searchBar2' placeholder='search friends'></input>
+                <button className='searchButton2'>+</button>
+            </div>
             <div className='friendNav'>
                 <div className='friendTab2'>
                     <Link to="/friends"><button className='tabWords'>Friends</button></Link>
@@ -44,10 +47,6 @@ export default function Users()  {
                 <div className='blockTab2'>
                     <Link to="/ignored"><button className='tabWordsBlocked'>Ignored Users</button></Link>
                 </div>
-            </div>
-            <div className='friendSearchBox'>
-                <input type="text" className='searchBar' placeholder='search friends'></input>
-                <button className='searchButton'>+</button>
             </div>
             <div className="allUsers">
                 {userEls}
