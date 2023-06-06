@@ -6,7 +6,7 @@ import {FriendCard} from "../../components/Friends";
 export default function Ignored()  {
     const [users] = useState([]);
 
-    let userEls = <span>Nothing to see here!</span>
+    let userEls = <span className='addSomeFriends'>This is where you'll see users you've ignored</span>
     if (users.length > 0) {
         userEls = users.map(x => <FriendCard user={x} context={'ignored'} />)
     }
@@ -14,7 +14,7 @@ export default function Ignored()  {
     return (
       <>
         <div className="mainFriendBlock">
-        <header className='friendHead'>
+        <header className='friendHead2'>
                     <div className='horizontal'>
                         <h1 className='LifeLine'>Life Line</h1>
                     </div>
@@ -27,6 +27,10 @@ export default function Ignored()  {
                 </header>
         <div className='friendblock'> 
             <div className='navBackground'></div>
+            <div className='friendSearchBox2'>
+                <input type="text" className='searchBar2' placeholder='search friends'></input>
+                <button className='searchButton2'>+</button>
+            </div>
 
             <div className='friendNav'>
                 <div className='friendTab3'>
@@ -36,10 +40,6 @@ export default function Ignored()  {
                     <Link to="/users"><button className='tabWordsUsers3'>All Users</button></Link>
                 </div>
                 <div className='blockTab3'><button className='tabWordsBlocked3'>Ignored Users</button></div>
-            </div>
-            <div className='friendSearchBox'>
-                <input type="text" className='searchBar' placeholder='search friends'></input>
-                <button className='searchButton'>+</button>
             </div>
             <div className="allIgnored">
                 {userEls}

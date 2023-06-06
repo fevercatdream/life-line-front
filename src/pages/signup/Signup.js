@@ -62,7 +62,7 @@ export default function Signup() {
                 <figure class="homepageIcon">
                         <img className="lifeLineIcon" src={lifeLineHome} alt='icon for the brand life line'></img>
                     </figure>
-                    <form className="loginForm">
+                    <form className="loginForm2">
                         <h1 className="webName">Life Line</h1>
 
                         <input

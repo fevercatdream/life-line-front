@@ -35,19 +35,6 @@ body {
     background-color: var(--colorBlock);
 }
 
-.friendHead {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-self: center;
-    margin-top: 15px;
-    width: 88%;
-    height: 100px;
-    margin-bottom: 6vh;
-    align-items: center;
-    z-index: 1;
-}
-
 .horizontal {
     display: flex;
     flex-direction: row;
@@ -84,6 +71,7 @@ body {
     width: 86%;
     height: 35px;
     display: flex;
+    margin-top: 80px;
 }
 
 .friendTab3, .userTab3, .blockTab3 {
@@ -150,13 +138,33 @@ body {
 
 /* search bar */
 
-.friendSearchBox {
+.friendSearchBox2 {
     position: absolute;
     width: -moz-fit-content;
     width: fit-content;
     top: 135px;
     right: 7%;
+    margin-bottom: 20px;
 }
+
+.searchButton2 {
+    height: 30px;
+    width: 30px;
+    border-radius: 5px;
+    margin-left: 10px;
+    border: 1px solid var(--bordercolor);
+    background-color: white;
+}
+
+.searchBar2 {
+    height: 20px;
+    width: 380px;
+    border-radius: 15px;
+    background-color: var(--backgroundFill);
+    border: 1px solid var(--bordercolor);
+    padding: 5px 20px;
+}
+
 
 /* html body */
 
@@ -234,4 +242,59 @@ body {
 .deleteFriend {
     width: 40px;
     height: 40px;
+}
+
+
+
+@media screen and (max-width: 850px) and (min-width: 600px) {
+
+.friendSearchBox2 {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    width: 87%;
+    margin-bottom: 20px;
+}
+
+}
+
+
+@media only screen and (max-width: 599px) {
+
+.addSomeFriends {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.friendblock {
+    width: 350px;
+}
+
+.friendSearchBox2 {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.searchBar2 {
+    width: 250px;
+}
+
+.friendNav {
+    width: 85%;
+}
+
+.friendTab3, .userTab3, .blockTab3 {
+    width: 100px;
+}
+
+.tabWordsUsers3, .tabWords3, .tabWordsBlocked3 {
+    font-size: 12px;
+}
+
 }
