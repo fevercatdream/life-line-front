@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import './Ignored.css';
-import Clear from '@mui/icons-material/Clear';
 import {FriendCard} from "../../components/Friends";
 
 export default function Ignored()  {
-    const [users, setUsers] = useState([]);
+    const [users] = useState([]);
 
     let userEls = <span>Nothing to see here!</span>
     if (users.length > 0) {

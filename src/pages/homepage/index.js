@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {Link, Navigate} from "react-router-dom"
 import {sendJSONRequest, validateEmail} from '../../utils/helpers';
-import { validatePassword } from '../../utils/helpers';
 import './style.css'
 const lifeLineHome = require('../assets/LifeLine2.png')
 

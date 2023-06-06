@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { Link } from "react-router-dom";
 import './Users.css';
-import PersonAddAlt1 from '@mui/icons-material/PersonAddAlt1';
-import Block from '@mui/icons-material/Block';
 import {FriendCard} from "../../components/Friends";
 import {sendJSONRequest} from "../../utils/helpers";
 

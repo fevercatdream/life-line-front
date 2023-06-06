@@ -1,9 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect, useState} from 'react';
 import {Link, Navigate} from "react-router-dom"
 import './Profile.css'
 import Carousel from 'react-gallery-carousel';
 import 'react-gallery-carousel/dist/index.css';
-import {backendHost, sendJSONRequest} from "../../utils/helpers";
+import {sendJSONRequest} from "../../utils/helpers";
 import Chat from '@mui/icons-material/Chat';
 import Favorite from '@mui/icons-material/Favorite';
 import PersonAddAlt1 from '@mui/icons-material/PersonAddAlt1';
@@ -92,7 +93,7 @@ export default function Profile() {
                     </header>
                     <div className='profilePicBox'>
                         <div className='profileBox'>
-                            <ProfilePic profile={profile} loadData={loadData} token={token}/>
+                            <ProfilePic profile={profile}/>
                             <ProfileInfo profile={profile}/>
                             <div className='suggestBox'>
                                 {userYouKnowImages}
@@ -286,32 +287,7 @@ export default function Profile() {
     );
 }
 
-function ProfilePic({profile, token, loadData}) {
-    const uploadFile = async (e) => {
-        if (!e.target.files) {
-            return;
-        }
-        const file = e.target.files[0];
-        const formData = new FormData();
-        formData.append('photo', file);
-        const res = await fetch(`${backendHost}/api/profile/photo`, {
-            method: 'POST',
-            headers: {
-                'Authorization': token,
-            },
-            body: formData,
-        })
-        if (res.status !== 200) {
-            console.log("failed to upload new user photo");
-            return;
-        }
-
-        loadData();
-    }
-
-    // const picker = <input type={"file"} accept={'image/*'} onChange={uploadFile}/>
-    // {picker}
-
+function ProfilePic({profile}) {
     return (
         <div className='profilePic'>
 
