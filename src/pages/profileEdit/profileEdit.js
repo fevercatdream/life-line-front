@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Link} from "react-router-dom"
+import {Link, Navigate} from "react-router-dom"
 import {backendHost, sendJSONRequest} from '../../utils/helpers';
 import './profileEdit.css'
 
@@ -12,6 +12,8 @@ export default function ProfileEdit() {
     const token = localStorage.getItem('token');
     const [errorMessage, setErrorMessage] = useState('');
     const [profileUrl, setProfileUrl] = useState();
+    const [sendToHomepage, setSendToHomepage] = useState(false);
+
 
     const loadProfile = async () => {
         const p = await sendJSONRequest('GET', '/api/profile', null, true);
@@ -56,7 +58,14 @@ export default function ProfileEdit() {
         }
 
         setErrorMessage('');
+        setSendToHomepage(true);
     };
+
+    if (sendToHomepage) {
+        return (
+            <Navigate to={'/profile'} />
+        )
+    }
 
     return (
         <>

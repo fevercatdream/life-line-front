@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {useEffect, useState} from 'react';
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import './Timeline.css';
 import { HashLink } from 'react-router-hash-link';
 import Carousel from 'react-gallery-carousel';
@@ -26,6 +26,8 @@ export default function TimelineFunc() {
     const [activeEvent, setActiveEvent] = useState();
     const [events, setEvents] = useState([]);
 
+    const {id} = useParams();
+
     // React.useEffect(() => {
     //     window.addEventListener('scroll', (event) => {
     //         for (var i = 0; i < items.length; i++) {
@@ -41,7 +43,8 @@ export default function TimelineFunc() {
 
 
     const loadData = async () => {
-        const res = await sendJSONRequest('GET', '/api/timeline/view/1', null, true);
+        const path = id ? `/api/timeline/view/${id}` : '/api/timeline/view';
+        const res = await sendJSONRequest('GET', path, null, true);
         if (res.status !== 200) {
             console.log('something went wrong, could not load data');
             return;

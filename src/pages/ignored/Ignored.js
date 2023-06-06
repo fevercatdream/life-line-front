@@ -5,6 +5,13 @@ import Clear from '@mui/icons-material/Clear';
 import {FriendCard} from "../../components/Friends";
 
 export default function Ignored()  {
+    const [users, setUsers] = useState([]);
+
+    let userEls = <span>Nothing to see here!</span>
+    if (users.length > 0) {
+        userEls = users.map(x => <FriendCard user={x} context={'ignored'} />)
+    }
+
     return (
       <>
         <div className="mainFriendBlock">
@@ -36,7 +43,7 @@ export default function Ignored()  {
                 <button className='searchButton'>+</button>
             </div>
             <div className="allIgnored">
-                <FriendCard context={'ignored'} />
+                {userEls}
             </div>
         </div>
         </div>

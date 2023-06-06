@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Link} from "react-router-dom"
+import {Link, Navigate} from "react-router-dom"
 import './newEvent.css'
 
 import Carousel from 'react-gallery-carousel';
@@ -22,6 +22,7 @@ export default function EventNew() {
     const [title, setTitle] = useState();
     const [desc, setDesc] = useState();
     const [eventDate, setEventDate] = useState();
+    const [sendToTimeline, setSendToTimeline] = useState(false);
 
     const filePicker = <input type={'file'} accept={'image/*'} onChange={e => setFile(e.target.files[0])}/>;
 
@@ -51,6 +52,13 @@ export default function EventNew() {
             },
             body: f,
         })
+        setSendToTimeline(true);
+    }
+
+    if(sendToTimeline) {
+        return (
+            <Navigate to={'/timeline'} />
+        )
     }
 
     return (
