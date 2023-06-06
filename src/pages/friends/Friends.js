@@ -17,7 +17,7 @@ export default function Friends() {
         loadData();
     }, [])
 
-    let userEls = <span>Nothing to see here!</span>
+    let userEls = <span className='addSomeFriends'>Add some Friends!</span>
     if (users.length > 0) {
         userEls = users.map(x => <FriendCard user={x} context={'friend'} />)
     }
