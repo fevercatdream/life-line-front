@@ -47,9 +47,9 @@ body {
 .loginForm {
     position: relative;
     min-width: 450px;
-    min-height: 500px;
+    min-height: 525px;
     max-width: 450px;
-    max-height: 500px;
+    max-height: 525px;
     border: 1px solid var(--bordercolor);
     display: block;
     text-align: center;
@@ -198,9 +198,9 @@ body {
 
     .loginForm {
         min-width: 250px;
-        min-height: 400px;
+        min-height: 440px;
         max-width: 300px;
-        max-height: 400px;
+        max-height: 440px;
     }
 
     .webName {

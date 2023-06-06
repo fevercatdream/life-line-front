@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Link, Navigate} from "react-router-dom"
 import {backendHost, sendJSONRequest, validateEmail} from '../../utils/helpers';
 import {validatePassword} from '../../utils/helpers';
+import './style.css'
 
 const lifeLineHome = require('../assets/LifeLine2.png')
 
@@ -58,7 +59,7 @@ export default function Signup() {
         <>
             <div className="homeBlock">
                 <div className='mainblock'>
-                    <figure>
+                <figure class="homepageIcon">
                         <img className="lifeLineIcon" src={lifeLineHome} alt='icon for the brand life line'></img>
                     </figure>
                     <form className="loginForm">
@@ -99,7 +100,7 @@ export default function Signup() {
                         </button>
 
                         <hr className="loginDivider"></hr>
-                        <p className="dividerOr">OR</p>
+                        <div className='orDiv'><p className="dividerOr">OR</p></div>
 
                         <Link to="/">
                             <button className="loginButton" type="button">Log in</button>

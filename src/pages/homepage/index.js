@@ -63,7 +63,7 @@ return (
       <>
       <div className="homeBlock">
         <div className='mainblock'> 
-        <figure>
+        <figure class="homepageIcon">
           <img className="lifeLineIcon"src={lifeLineHome} alt='icon for the brand life line'></img>
         </figure>
         <form className="loginForm">
@@ -95,7 +95,8 @@ return (
           <button className="loginButton" type="button" onClick={handleFormSubmit}>Log in</button>
 
           <hr className="loginDivider"></hr>
-          <p className="dividerOr">OR</p>
+          <div className='orDiv'><p className="dividerOr">OR</p></div>
+          
 
           <Link to="/signup"><button className="createButton" type="button">Create a New Account</button></Link>
 
