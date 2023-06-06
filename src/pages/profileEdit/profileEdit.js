@@ -127,7 +127,7 @@ export default function ProfileEdit() {
                         </input>
                         <ProfilePic token={token} url={profileUrl} setUrl={setProfileUrl}/>
                         {/* if validate email or password fails display error message */}
-                        <div className="errorBlock">
+                        <div className="errorBlock2">
                             {errorMessage && (
                                 <p className="error-text">{errorMessage}</p>
                             )}
@@ -178,8 +178,8 @@ function ProfilePic({token, url, setUrl}) {
 
     return (
         <div className='imgUpload'>
-            <img src={url} width={300} height={300} alt={'upload'}></img>
-            <input type={"file"} accept={'image/*'} onChange={uploadFile} />
+            <div className='uploadedPhotoBox'><img src={url} alt={'upload'} class="uploadedPhoto"></img></div>
+            <input type={"file"} accept={'image/*'} onChange={uploadFile} className='uploadButton'/>
         </div>
     )
 }
