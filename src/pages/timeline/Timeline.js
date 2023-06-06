@@ -16,6 +16,7 @@ import TimelineDot from '@mui/lab/TimelineDot';
 import Chat from '@mui/icons-material/Chat';
 import Favorite from '@mui/icons-material/Favorite';
 import Edit from '@mui/icons-material/Edit';
+import LibraryAdd from '@mui/icons-material/LibraryAdd';
 
 
 export default function TimelineFunc()  {
@@ -46,7 +47,7 @@ export default function TimelineFunc()  {
     return (
       <>
       <div className="mainTimelineBlock">
-        <header className='friendHead'>
+        <header className='friendHead2'>
         <div id='blackOut' className={eventModalVisible ? "blackOut2" : "blackOut2 hidden"}
                          onClick={() => setEventModalVisible(false)}></div>
             <div className='horizontal'>
@@ -62,6 +63,7 @@ export default function TimelineFunc()  {
         <div className='timelineBlock' >
         <div className='navBackground'></div>
             <Timeline position='alternate'>
+                <Link to="/newevent" className='newEventBtn'><LibraryAdd sx={{ fontSize: 45 }} className='hover'/></Link>
                 <TimelineItem>
                     <TimelineOppositeContent
                         sx={{ m: 'auto 0' }}

@@ -51,6 +51,14 @@ body {
 
 /* timeline content */
 
+.newEventBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: var(--colorBlock);
+}
+
 .timeLineEvent, .timeLineEvent2 {
     width: 40vw;
     height: 200px;

@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {Link, Navigate} from "react-router-dom"
-import './editEvent.css'
+import './newEvent.css'
 
 import Carousel from 'react-gallery-carousel';
 import 'react-gallery-carousel/dist/index.css';
 
-export default function EventEdit() {
+export default function EventNew() {
 
     const images = [9, 8, 7, 6, 5].map((number) => (
         {
@@ -88,18 +88,18 @@ export default function EventEdit() {
                 </div>
             </div>
             <div className='editEventForm'>
-                <h2 className='editHeader'>Edit your Event</h2>
-                <label for="editPhoto">Choose which images to add:</label>
+                <h2 className='editHeader'>Share a new Event</h2>
+                <label for="editPhoto">Choose which images to upload:</label>
                 <button className='editPhoto'>Upload Photos</button>
-                <label for="editThumbnail">Change your album cover:</label>
+                <label for="editThumbnail">Choose a photo to represent your Event:</label>
                 <button className='editThumbnail'>Upload Thumbnail</button>
-                <label for="editEventTitle">Change your Event title:</label>
+                <label for="editEventTitle">Title your event:</label>
                 <input className='editEventTitle' placeholder='Event Title'></input>
-                <label for="editEventTitle">Change your Event summary:</label>
+                <label for="editEventTitle">Summarize your event:</label>
                 <textarea className='editEventDesc' placeholder='Event Description'></textarea>
-                <label for="editEventDesc">Change the date your Event occured:</label>
+                <label for="editEventDesc">Select the date your Event occured:</label>
                 <input classname="editEventDate" type='date'></input>
-                <button className='updateEventButton'>Save Event</button>
+                <button className='updateEventButton'>Share Event</button>
             </div>
             </div>
             
