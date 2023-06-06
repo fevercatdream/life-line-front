@@ -1,9 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect, useState} from 'react';
 import {Link, Navigate} from "react-router-dom"
 import './Profile.css'
 import Carousel from 'react-gallery-carousel';
 import 'react-gallery-carousel/dist/index.css';
-import {backendHost, sendJSONRequest} from "../../utils/helpers";
+import {sendJSONRequest} from "../../utils/helpers";
 import Chat from '@mui/icons-material/Chat';
 import Favorite from '@mui/icons-material/Favorite';
 import PersonAddAlt1 from '@mui/icons-material/PersonAddAlt1';
@@ -16,7 +17,6 @@ export default function Profile() {
     const [profile, setProfile] = useState();
     const [loading, setLoading] = useState(true);
     const [token, setToken] = useState(localStorage.getItem('token'));
-
     const loadData = async () => {
         if (!token) {
             return;
@@ -73,7 +73,8 @@ export default function Profile() {
         <>
             <div className="mainProfileBlock">
                 <div className='profileblock'>
-                    <div id='blackOut' className={modalVisible ? "blackOut" : "blackOut hidden"} onClick={() => setModalVisible(false)}></div>
+                    <div id='blackOut' className={modalVisible ? "blackOut" : "blackOut hidden"}
+                         onClick={() => setModalVisible(false)}></div>
                     <div className='navBackground'></div>
                     <header className='profileHeader'>
                         <div className='horizontal'>
@@ -84,7 +85,7 @@ export default function Profile() {
                             <Link to="/friends">
                                 <button className='go2Friends'>Friends</button>
                             </Link>
-                            <Link to="/timeline">
+                            <Link to={`/timeline/${profile.id}`}>
                                 <button className='go2TimeLine'>Time Line</button>
                             </Link>
                             <button className='logout' onClick={logout}>Logout</button>
@@ -92,7 +93,7 @@ export default function Profile() {
                     </header>
                     <div className='profilePicBox'>
                         <div className='profileBox'>
-                            <ProfilePic profile={profile} loadData={loadData} token={token}/>
+                            <ProfilePic profile={profile}/>
                             <ProfileInfo profile={profile}/>
                             <div className='suggestBox'>
                                 {userYouKnowImages}
@@ -103,18 +104,19 @@ export default function Profile() {
                         </div>
                         <div className='bioBox'>
                             <div className='notifSearchBox'>
-                                <div className='notifEvent' onClick={() => notifVisible ? setNotifVisible(false) : setNotifVisible(true) }>
+                                <div className='notifEvent'
+                                     onClick={() => notifVisible ? setNotifVisible(false) : setNotifVisible(true)}>
                                     <div className='notifRow'>
                                         <p className='notifys'>{profile.new_comments}</p>
-                                        <Chat sx={{ fontSize: 25 }} className='commentBtn'/>
+                                        <Chat sx={{fontSize: 25}} className='commentBtn'/>
                                     </div>
                                     <div className='notifRow'>
                                         <p className='notifys'>{profile.new_likes}</p>
-                                        <Favorite sx={{ fontSize: 25 }} className='likeBtn'/>
+                                        <Favorite sx={{fontSize: 25}} className='likeBtn'/>
                                     </div>
                                     <div className='notifRow'>
                                         <p className='notifys'>{profile.new_friend_requests}</p>
-                                        <PersonAddAlt1 sx={{ fontSize: 30 }} className='addBtn'/>
+                                        <PersonAddAlt1 sx={{fontSize: 30}} className='addBtn'/>
                                     </div>
                                 </div>
                                 <div>
@@ -127,43 +129,46 @@ export default function Profile() {
                                 {/* This is a single user comment notification  */}
                                 <div className='profileCommentNotif'>
                                     <div className='flexRow'>
-                                        <img className='friendSmall2' src='http://placekitten.com/150/150' alt='placeholder'></img>
+                                        <img className='friendSmall2' src='http://placekitten.com/150/150'
+                                             alt='placeholder'></img>
                                         <div>
                                             <h3 className='commentNotifUser'>UserName</h3>
                                             <p className='currentTime'><i>This is the time currently, oh boy!</i></p>
                                         </div>
                                     </div>
                                     <div className='centeredIcon'>
-                                        <Chat sx={{ fontSize: 30 }} className='commentBtn2'/>
+                                        <Chat sx={{fontSize: 30}} className='commentBtn2'/>
                                     </div>
                                 </div>
                                 {/* This is a single user like notification  */}
                                 <div className='profileLikeNotif'>
                                     <div className='flexRow'>
-                                        <img className='friendSmall2' src='http://placekitten.com/150/150' alt='placeholder'></img>
+                                        <img className='friendSmall2' src='http://placekitten.com/150/150'
+                                             alt='placeholder'></img>
                                         <div>
                                             <h3 className='commentNotifUser'>UserName</h3>
                                             <p className='currentTime'><i>This is the time currently, oh boy!</i></p>
                                         </div>
                                     </div>
                                     <div className='centeredIcon'>
-                                        <Favorite sx={{ fontSize: 30 }} className='commentBtn2'/>
+                                        <Favorite sx={{fontSize: 30}} className='commentBtn2'/>
                                     </div>
                                 </div>
                                 {/* This is a single user friend notification  */}
                                 <div className='profileFriendNotif'>
                                     <div className='flexRow'>
-                                        <img className='friendSmall2' src='http://placekitten.com/150/150' alt='placeholder'></img>
+                                        <img className='friendSmall2' src='http://placekitten.com/150/150'
+                                             alt='placeholder'></img>
                                         <div>
                                             <h3 className='commentNotifUser'>UserName</h3>
                                             <p className='currentTime'><i>This is the time currently, oh boy!</i></p>
                                         </div>
                                     </div>
                                     <div className='centeredIcon'>
-                                        <PersonAddAlt1 sx={{ fontSize: 30 }} className='commentBtn2'/>
+                                        <PersonAddAlt1 sx={{fontSize: 30}} className='commentBtn2'/>
                                     </div>
                                 </div>
-                                
+
                             </div>
                             <div className='recentBox'>
                                 <figure id="recentCard" className='recentCard' onClick={() => setModalVisible(true)}>
@@ -177,9 +182,9 @@ export default function Profile() {
                                     </figcaption>
                                     <div className='recentComReac'>
                                         <p className='comments'>5</p>
-                                        <Chat sx={{ fontSize: 25 }} className='commentBtn'/>
+                                        <Chat sx={{fontSize: 25}} className='commentBtn'/>
                                         <p className='likes'>15</p>
-                                        <Favorite sx={{ fontSize: 25 }} className='likeBtn'/>
+                                        <Favorite sx={{fontSize: 25}} className='likeBtn'/>
                                     </div>
                                 </figure>
                                 <div className='colorBlock2'></div>
@@ -190,9 +195,9 @@ export default function Profile() {
                                              alt='placeholder'/>
                                         <div className='recentComReac'>
                                             <p className='comments2'>5</p>
-                                            <Chat sx={{ fontSize: 20 }} className='commentBtn'/>
+                                            <Chat sx={{fontSize: 20}} className='commentBtn'/>
                                             <p className='likes2'>15</p>
-                                            <Favorite sx={{ fontSize: 20 }} className='likeBtn'/>
+                                            <Favorite sx={{fontSize: 20}} className='likeBtn'/>
                                         </div>
                                     </figure>
                                     <figure className='recentMany2'>
@@ -200,9 +205,9 @@ export default function Profile() {
                                              alt='placeholder'/>
                                         <div className='recentComReac'>
                                             <p className='comments2'>5</p>
-                                            <Chat sx={{ fontSize: 20 }} className='commentBtn'/>
+                                            <Chat sx={{fontSize: 20}} className='commentBtn'/>
                                             <p className='likes2'>15</p>
-                                            <Favorite sx={{ fontSize: 20 }} className='likeBtn'/>
+                                            <Favorite sx={{fontSize: 20}} className='likeBtn'/>
                                         </div>
                                     </figure>
                                     <figure className='recentMany3'>
@@ -210,9 +215,9 @@ export default function Profile() {
                                              alt='placeholder'/>
                                         <div className='recentComReac'>
                                             <p className='comments2'>5</p>
-                                            <Chat sx={{ fontSize: 20 }} className='commentBtn'/>
+                                            <Chat sx={{fontSize: 20}} className='commentBtn'/>
                                             <p className='likes2'>15</p>
-                                            <Favorite sx={{ fontSize: 20 }} className='likeBtn'/>
+                                            <Favorite sx={{fontSize: 20}} className='likeBtn'/>
                                         </div>
                                     </figure>
                                     <figure className='recentMany4'>
@@ -220,9 +225,9 @@ export default function Profile() {
                                              alt='placeholder'/>
                                         <div className='recentComReac'>
                                             <p className='comments2'>5</p>
-                                            <Chat sx={{ fontSize: 20 }} className='commentBtn'/>
+                                            <Chat sx={{fontSize: 20}} className='commentBtn'/>
                                             <p className='likes2'>15</p>
-                                            <Favorite sx={{ fontSize: 20 }} className='likeBtn'/>
+                                            <Favorite sx={{fontSize: 20}} className='likeBtn'/>
                                         </div>
                                     </figure>
                                 </div>
@@ -282,35 +287,10 @@ export default function Profile() {
     );
 }
 
-function ProfilePic({profile, token, loadData}) {
-    const uploadFile = async (e) => {
-        if (!e.target.files) {
-            return;
-        }
-        const file = e.target.files[0];
-        const formData = new FormData();
-        formData.append('photo', file);
-        const res = await fetch(`${backendHost}/api/profile/photo`, {
-            method: 'POST',
-            headers: {
-                'Authorization': token,
-            },
-            body: formData,
-        })
-        if (res.status !== 200) {
-            console.log("failed to upload new user photo");
-            return;
-        }
-
-        loadData();
-    }
-
-    // const picker = <input type={"file"} accept={'image/*'} onChange={uploadFile}/>
-    // {picker}
-
+function ProfilePic({profile}) {
     return (
         <div className='profilePic'>
-            
+
             <div className='colorBlock1'></div>
             <img className="profileImg" src={profile.profile_url} alt='placeholder'/>
             <p className='contactName'>{profile.name}</p>
@@ -322,7 +302,7 @@ function ProfileInfo({profile}) {
     return (
         <div className='bioColumn'>
             <div className='colorBlock4'></div>
-            <Link to="/editprofile" className='editAccount'><ManageAccountsIcon sx={{ fontSize: 35 }}/></Link>
+            <Link to="/editprofile" className='editAccount'><ManageAccountsIcon sx={{fontSize: 35}}/></Link>
             <div className='bioWhite'>
                 <p className='contactHead'>Birth Date:</p>
                 <p className='contactDate'>{profile.birthdate}</p>

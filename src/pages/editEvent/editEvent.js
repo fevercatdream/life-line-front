@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {Link, Navigate} from "react-router-dom"
+import React from 'react';
+import {Link} from "react-router-dom"
 import './editEvent.css'
 
 import Carousel from 'react-gallery-carousel';
@@ -77,7 +77,7 @@ export default function EventEdit() {
                     </figure>
                 <div className="timeLineEvent3">
                     <figure className="noMargin">
-                        <img className="timelineThumb" src="https://dummyimage.com/300x200/000/aaa"></img>
+                        <img className="timelineThumb" src="https://dummyimage.com/300x200/000/aaa" alt={'dummy'}></img>
                     </figure>
                     <div className="timelineInfo">
                         <div className='flexRow2'>
