@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {Link, Navigate} from "react-router-dom"
-import {backendHost, sendJSONRequest, validateEmail} from '../../utils/helpers';
-import {validatePassword} from '../../utils/helpers';
+import {Link} from "react-router-dom"
+import {backendHost, sendJSONRequest} from '../../utils/helpers';
 import './profileEdit.css'
 
 export default function ProfileEdit() {
@@ -12,14 +11,13 @@ export default function ProfileEdit() {
     const [currentLocation, setCurrentLocation] = useState('');
     const token = localStorage.getItem('token');
     const [errorMessage, setErrorMessage] = useState('');
-    const [profile, setProfile] = useState({});
     const [profileUrl, setProfileUrl] = useState();
 
     const loadProfile = async () => {
         const p = await sendJSONRequest('GET', '/api/profile', null, true);
         const data = await p.json();
-        setProfile(data);
         setName(data.name);
+        setBirthDate(data.birthdate);
         setBirthLocation(data.birthplace);
         setCurrentLocation(data.current_location);
         setProfileUrl(data.profile_url);
@@ -84,45 +82,39 @@ export default function ProfileEdit() {
                     <div className='navBackground'></div>
                     <form className='editForm'>
                         <h2>Profile Edit</h2>
-                        <label className="formLabel" for="name">Your name:</label>
+                        <label className="formLabel" htmlFor="name">Your name:</label>
                         <input
                             className="inputField"
                             type='text'
                             name='name'
                             placeholder='name'
-                            value={profile.name}
+                            value={name}
                             onChange={e => setName(e.target.value)}>
                         </input>
-                        {/*<label className="formLabel" for="email">Email:</label>*/}
-                        {/*<input*/}
-                        {/*    className="inputField"*/}
-                        {/*    type='email'*/}
-                        {/*    name='email'*/}
-                        {/*    placeholder='email@email.com'*/}
-                        {/*    value={profile.email}*/}
-                        {/*    onChange={e => setEmail(e.target.value)}>*/}
-                        {/*</input>*/}
-                        <label className="formLabel" for="birthdate">Birth Date:</label>
+                        <label className="formLabel" htmlFor="birthdate">Birth Date:</label>
                         <input
                             className="inputField"
                             type='date'
                             name='birthdate'
+                            value={birthDate}
                             onChange={e => setBirthDate(e.target.value)}>
                         </input>
-                        <label className="formLabel" for="birthlocation">Birth Location:</label>
+                        <label className="formLabel" htmlFor="birthlocation">Birth Location:</label>
                         <input
                             className="inputField"
                             type='text'
                             name='name'
                             placeholder='Miami, Florida'
+                            value={birthLocation}
                             onChange={e => setBirthLocation(e.target.value)}>
                         </input>
-                        <label className="formLabel" for="currentlocation">Current Location:</label>
+                        <label className="formLabel" htmlFor="currentlocation">Current Location:</label>
                         <input
                             className="inputField"
                             type='text'
                             name='name'
                             placeholder='Seattle, Washington'
+                            value={currentLocation}
                             onChange={e => setCurrentLocation(e.target.value)}>
                         </input>
                         <ProfilePic token={token} url={profileUrl} setUrl={setProfileUrl}/>

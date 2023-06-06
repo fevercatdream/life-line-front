@@ -104,15 +104,15 @@ export default function Profile() {
                             <div className='notifSearchBox'>
                                 <div className='notifEvent'>
                                     <div className='notifRow'>
-                                        <p className='notifys'>12</p>
+                                        <p className='notifys'>{profile.new_comments}</p>
                                         <Chat sx={{ fontSize: 25 }} className='commentBtn'/>
                                     </div>
                                     <div className='notifRow'>
-                                        <p className='notifys'>36</p>
+                                        <p className='notifys'>{profile.new_likes}</p>
                                         <Favorite sx={{ fontSize: 25 }} className='likeBtn'/>
                                     </div>
                                     <div className='notifRow'>
-                                        <p className='notifys'>7</p>
+                                        <p className='notifys'>{profile.new_friend_requests}</p>
                                         <PersonAddAlt1 sx={{ fontSize: 30 }} className='addBtn'/>
                                     </div>
                                 </div>
