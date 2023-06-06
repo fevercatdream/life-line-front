@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import './Ignored.css';
-import Clear from '@mui/icons-material/Clear';
+import {FriendCard} from "../../components/Friends";
 
 export default function Ignored()  {
+    const [users] = useState([]);
+
+    let userEls = <span>Nothing to see here!</span>
+    if (users.length > 0) {
+        userEls = users.map(x => <FriendCard user={x} context={'ignored'} />)
+    }
+
     return (
       <>
         <div className="mainFriendBlock">
@@ -35,16 +42,7 @@ export default function Ignored()  {
                 <button className='searchButton'>+</button>
             </div>
             <div className="allIgnored">
-                <figure className='ignoredCard'>
-                    <img className="ignoredPhoto" src="http://placekitten.com/300/300" />
-                    <figcaption className='ignoredBio'>
-                        <div className='ignoredBioName'>
-                            <p className='smallerP'>Sneaky Mc'Alleycat</p>
-                            <p className='smallerP'>Tacoma, Washington</p>
-                        </div>
-                        <button className='deleteFriend'><Clear sx={{ fontSize: 40 }}/></button>
-                    </figcaption>
-                </figure>
+                {userEls}
             </div>
         </div>
         </div>

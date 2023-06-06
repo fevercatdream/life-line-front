@@ -1,10 +1,24 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link } from "react-router-dom";
 import './Users.css';
-import PersonAddAlt1 from '@mui/icons-material/PersonAddAlt1';
-import Block from '@mui/icons-material/Block';
+import {FriendCard} from "../../components/Friends";
+import {sendJSONRequest} from "../../utils/helpers";
 
 export default function Users()  {
+    const [users, setUsers] = useState([]);
+
+    const loadData = async () => {
+        const res = await sendJSONRequest('GET', '/api/friends/all-users', null, true);
+        const data = await res.json();
+        setUsers(data.users);
+    }
+
+    const userEls = users.map(x => <FriendCard user={x} context={'user'} />)
+
+    useEffect(() => {
+        loadData();
+    }, [])
+
     return (
       <>
         <div className="mainFriendBlock">
@@ -36,17 +50,7 @@ export default function Users()  {
                 <button className='searchButton'>+</button>
             </div>
             <div className="allUsers">
-                <figure className='userCard'>
-                    <Block sx={{ fontSize: 50 }} className='blockUser'/>
-                    <img className="userPhoto" src="http://placekitten.com/300/300" />
-                    <figcaption className='userBio'>
-                        <div className='userBioName'>
-                            <p className='smallerP'>Sneaky Mc'Alleycat</p>
-                            <p className='smallerP'>Tacoma, Washington</p>
-                        </div>
-                        <button className='addFriend'><PersonAddAlt1 sx={{ fontSize: 40 }}/></button>
-                    </figcaption>
-                </figure>
+                {userEls}
             </div>
         </div>
         </div>
