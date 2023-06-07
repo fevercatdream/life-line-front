@@ -3,6 +3,8 @@ import {Link} from "react-router-dom";
 import './Friends.css';
 import {FriendCard} from '../../components/Friends';
 import {sendJSONRequest} from "../../utils/helpers";
+import NavTabs from "../../components/Navbar";
+
 
 export default function Friends() {
     const [users, setUsers] = useState([]);
@@ -24,24 +26,25 @@ export default function Friends() {
 
     return (
         <>
+            <NavTabs/>
             <div className="mainFriendBlock">
-                <header className='friendHead2'>
-                    <div className='horizontal'>
-                        <h1 className='LifeLine'>Life Line</h1>
-                    </div>
-                    <div className='navBar'>
-                        <Link to="/profile">
-                            <button className='go2Profile'>Profile</button>
-                        </Link>
-                        <button className='go2Friends'>Friends</button>
-                        <Link to="/timeline">
-                            <button className='go2TimeLine'>Time Line</button>
-                        </Link>
-                        <button className='logout'>Logout</button>
-                    </div>
-                </header>
+                {/*<header className='friendHead2'>*/}
+                {/*    <div className='horizontal'>*/}
+                {/*        <h1 className='LifeLine'>Life Line</h1>*/}
+                {/*    </div>*/}
+                {/*    <div className='navBar'>*/}
+                {/*        <Link to="/profile">*/}
+                {/*            <button className='go2Profile'>Profile</button>*/}
+                {/*        </Link>*/}
+                {/*        <button className='go2Friends'>Friends</button>*/}
+                {/*        <Link to="/timeline">*/}
+                {/*            <button className='go2TimeLine'>Time Line</button>*/}
+                {/*        </Link>*/}
+                {/*        <button className='logout'>Logout</button>*/}
+                {/*    </div>*/}
+                {/*</header>*/}
                 <div className='friendblock'>
-                    <div className='navBackground'></div>
+                    {/*<div className='navBackground'></div>*/}
                     <div className='friendSearchBox2'>
                         <input type="text" className='searchBar2' placeholder='search friends'></input>
                         <button className='searchButton2'>+</button>
@@ -66,15 +69,6 @@ export default function Friends() {
                     </div>
                 </div>
             </div>
-            <footer className="footer">
-                <nav className="footerNav">
-                    <p className="footLinks">Sign Up</p>
-                    <p className="footLinks">Log In</p>
-                    <p className="footLinks">About</p>
-                    <p className="footLinks">Developers</p>
-                </nav>
-                <p className="copyright">Meta © 2023 Life Line</p>
-            </footer>
         </>
     );
 }

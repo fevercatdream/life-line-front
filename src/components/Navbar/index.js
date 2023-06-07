@@ -34,7 +34,7 @@ function NavTabs() {
                             <NavLink to="/friends" className={"nav-link"}>Friends</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink to={"/timeline/:id?"} className={"nav-link"}>Time Line</NavLink>
+                            <NavLink to={"/timeline"} className={"nav-link"}>Time Line</NavLink>
 
                         </li>
                         <li className="nav-item">
