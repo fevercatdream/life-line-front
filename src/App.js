@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {Routes, Route, HashRouter} from "react-router-dom";
 import Homepage from './pages/homepage/index.js';
 import Timeline from './pages/timeline/Timeline.js';
 import Profile from './pages/profile/Profile.js';
@@ -14,7 +14,7 @@ import NewEvent from './pages/newEvent/newEvent.js';
 function App() {
   return (
     <>
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Homepage/>}/>
         <Route path="/signup" element={<Signup/>}/>
@@ -27,7 +27,7 @@ function App() {
         <Route path="/editevent" element={<EditEvent/>}/>
         <Route path="/newevent" element={<NewEvent/>}/>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
     </>
   );
 }
