@@ -10,6 +10,7 @@ import Ignored from './pages/ignored/Ignored.js';
 import EditProfile from './pages/profileEdit/profileEdit.js';
 import EditEvent from './pages/editEvent/editEvent.js';
 import NewEvent from './pages/newEvent/newEvent.js';
+import NavTabs from './components/Navbar/index';
 
 function App() {
   return (
@@ -31,5 +32,7 @@ function App() {
     </>
   );
 }
+
+
 
 export default App;
