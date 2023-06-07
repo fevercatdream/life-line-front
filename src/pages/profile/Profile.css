@@ -95,8 +95,8 @@ body {
     align-self: center;
     margin-left: auto;
     margin-right: auto;
-    width: 1600px;
-    padding: 5vh 5vw;
+    width: 90%;
+    padding: 0px 5vw 5vh 5vw;
     background-color: white;
     overflow: hidden;
 }
@@ -107,7 +107,8 @@ body {
     margin: 0px 1%;
     display: flex;
     flex-direction: row;
-    width: 100%;
+    justify-content: center;
+    width: 90%;
     margin-bottom: 30px;
 }
 
@@ -119,8 +120,8 @@ body {
     padding-bottom: 20px;
     align-items: center;
     border-radius: 15px;
-
 }
+
 
 /* profile picture */
 
@@ -282,12 +283,12 @@ body {
     z-index: 1;
     font-size: 20px;
     margin: 0px;
-    margin-top: 10px;
+    margin-top: 5px;
     margin-left: 55px;
 }
 
 .colorBlock5 {
-    margin-top: 985px;
+    margin-top: 960px;
 }
 
 .colorBlock5:hover {
@@ -311,7 +312,7 @@ body {
 
 .bioBox {
     height: 100%;
-    width: 77%;
+    width: 90%;
     margin-left: 2%;
     padding-top: 0px;
     display: flex;
@@ -328,8 +329,7 @@ body {
     margin: 0px;
     margin-top: 10px;
     margin-bottom: 40px;
-    min-width: 1010px;
-    max-width: 1300px;
+    width: 1135px;
     margin-left: 20px;
 }
 
@@ -394,7 +394,7 @@ body {
     border-radius: 15px;
     z-index: 2;
     background-color: var(--offWhite);
-    margin-top: 65px;
+    margin-top: 75px;
     margin-left: 20px;
     overflow: auto;
 }
@@ -446,9 +446,8 @@ body {
     margin: 0px;
     margin-left: 20px;
     box-shadow: 4px 4px 10px var(--bordercolor);
-    margin-bottom: 60px;
-    min-width: 1010px;
-    max-width: 1300px;
+    width: 1100px;
+    min-width: 560px;
     background-color: var(--offWhite);
     border: 1px solid var(--bordercolor);
 }
@@ -463,23 +462,32 @@ body {
 
 
 .colorBlock2 {
-    position: absolute;
+    position: relative;
     height: 50px;
-    margin-top: 460px;
-    width: 1212px;
+    margin-top: -15px;
+    width: 1101px;
+    min-width: 560px;
+    padding-left: 20px;
+    padding-right: 20px;
     border-radius: 0px 0px 10px 10px;
     background-color: var(--colorBlock);
     z-index: 1;
     box-shadow: 4px 4px 10px var(--bordercolor);
+    margin-left: 20px;
 }
 
 .recentText {
-    position: absolute;
-    margin-top: 470px;
-    margin-left: -1030px;
+    position: relative;
     font-size: 20px;
     color: white;
     z-index: 1;
+    margin-bottom: 60px;
+    margin-top: -40px;
+    width: 70%;
+    min-width: 560px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 20px;
 }
 
 .textBar {
@@ -491,6 +499,8 @@ body {
     width: 500px;
     margin: 0px;
     margin-left: 10px;
+    margin-bottom: 20px;
+    margin-right: 10px;
     padding: 20px 20px 20px 20px;
     z-index: 1;
     background-color: white;
@@ -543,11 +553,11 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    width: 60%;
-    min-width: 450px;
-    max-width: 650px;
+    justify-content: space-between;
+    min-width: 555px;
+    max-width: 555px;
     height: 445px;
-    margin: -5px 0px 10px 30px;
+    margin: -5px 0px 10px 0px;
     padding: 00px 0px 10px 0px;
 }
 
@@ -557,7 +567,7 @@ body {
     flex-direction: column;
     width: 44%;
     height: 195px;
-    padding: 5px 5px 10px 5px;
+    padding: 0px;
     margin: 1.5% 1.5%;
     background-color: white;
     border: 1px solid var(--bordercolor);
@@ -575,10 +585,10 @@ body {
 /* Friend Box */
 
 .friendBox {
-    height: 210px;
     display: flex;
     flex-direction: column;
-    padding: 0px 30px 30px 30px;
+    padding: 0px;
+    padding: 20px;
 }
 
 .friendHeader {
@@ -588,7 +598,8 @@ body {
 .friendRow, .friendHeaderRow {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
+    flex-wrap: wrap;
     margin-top: 0px;
 }
 
@@ -596,7 +607,9 @@ body {
     z-index: 1;
     color: white;
     font-size: 20px;
-    margin-top: 15px;
+    margin-top: -40px;
+    width: 1100px;
+    margin-left: 40px;
 }
 
 .viewMore {
@@ -610,17 +623,24 @@ body {
 }
 
 .friendCard {
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
     margin: 20px;
     background-color: black;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 175px;
+    max-height: 175px;
+    min-width: 175px;
+    max-width: 175px;
+    overflow: hidden;
 }
 
 .friendSmall {
     border-radius: 10px;
     opacity: 70%;
+    max-height: 315px;
+    max-width: 315px;
 }
 
 .friendName, .friendLocation {
@@ -630,14 +650,12 @@ body {
     height: 25px;
     overflow: hidden;
     text-align: end;
-    margin: 0px;
-    margin-bottom: 5px;
+    margin: 140px -25px 30px 0px;
     font-size: 18px;
-    margin-right: 5px;
 }
 
 .friendName {
-    margin-bottom: 30px;
+    margin-bottom: 0px;
 }
 
 .friendSmall:hover {
@@ -645,11 +663,11 @@ body {
 }
 
 .colorBlock3 {
-    position: absolute;
+    position: relative;
     height: 50px;
-    margin-top: 195px;
-    margin-left: -31px;
-    width: 1212px;
+    margin-left: 20px;
+    margin-top: -15px;
+    width: 1141px;
     border-radius: 0px 0px 10px 10px;
     background-color: var(--colorBlock);
     z-index: 1;
@@ -706,7 +724,454 @@ body {
     display: none;
 }
 
+@media screen and (max-width: 1900px) and (min-width: 1176px) {
 
+.bioBox {
+    width: 70%;
+}
+
+.recentBox {
+    flex-wrap: wrap;
+    width: 70%;
+    min-width: 560px;
+}
+
+.colorBlock2 {
+    width: 70%;
+}
+
+.recentCard {
+    margin-right: 0px;
+}
+
+.notifEvent {
+    min-width: 200px;
+}
+
+.notifSearchBox {
+    min-width: 600px;
+    width: 80%;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+.friendBox  {
+    width: 70%
+}
+
+.colorBlock3 {
+    width: 70%;
+    margin-left: 20px;
+    padding: 0px 21px;
+    margin-top: -15px;
+    min-width: 560px;
+}
+
+.friendHeaderRow {
+    margin-top: -35px;
+    width: 70%;
+    margin-left: 25px;
+    padding: 0px 13px;
+    min-width: 560px;
+}
+
+.searchBar {
+    min-width: 230px;
+    max-width: 65%;
+    margin-left: 20px;
+}
+
+}
+
+@media screen and (max-width: 1175px) and (min-width: 775px) {
+
+.profilePicBox {
+    width: 100%;
+}
+
+.bioBox {
+    min-width: 500px;
+}
+
+.notifSearchBox {
+    flex-wrap: wrap-reverse;
+    min-width: 440px;
+    max-width: 440px;
+    margin-bottom: 20px;
+    margin-top: 80px;
+}  
+
+.notifEvent {
+    margin-bottom: 10px;
+    width: 435px;
+}
+
+.searchBar {
+    width: 355px;
+    margin-bottom: 20px;
+}
+
+.commentModal, .likeModal, .newFriendModal {
+    width: 420px;
+    margin-top: 125px;
+    overflow: hidden;
+}
+    
+.profileblock {
+    width: 93vw;
+    padding: 0px;
+    margin-left: 20px;
+    margin-right: 40px;
+    height: 100%;
+}
+
+/* profile image  */
+
+.profileBox {
+    min-width: 225px;
+    max-width: 225px;
+    margin-left: 30px;
+    margin-right: 20px;
+}    
+
+.profilePic {
+    width: 200px;
+    height: 200px;
+    border-radius: 15px;
+    margin: 10px;
+    margin-top: 0px;
+}
+
+.contactName {
+    margin-top: 197px;
+    font-size: 14px;
+}
+
+.colorBlock1 {
+    margin-top: 185px;
+    width: 200px;
+}
+
+.profileImg {
+    max-width: 375px;
+    max-height: 200px;
+}
+
+/* profile info  */
+
+.bioColumn {
+    margin: 5px;
+    min-width: 200px;
+    max-width: 200px;
+    height: 220px;
+    padding: 10px 0px;
+    margin-top: 50px;
+}
+
+.bioWhite {
+    width: 180px;
+}
+
+.contactHead, .contactLoc, .contactDate, .contactNow {
+    font-size: 12px;
+    margin-left: 15px;
+}
+
+.colorBlock4 {
+    margin-top: 270px;
+    width: 202px;
+    margin-left: -1px;
+}
+
+.contactBio {
+    margin-top: 265px;
+    margin-left: 65px;
+    font-size: 14px;
+}
+
+/* suggested friends box */
+
+.suggestBox {
+    margin-top: 70px;
+    min-width: 200px;
+    max-width: 200px;
+    height: 570px;
+    overflow: hidden;
+    padding-top: 20px;
+}
+
+.suggestFriend1 {
+    height: 170px;
+    width: 170px;
+}
+
+.colorBlock5 {
+    margin-top: 1170px;
+    width: 202px;
+}
+
+.mayKnow {
+    font-size: 14px;
+    margin-left: 35px;
+}
+
+/* recent events box  */
+
+.recentBox {
+    min-width: 400px;
+    max-width: 400px;
+    flex-direction: column;
+}
+
+.recentCard {
+    min-width: 360px;
+    max-width: 360px;
+    margin-left: 0px;
+    height: 330px;
+    margin-bottom: 20px;
+    margin-right: 0px;
+}
+
+.recentMedia {
+    max-width: 360px;
+}
+
+.recentManyDiv {
+    margin-left: 0px;
+    min-width: 400px;
+    max-width: 400px; 
+    height: 395px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+.recentMany1, .recentMany2, .recentMany3, .recentMany4 {
+    height: 155px;
+}
+
+.recentComReac {
+    margin-right: 5px;
+}
+
+.colorBlock2 {
+    min-width: 401px;
+    max-width: 401px; 
+    margin-left: 20px;
+}
+
+.recentText {
+    min-width: 401px;
+    max-width: 401px; 
+    margin-left: 20px;
+}
+
+/* friend box  */
+
+.bioBox {
+    width: 50%;
+}
+
+.friendBox {
+    min-width: 400px;
+    max-width: 400px; 
+    padding: 0px 20px 0px 20px;
+    height: 450px;
+}
+
+.friendRow {
+    flex-wrap: wrap;
+}
+
+.friendCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 175px;
+    max-height: 175px;
+    min-width: 175px;
+    max-width: 175px;
+    margin: 20px 10px 0px 10px;
+    overflow: hidden;
+}
+
+.friendHeaderRow {
+    z-index: 1;
+    min-width: 400px;
+    max-width: 400px; 
+    margin-left: 40px;
+}
+
+.friendSmall {
+    max-height: 315px;
+    max-width: 315px;
+}
+
+.colorBlock3 {
+    min-width: 441px;
+    max-width: 441px; 
+    margin-left: 20px;
+}
+
+}
+
+@media only screen and (max-width: 774px) {
+
+    .bioBox {
+        display: flex;
+        justify-content: center;
+    }
+
+    .profileBox {
+        margin-top: 120px;
+        padding-bottom: 0px;
+    }
+
+    .profilePicBox {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .notifSearchBox {
+        flex-wrap: wrap;
+        min-width: 315px;
+        max-width: 315px;
+        margin-bottom: 730px;
+        margin-top: -755px;
+        margin-left: 10px;
+    }  
+    
+    .notifEvent {
+        margin-bottom: 20px;
+        width: 300px;
+        padding: 0px;
+    }
+    
+    .searchBar {
+        width: 220px;
+        margin-bottom: 20px;
+    }
+    
+    .commentModal, .likeModal, .newFriendModal {
+        width: 300px;
+        margin-top: -2050px;
+        margin-left: 0px;
+        background-color: var(--offWhite);
+    }
+
+    .flexRow {
+        width: 300px;
+    }
+
+    .centeredIcon {
+        align-items: baseline;
+        margin-left: -50px;
+    }
+
+    .currentTime {
+        width: 200px;
+        font-size: 12px;
+    }
+        
+    .profileblock {
+        width: 93vw;
+        padding: 0px;
+        margin-left: 20px;
+        margin-right: 40px;
+        height: 100%;
+    }
+
+    .suggestBox {
+        display: none;
+    }
+
+    .colorBlock5 {
+        display: none;
+    }
+    
+    /* recent events box  */
+    
+    .recentBox {
+        min-width: 260px;
+        max-width: 260px;
+        flex-direction: column;
+        margin-left: 0px;
+        align-self: center;
+    }
+    
+    .recentCard {
+        min-width: 225px;
+        max-width: 225px;
+        margin-left: 0px;
+        height: 190px;
+        margin-bottom: 20px;
+        margin-right: 0px;
+        padding: 0px;
+        align-self: center;
+    }
+
+    .recentCaption {
+        display: none;
+    }
+    
+    .recentMedia {
+        max-width: 225px;
+    }
+    
+    .recentManyDiv {
+        flex-direction: column;
+        align-self: center;
+        min-width: 225px;
+        max-width: 225px; 
+        height: 410px;
+    }
+
+    .recentMany1, .recentMany2 {
+        width: 100%;
+        margin: 0px;
+    }
+    
+    .recentMany3, .recentMany4 {
+        display: none;
+    }
+    
+    .recentComReac {
+        margin-right: 5px;
+    }
+    
+    .colorBlock2 {
+        min-width: 271px;
+        max-width: 271px; 
+        margin-left: 0px;
+    }
+    
+    .recentText {
+        min-width: 271px;
+        max-width: 271px; 
+        margin-left: 60px;
+    }
+    
+    /* friend box  */
+    
+    .bioBox {
+        min-width: 315px;
+        max-width: 315px; 
+        margin-left: 0px;
+    }
+    
+    .friendBox {
+        display: none;
+    }
+    
+    .colorBlock3 {
+        display: none;
+    }
+
+    .friendHeaderRow {
+        display: none;
+    }
+
+
+}
 
 
 
