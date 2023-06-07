@@ -25,7 +25,7 @@ export default function Profile() {
         const res = await sendJSONRequest('GET', '/api/profile', null, true);
         if (res.status !== 200) {
             // handle errors
-            console.log("somethign went wrong we ");
+            console.log("something went wrong");
             return;
         }
 
