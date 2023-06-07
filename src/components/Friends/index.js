@@ -47,10 +47,12 @@ export function FriendCard({user, context}) {
     }
     return (
         <figure className='friendCard2'>
-            {showBlockButton && <Block sx={{ fontSize: 50 }} className='blockUser'/> }
-            <Link to={`/timeline/${user.id}`}>
-                <img className="friendPhoto" src={user.profilePhoto} alt={'friend profile'} />
-            </Link>
+            {showBlockButton && <Block sx={{ fontSize: 35 }} className='blockUser'/> }
+            <div className='friendPhotoContainer'>
+                <Link to={`/timeline/${user.id}`}>
+                    <img className="friendPhoto" src={user.profilePhoto} alt={'friend profile'} />
+                </Link>
+            </div>
             <figcaption className='friendBio'>
                 <div className='friendBioName'>
                     <p className='smallerP'>{user.name}</p>

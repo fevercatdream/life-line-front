@@ -69,7 +69,7 @@ export default function ProfileEdit() {
     return (
         <>
             <div className="mainEditBlock">
-                <header className='friendHead'>
+                <header className='friendHead2'>
                     <div className='horizontal'>
                         <h1 className='LifeLine'>Life Line</h1>
                     </div>

@@ -113,6 +113,7 @@ body {
     flex-direction: column;
     align-items: baseline;
     text-align: left;
+    width: 80%;
 }
 
 .timelineDate {
@@ -145,6 +146,11 @@ body {
     height: 30px;
     margin-top: 10px;
     align-self: flex-end;
+}
+
+.timelineThumb {
+    max-width: 375px;
+    max-height: 375px;
 }
 
 /* popup modal css properties */

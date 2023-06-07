@@ -127,12 +127,12 @@ body {
 .profilePic {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: baseline;
     align-items: center;
-    min-width: 300px;
-    max-width: 300px;
-    height: 320px;
-    border-radius: 15px;    
+    width: 302px;
+    height: 290px;
+    overflow: hidden;
+    border-radius: 15px;
     margin: 10px;
     margin-top: 0px;
     background-color: var(--offWhite);
@@ -164,17 +164,17 @@ body {
 }
 
 .profileImg {
-    max-width: 250px;
-    max-height: 250px;
-    border-radius: 15px;  
-    margin: 30px 0px 30px 0px;  
+    max-width: 450px;
+    max-height: 290px;
 }
 
 .contactName {
+    position: absolute;
     color: white;
     z-index: 1;
     font-size: 20px;
     margin: 0px;
+    margin-top: 255px;
 }
 
 .colorBlock1, .colorBlock4, .colorBlock5 {
@@ -184,7 +184,11 @@ body {
     height: 40px;
     width: 302px;
     border-radius: 0px 0px 15px 15px;
-    box-shadow: 4px 4px 10px var(--bordercolor);
+    box-shadow: 4px 4px 7px var(--bordercolor);
+}
+
+.colorBlock1 {
+    margin-top: 250px;
 }
 
 /* bio text box */
@@ -221,7 +225,7 @@ body {
     margin-left: 10px;
     height: 220px;
     padding-top: 10px;
-    margin-top: -20px;
+    margin-top: -40px;
     border-radius: 10px 10px 0px 0px;
 }
 
@@ -233,6 +237,7 @@ body {
 .contactHead {
     color: rgb(0, 0, 0);
     font-size: 16px;
+    font-weight: bold;
 }
 
 .contactHead, .contactDate, .contactLoc, .contactNow {
@@ -377,7 +382,7 @@ body {
 
 /* notification popup modal  */
 
-.commentModal {
+.commentModal, .likeModal, .newFriendModal {
     position: absolute;
     display: flex;
     flex-direction: column;

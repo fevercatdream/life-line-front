@@ -284,6 +284,11 @@ body {
         margin-left: auto;
         margin-right: auto;
     }
+
+    .blockUser{
+        margin-top: .5vh;
+        margin-right: -1.5vw;
+    }
     
     .searchBar2 {
         width: 250px;

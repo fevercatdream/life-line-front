@@ -99,7 +99,11 @@ export default function EventEdit() {
                 <textarea className='editEventDesc' placeholder='Event Description'></textarea>
                 <label for="editEventDesc">Change the date your Event occured:</label>
                 <input classname="editEventDate" type='date'></input>
-                <button className='updateEventButton'>Save Event</button>
+                <div className='saveAndDelete'>
+                    <button className='updateEventButton'>Save Event</button>
+                    <button className='deleteEventButton'>Delete Event</button>
+                </div>
+                
             </div>
             </div>
             

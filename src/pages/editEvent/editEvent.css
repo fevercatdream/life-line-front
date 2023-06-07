@@ -86,13 +86,14 @@
     height: 500px;
     background-color: var(--offWhite);
     margin-bottom: 20px;
+    padding-bottom: 1vw;
 }
 
 .editHeader {
     margin: 0px;
 }
 
-.editPhoto, .editThumbnail, .updateEventButton {
+.editPhoto, .editThumbnail, .updateEventButton, .deleteEventButton {
     width: 200px;
     border: 1px solid var(--bordercolor);
     background-color: purple;
@@ -105,6 +106,18 @@
 
 .updateEventButton {
     background-color: var(--colorBlock);
+    margin-top: 10px;
+}
+
+.deleteEventButton {
+    background-color: rgb(175, 4, 4);
+    margin-top: 10px;
+}
+
+.saveAndDelete {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
 }
 
 .editEventTitle, .editEventDesc, .editEventDate, input[type="date" i] {

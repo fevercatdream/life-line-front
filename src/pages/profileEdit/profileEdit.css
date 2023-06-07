@@ -85,22 +85,22 @@ body {
     justify-content: center;
     align-items: center;
     border-radius: 100%;
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    height: 300px;
     overflow: hidden;
 }
 
 .uploadedPhoto {
-    max-width: 450px;
-    max-height: 450px;
+    max-width: 550px;
+    max-height: 550px;
 }
 
 input[type=file] {
     display: flex;
     flex-direction: column;
-    width: 140px;
+    width: 250px;
     overflow: hidden;
-    color: white;
+    color: rgb(0, 0, 0);
     margin-top: 20px;
 }
 
