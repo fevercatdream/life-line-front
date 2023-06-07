@@ -290,7 +290,6 @@ export default function Profile() {
 function ProfilePic({profile}) {
     return (
         <div className='profilePic'>
-
             <div className='colorBlock1'></div>
             <img className="profileImg" src={profile.profile_url} alt='placeholder'/>
             <p className='contactName'>{profile.name}</p>
