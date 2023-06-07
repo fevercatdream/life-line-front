@@ -10,6 +10,7 @@ import Ignored from './pages/ignored/Ignored.js';
 import EditProfile from './pages/profileEdit/profileEdit.js';
 import EditEvent from './pages/editEvent/editEvent.js';
 import NewEvent from './pages/newEvent/newEvent.js';
+import Footer from './components/Footer/index';
 
 function App() {
   return (
@@ -27,9 +28,12 @@ function App() {
         <Route path="/editevent" element={<EditEvent/>}/>
         <Route path="/newevent" element={<NewEvent/>}/>
       </Routes>
+      <Footer/>
     </HashRouter>
     </>
   );
 }
+
+
 
 export default App;

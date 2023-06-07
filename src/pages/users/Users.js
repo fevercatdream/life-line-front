@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { Link } from "react-router-dom";
+import {Link, Route} from "react-router-dom";
 import './Users.css';
 import {FriendCard} from "../../components/Friends";
 import {sendJSONRequest} from "../../utils/helpers";
