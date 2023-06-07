@@ -1,29 +1,11 @@
-import React, {useEffect, useState} from 'react';
-import {Link} from "react-router-dom";
+import React from 'react';
+import {Link, NavLink, Route, Routes} from "react-router-dom";
 import './Friends.css';
-import {FriendCard} from '../../components/Friends';
-import {sendJSONRequest} from "../../utils/helpers";
 import NavTabs from "../../components/Navbar";
+import {MyFriends, AllUsers, IgnoredUsers} from "../../components/Friends";
 
 
 export default function Friends() {
-    const [users, setUsers] = useState([]);
-
-    const loadData = async () => {
-        const res = await sendJSONRequest('GET', '/api/friends/', null, true);
-        const data = await res.json();
-        setUsers(data.friends);
-    }
-
-    useEffect(() => {
-        loadData();
-    }, [])
-
-    let userEls = <span className='addSomeFriends'>Add some Friends!</span>
-    if (users.length > 0) {
-        userEls = users.map(x => <FriendCard user={x} context={'friend'} />)
-    }
-
     return (
         <>
             <NavTabs/>
@@ -51,21 +33,27 @@ export default function Friends() {
                     </div>
                     <div className='friendNav'>
                         <div className='friendTab'>
-                            <button className='tabWords'>Friends</button>
+                            <NavLink to="/friends">
+                                <button className='tabWords'>Friends</button>
+                            </NavLink>
                         </div>
                         <div className='userTab'>
-                            <Link to="/users">
+                            <NavLink to="/friends/users">
                                 <button className='tabWordsUsers2'>All Users</button>
-                            </Link>
+                            </NavLink>
                         </div>
                         <div className='blockTab'>
-                            <Link to="/ignored">
+                            <NavLink to="/friends/ignored">
                                 <button className='tabWordsBlocked2'>Ignored Users</button>
-                            </Link>
+                            </NavLink>
                         </div>
                     </div>
                     <div className="allFriends">
-                        {userEls}
+                        <Routes>
+                            <Route path={'/'} element={<MyFriends />}/>
+                            <Route path={'/users'} element={<AllUsers />}/>
+                            <Route path={'/ignored'} element={<IgnoredUsers />}/>
+                        </Routes>
                     </div>
                 </div>
             </div>
