@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.49be6b82.css",
-    "main.js": "/static/js/main.6066256b.js",
+    "main.css": "/static/css/main.5560882a.css",
+    "main.js": "/static/js/main.d65a811e.js",
     "static/media/LifeLine2.png": "/static/media/LifeLine2.179ad97622092ba37950.png",
     "index.html": "/index.html",
-    "main.49be6b82.css.map": "/static/css/main.49be6b82.css.map",
-    "main.6066256b.js.map": "/static/js/main.6066256b.js.map"
+    "main.5560882a.css.map": "/static/css/main.5560882a.css.map",
+    "main.d65a811e.js.map": "/static/js/main.d65a811e.js.map"
   },
   "entrypoints": [
-    "static/css/main.49be6b82.css",
-    "static/js/main.6066256b.js"
+    "static/css/main.5560882a.css",
+    "static/js/main.d65a811e.js"
   ]
 }

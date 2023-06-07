@@ -237,7 +237,7 @@ function Event({event, toggle, invert}) {
             <TimelineContent sx={{py: '12px', px: 2}}>
                 <div className={`timeLineEvent${invert ? '2' : ''}`}>
                     <figure className="noMargin">
-                        <img className="timelineThumb" src={event.photos && event.photos[0].url}
+                        <img className="timelineThumb" src={(event.photos && event.photos.length > 0) ? event.photos[0].url : ""}
                              onClick={() => toggle(event)} alt={'event'}></img>
                     </figure>
                     <div className="timelineInfo">
