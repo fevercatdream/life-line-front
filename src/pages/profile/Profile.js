@@ -9,6 +9,9 @@ import Chat from '@mui/icons-material/Chat';
 import Favorite from '@mui/icons-material/Favorite';
 import PersonAddAlt1 from '@mui/icons-material/PersonAddAlt1';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import NavTabs from '../../components/Navbar/index';
+
+
 
 export default function Profile() {
     const [modalVisible, setModalVisible] = useState(false);
@@ -73,26 +76,29 @@ export default function Profile() {
 
     return (
         <>
-            <div className="mainProfileBlock">
-                <div className='profileblock'>
-                    <div id='blackOut' className={modalVisible ? "blackOut" : "blackOut hidden"}
-                        onClick={() => setModalVisible(false)}></div>
-                    <div className='navBackground'></div>
-                    <header className='friendHead2'>
-                        <div className='horizontal'>
-                            <h1 className='LifeLine'>Life Line</h1>
-                        </div>
-                        <div className='navBar'>
-                            <button className='go2Profile'>Profile</button>
-                            <Link to="/friends">
-                                <button className='go2Friends'>Friends</button>
-                            </Link>
-                            <Link to={`/timeline/${profile.id}`}>
-                                <button className='go2TimeLine'>Time Line</button>
-                            </Link>
-                            <button className='logout' onClick={logout}>Logout</button>
-                        </div>
-                    </header>
+            <NavTabs/>
+                    {/*<div className="mainProfileBlock">*/}
+                        <div className='profileblock'>
+                            <div id='blackOut' className={modalVisible ? "blackOut" : "blackOut hidden"}
+                                 onClick={() => setModalVisible(false)}>
+
+                            </div>
+                            {/*<div className='navBackground'></div>*/}
+                    {/*<header className='profileHeader'>*/}
+                    {/*    <div className='horizontal'>*/}
+                    {/*        <h1 className='LifeLine'>Life Line</h1>*/}
+                    {/*    </div>*/}
+                    {/*    <div className='navBar'>*/}
+                    {/*        <button className='go2Profile'>Profile</button>*/}
+                    {/*        <Link to="/friends">*/}
+                    {/*            <button className='go2Friends'>Friends</button>*/}
+                    {/*        </Link>*/}
+                    {/*        <Link to={`/timeline/${profile.id}`}>*/}
+                    {/*            <button className='go2TimeLine'>Time Line</button>*/}
+                    {/*        </Link>*/}
+                    {/*        <button className='logout' onClick={logout}>Logout</button>*/}
+                    {/*    </div>*/}
+                    {/*</header>*/}
                     <div className='profilePicBox'>
                         <div className='profileBox'>
                             <ProfilePic profile={profile} />
@@ -307,16 +313,7 @@ export default function Profile() {
                         </figcaption>
                     </figure>
                 </div>
-                <footer className="footer">
-                    <nav className="footerNav">
-                        <p className="footLinks">Sign Up</p>
-                        <p className="footLinks">Log In</p>
-                        <p className="footLinks">About</p>
-                        <p className="footLinks">Developers</p>
-                    </nav>
-                    <p className="copyright">Meta © 2023 Life Line</p>
-                </footer>
-            </div>
+            {/*</div>*/}
         </>
     );
 }
@@ -325,7 +322,7 @@ function ProfilePic({ profile }) {
     return (
         <div className='profilePic'>
             <div className='colorBlock1'></div>
-            <img className="profileImg" src={profile.profile_url} alt='placeholder' />
+            <img className="profileImg" src={profile.profile_url} alt='placeholder'/>
             <p className='contactName'>{profile.name}</p>
         </div>
     )

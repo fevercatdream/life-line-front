@@ -19,6 +19,7 @@ import LibraryAdd from '@mui/icons-material/LibraryAdd';
 import {sendJSONRequest} from "../../utils/helpers";
 import {Favorite, FavoriteBorder} from "@mui/icons-material";
 import ArrowCircleUp from '@mui/icons-material/ArrowCircleUp';
+import NavTabs from "../../components/Navbar";
 
 
 export default function TimelineFunc() {
@@ -66,26 +67,27 @@ export default function TimelineFunc() {
 
     return (
         <>
+            <NavTabs/>
             <div className="mainTimelineBlock">
                 <header id="friendHead" className='friendHead2'>
                     <div id='blackOut' className={eventModalVisible ? "blackOut2" : "blackOut2 hidden"}
                          onClick={() => setEventModalVisible(false)}></div>
                     <div className='horizontal'>
-                        <h1 className='LifeLine'>Life Line</h1>
-                    </div>
-                    <div className='navBar'>
-                        <Link to="/profile">
-                            <button className='go2Profile'>Profile</button>
-                        </Link>
-                        <Link to="/friends">
-                            <button className='go2Friends'>Friends</button>
-                        </Link>
-                        <button className='go2TimeLine'>Time Line</button>
-                        <button className='logout'>Logout</button>
+                {/*        <h1 className='LifeLine'>Life Line</h1>*/}
+                {/*    </div>*/}
+                {/*    <div className='navBar'>*/}
+                {/*        <Link to="/profile">*/}
+                {/*            <button className='go2Profile'>Profile</button>*/}
+                {/*        </Link>*/}
+                {/*        <Link to="/friends">*/}
+                {/*            <button className='go2Friends'>Friends</button>*/}
+                {/*        </Link>*/}
+                {/*        <button className='go2TimeLine'>Time Line</button>*/}
+                {/*        <button className='logout'>Logout</button>*/}
                     </div>
                 </header>
                 <div className='timelineBlock'>
-                    <div className='navBackground'></div>
+                    {/*<div className='navBackground'></div>*/}
                     <HashLink smooth to='/timeline/#friendHead' className='toTopBtn'><ArrowCircleUp sx={{ fontSize: 45 }} className='hover'/></HashLink>
                     <Timeline position='alternate'>
                         <div className='newEventField'>
@@ -94,15 +96,6 @@ export default function TimelineFunc() {
                     </Timeline>
                     <Modal event={activeEvent} visible={eventModalVisible}/>
                 </div>
-                <footer className="footer">
-                    <nav className="footerNav">
-                        <p className="footLinks">Sign Up</p>
-                        <p className="footLinks">Log In</p>
-                        <p className="footLinks">About</p>
-                        <p className="footLinks">Developers</p>
-                    </nav>
-                    <p className="copyright">Meta © 2023 Life Line</p>
-                </footer>
             </div>
         </>
     );
@@ -237,7 +230,7 @@ function Event({event, toggle, invert}) {
             <TimelineContent sx={{py: '12px', px: 2}}>
                 <div className={`timeLineEvent${invert ? '2' : ''}`}>
                     <figure className="noMargin">
-                        <img className="timelineThumb" src={event.photos && event.photos[0].url}
+                        <img className="timelineThumb" src={(event.photos && event.photos.length > 0) ? event.photos[0].url : ""}
                              onClick={() => toggle(event)} alt={'event'}></img>
                     </figure>
                     <div className="timelineInfo">

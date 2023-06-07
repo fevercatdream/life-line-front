@@ -1,80 +1,62 @@
-import React, {useEffect, useState} from 'react';
-import {Link} from "react-router-dom";
+import React from 'react';
+import {Link, NavLink, Route, Routes} from "react-router-dom";
 import './Friends.css';
-import {FriendCard} from '../../components/Friends';
-import {sendJSONRequest} from "../../utils/helpers";
+import NavTabs from "../../components/Navbar";
+import {MyFriends, AllUsers, IgnoredUsers} from "../../components/Friends";
+
 
 export default function Friends() {
-    const [users, setUsers] = useState([]);
-
-    const loadData = async () => {
-        const res = await sendJSONRequest('GET', '/api/friends/', null, true);
-        const data = await res.json();
-        setUsers(data.friends);
-    }
-
-    useEffect(() => {
-        loadData();
-    }, [])
-
-    let userEls = <span className='addSomeFriends'>Add some Friends!</span>
-    if (users.length > 0) {
-        userEls = users.map(x => <FriendCard user={x} context={'friend'} />)
-    }
-
     return (
         <>
+            <NavTabs/>
             <div className="mainFriendBlock">
-                <header className='friendHead2'>
-                    <div className='horizontal'>
-                        <h1 className='LifeLine'>Life Line</h1>
-                    </div>
-                    <div className='navBar'>
-                        <Link to="/profile">
-                            <button className='go2Profile'>Profile</button>
-                        </Link>
-                        <button className='go2Friends'>Friends</button>
-                        <Link to="/timeline">
-                            <button className='go2TimeLine'>Time Line</button>
-                        </Link>
-                        <button className='logout'>Logout</button>
-                    </div>
-                </header>
+                {/*<header className='friendHead2'>*/}
+                {/*    <div className='horizontal'>*/}
+                {/*        <h1 className='LifeLine'>Life Line</h1>*/}
+                {/*    </div>*/}
+                {/*    <div className='navBar'>*/}
+                {/*        <Link to="/profile">*/}
+                {/*            <button className='go2Profile'>Profile</button>*/}
+                {/*        </Link>*/}
+                {/*        <button className='go2Friends'>Friends</button>*/}
+                {/*        <Link to="/timeline">*/}
+                {/*            <button className='go2TimeLine'>Time Line</button>*/}
+                {/*        </Link>*/}
+                {/*        <button className='logout'>Logout</button>*/}
+                {/*    </div>*/}
+                {/*</header>*/}
                 <div className='friendblock'>
-                    <div className='navBackground'></div>
+                    {/*<div className='navBackground'></div>*/}
                     <div className='friendSearchBox2'>
                         <input type="text" className='searchBar2' placeholder='search friends'></input>
                         <button className='searchButton2'>+</button>
                     </div>
                     <div className='friendNav'>
                         <div className='friendTab'>
-                            <button className='tabWords'>Friends</button>
+                            <NavLink to="/friends">
+                                <button className='tabWords'>Friends</button>
+                            </NavLink>
                         </div>
                         <div className='userTab'>
-                            <Link to="/users">
+                            <NavLink to="/friends/users">
                                 <button className='tabWordsUsers2'>All Users</button>
-                            </Link>
+                            </NavLink>
                         </div>
                         <div className='blockTab'>
-                            <Link to="/ignored">
+                            <NavLink to="/friends/ignored">
                                 <button className='tabWordsBlocked2'>Ignored Users</button>
-                            </Link>
+                            </NavLink>
                         </div>
                     </div>
                     <div className="allFriends">
-                        {userEls}
+                        <Routes>
+                            <Route path={'/'} element={<MyFriends />}/>
+                            <Route path={'/users'} element={<AllUsers />}/>
+                            <Route path={'/ignored'} element={<IgnoredUsers />}/>
+                        </Routes>
                     </div>
                 </div>
             </div>
-            <footer className="footer">
-                <nav className="footerNav">
-                    <p className="footLinks">Sign Up</p>
-                    <p className="footLinks">Log In</p>
-                    <p className="footLinks">About</p>
-                    <p className="footLinks">Developers</p>
-                </nav>
-                <p className="copyright">Meta © 2023 Life Line</p>
-            </footer>
         </>
     );
 }

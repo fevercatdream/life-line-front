@@ -135,15 +135,6 @@ export default function ProfileEdit() {
                         <button className='submitChanges' onClick={handleFormSubmit}>Save Changes</button>
                     </form>
                 </div>
-                <footer className="footer">
-                    <nav className="footerNav">
-                        <p className="footLinks">Sign Up</p>
-                        <p className="footLinks">Log In</p>
-                        <p className="footLinks">About</p>
-                        <p className="footLinks">Developers</p>
-                    </nav>
-                    <p className="copyright">Meta © 2023 Life Line</p>
-                </footer>
             </div>
         </>
     );
