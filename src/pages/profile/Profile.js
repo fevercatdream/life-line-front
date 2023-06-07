@@ -13,6 +13,8 @@ import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 export default function Profile() {
     const [modalVisible, setModalVisible] = useState(false);
     const [notifVisible, setNotifVisible] = useState(false);
+    const [likeNotifVisible, setLikeVisible] = useState(false);
+    const [friendNotifVisible, setFriendVisible] = useState(false);
 
     const [profile, setProfile] = useState();
     const [loading, setLoading] = useState(true);
@@ -25,7 +27,7 @@ export default function Profile() {
         const res = await sendJSONRequest('GET', '/api/profile', null, true);
         if (res.status !== 200) {
             // handle errors
-            console.log("somethign went wrong we ");
+            console.log("something went wrong");
             return;
         }
 
@@ -104,17 +106,16 @@ export default function Profile() {
                         </div>
                         <div className='bioBox'>
                             <div className='notifSearchBox'>
-                                <div className='notifEvent'
-                                     onClick={() => notifVisible ? setNotifVisible(false) : setNotifVisible(true)}>
-                                    <div className='notifRow'>
+                                <div className='notifEvent'>
+                                    <div className='notifRow' onClick={() => notifVisible ? setNotifVisible(false) : setNotifVisible(true)}>
                                         <p className='notifys'>{profile.new_comments}</p>
                                         <Chat sx={{fontSize: 25}} className='commentBtn'/>
                                     </div>
-                                    <div className='notifRow'>
+                                    <div className='notifRow' onClick={() => likeNotifVisible ? setLikeVisible(false) : setLikeVisible(true)}>
                                         <p className='notifys'>{profile.new_likes}</p>
                                         <Favorite sx={{fontSize: 25}} className='likeBtn'/>
                                     </div>
-                                    <div className='notifRow'>
+                                    <div className='notifRow' onClick={() => friendNotifVisible ? setFriendVisible(false) : setFriendVisible(true)}>
                                         <p className='notifys'>{profile.new_friend_requests}</p>
                                         <PersonAddAlt1 sx={{fontSize: 30}} className='addBtn'/>
                                     </div>
@@ -140,6 +141,8 @@ export default function Profile() {
                                         <Chat sx={{fontSize: 30}} className='commentBtn2'/>
                                     </div>
                                 </div>
+                            </div>
+                            <div className={likeNotifVisible ? "likeModal" : "likeModal hidden"}>
                                 {/* This is a single user like notification  */}
                                 <div className='profileLikeNotif'>
                                     <div className='flexRow'>
@@ -154,6 +157,8 @@ export default function Profile() {
                                         <Favorite sx={{fontSize: 30}} className='commentBtn2'/>
                                     </div>
                                 </div>
+                            </div>
+                            <div className={friendNotifVisible ? "newFriendModal" : "newFriendModal hidden"}>
                                 {/* This is a single user friend notification  */}
                                 <div className='profileFriendNotif'>
                                     <div className='flexRow'>
@@ -290,9 +295,8 @@ export default function Profile() {
 function ProfilePic({profile}) {
     return (
         <div className='profilePic'>
-
             <div className='colorBlock1'></div>
-            <img className="profileImg" src={profile.profile_url} alt='placeholder'/>
+            <img className="profileImg" src={profile.profile_url} alt='placeholder'/>         
             <p className='contactName'>{profile.name}</p>
         </div>
     )
