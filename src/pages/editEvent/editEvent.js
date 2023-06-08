@@ -107,62 +107,38 @@ export default function EventEdit() {
                         </figure>
                         <div className="timeLineEvent3">
                             <figure className="noMargin">
-                                <img className="timelineThumb" src="https://dummyimage.com/300x200/000/aaa"
-                                     alt={'dummy'}></img>
+                                <img className="timelineThumb" src="https://dummyimage.com/300x200/000/aaa" alt={'dummy'}></img>
                             </figure>
                             <div className="timelineInfo">
                                 <div className='flexRow2'>
                                     <h2 className="timelineTitle">Learned Latin</h2>
                                 </div>
-                                <p className="timelineDesc2">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed
-                                    eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                    quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex
-                                    ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum
-                                    dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident,
-                                    sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                <p className="timelineDesc2">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                             </div>
                         </div>
                     </div>
-                    <form>
-                        <div className='editEventForm'>
-                            <h2 className='editHeader'>Edit your Event</h2>
-
-                            <label>Upload Photos: <br/>
-                                <button className='editPhoto'>Upload Photos</button>
-                            </label>
-                            <label>Change your Event title: <br/>
-                                <input
-                                    className='editEventTitle'
-                                    placeholder='Event Title'
-                                    type='text'
-                                    value={title}
-                                    onChange={e => setTitle(e.target.value)}
-                                />
-                            </label>
-                            <label>Change your Event summary: <br/>
-                                <textarea
-                                    className='editEventDesc'
-                                    placeholder='Event Description'
-                                    value={description}
-                                    onChange={e => setDescription(e.target.value)}
-                                />
-                            </label>
-                            <label>Change the date your Event occurred: <br/>
-                                <input
-                                    className="editEventDate"
-                                    type='date'
-                                    value={date}
-                                    onChange={e => setDate(e.target.value)}
-                                />
-                            </label>
-                            <div className='saveAndDelete'>
-                                <button className='updateEventButton' onClick={handleFormSubmit}>Save Event</button>
-                            </div>
-
+                    <form className='editEventForm'>
+                        <h2 className='editHeader'>Edit your Event</h2>
+                        <label htmlFor="editPhoto">Choose which images to add:</label>
+                        <button className='editPhoto'>Upload Photos</button>
+                        <label htmlFor="editEventTitle">Change your Event title:</label>
+                        <input
+                            className='editEventTitle'
+                            placeholder='Event Title'
+                            name='editEventTitle'
+                            type='text'
+                            value={title}
+                            onChange={e => setTitle(e.target.value)}
+                        />
+                        <label for="editEventTitle">Change your Event summary:</label>
+                        <textarea className='editEventDesc' placeholder='Event Description'></textarea>
+                        <label for="editEventDesc">Change the date your Event occured:</label>
+                        <input classname="editEventDate" type='date'></input>
+                        <div className='saveAndDelete'>
+                            <button className='updateEventButton'>Save Event</button>
+                            <button className='deleteEventButton'>Delete Event</button>
                         </div>
                     </form>
-                    <button className='deleteEventButton'>Delete Event</button>
-
                 </div>
 
             </div>
