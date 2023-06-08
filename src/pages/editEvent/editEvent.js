@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link, useParams} from "react-router-dom"
 import './editEvent.css'
 import NavTabs from "../../components/Navbar";
@@ -13,7 +13,6 @@ export default function EventEdit() {
     const [description, setDescription] = useState('');
     const [date, setDate] = useState('');
     const [token, setToken] = useState(localStorage.getItem('token'));
-
 
     const addInput = () => {
         console.log("adding input");
@@ -30,7 +29,7 @@ export default function EventEdit() {
         if (!token) {
             return;
         }
-        const res = await sendJSONRequest("GET", '/api/event/', null, true);
+        const res = await sendJSONRequest("GET", `/api/event/${id}`, null, true);
         if (res.status !== 200) {
             // handle errors
             console.log("something went wrong");
@@ -39,8 +38,17 @@ export default function EventEdit() {
 
         const eventData = await res.json();
         console.log(eventData)
+        setTitle(eventData.title);
+        setDescription(eventData.description);
+        setDate(eventData.date);
 
     }
+
+    useEffect( () => {
+        loadData();
+    }, [token])
+
+
     let { id } = useParams();
     const handleFormSubmit = async (e) => {
         e.preventDefault();

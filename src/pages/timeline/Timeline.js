@@ -201,7 +201,7 @@ function Event({event, toggle, invert}) {
     const d = new Date(event.date);
     const month = d.toLocaleDateString('en-us', {month: 'short'})
     const year = d.toLocaleDateString('en-us', {year: 'numeric'})
-    console.log(event.id);
+    console.log(event.eventId);
     return (
         <TimelineItem>
             <TimelineOppositeContent
