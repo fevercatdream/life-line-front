@@ -21,7 +21,7 @@ function App() {
         <Route path="/friends/*" element={<Friends/>}/>
         <Route path="/timeline/:id?" element={<Timeline/>}/>
         <Route path="/editprofile" element={<EditProfile/>}/>
-        <Route path="/editevent" element={<EditEvent/>}/>
+        <Route path="/editevent/:id" element={<EditEvent/>}/>
         <Route path="/newevent" element={<NewEvent/>}/>
       </Routes>
       <Footer/>

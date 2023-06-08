@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Link, Navigate} from "react-router-dom"
 import {backendHost, sendJSONRequest} from '../../utils/helpers';
 import './profileEdit.css'
+import NavTabs from "../../components/Navbar";
 
 export default function ProfileEdit() {
     const [name, setName] = useState('');
@@ -69,23 +70,8 @@ export default function ProfileEdit() {
     return (
         <>
             <div className="mainEditBlock">
-                <header className='friendHead2'>
-                    <div className='horizontal'>
-                        <h1 className='LifeLine'>Life Line</h1>
-                    </div>
-                    <div className='navBar'>
-                        <Link to="/profile">
-                            <button className='go2Profile'>Profile</button>
-                        </Link>
-                        <Link to="/friends">
-                            <button className='go2Friends'>Friends</button>
-                        </Link>
-                        <Link to="/timeline">
-                            <button className='go2TimeLine'>Time Line</button>
-                        </Link>
-                        <button className='logout'>Logout</button>
-                    </div>
-                </header>
+                <div className='navBackground'></div>
+                <NavTabs/>
                 <div className='editBlock'>
                     <div className='navBackground'></div>
                     <form className='editForm'>
@@ -111,7 +97,7 @@ export default function ProfileEdit() {
                         <input
                             className="inputField"
                             type='text'
-                            name='name'
+                            name='birthlocation'
                             placeholder='Miami, Florida'
                             value={birthLocation}
                             onChange={e => setBirthLocation(e.target.value)}>
@@ -120,7 +106,7 @@ export default function ProfileEdit() {
                         <input
                             className="inputField"
                             type='text'
-                            name='name'
+                            name='currentlocation'
                             placeholder='Seattle, Washington'
                             value={currentLocation}
                             onChange={e => setCurrentLocation(e.target.value)}>
