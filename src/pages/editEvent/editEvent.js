@@ -32,19 +32,19 @@ export default function EventEdit() {
     const handleFormSubmit = async (e) => {
         e.preventDefault();
 
-        const res = await sendJSONRequest('PUT', '/api/event/update', {
-            name: name,
-            birthDate: birthDate,
-            birthPlace: birthLocation,
-            location: currentLocation,
-        }, true);
-        const data = await res.json();
-
-        if (res.status !== 200) {
-            console.log("something went wrong");
-            return;
-        }
-        // setSendToHomepage(true);
+    //     const res = await sendJSONRequest('PUT', '/api/event/update', {
+    //         name: name,
+    //         birthDate: birthDate,
+    //         birthPlace: birthLocation,
+    //         location: currentLocation,
+    //     }, true);
+    //     const data = await res.json();
+    //
+    //     if (res.status !== 200) {
+    //         console.log("something went wrong");
+    //         return;
+    //     }
+    //     // setSendToHomepage(true);
     };
 
     const images = [9, 8, 7, 6, 5].map((number) => (
