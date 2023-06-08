@@ -111,7 +111,7 @@ export default function ProfileEdit() {
                         <input
                             className="inputField"
                             type='text'
-                            name='name'
+                            name='birthlocation'
                             placeholder='Miami, Florida'
                             value={birthLocation}
                             onChange={e => setBirthLocation(e.target.value)}>
@@ -120,7 +120,7 @@ export default function ProfileEdit() {
                         <input
                             className="inputField"
                             type='text'
-                            name='name'
+                            name='currentlocation'
                             placeholder='Seattle, Washington'
                             value={currentLocation}
                             onChange={e => setCurrentLocation(e.target.value)}>
