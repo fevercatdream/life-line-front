@@ -2,15 +2,18 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Navigate } from "react-router-dom"
 import './Profile.css'
+
 import Carousel from 'react-gallery-carousel';
 import 'react-gallery-carousel/dist/index.css';
+
 import { sendJSONRequest } from "../../utils/helpers";
+import NavTabs from '../../components/Navbar/index';
+
 import Chat from '@mui/icons-material/Chat';
 import Favorite from '@mui/icons-material/Favorite';
 import PersonAddAlt1 from '@mui/icons-material/PersonAddAlt1';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
-import NavTabs from '../../components/Navbar/index';
-
+import Search from '@mui/icons-material/Search';
 
 
 export default function Profile() {
@@ -123,9 +126,9 @@ export default function Profile() {
                                         <PersonAddAlt1 sx={{ fontSize: 30 }} className='addBtn' />
                                     </div>
                                 </div>
-                                <div>
+                                <div className='flexRow'>
                                     <input type="text" className='searchBar' placeholder='search friends'></input>
-                                    <button className='searchButton'>+</button>
+                                    <button className='searchButton'><Search sx={{ fontSize: 20 }} /></button>
                                 </div>
                             </div>
 
