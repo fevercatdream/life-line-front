@@ -76,30 +76,15 @@ export default function Profile() {
 
     return (
         <>
-            <NavTabs/>
-                    {/*<div className="mainProfileBlock">*/}
+                    <div className="mainProfileBlock">
                         <div className='profileblock'>
                             <div id='blackOut' className={modalVisible ? "blackOut" : "blackOut hidden"}
                                  onClick={() => setModalVisible(false)}>
 
                             </div>
-                            {/*<div className='navBackground'></div>*/}
-                    {/*<header className='profileHeader'>*/}
-                    {/*    <div className='horizontal'>*/}
-                    {/*        <h1 className='LifeLine'>Life Line</h1>*/}
-                    {/*    </div>*/}
-                    {/*    <div className='navBar'>*/}
-                    {/*        <button className='go2Profile'>Profile</button>*/}
-                    {/*        <Link to="/friends">*/}
-                    {/*            <button className='go2Friends'>Friends</button>*/}
-                    {/*        </Link>*/}
-                    {/*        <Link to={`/timeline/${profile.id}`}>*/}
-                    {/*            <button className='go2TimeLine'>Time Line</button>*/}
-                    {/*        </Link>*/}
-                    {/*        <button className='logout' onClick={logout}>Logout</button>*/}
-                    {/*    </div>*/}
-                    {/*</header>*/}
-                    <div className='profilePicBox'>
+                        <div className='navBackground'></div>
+                        <NavTabs />
+                        <div className='profilePicBox'>
                         <div className='profileBox'>
                             <ProfilePic profile={profile} />
                             <ProfileInfo profile={profile} />
@@ -313,7 +298,7 @@ export default function Profile() {
                         </figcaption>
                     </figure>
                 </div>
-            {/*</div>*/}
+            </div>
         </>
     );
 }
