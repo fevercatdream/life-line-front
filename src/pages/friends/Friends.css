@@ -28,6 +28,7 @@ body {
     cursor: pointer;
 }
 
+
 /* Friend Nav*/
 
 .friendNav {
@@ -42,20 +43,19 @@ body {
     background-color: var(--offWhite);
     border-radius: 10px 10px 0px 0px;
     border: 1px solid var(--bordercolor);
-    border-bottom: none;
+    border-bottom: 1px solid rgb(209, 209, 209);
     margin-top: 0px;
-    z-index: 2;
+    z-index: 1;
     position: relative;
     margin-right: -5px;
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .userTab {
     border: 1px solid rgb(155, 155, 155);
-    border-bottom: 1px solid var(--bordercolor);
-    z-index: 1;
     height: 35px;
     background-color: var(--colorBlock);
     color: white;
@@ -63,11 +63,15 @@ body {
 
 .blockTab {
     border: 1px solid rgb(155, 155, 155);
-    border-bottom: 1px solid var(--bordercolor);
+    border-bottom: 1px solid grey;
     background-color: rgb(184, 19, 19);
-    z-index: 0;
+    /* z-index: 0; */
     height: 35px;
     color: white;
+}
+
+.activeTab {
+    z-index: 2;
 }
 
 .tabWords:hover, .tabWordsBlocked2:hover, .tabWordsUsers2:hover, .userTab:hover{
@@ -100,6 +104,8 @@ body {
 
 .friendSearchBox2 {
     position: absolute;
+    display: flex;
+    flex-direction: row;
     width: -moz-fit-content;
     width: fit-content;
     top: 135px;
@@ -125,6 +131,8 @@ body {
     padding: 5px 20px;
 }
 
+
+
 /* html body */
 
 .friendblock {
@@ -145,13 +153,25 @@ body {
     border: 1px solid var(--bordercolor);
     width: 87%;
     padding: 2vw 2vw 0vw 1vw;
-    background-color: var(--offWhite);
     border-radius: 15px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     margin-bottom: 40px;
+    margin-top: 1px;
+}
+
+.greyBack {
+    background-color: rgb(209, 209, 209);
+}
+
+.blueBack {
+    background-color: rgb(200, 220, 243);
+}
+
+.redBack {
+    background-color: rgb(253, 224, 224);
 }
 
 .ignoredText {
@@ -263,6 +283,7 @@ body {
     
     .friendblock {
         width: 350px;
+        margin-top: 150px;
     }
     
     .friendSearchBox2 {

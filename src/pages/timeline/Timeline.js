@@ -6,6 +6,7 @@ import './Timeline.css';
 import { HashLink } from 'react-router-hash-link';
 import Carousel from 'react-gallery-carousel';
 import 'react-gallery-carousel/dist/index.css';
+
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem from '@mui/lab/TimelineItem';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
@@ -14,6 +15,7 @@ import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import Chat from '@mui/icons-material/Chat';
+
 import Edit from '@mui/icons-material/Edit';
 import LibraryAdd from '@mui/icons-material/LibraryAdd';
 import {sendJSONRequest} from "../../utils/helpers";
@@ -69,15 +71,12 @@ export default function TimelineFunc() {
         <>
 
             <div className="mainTimelineBlock">
-                <header id="friendHead" className='friendHead2'>
                     <div id='blackOut' className={eventModalVisible ? "blackOut2" : "blackOut2 hidden"}
                          onClick={() => setEventModalVisible(false)}></div>
                     <div className='navBackground'></div>
                     <NavTabs/>
                     <div className='horizontal'></div>
-                </header>
                 <div className='timelineBlock'>
-                    {/*<div className='navBackground'></div>*/}
                     <HashLink smooth to='/timeline/#friendHead' className='toTopBtn'><ArrowCircleUp sx={{ fontSize: 45 }} className='hover'/></HashLink>
                     <Timeline position='alternate'>
                         <div className='newEventField'>

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Link, Navigate} from "react-router-dom"
+import { Navigate } from "react-router-dom"
 import {backendHost, sendJSONRequest} from '../../utils/helpers';
 import './profileEdit.css'
 import NavTabs from "../../components/Navbar";
