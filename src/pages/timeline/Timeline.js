@@ -67,11 +67,12 @@ export default function TimelineFunc() {
 
     return (
         <>
-            <NavTabs/>
+            
             <div className="mainTimelineBlock">
                 <header id="friendHead" className='friendHead2'>
                     <div id='blackOut' className={eventModalVisible ? "blackOut2" : "blackOut2 hidden"}
                          onClick={() => setEventModalVisible(false)}></div>
+<<<<<<< HEAD
                     <div className='horizontal'>
                         {/*        <h1 className='LifeLine'>Life Line</h1>*/}
                         {/*    </div>*/}
@@ -85,6 +86,11 @@ export default function TimelineFunc() {
                         {/*        <button className='go2TimeLine'>Time Line</button>*/}
                         {/*        <button className='logout'>Logout</button>*/}
                     </div>
+=======
+                         <div className='navBackground'></div>
+                         <NavTabs/>
+                    <div className='horizontal'></div>
+>>>>>>> dev
                 </header>
                 <div className='timelineBlock'>
                     {/*<div className='navBackground'></div>*/}

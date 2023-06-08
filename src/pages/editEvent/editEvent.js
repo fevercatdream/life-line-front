@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Link} from "react-router-dom"
 import './editEvent.css'
+import NavTabs from "../../components/Navbar";
 
 import Carousel from 'react-gallery-carousel';
 import 'react-gallery-carousel/dist/index.css';
@@ -59,24 +60,8 @@ export default function EventEdit() {
     return (
         <>
             <div className="mainEditBlock">
-                <header className='friendHead2'>
-                    <div className='horizontal'>
-                        <h1 className='LifeLine'>Life Line</h1>
-                    </div>
-                    <div className='navBar'>
-                        <Link to="/profile">
-                            <button className='go2Profile'>Profile</button>
-                        </Link>
-                        <Link to="/friends">
-                            <button className='go2Friends'>Friends</button>
-                        </Link>
-                        <Link to="/timeline">
-                            <button className='go2TimeLine'>Time Line</button>
-                        </Link>
-                        <button className='logout'>Logout</button>
-                    </div>
-                </header>
-
+                <div className='navBackground'></div>
+                <NavTabs/>
                 <div className='flexRow3'>
                     <div className='editBlock2'>
                         <div className='navBackground'></div>
