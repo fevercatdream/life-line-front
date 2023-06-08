@@ -1,32 +1,22 @@
 import React, {useEffect, useState} from 'react';
-import { useParams } from "react-router-dom"
+import {Navigate, useParams} from "react-router-dom"
 import './editEvent.css'
 import NavTabs from "../../components/Navbar";
 
 import Carousel from 'react-gallery-carousel';
 import 'react-gallery-carousel/dist/index.css';
-import {sendJSONRequest} from "../../utils/helpers";
+import {backendHost, sendJSONRequest} from "../../utils/helpers";
 
 export default function EventEdit() {
-    const [, setFile] = useState();
+    const [file, setFile] = useState();
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [date, setDate] = useState('');
     const token = localStorage.getItem('token');
     const [images, setImages] = useState([]);
     const [avatar, setAvatar] = useState('');
+    const [sendToTimeline, setSendToTimeline] = useState(false);
 
-
-    const addInput = () => {
-        console.log("adding input");
-        const i = inputs.slice()
-        i.push(filePicker);
-        console.log(inputs);
-        setInputs(i);
-    }
-
-    const filePicker = <input type={'file'} accept={'image/*'} onChange={e => setFile(e.target.files[0])}/>;
-    const [inputs, setInputs] = useState([filePicker]);
 
     const loadData = async () => {
         if (!token) {
@@ -46,7 +36,7 @@ export default function EventEdit() {
         setDate(eventData.date);
         setAvatar(eventData.EventPhotos[0].eventPhotoURL)
 
-         setImages(eventData.EventPhotos.map((i) => ({
+        setImages(eventData.EventPhotos.map((i) => ({
             src: i.eventPhotoURL,
             alt: "Event img",
         })))
@@ -78,15 +68,60 @@ export default function EventEdit() {
         // setSendToHomepage(true);
     };
 
-    // const images = [9, 8, 7, 6, 5].map((number) => (
-    //     {
-    //         src: `https://placedog.net/${number}00/${number}00?id=${number}`,
-    //         // srcset: `https://placedog.net/400/240?id=1 400w, https://placedog.net/700/420?id=1 700w, https://placedog.net/1000/600?id=1 1000w`,
-    //         // sizes: '(max-width: 1000px) 400px, (max-width: 2000px) 700px, 1000px',
-    //         alt: `Dogs are domesticated mammals, not natural wild animals. They were originally bred from wolves. They have been bred by humans for a long time, and were the first animals ever to be domesticated.`,
-    //         // thumbnail: `https://placedog.net/100/60?id=1`
-    //     }
-    // ));
+    const uploadPhoto = async (e) => {
+        e.preventDefault();
+        if (!file) {
+            return;
+        }
+        console.log(file);
+
+
+        const newImages = images.slice();
+        // show toast
+        // clear input form (probably google clear input file)
+
+        // post multi-part form data to server
+        const formData = new FormData();
+        formData.append('photo', file);
+        try {
+            const res = await fetch(`${backendHost}/api/event/addPhoto/${id}`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': token,
+                },
+                body: formData,
+            })
+            if (res.status !== 200) {
+                console.log("failed to upload new event photo");
+                return;
+            }
+            const {url} = await res.json();
+            console.log(url);
+            newImages.push({src: url, alt: "event gallery image"});
+            console.log(newImages);
+
+        } catch (err) {
+            console.log(err);
+        }
+
+        setImages(newImages);
+
+    };
+
+    const deleteEvent = async (e) => {
+        e.preventDefault();
+        try {
+            const res = await sendJSONRequest('DELETE', `/api/event/delete/${id}`, null, true)
+            if (res.status !== 200) {
+                console.log("failed to delete the event");
+                return;
+            }
+            // alert("Deleted");
+             return <Navigate to={'/timeline'} />
+        } catch (err) {
+            console.log(err);
+        }
+    }
 
     return (
         <>
@@ -148,13 +183,12 @@ export default function EventEdit() {
                             </div>
                         </div>
                     </div>
-                    <form className='editEventForm'>
+                    <div className='editEventForm'>
                         <h2 className='editHeader'>Edit your Event</h2>
-
-                        <label htmlFor="editPhoto">Choose which images to add:</label>
-                        <button className='editPhoto' onClick={addInput}>Add multiple files</button>
+                        <label htmlFor="editEventTitle">Upload more photos:</label>
                         <div>
-                            {inputs}
+                            <input type={'file'} accept={'image/*'} onChange={e => setFile(e.target.files[0])}/>
+                            <button className={'updateEventButton'} onClick={uploadPhoto}>Upload</button>
                         </div>
 
                         <label htmlFor="editEventTitle">Change your Event title:</label>
@@ -183,10 +217,12 @@ export default function EventEdit() {
                             onChange={e => setDate(e.target.value)}
                         />
                         <div className='saveAndDelete'>
-                            <button className='updateEventButton' onClick={handleFormSubmit}>Save Event</button>
-                            <button className='deleteEventButton'>Delete Event</button>
+                            <button type={'submit'} className='updateEventButton' onClick={handleFormSubmit}>Save
+                                Event
+                            </button>
+                            <button className='deleteEventButton' onClick={deleteEvent}>Delete Event</button>
                         </div>
-                    </form>
+                    </div>
                 </div>
 
             </div>
