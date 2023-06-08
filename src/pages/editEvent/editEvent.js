@@ -14,6 +14,7 @@ export default function EventEdit() {
     const [date, setDate] = useState('');
     const [token, setToken] = useState(localStorage.getItem('token'));
     const [images, setImages] = useState([]);
+    const [avatar, setAvatar] = useState('');
 
 
     const addInput = () => {
@@ -43,6 +44,7 @@ export default function EventEdit() {
         setTitle(eventData.title);
         setDescription(eventData.description);
         setDate(eventData.date);
+        setAvatar(eventData.EventPhotos[0].eventPhotoURL)
 
          setImages(eventData.EventPhotos.map((i) => ({
             src: i.eventPhotoURL,
@@ -135,19 +137,13 @@ export default function EventEdit() {
                         </figure>
                         <div className="timeLineEvent3">
                             <figure className="noMargin">
-                                <img className="timelineThumb" src="https://dummyimage.com/300x200/000/aaa"
-                                     alt={'dummy'}></img>
+                                <img className="timelineThumb" src={avatar} alt="event image"></img>
                             </figure>
                             <div className="timelineInfo">
                                 <div className='flexRow2'>
-                                    <h2 className="timelineTitle">Learned Latin</h2>
+                                    <h2 className="timelineTitle">{title}</h2>
                                 </div>
-                                <p className="timelineDesc2">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed
-                                    eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                    quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex
-                                    ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum
-                                    dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident,
-                                    sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                <p className="timelineDesc2">{description}</p>
                             </div>
                         </div>
                     </div>
