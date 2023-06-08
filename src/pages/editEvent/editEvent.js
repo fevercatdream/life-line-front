@@ -13,6 +13,8 @@ export default function EventEdit() {
     const [description, setDescription] = useState('');
     const [date, setDate] = useState('');
     const [token, setToken] = useState(localStorage.getItem('token'));
+    const [images, setImages] = useState([]);
+
 
     const addInput = () => {
         console.log("adding input");
@@ -42,14 +44,21 @@ export default function EventEdit() {
         setDescription(eventData.description);
         setDate(eventData.date);
 
+         setImages(eventData.EventPhotos.map((i) => ({
+            src: i.eventPhotoURL,
+            alt: "Event img",
+        })))
+
+        // setImages(eventData.EventPhotos)
+
     }
 
-    useEffect( () => {
+    useEffect(() => {
         loadData();
     }, [token])
 
 
-    let { id } = useParams();
+    let {id} = useParams();
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         console.log(description, date, title);
@@ -66,15 +75,15 @@ export default function EventEdit() {
         // setSendToHomepage(true);
     };
 
-    const images = [9, 8, 7, 6, 5].map((number) => (
-        {
-            src: `https://placedog.net/${number}00/${number}00?id=${number}`,
-            // srcset: `https://placedog.net/400/240?id=1 400w, https://placedog.net/700/420?id=1 700w, https://placedog.net/1000/600?id=1 1000w`,
-            // sizes: '(max-width: 1000px) 400px, (max-width: 2000px) 700px, 1000px',
-            alt: `Dogs are domesticated mammals, not natural wild animals. They were originally bred from wolves. They have been bred by humans for a long time, and were the first animals ever to be domesticated.`,
-            // thumbnail: `https://placedog.net/100/60?id=1`
-        }
-    ));
+    // const images = [9, 8, 7, 6, 5].map((number) => (
+    //     {
+    //         src: `https://placedog.net/${number}00/${number}00?id=${number}`,
+    //         // srcset: `https://placedog.net/400/240?id=1 400w, https://placedog.net/700/420?id=1 700w, https://placedog.net/1000/600?id=1 1000w`,
+    //         // sizes: '(max-width: 1000px) 400px, (max-width: 2000px) 700px, 1000px',
+    //         alt: `Dogs are domesticated mammals, not natural wild animals. They were originally bred from wolves. They have been bred by humans for a long time, and were the first animals ever to be domesticated.`,
+    //         // thumbnail: `https://placedog.net/100/60?id=1`
+    //     }
+    // ));
 
     return (
         <>
@@ -126,13 +135,19 @@ export default function EventEdit() {
                         </figure>
                         <div className="timeLineEvent3">
                             <figure className="noMargin">
-                                <img className="timelineThumb" src="https://dummyimage.com/300x200/000/aaa" alt={'dummy'}></img>
+                                <img className="timelineThumb" src="https://dummyimage.com/300x200/000/aaa"
+                                     alt={'dummy'}></img>
                             </figure>
                             <div className="timelineInfo">
                                 <div className='flexRow2'>
                                     <h2 className="timelineTitle">Learned Latin</h2>
                                 </div>
-                                <p className="timelineDesc2">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                <p className="timelineDesc2">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed
+                                    eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                    quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex
+                                    ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum
+                                    dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident,
+                                    sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                             </div>
                         </div>
                     </div>
