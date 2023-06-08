@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Link, NavLink, Route, Routes} from "react-router-dom";
+import { NavLink, Route, Routes } from "react-router-dom";
 import './Friends.css';
 import NavTabs from "../../components/Navbar";
 import {MyFriends, AllUsers, IgnoredUsers} from "../../components/Friends";

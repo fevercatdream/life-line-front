@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Link, useParams} from "react-router-dom"
+import { useParams } from "react-router-dom"
 import './editEvent.css'
 import NavTabs from "../../components/Navbar";
 
@@ -8,11 +8,11 @@ import 'react-gallery-carousel/dist/index.css';
 import {sendJSONRequest} from "../../utils/helpers";
 
 export default function EventEdit() {
-    const [file, setFile] = useState();
+    const [, setFile] = useState();
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [date, setDate] = useState('');
-    const [token, setToken] = useState(localStorage.getItem('token'));
+    const token = localStorage.getItem('token');
     const [images, setImages] = useState([]);
     const [avatar, setAvatar] = useState('');
 
@@ -57,7 +57,8 @@ export default function EventEdit() {
 
     useEffect(() => {
         loadData();
-    }, [token])
+        /* eslint-disable-next-line react-hooks/exhaustive-deps */
+    }, [])
 
 
     let {id} = useParams();
@@ -137,7 +138,7 @@ export default function EventEdit() {
                         </figure>
                         <div className="timeLineEvent3">
                             <figure className="noMargin">
-                                <img className="timelineThumb" src={avatar} alt="event image"></img>
+                                <img className="timelineThumb" src={avatar} alt="event"></img>
                             </figure>
                             <div className="timelineInfo">
                                 <div className='flexRow2'>
