@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Link} from "react-router-dom"
+import {Link, useParams} from "react-router-dom"
 import './editEvent.css'
 import NavTabs from "../../components/Navbar";
 
@@ -8,10 +8,23 @@ import 'react-gallery-carousel/dist/index.css';
 import {sendJSONRequest} from "../../utils/helpers";
 
 export default function EventEdit() {
+    const [file, setFile] = useState();
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [date, setDate] = useState('');
     const [token, setToken] = useState(localStorage.getItem('token'));
+
+
+    const addInput = () => {
+        console.log("adding input");
+        const i = inputs.slice()
+        i.push(filePicker);
+        console.log(inputs);
+        setInputs(i);
+    }
+
+    const filePicker = <input type={'file'} accept={'image/*'} onChange={e => setFile(e.target.files[0])}/>;
+    const [inputs, setInputs] = useState([filePicker]);
 
     const loadData = async () => {
         if (!token) {
@@ -28,23 +41,21 @@ export default function EventEdit() {
         console.log(eventData)
 
     }
-
+    let { id } = useParams();
     const handleFormSubmit = async (e) => {
         e.preventDefault();
+        console.log(description, date, title);
+        const res = await sendJSONRequest('PUT', `/api/event/update/${id}`, {
+            description: description,
+            date: date,
+            title: title,
+        }, true);
 
-    //     const res = await sendJSONRequest('PUT', '/api/event/update', {
-    //         name: name,
-    //         birthDate: birthDate,
-    //         birthPlace: birthLocation,
-    //         location: currentLocation,
-    //     }, true);
-    //     const data = await res.json();
-    //
-    //     if (res.status !== 200) {
-    //         console.log("something went wrong");
-    //         return;
-    //     }
-    //     // setSendToHomepage(true);
+        if (res.status !== 200) {
+            console.log("something went wrong");
+            return;
+        }
+        // setSendToHomepage(true);
     };
 
     const images = [9, 8, 7, 6, 5].map((number) => (
@@ -119,8 +130,13 @@ export default function EventEdit() {
                     </div>
                     <form className='editEventForm'>
                         <h2 className='editHeader'>Edit your Event</h2>
+
                         <label htmlFor="editPhoto">Choose which images to add:</label>
-                        <button className='editPhoto'>Upload Photos</button>
+                        <button className='editPhoto' onClick={addInput}>Add multiple files</button>
+                        <div>
+                            {inputs}
+                        </div>
+
                         <label htmlFor="editEventTitle">Change your Event title:</label>
                         <input
                             className='editEventTitle'
@@ -130,12 +146,24 @@ export default function EventEdit() {
                             value={title}
                             onChange={e => setTitle(e.target.value)}
                         />
-                        <label for="editEventTitle">Change your Event summary:</label>
-                        <textarea className='editEventDesc' placeholder='Event Description'></textarea>
-                        <label for="editEventDesc">Change the date your Event occured:</label>
-                        <input classname="editEventDate" type='date'></input>
+                        <label htmlFor="editEventDesc">Change your Event summary:</label>
+                        <textarea
+                            className='editEventDesc'
+                            placeholder='Event Description'
+                            name='editEventDesc'
+                            value={description}
+                            onChange={e => setDescription(e.target.value)}
+                        />
+                        <label htmlFor="editEventDate">Change the date your Event occurred:</label>
+                        <input
+                            className="editEventDate"
+                            type='date'
+                            name='editEventDate'
+                            value={date}
+                            onChange={e => setDate(e.target.value)}
+                        />
                         <div className='saveAndDelete'>
-                            <button className='updateEventButton'>Save Event</button>
+                            <button className='updateEventButton' onClick={handleFormSubmit}>Save Event</button>
                             <button className='deleteEventButton'>Delete Event</button>
                         </div>
                     </form>
