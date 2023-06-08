@@ -24,45 +24,6 @@ body {
     margin-right: auto;
 }
 
-/* profile header and navbar*/
-
-.navBackground {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100px;
-    background-color: var(--colorBlock);
-}
-
-.horizontal {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 35px;
-}
-
-.LifeLine {
-    margin: 0px;
-    margin-left: 10px;
-    font-family: 'Alegreya Sans SC', sans-serif;
-    color: white;
-}
-
-.go2Profile, .go2Friends, .go2TimeLine, .logout {
-    background-color: var(--colorBlock);
-    border: none;
-    color: white;
-    font-size: 20px;
-    margin-left: 20px;
-    font-family: 'Work Sans', sans-serif;
-}
-
-.go2Profile:hover, .go2Friends:hover, .go2TimeLine:hover, .logout:hover {
-    cursor: pointer;
-}
-
 .searchButton:hover {
     cursor: pointer;
 }
@@ -113,7 +74,7 @@ body {
     cursor: pointer;
 }
 
-.tabWordsUsers2, .tabWordsBlocked2 {
+.tabWordsUsers2, .tabWordsBlocked2, .tabWords {
     font-weight: bold;
     background-color: var(--offWhite);
     border: none;
@@ -137,13 +98,13 @@ body {
 
 /* search bar */
 
-.friendSearchBox {
+.friendSearchBox2 {
     position: absolute;
     width: -moz-fit-content;
     width: fit-content;
     top: 135px;
     right: 7%;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
 }
 
 .searchButton2 {
@@ -178,7 +139,6 @@ body {
     width: -moz-fit-content;
     width: fit-content;
     background-color: white;
-    overflow: hidden;
 }
 
 .allFriends {
@@ -192,6 +152,12 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     margin-bottom: 40px;
+}
+
+.ignoredText {
+    height: 40px;
+    display: flex;
+    align-items: center;
 }
 
 .friendCard2 {
@@ -265,6 +231,15 @@ body {
     cursor: pointer;
 }
 
+.addFriend {
+    border: none;
+    background-color: white;
+}
+
+.friendblock {
+    margin-top: 80px;
+}
+
 @media screen and (max-width: 850px) and (min-width: 600px) {
 
     .friendSearchBox2 {
@@ -275,7 +250,7 @@ body {
         width: 87%;
         margin-bottom: 20px;
     }
-    
+
     }
     
     
@@ -292,16 +267,16 @@ body {
     
     .friendSearchBox2 {
         position: absolute;
+        width: 100%;
+        right: 0%;
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-bottom: 20px;
-        margin-left: auto;
-        margin-right: auto;
+        margin-bottom: 50px;
     }
 
     .friendCard2 {
-        padding: 0px 3vw;
+        padding: 1vh 3vw;
     }
 
     .friendPhotoContainer {

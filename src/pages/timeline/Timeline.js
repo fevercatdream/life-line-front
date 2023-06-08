@@ -67,24 +67,14 @@ export default function TimelineFunc() {
 
     return (
         <>
-            <NavTabs/>
+            
             <div className="mainTimelineBlock">
                 <header id="friendHead" className='friendHead2'>
                     <div id='blackOut' className={eventModalVisible ? "blackOut2" : "blackOut2 hidden"}
                          onClick={() => setEventModalVisible(false)}></div>
-                    <div className='horizontal'>
-                {/*        <h1 className='LifeLine'>Life Line</h1>*/}
-                {/*    </div>*/}
-                {/*    <div className='navBar'>*/}
-                {/*        <Link to="/profile">*/}
-                {/*            <button className='go2Profile'>Profile</button>*/}
-                {/*        </Link>*/}
-                {/*        <Link to="/friends">*/}
-                {/*            <button className='go2Friends'>Friends</button>*/}
-                {/*        </Link>*/}
-                {/*        <button className='go2TimeLine'>Time Line</button>*/}
-                {/*        <button className='logout'>Logout</button>*/}
-                    </div>
+                         <div className='navBackground'></div>
+                         <NavTabs/>
+                    <div className='horizontal'></div>
                 </header>
                 <div className='timelineBlock'>
                     {/*<div className='navBackground'></div>*/}

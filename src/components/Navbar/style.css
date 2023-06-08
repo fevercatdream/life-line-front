@@ -1,0 +1,160 @@
+:root {
+    --bordercolor: rgb(218, 218, 218);
+    --backgroundFill: rgb(239, 241, 250);
+    --colorBlock: #70abc7;
+    --offWhite: rgb(248, 248, 248);
+}
+
+.friendHead2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-self: center;
+    margin-top: 15px;
+    width: 75vw;
+    height: 100px;
+    margin-bottom: 1vh;
+    align-items: center;
+    z-index: 1;
+}
+
+.navBackground {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100px;
+    background-color: var(--colorBlock);
+}
+
+/* profile header and navbar*/
+
+.horizontal {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 35px;
+}
+
+.LifeLine {
+    margin: 0px;
+    margin-left: 10px;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    color: white;
+    font-size: 35px;
+    min-width: 150px;
+}
+
+.go2Profile, .go2Friends, .go2TimeLine, .logout {
+    background-color: var(--colorBlock);
+    border: none;
+    color: white;
+    font-size: 20px;
+    margin-left: 20px;
+    font-family: 'Work Sans', sans-serif;
+    cursor: pointer;
+}
+
+.go2Profile2, .go2Friends2, .go2TimeLine2, .logout2 {
+    display: none;
+}
+
+.navBar {
+    display: flex;
+    min-width: 450px;
+}
+
+.hamburger {
+    display: none;
+}
+
+
+@media screen and (max-width: 1900px) and (min-width: 1176px) {
+
+    .friendHead2 {
+        width: 70vw;
+        margin-left: -170px;
+    }
+
+}
+
+@media screen and (max-width: 1175px) and (min-width: 775px) {
+
+    .friendHead2 {
+        width: 85vw;
+    }
+}
+
+@media only screen and (max-width: 774px) {
+
+    .friendHead2 {
+        margin-top: 20px;
+        flex-direction: column;
+        height: 50px;
+        width: 70vw;
+    }
+
+    .navBackground {
+        height: 70px;
+    }
+
+    .navBar {
+        display: none;
+    }
+
+    .go2Profile, .go2Friends, .go2TimeLine, .logout {
+        display: none;
+    }
+
+    .navBar2 {
+        position: absolute;
+        left: 0px;
+        display: flex;
+        flex-direction: column;
+        height: 150px;
+        background-color: rgb(146, 198, 214);
+        width: 100%;
+        margin-top: 50px;
+        border-top: 1px solid rgb(75, 147, 168);
+    }
+
+    .LifeLine {
+        margin-left: 0px;
+        font-size: 30px;
+    }
+
+    .go2Profile2, .go2Friends2, .go2TimeLine2, .logout2 {
+        background-color: rgb(146, 198, 214);
+        border: none;
+        color: white;
+        font-size: 20px;
+        font-family: 'Work Sans', sans-serif;
+        cursor: pointer;
+        display: inline-block;
+        margin: 5px 0px;
+        padding-left: 30px;
+    }
+
+    .navBar2 a {
+        border-bottom: 1px solid rgb(166, 208, 221);
+    }
+
+    .logout2 {
+        display: flex;
+    }
+
+    .hamburger {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px;
+        border: 1px solid var(--bordercolor);
+        background-color: var(--colorBlock);
+        border-radius: 5px;
+        color: rgb(255, 255, 255);
+        cursor: pointer;
+    }
+
+}

@@ -8,29 +8,15 @@ import {MyFriends, AllUsers, IgnoredUsers} from "../../components/Friends";
 export default function Friends() {
     return (
         <>
-            <NavTabs/>
             <div className="mainFriendBlock">
-                {/*<header className='friendHead2'>*/}
-                {/*    <div className='horizontal'>*/}
-                {/*        <h1 className='LifeLine'>Life Line</h1>*/}
-                {/*    </div>*/}
-                {/*    <div className='navBar'>*/}
-                {/*        <Link to="/profile">*/}
-                {/*            <button className='go2Profile'>Profile</button>*/}
-                {/*        </Link>*/}
-                {/*        <button className='go2Friends'>Friends</button>*/}
-                {/*        <Link to="/timeline">*/}
-                {/*            <button className='go2TimeLine'>Time Line</button>*/}
-                {/*        </Link>*/}
-                {/*        <button className='logout'>Logout</button>*/}
-                {/*    </div>*/}
-                {/*</header>*/}
-                <div className='friendblock'>
-                    {/*<div className='navBackground'></div>*/}
+            <div className='navBackground'></div>
+                    <NavTabs />
                     <div className='friendSearchBox2'>
                         <input type="text" className='searchBar2' placeholder='search friends'></input>
                         <button className='searchButton2'>+</button>
                     </div>
+                <div className='friendblock'>
+                    
                     <div className='friendNav'>
                         <div className='friendTab'>
                             <NavLink to="/friends">

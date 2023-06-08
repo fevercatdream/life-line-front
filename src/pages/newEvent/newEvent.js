@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Link, Navigate} from "react-router-dom"
 import './newEvent.css'
+import NavTabs from "../../components/Navbar";
 
 import Carousel from 'react-gallery-carousel';
 import 'react-gallery-carousel/dist/index.css';
@@ -64,18 +65,8 @@ export default function EventNew() {
     return (
         <>
         <div className="mainEditBlock">
-            <header className='friendHead2'>
-            <div className='horizontal'>
-                <h1 className='LifeLine'>Life Line</h1>
-                </div>
-                <div className='navBar'>
-                    <Link to="/profile"><button className='go2Profile'>Profile</button></Link>
-                    <Link to="/friends"><button className='go2Friends'>Friends</button></Link>
-                    <Link to="/timeline"><button className='go2TimeLine'>Time Line</button></Link>
-                    <button className='logout'>Logout</button>
-                </div>
-            </header>
-
+            <div className='navBackground'></div>
+            <NavTabs/>
             <div className='flexRow3'>
             <div className='editBlock2'>
                 <div className='navBackground'></div>
@@ -134,8 +125,10 @@ export default function EventNew() {
             <div className='editEventForm'>
                 <h2 className='editHeader'>Share a new Event</h2>
                 <label htmlFor="editPhoto">Choose which images to upload:</label>
-                <button onClick={addInput}>+</button>
-                {inputs}
+                <button className='updateEventButton' onClick={addInput}>Add Multiple Files</button>
+                <div className='inputButtons'>
+                    {inputs}
+                </div>
                 <label htmlFor="editEventTitle">Title your event:</label>
                 <input className='editEventTitle' placeholder='Event Title' onChange={e => setTitle(e.target.value)}></input>
                 <label htmlFor="editEventTitle">Summarize your event:</label>
