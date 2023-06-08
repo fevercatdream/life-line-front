@@ -24,7 +24,7 @@ export default function Profile() {
 
     const [profile, setProfile] = useState();
     const [loading, setLoading] = useState(true);
-    const [token, setToken] = useState(localStorage.getItem('token'));
+    const token = localStorage.getItem('token');
     const loadData = async () => {
         if (!token) {
             return;
@@ -42,10 +42,10 @@ export default function Profile() {
         setLoading(false);
     }
 
-    const logout = () => {
-        setToken(null);
-        localStorage.removeItem('token');
-    }
+    // const logout = () => {
+    //     setToken(null);
+    //     localStorage.removeItem('token');
+    // }
 
     useEffect(() => {
         loadData();
