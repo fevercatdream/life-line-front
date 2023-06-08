@@ -67,13 +67,13 @@ export default function TimelineFunc() {
 
     return (
         <>
-            
+
             <div className="mainTimelineBlock">
                 <header id="friendHead" className='friendHead2'>
                     <div id='blackOut' className={eventModalVisible ? "blackOut2" : "blackOut2 hidden"}
                          onClick={() => setEventModalVisible(false)}></div>
-                         <div className='navBackground'></div>
-                         <NavTabs/>
+                    <div className='navBackground'></div>
+                    <NavTabs/>
                     <div className='horizontal'></div>
                 </header>
                 <div className='timelineBlock'>
@@ -201,6 +201,7 @@ function Event({event, toggle, invert}) {
     const d = new Date(event.date);
     const month = d.toLocaleDateString('en-us', {month: 'short'})
     const year = d.toLocaleDateString('en-us', {year: 'numeric'})
+    console.log(event.eventId);
     return (
         <TimelineItem>
             <TimelineOppositeContent
@@ -226,7 +227,7 @@ function Event({event, toggle, invert}) {
                     <div className="timelineInfo">
                         <div className='flexRow2'>
                             <h2 className="timelineTitle">{event.title}</h2>
-                            <Link to="/editevent" className='editIcon3'><Edit sx={{fontSize: 30}} className='hover'/></Link>
+                            <Link to={`/editevent/${event.eventId}`} className='editIcon3'><Edit sx={{fontSize: 30}} className='hover'/></Link>
                         </div>
                         <p className="timelineDesc">{event.description}</p>
                         <div className="timelineNotif">
