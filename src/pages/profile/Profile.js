@@ -369,9 +369,11 @@ function PendingFriend({pendingFriendRequest, clearFriendRequest}) {
 
     return (
         <div className='profileFriendNotif'>
-            <div className='flexRow'>
-                <img className='friendSmall2' src={pendingFriendRequest.profilePhoto} alt='placeholder'></img>
-                <div>
+            <div className='notifRow'>
+                <div className='friendSmallContainer'>
+                    <img className='friendSmall2' src={pendingFriendRequest.profilePhoto} alt='placeholder'></img>
+                </div>
+                <div className='contentContainer'>
                     <h3 className='commentNotifUser'>{pendingFriendRequest.name}</h3>
                     <p className='currentTime'><i>{pendingFriendRequest.createdAt}</i></p>
                 </div>
@@ -387,10 +389,12 @@ function Like({like}) {
 
 return (
     <div className='profileLikeNotif'>
-        <div className='flexRow'>
-            <img className='friendSmall2' src={like.User.profilePhoto}
+        <div className='notifRow'>
+            <div className='friendSmallContainer'>
+                <img className='friendSmall2' src={like.User.profilePhoto}
                  alt='placeholder'></img>
-            <div>
+            </div>
+            <div className='contentContainer'>
                 <h3 className='commentNotifUser'>{like.User.name}</h3>
                 <p className='currentTime'><i>{like.createdAt}</i></p>
             </div>
@@ -406,10 +410,12 @@ function Comment({comment}) {
 
     return (
         <div className='profileCommentNotif'>
-            <div className='flexRow'>
-                <img className='friendSmall2' src={comment.User.profilePhoto}
+            <div className='notifRow'>
+                <div className='friendSmallContainer'>
+                    <img className='friendSmall2' src={comment.User.profilePhoto}
                      alt='placeholder'></img>
-                <div>
+                </div>
+                <div className='contentContainer'>
                     <h3 className='commentNotifUser'>{comment.User.name}</h3>
                     <p className='currentTime'><i>{comment.comment}</i></p>
                 </div>

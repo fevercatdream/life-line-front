@@ -240,6 +240,11 @@ body {
     border-radius: 5px;
 }
 
+.friendCommentPic {
+    max-width: 175px;
+    max-height: 175px;
+}
+
 .friendCommentBox {
     display: flex;
     flex-direction: column;

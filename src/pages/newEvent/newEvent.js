@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Navigate } from "react-router-dom"
 import './newEvent.css'
 import NavTabs from "../../components/Navbar";
 
 import Carousel from 'react-gallery-carousel';
 import 'react-gallery-carousel/dist/index.css';
-import {backendHost} from "../../utils/helpers";
+import { backendHost } from "../../utils/helpers";
 
 export default function EventNew() {
 
@@ -25,7 +25,7 @@ export default function EventNew() {
     const [eventDate, setEventDate] = useState();
     const [sendToTimeline, setSendToTimeline] = useState(false);
 
-    const filePicker = <input type={'file'} accept={'image/*'} onChange={e => setFile(e.target.files[0])}/>;
+    const filePicker = <input type={'file'} accept={'image/*'} onChange={e => setFile(e.target.files[0])} />;
 
     const [inputs, setInputs] = useState([filePicker]);
 
@@ -40,7 +40,7 @@ export default function EventNew() {
     const submitForm = async (e) => {
         e.preventDefault();
         console.log(title, desc, eventDate, file);
-        if(!file || !title || !desc || !eventDate) {
+        if (!file || !title || !desc || !eventDate) {
             alert("Please fill out event form to create a new event");
             setSendToTimeline(false);
             return;
@@ -61,7 +61,7 @@ export default function EventNew() {
         setSendToTimeline(true);
     }
 
-    if(sendToTimeline) {
+    if (sendToTimeline) {
         return (
             <Navigate to={'/timeline'} />
         )
@@ -69,81 +69,81 @@ export default function EventNew() {
 
     return (
         <>
-        <div className="mainEditBlock">
-            <div className='navBackground'></div>
-            <NavTabs/>
-            <div className='flexRow3'>
-            <div className='editBlock2'>
+            <div className="mainEditBlock">
                 <div className='navBackground'></div>
-                <figure id="modalBox2" className="modalBox2">
-                        <div className='sliderMedia'>
-                            <Carousel
-                                images={images}
-                                style={{height: 450, width: 700}}
-                                hasIndexBoard="false"
-                                canAutoPlay="false"
-                                hasCaptions="true"
-                                hasMediaButton="topRight"
-                                autoPlayInterval="3000"
-                                hasSizeButton="false"
-                                className="largePlayer"
-                            >
-                            </Carousel>
-                            <Carousel
-                                images={images}
-                                style={{height: 325, width: 500}}
-                                hasIndexBoard="false"
-                                canAutoPlay="false"
-                                hasCaptions="true"
-                                hasMediaButton="topRight"
-                                autoPlayInterval="3000"
-                                hasSizeButton="false"
-                                className="mediumPlayer"
-                            >
-                            </Carousel>
-                            <Carousel
-                                images={images}
-                                style={{height: 175, width: 315}}
-                                hasIndexBoard="false"
-                                canAutoPlay="false"
-                                hasCaptions="true"
-                                hasMediaButton="topRight"
-                                autoPlayInterval="3000"
-                                hasSizeButton="false"
-                                className="smallPlayer"
-                            >
-                            </Carousel>
+                <NavTabs />
+                <div className='flexRow3'>
+                    {/* <div className='editBlock2'>
+                        <div className='navBackground'></div>
+                        <figure id="modalBox2" className="modalBox2">
+                            <div className='sliderMedia'>
+                                <Carousel
+                                    images={images}
+                                    style={{ height: 450, width: 700 }}
+                                    hasIndexBoard="false"
+                                    canAutoPlay="false"
+                                    hasCaptions="true"
+                                    hasMediaButton="topRight"
+                                    autoPlayInterval="3000"
+                                    hasSizeButton="false"
+                                    className="largePlayer"
+                                >
+                                </Carousel>
+                                <Carousel
+                                    images={images}
+                                    style={{ height: 325, width: 500 }}
+                                    hasIndexBoard="false"
+                                    canAutoPlay="false"
+                                    hasCaptions="true"
+                                    hasMediaButton="topRight"
+                                    autoPlayInterval="3000"
+                                    hasSizeButton="false"
+                                    className="mediumPlayer"
+                                >
+                                </Carousel>
+                                <Carousel
+                                    images={images}
+                                    style={{ height: 175, width: 315 }}
+                                    hasIndexBoard="false"
+                                    canAutoPlay="false"
+                                    hasCaptions="true"
+                                    hasMediaButton="topRight"
+                                    autoPlayInterval="3000"
+                                    hasSizeButton="false"
+                                    className="smallPlayer"
+                                >
+                                </Carousel>
+                            </div>
+                        </figure>
+                        <div className="timeLineEvent3">
+                            <figure className="noMargin">
+                                <img className="timelineThumb" src="https://dummyimage.com/300x200/000/aaa" alt={'timeline'}></img>
+                            </figure>
+                            <div className="timelineInfo">
+                                <div className='flexRow2'>
+                                    <h2 className="timelineTitle">Learned Latin</h2>
+                                </div>
+                                <p className="timelineDesc2">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            </div>
                         </div>
-                    </figure>
-                <div className="timeLineEvent3">
-                    <figure className="noMargin">
-                        <img className="timelineThumb" src="https://dummyimage.com/300x200/000/aaa" alt={'timeline'}></img>
-                    </figure>
-                    <div className="timelineInfo">
-                        <div className='flexRow2'>
-                            <h2 className="timelineTitle">Learned Latin</h2>
+                    </div> */}
+                    <div className='editEventForm'>
+                        <h2 className='editHeader'>Share a new Event</h2>
+                        <label htmlFor="editPhoto">Choose which images to upload:</label>
+                        <button className='updateEventButton' onClick={addInput}>Add Multiple Files</button>
+                        <div className='inputButtons'>
+                            {inputs}
                         </div>
-                        <p className="timelineDesc2">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <label htmlFor="editEventTitle">Title your event:</label>
+                        <input className='editEventTitle' placeholder='Event Title' onChange={e => setTitle(e.target.value)}></input>
+                        <label htmlFor="editEventTitle">Summarize your event:</label>
+                        <textarea className='editEventDesc' placeholder='Event Description' onChange={e => setDesc(e.target.value)}></textarea>
+                        <label htmlFor="editEventDesc">Select the date your Event occured:</label>
+                        <input className="editEventDate" type='date' onChange={e => setEventDate(e.target.value)}></input>
+                        <button className='updateEventButton' onClick={submitForm}>Share Event</button>
                     </div>
                 </div>
             </div>
-            <div className='editEventForm'>
-                <h2 className='editHeader'>Share a new Event</h2>
-                <label htmlFor="editPhoto">Choose which images to upload:</label>
-                <button className='updateEventButton' onClick={addInput}>Add Multiple Files</button>
-                <div className='inputButtons'>
-                    {inputs}
-                </div>
-                <label htmlFor="editEventTitle">Title your event:</label>
-                <input className='editEventTitle' placeholder='Event Title' onChange={e => setTitle(e.target.value)}></input>
-                <label htmlFor="editEventTitle">Summarize your event:</label>
-                <textarea className='editEventDesc' placeholder='Event Description' onChange={e => setDesc(e.target.value)}></textarea>
-                <label htmlFor="editEventDesc">Select the date your Event occured:</label>
-                <input className="editEventDate" type='date' onChange={e => setEventDate(e.target.value)}></input>
-                <button className='updateEventButton' onClick={submitForm}>Share Event</button>
-            </div>
-            </div>
-        </div>
-      </>
+        </>
     );
-  }
+}
