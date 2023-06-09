@@ -106,6 +106,7 @@ function ModalComment({comment}) {
 function Modal({event, visible}) {
     const [commentVisible, setCommentVisible] = useState(false);
     const [comment, setComment] = useState();
+    const [eventComments, setEventComments] = useState([]);
     const [liked, setLiked] = useState();
     const [likeCount, setLikeCount] = useState();
 
@@ -115,6 +116,8 @@ function Modal({event, visible}) {
         }
         setLiked(event.userLiked);
         setLikeCount(event.likeCount);
+        setEventComments(event.comments);
+
     }, [event]);
 
     if(!event) {
@@ -126,18 +129,21 @@ function Modal({event, visible}) {
         alt: 'an image',
     }))
 
-    const comments = event.comments.map(x => <ModalComment comment={x} />)
+    const comments = eventComments.map(x => <ModalComment comment={x} />)
 
     const uploadComment = async () => {
         if (!comment) {
             return;
         }
 
-        await sendJSONRequest('POST', '/api/comment/create', {
+        const res = await sendJSONRequest('POST', '/api/comment/create', {
             eventId: event.eventId,
             comment: comment,
         }, true);
         setComment('');
+        const comments = eventComments.slice();
+        comments.push(await res.json());
+        setEventComments(comments);
     }
 
     const likeEvent = async (remove) => {
@@ -200,6 +206,17 @@ function Event({event, toggle, invert}) {
     const d = new Date(event.date);
     const month = d.toLocaleDateString('en-us', {month: 'short'})
     const year = d.toLocaleDateString('en-us', {year: 'numeric'})
+    const [likeCount, setLikeCount] = useState();
+    const [commentCount, setCommentCount] = useState();
+
+    useEffect(() => {
+        if(!event) {
+            return;
+        }
+        setLikeCount(event.likeCount)
+        setCommentCount(event.commentsCount);
+    }, [event])
+
     console.log(event.eventId);
     return (
         <TimelineItem>
@@ -230,9 +247,9 @@ function Event({event, toggle, invert}) {
                         </div>
                         <p className="timelineDesc">{event.description}</p>
                         <div className="timelineNotif">
-                            <p className='comments'>{event.commentsCount}</p>
+                            <p className='comments'>{commentCount}</p>
                             <Chat sx={{fontSize: 25}} className='commentBtn'/>
-                            <p className='likes'>{event.likeCount}</p>
+                            <p className='likes'>{likeCount}</p>
                             <Favorite sx={{fontSize: 25}} className='likeBtn'/>
                         </div>
                     </div>

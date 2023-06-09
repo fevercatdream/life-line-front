@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
-import { Link, Navigate } from "react-router-dom"
+import React, {useEffect, useState} from 'react';
+import {Link, Navigate} from "react-router-dom"
 import './Profile.css'
 
 import Carousel from 'react-gallery-carousel';
 import 'react-gallery-carousel/dist/index.css';
 
-import { sendJSONRequest } from "../../utils/helpers";
+import {sendJSONRequest} from "../../utils/helpers";
 import NavTabs from '../../components/Navbar/index';
 
 import Chat from '@mui/icons-material/Chat';
@@ -21,7 +21,6 @@ export default function Profile() {
     const [notifVisible, setNotifVisible] = useState(false);
     const [likeNotifVisible, setLikeVisible] = useState(false);
     const [friendNotifVisible, setFriendVisible] = useState(false);
-
     const [profile, setProfile] = useState();
     const [loading, setLoading] = useState(true);
     const token = localStorage.getItem('token');
@@ -42,10 +41,13 @@ export default function Profile() {
         setLoading(false);
     }
 
-    // const logout = () => {
-    //     setToken(null);
-    //     localStorage.removeItem('token');
-    // }
+    const clearFriendRequest = (friendId) => {
+        const p = { ...profile }
+        const idx = p.pending_friends.findIndex(x => x.friendId === friendId);
+        p.pending_friends.splice(idx, 1);
+        p.new_friend_requests--;
+        setProfile(p);
+    };
 
     useEffect(() => {
         loadData();
@@ -53,7 +55,7 @@ export default function Profile() {
 
     if (!token) {
         return (
-            <Navigate to={'/'} />
+            <Navigate to={'/'}/>
         )
     }
 
@@ -63,8 +65,16 @@ export default function Profile() {
         )
     }
 
+    let pendingFriendsEls = <span>New friend requests will appear here.</span>;
+
+    if (profile && profile.pending_friends && profile.pending_friends.length > 0) {
+        pendingFriendsEls = profile.pending_friends.map(i =>
+            <PendingFriend pendingFriendRequest={i} clearFriendRequest={() => clearFriendRequest(i.friendId)}/>);
+    }
+
+
     const userYouKnowImages = profile.known_users.map(k => <img className='suggestFriend1' src={k.profile_url}
-        key={k.id} alt={'placeholder'} />)
+                                                                key={k.id} alt={'placeholder'}/>)
 
     // Array for gallery slider images
     const images = [9, 8, 7, 6, 5].map((number) => (
@@ -79,18 +89,18 @@ export default function Profile() {
 
     return (
         <>
-                    <div className="mainProfileBlock">
-                        <div className='profileblock'>
-                            <div id='blackOut' className={modalVisible ? "blackOut" : "blackOut hidden"}
-                                 onClick={() => setModalVisible(false)}>
+            <div className="mainProfileBlock">
+                <div className='profileblock'>
+                    <div id='blackOut' className={modalVisible ? "blackOut" : "blackOut hidden"}
+                         onClick={() => setModalVisible(false)}>
 
-                            </div>
-                        <div className='navBackground'></div>
-                        <NavTabs />
-                        <div className='profilePicBox'>
+                    </div>
+                    <div className='navBackground'></div>
+                    <NavTabs/>
+                    <div className='profilePicBox'>
                         <div className='profileBox'>
-                            <ProfilePic profile={profile} />
-                            <ProfileInfo profile={profile} />
+                            <ProfilePic profile={profile}/>
+                            <ProfileInfo profile={profile}/>
                             <div className='suggestBox'>
                                 {userYouKnowImages}
                             </div>
@@ -107,7 +117,7 @@ export default function Profile() {
                                         setFriendVisible(false);
                                     }}>
                                         <p className='notifys'>{profile.new_comments}</p>
-                                        <Chat sx={{ fontSize: 25 }} className='commentBtn' />
+                                        <Chat sx={{fontSize: 25}} className='commentBtn'/>
                                     </div>
                                     <div className='notifRow' onClick={() => {
                                         likeNotifVisible ? setLikeVisible(false) : setLikeVisible(true);
@@ -115,7 +125,7 @@ export default function Profile() {
                                         setFriendVisible(false);
                                     }}>
                                         <p className='notifys'>{profile.new_likes}</p>
-                                        <Favorite sx={{ fontSize: 25 }} className='likeBtn' />
+                                        <Favorite sx={{fontSize: 25}} className='likeBtn'/>
                                     </div>
                                     <div className='notifRow' onClick={() => {
                                         friendNotifVisible ? setFriendVisible(false) : setFriendVisible(true);
@@ -123,12 +133,12 @@ export default function Profile() {
                                         setLikeVisible(false);
                                     }}>
                                         <p className='notifys'>{profile.new_friend_requests}</p>
-                                        <PersonAddAlt1 sx={{ fontSize: 30 }} className='addBtn' />
+                                        <PersonAddAlt1 sx={{fontSize: 30}} className='addBtn'/>
                                     </div>
                                 </div>
                                 <div className='flexRow'>
                                     <input type="text" className='searchBar' placeholder='search friends'></input>
-                                    <button className='searchButton'><Search sx={{ fontSize: 20 }} /></button>
+                                    <button className='searchButton'><Search sx={{fontSize: 20}}/></button>
                                 </div>
                             </div>
 
@@ -137,14 +147,14 @@ export default function Profile() {
                                 <div className='profileCommentNotif'>
                                     <div className='flexRow'>
                                         <img className='friendSmall2' src='http://placekitten.com/150/150'
-                                            alt='placeholder'></img>
+                                             alt='placeholder'></img>
                                         <div>
                                             <h3 className='commentNotifUser'>UserName</h3>
                                             <p className='currentTime'><i>This is the time currently, oh boy!</i></p>
                                         </div>
                                     </div>
                                     <div className='centeredIcon'>
-                                        <Chat sx={{ fontSize: 30 }} className='commentBtn2' />
+                                        <Chat sx={{fontSize: 30}} className='commentBtn2'/>
                                     </div>
                                 </div>
                             </div>
@@ -153,38 +163,25 @@ export default function Profile() {
                                 <div className='profileLikeNotif'>
                                     <div className='flexRow'>
                                         <img className='friendSmall2' src='http://placekitten.com/150/150'
-                                            alt='placeholder'></img>
+                                             alt='placeholder'></img>
                                         <div>
                                             <h3 className='commentNotifUser'>UserName</h3>
                                             <p className='currentTime'><i>This is the time currently, oh boy!</i></p>
                                         </div>
                                     </div>
                                     <div className='centeredIcon'>
-                                        <Favorite sx={{ fontSize: 30 }} className='commentBtn2' />
+                                        <Favorite sx={{fontSize: 30}} className='commentBtn2'/>
                                     </div>
                                 </div>
                             </div>
                             <div className={friendNotifVisible ? "newFriendModal" : "newFriendModal hidden"}>
-                                {/* This is a single user friend notification  */}
-                                <div className='profileFriendNotif'>
-                                    <div className='flexRow'>
-                                        <img className='friendSmall2' src='http://placekitten.com/150/150' alt='placeholder'></img>
-                                        <div>
-                                            <h3 className='commentNotifUser'>UserName</h3>
-                                            <p className='currentTime'><i>This is the time currently, oh boy!</i></p>
-                                        </div>
-                                    </div>
-                                    <div className='centeredIcon'>
-                                        <PersonAddAlt1 sx={{ fontSize: 30 }} className='commentBtn2' />
-                                    </div>
-                                </div>
-
+                                {pendingFriendsEls}
                             </div>
                             <div className='recentBox'>
                                 <figure id="recentCard" className='recentCard' onClick={() => setModalVisible(true)}>
 
                                     <img className='recentMedia' src="https://dummyimage.com/500x325/000/aaa"
-                                        alt='placeholder' />
+                                         alt='placeholder'/>
                                     <figcaption className='recentCaption'>Lorem ipsum dolor sit amet, consectetur
                                         adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
                                         aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
@@ -192,50 +189,50 @@ export default function Profile() {
                                     </figcaption>
                                     <div className='recentComReac'>
                                         <p className='comments'>5</p>
-                                        <Chat sx={{ fontSize: 25 }} className='commentBtn' />
+                                        <Chat sx={{fontSize: 25}} className='commentBtn'/>
                                         <p className='likes'>15</p>
-                                        <Favorite sx={{ fontSize: 25 }} className='likeBtn' />
+                                        <Favorite sx={{fontSize: 25}} className='likeBtn'/>
                                     </div>
                                 </figure>
                                 <div className='recentManyDiv'>
                                     <figure className='recentMany1'>
                                         <img className='recentMediaSmall' src="https://dummyimage.com/300x200/000/aaa"
-                                            alt='placeholder' />
+                                             alt='placeholder'/>
                                         <div className='recentComReac'>
                                             <p className='comments2'>5</p>
-                                            <Chat sx={{ fontSize: 20 }} className='commentBtn' />
+                                            <Chat sx={{fontSize: 20}} className='commentBtn'/>
                                             <p className='likes2'>15</p>
-                                            <Favorite sx={{ fontSize: 20 }} className='likeBtn' />
+                                            <Favorite sx={{fontSize: 20}} className='likeBtn'/>
                                         </div>
                                     </figure>
                                     <figure className='recentMany3'>
                                         <img className='recentMediaSmall' src="https://dummyimage.com/300x200/000/aaa"
-                                            alt='placeholder' />
+                                             alt='placeholder'/>
                                         <div className='recentComReac'>
                                             <p className='comments2'>5</p>
-                                            <Chat sx={{ fontSize: 20 }} className='commentBtn' />
+                                            <Chat sx={{fontSize: 20}} className='commentBtn'/>
                                             <p className='likes2'>15</p>
-                                            <Favorite sx={{ fontSize: 20 }} className='likeBtn' />
+                                            <Favorite sx={{fontSize: 20}} className='likeBtn'/>
                                         </div>
                                     </figure>
                                     <figure className='recentMany2'>
                                         <img className='recentMediaSmall' src="https://dummyimage.com/300x200/000/aaa"
-                                            alt='placeholder' />
+                                             alt='placeholder'/>
                                         <div className='recentComReac'>
                                             <p className='comments2'>5</p>
-                                            <Chat sx={{ fontSize: 20 }} className='commentBtn' />
+                                            <Chat sx={{fontSize: 20}} className='commentBtn'/>
                                             <p className='likes2'>15</p>
-                                            <Favorite sx={{ fontSize: 20 }} className='likeBtn' />
+                                            <Favorite sx={{fontSize: 20}} className='likeBtn'/>
                                         </div>
                                     </figure>
                                     <figure className='recentMany4'>
                                         <img className='recentMediaSmall' src="https://dummyimage.com/300x200/000/aaa"
-                                            alt='placeholder' />
+                                             alt='placeholder'/>
                                         <div className='recentComReac'>
                                             <p className='comments2'>5</p>
-                                            <Chat sx={{ fontSize: 20 }} className='commentBtn' />
+                                            <Chat sx={{fontSize: 20}} className='commentBtn'/>
                                             <p className='likes2'>15</p>
-                                            <Favorite sx={{ fontSize: 20 }} className='likeBtn' />
+                                            <Favorite sx={{fontSize: 20}} className='likeBtn'/>
                                         </div>
                                     </figure>
                                 </div>
@@ -246,38 +243,38 @@ export default function Profile() {
                                 <div className='friendRow'>
                                     <figure className='friendCard'>
                                         <img className='friendSmall' src='http://placekitten.com/200/200'
-                                            alt='placeholder' />
+                                             alt='placeholder'/>
                                         <p className='friendName'>Name is too long for this box</p>
                                         <p className='friendLocation'>Location is too long for this box</p>
                                     </figure>
                                     <figure className='friendCard'>
                                         <img className='friendSmall' src='http://placekitten.com/300/200'
-                                            alt='placeholder' />
+                                             alt='placeholder'/>
                                         <p className='friendName'>Name is too long for this box</p>
                                         <p className='friendLocation'>Location is too long for this box</p>
                                     </figure>
                                     <figure className='friendCard'>
                                         <img className='friendSmall' src='http://placekitten.com/200/300'
-                                            alt='placeholder' />
+                                             alt='placeholder'/>
                                         <p className='friendName'>Name is too long for this box</p>
                                         <p className='friendLocation'>Location is too long for this box</p>
                                     </figure>
                                     <figure className='friendCard'>
                                         <img className='friendSmall' src='http://placekitten.com/200/200'
-                                            alt='placeholder' />
+                                             alt='placeholder'/>
                                         <p className='friendName'>Name is too long for this box</p>
                                         <p className='friendLocation'>Location is too long for this box</p>
                                     </figure>
                                 </div>
                             </div>
                             <div className='colorBlock3'></div>
-                                <div className='friendHeaderRow'>
-                                    <p className='friendHeader'>Friend List</p>
-                                    <Link to="/friends">
-                                        <button className='viewMore'>View <span>103</span> more</button>
-                                    </Link>
-                                </div>
+                            <div className='friendHeaderRow'>
+                                <p className='friendHeader'>Friend List</p>
+                                <Link to="/friends">
+                                    <button className='viewMore'>View <span>103</span> more</button>
+                                </Link>
                             </div>
+                        </div>
                     </div>
                     <figure id="modalBox1" className={modalVisible ? "modalBox1" : "modalBox1 hidden"}>
                         {/* onClick={() => setModalVisible(false)} */}
@@ -285,7 +282,7 @@ export default function Profile() {
                         <div className='sliderMedia'>
                             <Carousel
                                 images={images}
-                                style={{ height: 450, width: 700 }}
+                                style={{height: 450, width: 700}}
                                 hasIndexBoard="false"
                                 canAutoPlay="false"
                                 hasCaptions="true"
@@ -306,7 +303,7 @@ export default function Profile() {
     );
 }
 
-function ProfilePic({ profile }) {
+function ProfilePic({profile}) {
     return (
         <div className='profilePic'>
             <div className='colorBlock1'></div>
@@ -316,11 +313,11 @@ function ProfilePic({ profile }) {
     )
 }
 
-function ProfileInfo({ profile }) {
+function ProfileInfo({profile}) {
     return (
         <div className='bioColumn'>
             <div className='colorBlock4'></div>
-            <Link to="/editprofile" className='editAccount'><ManageAccountsIcon sx={{ fontSize: 35 }} /></Link>
+            <Link to="/editprofile" className='editAccount'><ManageAccountsIcon sx={{fontSize: 35}}/></Link>
             <div className='bioWhite'>
                 <p className='contactHead'>Birth Date:</p>
                 <p className='contactDate'>{profile.birthdate}</p>
@@ -330,6 +327,43 @@ function ProfileInfo({ profile }) {
                 <p className='contactNow'>{profile.current_location}</p>
             </div>
             <p className='contactBio'>Profile Info</p>
+        </div>
+    )
+}
+
+function PendingFriend({pendingFriendRequest, clearFriendRequest}) {
+    const addFriend = async () => {
+        try {
+            const res = await sendJSONRequest('POST', '/api/friends/resolve-request', {
+                friendId: pendingFriendRequest.friendId,
+                acceptRequest: true,
+            }, true)
+
+            if (res.status !== 200) {
+                console.log('something went wrong, non 200 returned');
+                return;
+            }
+
+            clearFriendRequest();
+        } catch (err) {
+            console.log(err);
+        }
+
+
+    }
+
+    return (
+        <div className='profileFriendNotif'>
+            <div className='flexRow'>
+                <img className='friendSmall2' src={pendingFriendRequest.profilePhoto} alt='placeholder'></img>
+                <div>
+                    <h3 className='commentNotifUser'>{pendingFriendRequest.name}</h3>
+                    <p className='currentTime'><i>{pendingFriendRequest.createdAt}</i></p>
+                </div>
+            </div>
+            <div className='centeredIcon' onClick={addFriend}>
+                <PersonAddAlt1 sx={{fontSize: 30}} className='commentBtn2'/>
+            </div>
         </div>
     )
 }
