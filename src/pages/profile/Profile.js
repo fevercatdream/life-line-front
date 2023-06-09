@@ -278,13 +278,39 @@ export default function Profile() {
                                 hasMediaButton="topRight"
                                 autoPlayInterval="3000"
                                 hasSizeButton="false"
+                                className="largePlayer"
                             >
                             </Carousel>
+                            <Carousel
+                                images={images}
+                                style={{height: 325, width: 500}}
+                                hasIndexBoard="false"
+                                canAutoPlay="false"
+                                hasCaptions="true"
+                                hasMediaButton="topRight"
+                                autoPlayInterval="3000"
+                                hasSizeButton="false"
+                                className="mediumPlayer"
+                            >
+                            </Carousel>
+                            <Carousel
+                                images={images}
+                                style={{height: 175, width: 315}}
+                                hasIndexBoard="false"
+                                canAutoPlay="false"
+                                hasCaptions="true"
+                                hasMediaButton="topRight"
+                                autoPlayInterval="3000"
+                                hasSizeButton="false"
+                                className="smallPlayer"
+                            >
+                            </Carousel>
+                            <div className='eventNotifBar'>
+                            <div className='commentSection'>
+                                
+                            </div>
+                            </div>
                         </div>
-                        <figcaption className='sliderText'>Dogs are domesticated mammals, not natural wild animals. They
-                            were originally bred from wolves. They have been bred by humans for a long time, and were
-                            the first animals ever to be domesticated.
-                        </figcaption>
                     </figure>
                 </div>
             </div>

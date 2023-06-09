@@ -636,13 +636,14 @@ body {
 .modalBox1 {
     display: flex;
     flex-direction: column;
-    justify-content: baseline;
+    justify-content: start;
     align-items: center;
     position: absolute;
     top: 0px;
     margin-top: 5vh;
     padding-top: 5vh;
-    width: 800px;
+    width: -moz-fit-content;
+    width: fit-content;
     height: 85%;
     border: 1px solid var(--bordercolor);
     border-radius: 15px;
@@ -652,20 +653,13 @@ body {
 }
 
 .sliderMedia {
+    width: -moz-fit-content;
+    width: fit-content;
     margin-bottom: 30px;
+    padding: 0px 2vw;
     z-index: 3;
 }
 
-.sliderText {
-    border: 1px solid var(--bordercolor);
-    width: 665px;
-    height: 50px;
-    overflow-y: auto;
-    padding: 10px 20px;
-    background-color: white;
-    border-radius: 5px;
-    z-index: 3;
-}
 
 .blackOut {
     position: absolute;
