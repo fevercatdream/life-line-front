@@ -243,7 +243,7 @@ function Event({event, toggle, invert}) {
                     <div className="timelineInfo">
                         <div className='flexRow2'>
                             <h2 className="timelineTitle">{event.title}</h2>
-                            <Link to={`/editevent/${event.eventId}`} className='editIcon3'><Edit sx={{fontSize: 30}} className='hover'/></Link>
+                            <Link to={`/editevent/${event.eventId}/#LifeLine`} className='editIcon3'><Edit sx={{fontSize: 30}} className='hover'/></Link>
                         </div>
                         <p className="timelineDesc">{event.description}</p>
                         <div className="timelineNotif">
