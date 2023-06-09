@@ -74,13 +74,8 @@ export default function EventEdit() {
             return;
         }
         console.log(file);
-
-
         const newImages = images.slice();
-        // show toast
-        // clear input form (probably google clear input file)
 
-        // post multi-part form data to server
         const formData = new FormData();
         formData.append('photo', file);
         try {
@@ -116,11 +111,15 @@ export default function EventEdit() {
                 console.log("failed to delete the event");
                 return;
             }
-            // alert("Deleted");
-             return <Navigate to={'/timeline'} />
+            alert("Deleted");
+            setSendToTimeline(true);
         } catch (err) {
             console.log(err);
         }
+    }
+
+    if (sendToTimeline) {
+        return <Navigate to={'/timeline'} />
     }
 
     return (
