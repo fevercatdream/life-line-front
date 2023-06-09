@@ -77,7 +77,7 @@ export default function TimelineFunc() {
                     <NavTabs/>
                     <div className='horizontal'></div>
                 <div className='timelineBlock'>
-                    <HashLink smooth to='/timeline/#friendHead' className='toTopBtn'><ArrowCircleUp sx={{ fontSize: 45 }} className='hover'/></HashLink>
+                    <HashLink smooth to='/timeline/#LifeLine' className='toTopBtn'><ArrowCircleUp sx={{ fontSize: 45 }} className='hover'/></HashLink>
                     <Timeline position='alternate'>
                         <div className='newEventField'>
                             <Link to="/newevent"><LibraryAdd sx={{ fontSize: 45 }} className='hover newEventBtn'/></Link>
