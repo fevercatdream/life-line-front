@@ -72,6 +72,14 @@ export default function Profile() {
             <PendingFriend pendingFriendRequest={i} clearFriendRequest={() => clearFriendRequest(i.friendId)}/>);
     }
 
+    // for Likes
+    let likesEls = <span> Like notifications will appear here.</span>;
+
+    if (profile && profile.likes && profile.likes.length > 0) {
+        likesEls = profile.likes.map(i =>
+            <Like like={i} />);
+    }
+
 
     const userYouKnowImages = profile.known_users.map(k => <img className='suggestFriend1' src={k.profile_url}
                                                                 key={k.id} alt={'placeholder'}/>)
@@ -86,7 +94,6 @@ export default function Profile() {
             // thumbnail: `https://placedog.net/100/60?id=1`
         }
     ));
-
     return (
         <>
             <div className="mainProfileBlock">
@@ -116,7 +123,7 @@ export default function Profile() {
                                         setLikeVisible(false);
                                         setFriendVisible(false);
                                     }}>
-                                        <p className='notifys'>{profile.new_comments}</p>
+                                        <p className='notifys'>{profile.comments.length}</p>
                                         <Chat sx={{fontSize: 25}} className='commentBtn'/>
                                     </div>
                                     <div className='notifRow' onClick={() => {
@@ -124,7 +131,7 @@ export default function Profile() {
                                         setNotifVisible(false);
                                         setFriendVisible(false);
                                     }}>
-                                        <p className='notifys'>{profile.new_likes}</p>
+                                        <p className='notifys'>{profile.likes.length}</p>
                                         <Favorite sx={{fontSize: 25}} className='likeBtn'/>
                                     </div>
                                     <div className='notifRow' onClick={() => {
@@ -160,19 +167,7 @@ export default function Profile() {
                             </div>
                             <div className={likeNotifVisible ? "likeModal" : "likeModal hidden"}>
                                 {/* This is a single user like notification  */}
-                                <div className='profileLikeNotif'>
-                                    <div className='flexRow'>
-                                        <img className='friendSmall2' src='http://placekitten.com/150/150'
-                                             alt='placeholder'></img>
-                                        <div>
-                                            <h3 className='commentNotifUser'>UserName</h3>
-                                            <p className='currentTime'><i>This is the time currently, oh boy!</i></p>
-                                        </div>
-                                    </div>
-                                    <div className='centeredIcon'>
-                                        <Favorite sx={{fontSize: 30}} className='commentBtn2'/>
-                                    </div>
-                                </div>
+                                {likesEls}
                             </div>
                             <div className={friendNotifVisible ? "newFriendModal" : "newFriendModal hidden"}>
                                 {pendingFriendsEls}
@@ -366,4 +361,23 @@ function PendingFriend({pendingFriendRequest, clearFriendRequest}) {
             </div>
         </div>
     )
+}
+
+function Like({like}) {
+
+return (
+    <div className='profileLikeNotif'>
+        <div className='flexRow'>
+            <img className='friendSmall2' src={like.User.profilePhoto}
+                 alt='placeholder'></img>
+            <div>
+                <h3 className='commentNotifUser'>{like.User.name}</h3>
+                <p className='currentTime'><i>{like.createdAt}</i></p>
+            </div>
+        </div>
+        <div className='centeredIcon'>
+            <Favorite sx={{fontSize: 30}} className='commentBtn2'/>
+        </div>
+    </div>
+ )
 }
