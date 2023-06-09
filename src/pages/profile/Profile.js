@@ -116,12 +116,6 @@ export default function Profile() {
                         <div className='profileBox'>
                             <ProfilePic profile={profile}/>
                             <ProfileInfo profile={profile}/>
-                            <div className='suggestBox'>
-                                {userYouKnowImages}
-                            </div>
-                            <div className='colorBlock5'>
-                                <p className='mayKnow'>Users you may know</p>
-                            </div>
                         </div>
                         <div className='bioBox'>
                             <div className='notifSearchBox'>
@@ -151,10 +145,6 @@ export default function Profile() {
                                         <PersonAddAlt1 sx={{fontSize: 30}} className='addBtn'/>
                                     </div>
                                 </div>
-                                <div className='flexRow'>
-                                    <input type="text" className='searchBar' placeholder='search friends'></input>
-                                    <button className='searchButton'><Search sx={{fontSize: 20}}/></button>
-                                </div>
                             </div>
 
                             <div className={notifVisible ? "commentModal" : "commentModal hidden"}>
@@ -183,86 +173,9 @@ export default function Profile() {
                                         <Favorite sx={{fontSize: 25}} className='likeBtn'/>
                                     </div>
                                 </figure>
-                                <div className='recentManyDiv'>
-                                    <figure className='recentMany1'>
-                                        <img className='recentMediaSmall' src="https://dummyimage.com/300x200/000/aaa"
-                                             alt='placeholder'/>
-                                        <div className='recentComReac'>
-                                            <p className='comments2'>5</p>
-                                            <Chat sx={{fontSize: 20}} className='commentBtn'/>
-                                            <p className='likes2'>15</p>
-                                            <Favorite sx={{fontSize: 20}} className='likeBtn'/>
-                                        </div>
-                                    </figure>
-                                    <figure className='recentMany3'>
-                                        <img className='recentMediaSmall' src="https://dummyimage.com/300x200/000/aaa"
-                                             alt='placeholder'/>
-                                        <div className='recentComReac'>
-                                            <p className='comments2'>5</p>
-                                            <Chat sx={{fontSize: 20}} className='commentBtn'/>
-                                            <p className='likes2'>15</p>
-                                            <Favorite sx={{fontSize: 20}} className='likeBtn'/>
-                                        </div>
-                                    </figure>
-                                    <figure className='recentMany2'>
-                                        <img className='recentMediaSmall' src="https://dummyimage.com/300x200/000/aaa"
-                                             alt='placeholder'/>
-                                        <div className='recentComReac'>
-                                            <p className='comments2'>5</p>
-                                            <Chat sx={{fontSize: 20}} className='commentBtn'/>
-                                            <p className='likes2'>15</p>
-                                            <Favorite sx={{fontSize: 20}} className='likeBtn'/>
-                                        </div>
-                                    </figure>
-                                    <figure className='recentMany4'>
-                                        <img className='recentMediaSmall' src="https://dummyimage.com/300x200/000/aaa"
-                                             alt='placeholder'/>
-                                        <div className='recentComReac'>
-                                            <p className='comments2'>5</p>
-                                            <Chat sx={{fontSize: 20}} className='commentBtn'/>
-                                            <p className='likes2'>15</p>
-                                            <Favorite sx={{fontSize: 20}} className='likeBtn'/>
-                                        </div>
-                                    </figure>
-                                </div>
                             </div>
                             <div className='colorBlock2'></div>
                             <div className='recentText'><p class="textBar">Recent Events</p></div>
-                            <div className='friendBox'>
-                                <div className='friendRow'>
-                                    <figure className='friendCard'>
-                                        <img className='friendSmall' src='http://placekitten.com/200/200'
-                                             alt='placeholder'/>
-                                        <p className='friendName'>Name is too long for this box</p>
-                                        <p className='friendLocation'>Location is too long for this box</p>
-                                    </figure>
-                                    <figure className='friendCard'>
-                                        <img className='friendSmall' src='http://placekitten.com/300/200'
-                                             alt='placeholder'/>
-                                        <p className='friendName'>Name is too long for this box</p>
-                                        <p className='friendLocation'>Location is too long for this box</p>
-                                    </figure>
-                                    <figure className='friendCard'>
-                                        <img className='friendSmall' src='http://placekitten.com/200/300'
-                                             alt='placeholder'/>
-                                        <p className='friendName'>Name is too long for this box</p>
-                                        <p className='friendLocation'>Location is too long for this box</p>
-                                    </figure>
-                                    <figure className='friendCard'>
-                                        <img className='friendSmall' src='http://placekitten.com/200/200'
-                                             alt='placeholder'/>
-                                        <p className='friendName'>Name is too long for this box</p>
-                                        <p className='friendLocation'>Location is too long for this box</p>
-                                    </figure>
-                                </div>
-                            </div>
-                            <div className='colorBlock3'></div>
-                            <div className='friendHeaderRow'>
-                                <p className='friendHeader'>Friend List</p>
-                                <Link to="/friends">
-                                    <button className='viewMore'>View <span>103</span> more</button>
-                                </Link>
-                            </div>
                         </div>
                     </div>
                     <figure id="modalBox1" className={modalVisible ? "modalBox1" : "modalBox1 hidden"}>
