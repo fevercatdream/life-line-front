@@ -40,6 +40,11 @@ export default function EventNew() {
     const submitForm = async (e) => {
         e.preventDefault();
         console.log(title, desc, eventDate, file);
+        if(!file || !title || !desc || !eventDate) {
+            alert("Please fill out event form to create a new event");
+            setSendToTimeline(false);
+            return;
+        }
         const f = new FormData();
         const token = localStorage.getItem('token');
         f.set('photo', file);
