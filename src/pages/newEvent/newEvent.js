@@ -3,21 +3,21 @@ import { Navigate } from "react-router-dom"
 import './newEvent.css'
 import NavTabs from "../../components/Navbar";
 
-import Carousel from 'react-gallery-carousel';
+// import Carousel from 'react-gallery-carousel';
 import 'react-gallery-carousel/dist/index.css';
 import { backendHost } from "../../utils/helpers";
 
 export default function EventNew() {
 
-    const images = [9, 8, 7, 6, 5].map((number) => (
-        {
-            src: `https://placedog.net/${number}00/${number}00?id=${number}`,
-            // srcset: `https://placedog.net/400/240?id=1 400w, https://placedog.net/700/420?id=1 700w, https://placedog.net/1000/600?id=1 1000w`,
-            // sizes: '(max-width: 1000px) 400px, (max-width: 2000px) 700px, 1000px',
-            alt: `Dogs are domesticated mammals, not natural wild animals. They were originally bred from wolves. They have been bred by humans for a long time, and were the first animals ever to be domesticated.`,
-            // thumbnail: `https://placedog.net/100/60?id=1`
-        }
-    ));
+    // const images = [9, 8, 7, 6, 5].map((number) => (
+    //     {
+    //         src: `https://placedog.net/${number}00/${number}00?id=${number}`,
+    //         // srcset: `https://placedog.net/400/240?id=1 400w, https://placedog.net/700/420?id=1 700w, https://placedog.net/1000/600?id=1 1000w`,
+    //         // sizes: '(max-width: 1000px) 400px, (max-width: 2000px) 700px, 1000px',
+    //         alt: `Dogs are domesticated mammals, not natural wild animals. They were originally bred from wolves. They have been bred by humans for a long time, and were the first animals ever to be domesticated.`,
+    //         // thumbnail: `https://placedog.net/100/60?id=1`
+    //     }
+    // ));
 
     const [file, setFile] = useState();
     const [title, setTitle] = useState();

@@ -114,6 +114,7 @@ function Modal({ event, visible }) {
     const [eventComments, setEventComments] = useState([]);
     const [liked, setLiked] = useState();
     const [likeCount, setLikeCount] = useState();
+    const [commentCount, setCommentCount] = useState();
 
     useEffect(() => {
         if (!event) {
@@ -122,6 +123,7 @@ function Modal({ event, visible }) {
         setLiked(event.userLiked);
         setLikeCount(event.likeCount);
         setEventComments(event.comments);
+        setCommentCount(event.commentsCount);
 
     }, [event]);
 
@@ -137,6 +139,7 @@ function Modal({ event, visible }) {
     const comments = eventComments.map(x => <ModalComment comment={x} />)
 
     const uploadComment = async () => {
+        let num = event.commentsCount + 1;
         if (!comment) {
             return;
         }
@@ -149,6 +152,7 @@ function Modal({ event, visible }) {
         const comments = eventComments.slice();
         comments.push(await res.json());
         setEventComments(comments);
+        setCommentCount(num);
     }
 
     const likeEvent = async (remove) => {
