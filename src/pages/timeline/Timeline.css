@@ -58,7 +58,7 @@ body {
 .toTopBtn {
     position: fixed;
     bottom: 70px;
-    right: 10px;
+    left: 10px;
     z-index: 3;
 }
 
@@ -98,13 +98,31 @@ body {
     cursor: pointer;
 }
 
+.timelineInfoContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.timelineInfoContainer2 {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.editContainer {
+    display: flex;
+    justify-content: center;
+    width: 40px;
+}
+
 .timelineInfo {
     margin: 0px 1vw;
     display: flex;
     flex-direction: column;
     align-items: baseline;
     text-align: left;
-    width: 80%;
+    width: 100%;
 }
 
 .timelineDate {
@@ -193,7 +211,7 @@ body {
 }
 
 .commentInput {
-    width: 99%;
+    min-width: 99%;
     height: 80px;
     font-size: 16px;
     border: 1px solid var(--bordercolor);
@@ -204,6 +222,7 @@ body {
 
 .flexend {
     display: flex;
+    width: 100%;
     flex-direction: column;
     justify-content: flex-end;
 }
@@ -273,6 +292,11 @@ body {
     align-items: center;
 }
 
+.flexRow4 {
+    display: flex;
+    flex-direction: row;
+}
+
 .likes2 {
     font-size: 18px;
 }
@@ -293,4 +317,136 @@ body {
 
 .css-1ami7lv-MuiTimelineConnector-root {
     min-height: 20px;
+}
+
+.smallerTimeline {
+    display: none;
+}
+
+.leftAlign {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 750px) {
+
+    .alternateTimeline {
+        display: none;
+    }
+
+    .smallerTimeline {
+        display: block;
+    }
+
+    .timeLineEvent {
+        width: 70vw;
+    }
+
+    .newEventField {
+        justify-content: flex-start;
+        margin-left: 16vw;
+    }
+
+}
+
+@media only screen and (max-width: 749px) {
+
+    .alternateTimeline {
+        display: none;
+    }
+
+    .smallerTimeline {
+        display: block;
+    }
+
+    .timeLineEvent {
+        width: 70vw;
+    }
+
+    .noMargin {
+        min-width: 100px;
+        min-height: 100px;
+        max-width: 100px;
+        max-height: 100px;
+    }
+
+    .timelineThumb {
+        max-width: 200px;
+        max-height: 200px;
+    }
+
+    .timelineTitle {
+        align-self: baseline;
+        font-size: 16px;
+    }
+
+    .timelineDesc {
+        font-size: 12px;
+    }
+
+    .newEventField {
+        justify-content: flex-start;
+        margin-left: 13vw;
+    }
+
+}
+
+@media only screen and (max-width: 550px) {
+
+    .alternateTimeline {
+        display: none;
+    }
+
+    .smallerTimeline {
+        display: block;
+    }
+
+    .timeLineEvent {
+        max-width: 255px;
+        width: 70vw;
+        height: 150px;
+    }
+
+    .noMargin {
+        min-width: 80px;
+        min-height: 80px;
+        max-width: 80px;
+        max-height: 80px;
+    }
+
+    .timelineThumb {
+        max-width: 150px;
+        max-height: 150px;
+    }
+
+    .timelineTitle {
+        align-self: baseline;
+        font-size: 16px;
+    }
+
+    .timelineDesc {
+        font-size: 12px;
+        height: 55%;
+        padding-top: 0px;
+    }
+
+    .css-1wnygn3-MuiTimeline-root .MuiTimelineOppositeContent-root {
+        padding: 5px;
+        max-width: 35px;
+    }
+
+    .timelineDate {
+        font-size: 12px;
+        width: 35px;
+    }
+
+    .newEventField {
+        justify-content: flex-start;
+        margin-left: 10%;
+    }
+
+
 }

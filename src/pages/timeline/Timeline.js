@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import * as React from 'react';
-import {useEffect, useState} from 'react';
-import {Link, useParams} from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { Link, useParams } from "react-router-dom";
 import './Timeline.css';
 import { HashLink } from 'react-router-hash-link';
 import Carousel from 'react-gallery-carousel';
@@ -11,15 +11,15 @@ import Timeline from '@mui/lab/Timeline';
 import TimelineItem from '@mui/lab/TimelineItem';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
 import TimelineConnector from '@mui/lab/TimelineConnector';
+import TimelineOppositeContent, { timelineOppositeContentClasses, } from '@mui/lab/TimelineOppositeContent';
 import TimelineContent from '@mui/lab/TimelineContent';
-import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import Chat from '@mui/icons-material/Chat';
 
 import Edit from '@mui/icons-material/Edit';
 import LibraryAdd from '@mui/icons-material/LibraryAdd';
-import {sendJSONRequest} from "../../utils/helpers";
-import {Favorite, FavoriteBorder} from "@mui/icons-material";
+import { sendJSONRequest } from "../../utils/helpers";
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import ArrowCircleUp from '@mui/icons-material/ArrowCircleUp';
 import NavTabs from "../../components/Navbar";
 
@@ -30,15 +30,13 @@ export default function TimelineFunc() {
     const [activeEvent, setActiveEvent] = useState();
     const [events, setEvents] = useState([]);
 
-    const {id} = useParams();
+    const [windowSize, setWindowSize] = React.useState({
+        width: undefined,
+        height: '',
+    });
 
-    // React.useEffect(() => {
-    //     window.addEventListener('scroll', (event) => {
-    //         for (var i = 0; i < items.length; i++) {
-    //                     if (isElementInViewport(items[i])) {
-    //                       items[i].classList.add("in-view");
-    //     }}});
-    // }, []);
+
+    const { id } = useParams();
 
     const showModal = (event) => {
         setActiveEvent(event);
@@ -60,7 +58,7 @@ export default function TimelineFunc() {
 
     const eventEls = [];
     for (let i = 0; i < events.length; i++) {
-        eventEls.push(<Event event={events[i]} toggle={showModal} invert={i % 2 === 1}/>)
+        eventEls.push(<Event event={events[i]} toggle={showModal} invert={i % 2 === 1} />)
     }
 
     useEffect(() => {
@@ -71,26 +69,33 @@ export default function TimelineFunc() {
         <>
 
             <div className="mainTimelineBlock">
-                    <div id='blackOut' className={eventModalVisible ? "blackOut2" : "blackOut2 hidden"}
-                         onClick={() => setEventModalVisible(false)}></div>
-                    <div className='navBackground'></div>
-                    <NavTabs/>
-                    <div className='horizontal'></div>
+                <div id='blackOut' className={eventModalVisible ? "blackOut2" : "blackOut2 hidden"}
+                    onClick={() => setEventModalVisible(false)}></div>
+                <div className='navBackground'></div>
+                <NavTabs />
+                <div className='horizontal'></div>
                 <div className='timelineBlock'>
-                    <HashLink smooth to='/timeline/#LifeLine' className='toTopBtn'><ArrowCircleUp sx={{ fontSize: 45 }} className='hover'/></HashLink>
-                    <Timeline position='alternate'>
+                    <HashLink smooth to='/timeline/#LifeLine' className='toTopBtn'><ArrowCircleUp sx={{ fontSize: 45 }} className='hover' /></HashLink>
+                    <div className='alternateTimeline'>
+                        <Timeline position='alternate'><div className='newEventField'>
+                            <Link to="/newevent"><LibraryAdd sx={{ fontSize: 45 }} className='hover newEventBtn' /></Link>
+                        </div>                        {eventEls}
+                    </Timeline></div>
+                    <div className='smallerTimeline'><Timeline
+                        sx={{[`& .${timelineOppositeContentClasses.root}`]: {flex: 0.2,},}}>
                         <div className='newEventField'>
-                            <Link to="/newevent"><LibraryAdd sx={{ fontSize: 45 }} className='hover newEventBtn'/></Link>
+                            <Link to="/newevent"><LibraryAdd sx={{ fontSize: 45 }} className='hover newEventBtn' /></Link>
                         </div>                        {eventEls}
                     </Timeline>
-                    <Modal event={activeEvent} visible={eventModalVisible}/>
+                    </div>
+                    <Modal event={activeEvent} visible={eventModalVisible} />
                 </div>
             </div>
         </>
     );
 }
 
-function ModalComment({comment}) {
+function ModalComment({ comment }) {
     return (
         <div className='commentSingle'>
             <div className="friendCommentIcon"><img className='friendCommentPic'
@@ -103,7 +108,7 @@ function ModalComment({comment}) {
     )
 }
 
-function Modal({event, visible}) {
+function Modal({ event, visible }) {
     const [commentVisible, setCommentVisible] = useState(false);
     const [comment, setComment] = useState();
     const [eventComments, setEventComments] = useState([]);
@@ -122,7 +127,7 @@ function Modal({event, visible}) {
 
     }, [event]);
 
-    if(!event) {
+    if (!event) {
         return;
     }
 
@@ -166,8 +171,8 @@ function Modal({event, visible}) {
     }
 
     const likeButton = liked ?
-        <Favorite sx={{fontSize: 25}} onClick={() => likeEvent(true)} /> :
-        <FavoriteBorder sx={{fontSize: 25}} onClick={() => likeEvent(false)} />
+        <Favorite sx={{ fontSize: 25 }} onClick={() => likeEvent(true)} /> :
+        <FavoriteBorder sx={{ fontSize: 25 }} onClick={() => likeEvent(false)} />
 
     return (
         <div className='centerModal'>
@@ -175,26 +180,47 @@ function Modal({event, visible}) {
                 <div className='sliderMedia'>
                     <Carousel
                         images={images}
-                        style={{height: 450, width: 700}}
+                        style={{ height: 450, width: 700 }}
                         hasIndexBoard="false"
                         canAutoPlay="false"
                         hasCaptions="true"
                         hasMediaButton="topRight"
                         autoPlayInterval="3000"
                         hasSizeButton="false"
+                        className="largePlayer"
+                    >
+                    </Carousel>
+                    <Carousel
+                        images={images}
+                        style={{ height: 325, width: 500 }}
+                        hasIndexBoard="false"
+                        canAutoPlay="false"
+                        hasCaptions="true"
+                        hasMediaButton="topRight"
+                        autoPlayInterval="3000"
+                        hasSizeButton="false"
+                        className="mediumPlayer"
+                    >
+                    </Carousel>
+                    <Carousel
+                        images={images}
+                        style={{ height: 175, width: 315 }}
+                        hasIndexBoard="false"
+                        canAutoPlay="false"
+                        hasCaptions="true"
+                        hasMediaButton="topRight"
+                        autoPlayInterval="3000"
+                        hasSizeButton="false"
+                        className="smallPlayer"
                     >
                     </Carousel>
 
                     <div className='eventNotifBar'>
                         <button className='leaveComment'
-                                onClick={() => commentVisible ? setCommentVisible(false) : setCommentVisible(true)}>Leave
+                            onClick={() => commentVisible ? setCommentVisible(false) : setCommentVisible(true)}>Leave
                             a Comment
                         </button>
-                        <div className="timelineNotif">
-                            <p className='comments'>{commentCount}</p>
-                            <Chat sx={{fontSize: 25}} className='commentBtn'/>
-                            <div className='flexRow'><p className='likes2'>{likeCount}</p>{likeButton}</div>
-
+                        <div className='flexRow4'><p className='likes2'>{likeCount}</p>{likeButton}
                         </div>
                     </div>
                     <div className={commentVisible ? 'flexend' : "flexend hidden"}>
@@ -210,15 +236,15 @@ function Modal({event, visible}) {
     )
 }
 
-function Event({event, toggle, invert}) {
+function Event({ event, toggle, invert }) {
     const d = new Date(event.date);
-    const month = d.toLocaleDateString('en-us', {month: 'short'})
-    const year = d.toLocaleDateString('en-us', {year: 'numeric'})
+    const month = d.toLocaleDateString('en-us', { month: 'short' })
+    const year = d.toLocaleDateString('en-us', { year: 'numeric' })
     const [likeCount, setLikeCount] = useState();
     const [commentCount, setCommentCount] = useState();
 
     useEffect(() => {
-        if(!event) {
+        if (!event) {
             return;
         }
         setLikeCount(event.likeCount)
@@ -229,7 +255,7 @@ function Event({event, toggle, invert}) {
     return (
         <TimelineItem>
             <TimelineOppositeContent
-                sx={{m: 'auto 0'}}
+                sx={{ m: 'auto 0' }}
                 align="right"
                 variant="body2"
                 color="text.secondary"
@@ -237,23 +263,56 @@ function Event({event, toggle, invert}) {
                 <h2 className='timelineDate'>{month}, {year}</h2>
             </TimelineOppositeContent>
             <TimelineSeparator>
-                <TimelineConnector/>
+                <TimelineConnector />
                 <TimelineDot>
                 </TimelineDot>
-                <TimelineConnector/>
+                <TimelineConnector />
             </TimelineSeparator>
-            <TimelineContent sx={{py: '12px', px: 2}}>
-                <div className={`timeLineEvent${invert ? '2' : ''}`}>
-                    <figure className="noMargin">
-                        <img className="timelineThumb" src={(event.photos && event.photos.length > 0) ? event.photos[0].url : ""}
-                             onClick={() => toggle(event)} alt={'event'}></img>
-                    </figure>
-                    <div className="timelineInfo">
-                        <div className='flexRow2'>
-                            <h2 className="timelineTitle">{event.title}</h2>
-                            <Link to={`/editevent/${event.eventId}/`} className='editIcon3'><Edit sx={{fontSize: 30}} className='hover'/></Link>
+            <TimelineContent sx={{ py: '12px', px: 2 }}>
+                <div className='alternateTimeline'>
+                    <div className={`timeLineEvent${invert ? '2' : ''}`}>
+                        <figure className="noMargin">
+                            <img className="timelineThumb" src={(event.photos && event.photos.length > 0) ? event.photos[0].url : ""}
+                                onClick={() => toggle(event)} alt={'event'}></img>
+                        </figure>
+                        <div className='timelineInfoContainer'>
+                            <div className="timelineInfo">
+                                <div className='flexRow2'>
+                                    <h2 className="timelineTitle">{event.title}</h2>
+                                </div>
+                                <p className="timelineDesc">{event.description}</p>
+                                <div className="timelineNotif">
+                                    <p className='comments'>{commentCount}</p>
+                                    <Chat sx={{ fontSize: 25 }} className='commentBtn' />
+                                    <p className='likes'>{likeCount}</p>
+                                    <Favorite sx={{ fontSize: 25 }} className='likeBtn' />
+                                </div>
+                            </div>
+                            <div className='editContainer'><Link to={`/editevent/${event.eventId}/`} className='editIcon3'><Edit sx={{ fontSize: 30 }} className='hover' /></Link></div>
                         </div>
-                        <p className="timelineDesc">{event.description}</p>
+                    </div>
+                </div>
+                <div className='smallerTimeline'>
+                    <div className={`timeLineEvent`}>
+                        <figure className="noMargin">
+                            <img className="timelineThumb" src={(event.photos && event.photos.length > 0) ? event.photos[0].url : ""}
+                                onClick={() => toggle(event)} alt={'event'}></img>
+                        </figure>
+                        <div className='timelineInfoContainer'>
+                            <div className="timelineInfo">
+                                <div className='leftAlign'>
+                                    <h2 className="timelineTitle">{event.title}</h2>
+                                    <Link to={`/editevent/${event.eventId}/`} className='editIcon3'><Edit sx={{ fontSize: 30 }} className='hover' /></Link>
+                                </div>
+                                <p className="timelineDesc">{event.description}</p>
+                                {/* <div className="timelineNotif">
+                                    <p className='comments'>{commentCount}</p>
+                                    <Chat sx={{ fontSize: 25 }} className='commentBtn' />
+                                    <p className='likes'>{likeCount}</p>
+                                    <Favorite sx={{ fontSize: 25 }} className='likeBtn' />
+                                </div> */}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </TimelineContent>

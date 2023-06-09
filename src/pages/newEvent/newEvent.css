@@ -107,13 +107,6 @@
     height: 60px;
 }
 
-.mediumPlayer {
-    display: none;
-}
-
-.smallPlayer {
-    display: none;
-}
 
 .inputButtons {
     display: flex;
@@ -126,39 +119,8 @@
     padding: 15px;
 }
 
-@media screen and (max-width: 800px) and (min-width: 600px) {
-
-    .largePlayer {
-        display: none;
-    }
-
-    .mediumPlayer {
-        display: block;
-    }
-    
-    .smallPlayer {
-        display: none;
-    }
-
-    .modalBox2 {
-        height: 425px;
-    }
-
-}
 
 @media only screen and (max-width: 599px) {
-    
-    .largePlayer {
-        display: none;
-    }
-
-    .mediumPlayer {
-        display: none;
-    }
-    
-    .smallPlayer {
-        display: block;
-    }
 
     .modalBox2 {
         height: 250px;
