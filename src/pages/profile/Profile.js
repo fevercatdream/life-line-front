@@ -80,6 +80,14 @@ export default function Profile() {
             <Like like={i} />);
     }
 
+    // for comments
+    let commentsEls = <span> Comment notifications will appear here.</span>;
+
+    if (profile && profile.comments && profile.comments.length > 0) {
+        commentsEls = profile.comments.map(i =>
+            <Comment comment={i} />);
+    }
+
 
     const userYouKnowImages = profile.known_users.map(k => <img className='suggestFriend1' src={k.profile_url}
                                                                 key={k.id} alt={'placeholder'}/>)
@@ -150,23 +158,9 @@ export default function Profile() {
                             </div>
 
                             <div className={notifVisible ? "commentModal" : "commentModal hidden"}>
-                                {/* This is a single user comment notification  */}
-                                <div className='profileCommentNotif'>
-                                    <div className='flexRow'>
-                                        <img className='friendSmall2' src='http://placekitten.com/150/150'
-                                             alt='placeholder'></img>
-                                        <div>
-                                            <h3 className='commentNotifUser'>UserName</h3>
-                                            <p className='currentTime'><i>This is the time currently, oh boy!</i></p>
-                                        </div>
-                                    </div>
-                                    <div className='centeredIcon'>
-                                        <Chat sx={{fontSize: 30}} className='commentBtn2'/>
-                                    </div>
-                                </div>
+                                {commentsEls}
                             </div>
                             <div className={likeNotifVisible ? "likeModal" : "likeModal hidden"}>
-                                {/* This is a single user like notification  */}
                                 {likesEls}
                             </div>
                             <div className={friendNotifVisible ? "newFriendModal" : "newFriendModal hidden"}>
@@ -380,4 +374,23 @@ return (
         </div>
     </div>
  )
+}
+
+function Comment({comment}) {
+
+    return (
+        <div className='profileCommentNotif'>
+            <div className='flexRow'>
+                <img className='friendSmall2' src={comment.User.profilePhoto}
+                     alt='placeholder'></img>
+                <div>
+                    <h3 className='commentNotifUser'>{comment.User.name}</h3>
+                    <p className='currentTime'><i>{comment.comment}</i></p>
+                </div>
+            </div>
+            <div className='centeredIcon'>
+                <Chat sx={{fontSize: 30}} className='commentBtn2'/>
+            </div>
+        </div>
+    )
 }
