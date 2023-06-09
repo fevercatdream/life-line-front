@@ -150,9 +150,6 @@ function ProfilePic({token, url, setUrl}) {
         setUrl(data.url);
     }
 
-    // const picker = <input type={"file"} accept={'image/*'} onChange={uploadFile}/>
-    // {picker}
-
     return (
         <div className='imgUpload'>
             <div className='uploadedPhotoBox'><img src={url} alt={'upload'} class="uploadedPhoto"></img></div>
