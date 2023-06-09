@@ -93,7 +93,7 @@ export default function TimelineFunc() {
 function ModalComment({comment}) {
     return (
         <div className='commentSingle'>
-            <div className="friendCommentIcon"><img
+            <div className="friendCommentIcon"><img className='friendCommentPic'
                 src={comment.User.profilePhoto} alt={'profile'}></img></div>
             <div className='friendCommentBox'>
                 <h4 className='friendCommentName'> {comment.User.name} :</h4>
@@ -243,7 +243,7 @@ function Event({event, toggle, invert}) {
                     <div className="timelineInfo">
                         <div className='flexRow2'>
                             <h2 className="timelineTitle">{event.title}</h2>
-                            <Link to={`/editevent/${event.eventId}`} className='editIcon3'><Edit sx={{fontSize: 30}} className='hover'/></Link>
+                            <Link to={`/editevent/${event.eventId}/`} className='editIcon3'><Edit sx={{fontSize: 30}} className='hover'/></Link>
                         </div>
                         <p className="timelineDesc">{event.description}</p>
                         <div className="timelineNotif">
