@@ -20,7 +20,7 @@ function NavTabs() {
     return (
         <nav className='friendHead2'>
             <div className='horizontal'>
-                <h1 className='LifeLine'>Life Line</h1>
+                <h1 id='LifeLine' className='LifeLine'>Life Line</h1>
                 <button className='hamburger' onClick={() => navVisible ? setNavVisible(false) : setNavVisible(true)}><DensityMedium /></button>
             </div>
             <div className={navVisible ? "navBar2" : "navBar2 hidden"}>
