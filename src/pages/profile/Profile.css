@@ -18,7 +18,6 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* background-color: rgb(248, 248, 248); */
     background-color: white;
     margin-left: auto;
     margin-right: auto;
@@ -637,11 +636,14 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: start;
+    justify-content: start;
     align-items: center;
     position: absolute;
     top: 0px;
     margin-top: 5vh;
     padding-top: 5vh;
+    width: -moz-fit-content;
+    width: fit-content;
     width: -moz-fit-content;
     width: fit-content;
     height: 85%;
@@ -655,11 +657,13 @@ body {
 .sliderMedia {
     width: -moz-fit-content;
     width: fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
     margin-bottom: 30px;
+    padding: 0px 2vw;
     padding: 0px 2vw;
     z-index: 3;
 }
-
 
 .blackOut {
     position: absolute;
