@@ -53,6 +53,15 @@ export default function Profile() {
         setProfile(p);
     };
 
+    const messagesRef = useRef(null)
+
+    useEffect(() => {
+        if(messagesRef.current) {
+
+            messagesRef.current.scrollTop = 0;
+        }
+    }, [profile]);
+
     useEffect(() => {
         loadData();
     }, [token])
@@ -88,7 +97,8 @@ export default function Profile() {
     let commentsEls = <span> Comment notifications will appear here.</span>;
 
     if (profile && profile.comments && profile.comments.length > 0) {
-        commentsEls = profile.comments.map(i =>
+        console.log(profile.comments[0], "dddd")
+        commentsEls = profile.comments.sort((ca, cb) => new Date(ca.createdAt) - new Date(cb.createdAt)).reverse().map(i =>
             <Comment comment={i} />);
     }
 
@@ -106,7 +116,9 @@ export default function Profile() {
             // thumbnail: `https://placedog.net/100/60?id=1`
         }
     ));   
-      
+
+
+
 
     return (
         <>
