@@ -106,13 +106,7 @@ export default function Profile() {
             // thumbnail: `https://placedog.net/100/60?id=1`
         }
     ));   
-
-        const messagesRef = useRef(null)
-
-        useEffect(() => {
-            messagesRef.current.scrollTop = 0;
-        }, [profile]);
-
+      
 
     return (
         <>
@@ -169,7 +163,7 @@ export default function Profile() {
                                 </div>
                             </div>
 
-                            <div className={notifVisible ? "commentModal" : "commentModal hidden"} ref={messagesRef}>
+                            <div className={notifVisible ? "commentModal" : "commentModal hidden"}>
                                 {commentsEls}
                             </div>
                             <div className={likeNotifVisible ? "likeModal" : "likeModal hidden"}>
@@ -177,6 +171,7 @@ export default function Profile() {
                             </div>
                             <div className={friendNotifVisible ? "newFriendModal" : "newFriendModal hidden"}>
                                 {pendingFriendsEls}
+
                             </div>
                             <div className='recentBox'>
                                 <figure id="recentCard" className='recentCard' onClick={() => setModalVisible(true)}>
