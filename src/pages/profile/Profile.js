@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import {Link, Navigate} from "react-router-dom"
 import './Profile.css'
 
@@ -14,6 +14,7 @@ import Favorite from '@mui/icons-material/Favorite';
 import PersonAddAlt1 from '@mui/icons-material/PersonAddAlt1';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import Search from '@mui/icons-material/Search';
+import { Message } from '@mui/icons-material';
 
 
 export default function Profile() {
@@ -23,7 +24,10 @@ export default function Profile() {
     const [friendNotifVisible, setFriendVisible] = useState(false);
     const [profile, setProfile] = useState();
     const [loading, setLoading] = useState(true);
+
     const token = localStorage.getItem('token');
+
+
     const loadData = async () => {
         if (!token) {
             return;
@@ -48,6 +52,15 @@ export default function Profile() {
         p.new_friend_requests--;
         setProfile(p);
     };
+
+    const messagesRef = useRef(null)
+
+    useEffect(() => {
+        if(messagesRef.current) {
+
+            messagesRef.current.scrollTop = 0;
+        }
+    }, [profile]);
 
     useEffect(() => {
         loadData();
@@ -84,7 +97,8 @@ export default function Profile() {
     let commentsEls = <span> Comment notifications will appear here.</span>;
 
     if (profile && profile.comments && profile.comments.length > 0) {
-        commentsEls = profile.comments.map(i =>
+        console.log(profile.comments[0], "dddd")
+        commentsEls = profile.comments.sort((ca, cb) => new Date(ca.createdAt) - new Date(cb.createdAt)).reverse().map(i =>
             <Comment comment={i} />);
     }
 
@@ -101,7 +115,11 @@ export default function Profile() {
             alt: `Dogs are domesticated mammals, not natural wild animals. They were originally bred from wolves. They have been bred by humans for a long time, and were the first animals ever to be domesticated.`,
             // thumbnail: `https://placedog.net/100/60?id=1`
         }
-    ));
+    ));   
+
+
+
+
     return (
         <>
             <div className="mainProfileBlock">
@@ -157,7 +175,7 @@ export default function Profile() {
                                 </div>
                             </div>
 
-                            <div className={notifVisible ? "commentModal" : "commentModal hidden"}>
+                            <div className={notifVisible ? "commentModal" : "commentModal hidden"} ref={messagesRef}>
                                 {commentsEls}
                             </div>
                             <div className={likeNotifVisible ? "likeModal" : "likeModal hidden"}>

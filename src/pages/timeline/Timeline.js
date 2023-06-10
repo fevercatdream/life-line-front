@@ -80,9 +80,9 @@ export default function TimelineFunc() {
                         <Timeline position='alternate'><div className='newEventField'>
                             <Link to="/newevent"><LibraryAdd sx={{ fontSize: 45 }} className='hover newEventBtn' /></Link>
                         </div>                        {eventEls}
-                    </Timeline></div>
+                        </Timeline></div>
                     <div className='smallerTimeline'><Timeline
-                        sx={{[`& .${timelineOppositeContentClasses.root}`]: {flex: 0.2,},}}>
+                        sx={{ [`& .${timelineOppositeContentClasses.root}`]: { flex: 0.2, }, }}>
                         <div className='newEventField'>
                             <Link to="/newevent"><LibraryAdd sx={{ fontSize: 45 }} className='hover newEventBtn' /></Link>
                         </div>                        {eventEls}
@@ -220,7 +220,10 @@ function Modal({ event, visible }) {
                             onClick={() => commentVisible ? setCommentVisible(false) : setCommentVisible(true)}>Leave
                             a Comment
                         </button>
-                        <div className='flexRow4'><p className='likes2'>{likeCount}</p>{likeButton}
+                        <div className="timelineNotif">
+                            <p className='comments'>{commentCount}</p>
+                            <Chat sx={{ fontSize: 25 }} className='commentBtn' />
+                            <div className='flexRow'><p className='likes2'>{likeCount}</p>{likeButton}</div>
                         </div>
                     </div>
                     <div className={commentVisible ? 'flexend' : "flexend hidden"}>
@@ -271,22 +274,24 @@ function Event({ event, toggle, invert }) {
             <TimelineContent sx={{ py: '12px', px: 2 }}>
                 <div className='alternateTimeline'>
                     <div className={`timeLineEvent${invert ? '2' : ''}`}>
-                        <figure className="noMargin">
-                            <img className="timelineThumb" src={(event.photos && event.photos.length > 0) ? event.photos[0].url : ""}
-                                onClick={() => toggle(event)} alt={'event'}></img>
-                        </figure>
+                        <div className='pictureHeight'>
+                            <figure className="noMargin">
+                                <img className="timelineThumb" src={(event.photos && event.photos.length > 0) ? event.photos[0].url : ""}
+                                    onClick={() => toggle(event)} alt={'event'}></img>
+                            </figure>
+                        </div>
                         <div className='timelineInfoContainer'>
                             <div className="timelineInfo">
                                 <div className='flexRow2'>
                                     <h2 className="timelineTitle">{event.title}</h2>
                                 </div>
                                 <p className="timelineDesc">{event.description}</p>
-                                <div className="timelineNotif">
+                                {/* <div className="timelineNotif">
                                     <p className='comments'>{commentCount}</p>
                                     <Chat sx={{ fontSize: 25 }} className='commentBtn' />
                                     <p className='likes'>{likeCount}</p>
                                     <Favorite sx={{ fontSize: 25 }} className='likeBtn' />
-                                </div>
+                                </div> */}
                             </div>
                             <div className='editContainer'><Link to={`/editevent/${event.eventId}/`} className='editIcon3'><Edit sx={{ fontSize: 30 }} className='hover' /></Link></div>
                         </div>
@@ -294,10 +299,12 @@ function Event({ event, toggle, invert }) {
                 </div>
                 <div className='smallerTimeline'>
                     <div className={`timeLineEvent`}>
-                        <figure className="noMargin">
-                            <img className="timelineThumb" src={(event.photos && event.photos.length > 0) ? event.photos[0].url : ""}
-                                onClick={() => toggle(event)} alt={'event'}></img>
-                        </figure>
+                        <div className='pictureHeight'>
+                            <figure className="noMargin">
+                                <img className="timelineThumb" src={(event.photos && event.photos.length > 0) ? event.photos[0].url : ""}
+                                    onClick={() => toggle(event)} alt={'event'}></img>
+                            </figure>
+                        </div>
                         <div className='timelineInfoContainer'>
                             <div className="timelineInfo">
                                 <div className='leftAlign'>
