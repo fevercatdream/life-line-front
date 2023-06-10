@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import {Link, Navigate} from "react-router-dom"
 import './Profile.css'
 
@@ -14,6 +14,7 @@ import Favorite from '@mui/icons-material/Favorite';
 import PersonAddAlt1 from '@mui/icons-material/PersonAddAlt1';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import Search from '@mui/icons-material/Search';
+import { Message } from '@mui/icons-material';
 
 
 export default function Profile() {
@@ -23,7 +24,10 @@ export default function Profile() {
     const [friendNotifVisible, setFriendVisible] = useState(false);
     const [profile, setProfile] = useState();
     const [loading, setLoading] = useState(true);
+
     const token = localStorage.getItem('token');
+
+
     const loadData = async () => {
         if (!token) {
             return;
@@ -101,7 +105,8 @@ export default function Profile() {
             alt: `Dogs are domesticated mammals, not natural wild animals. They were originally bred from wolves. They have been bred by humans for a long time, and were the first animals ever to be domesticated.`,
             // thumbnail: `https://placedog.net/100/60?id=1`
         }
-    ));
+    ));   
+
     return (
         <>
             <div className="mainProfileBlock">
