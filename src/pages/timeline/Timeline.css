@@ -12,9 +12,11 @@ html {
 
 body {
     margin: 0px;
+    width: 100%;
 }
 
 .mainTimelineBlock {
+    width: 98%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -67,7 +69,6 @@ body {
 }
 
 .timeLineEvent, .timeLineEvent2 {
-    width: 40vw;
     height: 200px;
     border: 1px solid var(--bordercolor);
     padding: 1vw;
@@ -81,6 +82,7 @@ body {
 .timeLineEvent2 {
     flex-direction: row-reverse;
     align-self: flex-end;
+    margin: 0px;
 }
 
 .pictureHeight {

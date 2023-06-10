@@ -9,7 +9,6 @@ html {
 
 body {
     margin: 0px;
-    width: 100vw;
     background-color: white;
 }
 
@@ -24,7 +23,6 @@ body {
 .mainblock {
     display: flex;
     flex-direction: row;
-    padding: 10vh 10vw 5vh 0vw;
     justify-content: center;
     align-items: center;
     align-self: center;
@@ -126,7 +124,6 @@ body {
 .footer {
     position: relative;
     align-self: baseline;
-    width: 100%;
     background-color: var(--bordercolor);
     height: 70px;
     text-align: right;
