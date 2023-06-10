@@ -83,6 +83,14 @@ body {
     align-self: flex-end;
 }
 
+.pictureHeight {
+    min-height: 100px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .noMargin {
     margin: 0px;
     margin-left: 10px;
@@ -367,15 +375,15 @@ body {
     }
 
     .noMargin {
-        min-width: 100px;
-        min-height: 100px;
-        max-width: 100px;
-        max-height: 100px;
+        min-width: 150px;
+        min-height: 150px;
+        max-width: 150px;
+        max-height: 150px;
     }
 
     .timelineThumb {
-        max-width: 200px;
-        max-height: 200px;
+        max-width: 300px;
+        max-height: 300px;
     }
 
     .timelineTitle {
@@ -405,9 +413,10 @@ body {
     }
 
     .timeLineEvent {
-        max-width: 255px;
         width: 70vw;
-        height: 150px;
+        min-height: 100px;
+        height: fit-content;
+        max-height: 400px;
     }
 
     .noMargin {
@@ -429,7 +438,7 @@ body {
 
     .timelineDesc {
         font-size: 12px;
-        height: 55%;
+        height: 75%;
         padding-top: 0px;
     }
 
@@ -448,5 +457,8 @@ body {
         margin-left: 10%;
     }
 
+    .timelineInfo {
+    justify-content: space-between;    
+    }
 
 }
