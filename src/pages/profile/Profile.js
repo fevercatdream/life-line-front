@@ -107,6 +107,13 @@ export default function Profile() {
         }
     ));   
 
+        const messagesRef = useRef(null)
+
+        useEffect(() => {
+            messagesRef.current.scrollTop = 0;
+        }, [profile]);
+
+
     return (
         <>
             <div className="mainProfileBlock">
@@ -162,7 +169,7 @@ export default function Profile() {
                                 </div>
                             </div>
 
-                            <div className={notifVisible ? "commentModal" : "commentModal hidden"}>
+                            <div className={notifVisible ? "commentModal" : "commentModal hidden"} ref={messagesRef}>
                                 {commentsEls}
                             </div>
                             <div className={likeNotifVisible ? "likeModal" : "likeModal hidden"}>
