@@ -220,7 +220,10 @@ function Modal({ event, visible }) {
                             onClick={() => commentVisible ? setCommentVisible(false) : setCommentVisible(true)}>Leave
                             a Comment
                         </button>
-                        <div className='flexRow4'><p className='likes2'>{likeCount}</p>{likeButton}
+                        <div className="timelineNotif">
+                            <p className='comments'>{commentCount}</p>
+                            <Chat sx={{ fontSize: 25 }} className='commentBtn' />
+                            <div className='flexRow'><p className='likes2'>{likeCount}</p>{likeButton}</div>
                         </div>
                     </div>
                     <div className={commentVisible ? 'flexend' : "flexend hidden"}>
@@ -283,12 +286,12 @@ function Event({ event, toggle, invert }) {
                                     <h2 className="timelineTitle">{event.title}</h2>
                                 </div>
                                 <p className="timelineDesc">{event.description}</p>
-                                <div className="timelineNotif">
+                                {/* <div className="timelineNotif">
                                     <p className='comments'>{commentCount}</p>
                                     <Chat sx={{ fontSize: 25 }} className='commentBtn' />
                                     <p className='likes'>{likeCount}</p>
                                     <Favorite sx={{ fontSize: 25 }} className='likeBtn' />
-                                </div>
+                                </div> */}
                             </div>
                             <div className='editContainer'><Link to={`/editevent/${event.eventId}/`} className='editIcon3'><Edit sx={{ fontSize: 30 }} className='hover' /></Link></div>
                         </div>
@@ -309,12 +312,12 @@ function Event({ event, toggle, invert }) {
                                     <Link to={`/editevent/${event.eventId}/`} className='editIcon3'><Edit sx={{ fontSize: 30 }} className='hover' /></Link>
                                 </div>
                                 <p className="timelineDesc">{event.description}</p>
-                                <div className="timelineNotif">
+                                {/* <div className="timelineNotif">
                                     <p className='comments'>{commentCount}</p>
                                     <Chat sx={{ fontSize: 25 }} className='commentBtn' />
                                     <p className='likes'>{likeCount}</p>
                                     <Favorite sx={{ fontSize: 25 }} className='likeBtn' />
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>

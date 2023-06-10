@@ -53,7 +53,6 @@ svg:hover {
     margin-left: auto;
     margin-right: auto;
     width: 90%;
-    padding: 0px 5vw 5vh 5vw;
     background-color: white;
     overflow: hidden;
 }
@@ -282,7 +281,7 @@ svg:hover {
 
 .bioBox {
     height: 100%;
-    width: 90%;
+    width: 70vw;
     margin-left: 2%;
     padding-top: 0px;
     display: flex;
@@ -747,7 +746,7 @@ svg:hover {
 @media screen and (max-width: 1900px) and (min-width: 1176px) {
 
     .bioBox {
-        width: 70%;
+        width: 55%;
     }
 
     .recentBox {
