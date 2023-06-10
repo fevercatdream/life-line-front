@@ -13,6 +13,10 @@ body {
     margin: 0px;
 }
 
+svg:hover {
+    color: #09a12a;
+}
+
 .mainProfileBlock {
     height: 100%;
     display: flex;
