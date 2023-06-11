@@ -15,6 +15,7 @@ import PersonAddAlt1 from '@mui/icons-material/PersonAddAlt1';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import Search from '@mui/icons-material/Search';
 import { Message } from '@mui/icons-material';
+import HighlightOff from "@mui/icons-material/HighlightOff";
 
 
 export default function Profile() {
@@ -26,7 +27,6 @@ export default function Profile() {
     const [loading, setLoading] = useState(true);
 
     const token = localStorage.getItem('token');
-
 
     const loadData = async () => {
         if (!token) {
@@ -126,7 +126,6 @@ export default function Profile() {
                 <div className='profileblock'>
                     <div id='blackOut' className={modalVisible ? "blackOut" : "blackOut hidden"}
                          onClick={() => setModalVisible(false)}>
-
                     </div>
                     <div className='navBackground'></div>
                     <NavTabs/>
@@ -385,6 +384,26 @@ function PendingFriend({pendingFriendRequest, clearFriendRequest}) {
 
     }
 
+    const declineFriend = async () => {
+        try {
+            const res = await sendJSONRequest('POST', '/api/friends/resolve-request', {
+                friendId: pendingFriendRequest.friendId,
+                acceptRequest: false,
+            }, true)
+
+            if (res.status !== 200) {
+                console.log('something went wrong, non 200 returned');
+                return;
+            }
+
+            clearFriendRequest();
+        } catch (err) {
+            console.log(err);
+        }
+
+
+    }
+
     return (
         <div className='profileFriendNotif'>
             <div className='notifRow'>
@@ -396,8 +415,13 @@ function PendingFriend({pendingFriendRequest, clearFriendRequest}) {
                     <p className='currentTime'><i>{pendingFriendRequest.createdAt}</i></p>
                 </div>
             </div>
-            <div className='centeredIcon' onClick={addFriend}>
-                <PersonAddAlt1 sx={{fontSize: 30}} className='commentBtn2'/>
+            <div className='friendOptions'>
+                <div className='centeredIcon' onClick={addFriend}>
+                    <PersonAddAlt1 sx={{fontSize: 30}} className='commentBtn2'/>
+                </div>
+                <div className='centeredIcon2' onClick={declineFriend}>
+                    <HighlightOff sx={{fontSize: 30}} className='commentBtn2'/>
+                </div>
             </div>
         </div>
     )

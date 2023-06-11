@@ -16,6 +16,8 @@ export default function EventEdit() {
     const [images, setImages] = useState([]);
     const [avatar, setAvatar] = useState('');
     const [sendToTimeline, setSendToTimeline] = useState(false);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [deleteMessage, setDeleteMessage] = useState(false);
 
 
     const loadData = async () => {
@@ -53,6 +55,8 @@ export default function EventEdit() {
 
 
     let {id} = useParams();
+
+    
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         console.log(description, date, title);
@@ -66,8 +70,17 @@ export default function EventEdit() {
             console.log("something went wrong");
             return;
         }
-        // setSendToHomepage(true);
-    };
+
+        setInterval(() => {
+            setSendToTimeline(true);
+        }, 1000);
+    } ;
+
+    if (sendToTimeline) {
+        return (
+            <Navigate to={'/timeline'} />
+        )
+    }
 
     const uploadPhoto = async (e) => {
         e.preventDefault();
@@ -112,8 +125,10 @@ export default function EventEdit() {
                 console.log("failed to delete the event");
                 return;
             }
-            alert("Deleted");
-            setSendToTimeline(true);
+            setDeleteMessage(true);
+            setInterval(() => {
+                setSendToTimeline(true);
+            }, 2000);
         } catch (err) {
             console.log(err);
         }
@@ -126,6 +141,19 @@ export default function EventEdit() {
     return (
         <>
             <div className="mainEditBlock">
+            <div id='blackOut' className={modalVisible ? "blackOut" : "blackOut hidden"}
+                         onClick={() => setModalVisible(false)}>
+            </div>
+            <div className={modalVisible ? "" : "hidden"}>
+            <div className='youSure'>
+                <h4>Are you sure you want to delete this event?</h4>
+                <div className='cancelDelete'>
+                    <button className='cancelButton' onClick={() => setModalVisible(false)}>Cancel</button>
+                    <button className='deleteEventButton' onClick={deleteEvent}>Delete</button>
+                </div>
+                <p className={deleteMessage ? "" : "hidden"}>Event Deleted, redirecting to Timeline...</p>
+            </div>
+            </div>
                 <div className='navBackground'></div>
                 <NavTabs/>
                 <div className='flexRow3'>
@@ -188,7 +216,7 @@ export default function EventEdit() {
                         <label htmlFor="editEventTitle">Upload more photos:</label>
                         <div>
                             <input type={'file'} accept={'image/*'} onChange={e => setFile(e.target.files[0])}/>
-                            <button className={'updateEventButton'} onClick={uploadPhoto}>Upload</button>
+                            <button className={'updateEventButton'} onClick={uploadPhoto}>Confirm Photo</button>
                         </div>
 
                         <label htmlFor="editEventTitle">Change your Event title:</label>
@@ -220,11 +248,10 @@ export default function EventEdit() {
                             <button type={'submit'} className='updateEventButton' onClick={handleFormSubmit}>Save
                                 Event
                             </button>
-                            <button className='deleteEventButton' onClick={deleteEvent}>Delete Event</button>
+                            <button className='deleteEventButton' onClick={() => setModalVisible(true)}>Delete Event</button>
                         </div>
                     </div>
                 </div>
-
             </div>
         </>
     )
