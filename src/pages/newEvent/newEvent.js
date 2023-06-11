@@ -4,26 +4,19 @@ import './newEvent.css'
 import NavTabs from "../../components/Navbar";
 
 // import Carousel from 'react-gallery-carousel';
-import 'react-gallery-carousel/dist/index.css';
+// import 'react-gallery-carousel/dist/index.css';
 import { backendHost } from "../../utils/helpers";
 
 export default function EventNew() {
 
-    // const images = [9, 8, 7, 6, 5].map((number) => (
-    //     {
-    //         src: `https://placedog.net/${number}00/${number}00?id=${number}`,
-    //         // srcset: `https://placedog.net/400/240?id=1 400w, https://placedog.net/700/420?id=1 700w, https://placedog.net/1000/600?id=1 1000w`,
-    //         // sizes: '(max-width: 1000px) 400px, (max-width: 2000px) 700px, 1000px',
-    //         alt: `Dogs are domesticated mammals, not natural wild animals. They were originally bred from wolves. They have been bred by humans for a long time, and were the first animals ever to be domesticated.`,
-    //         // thumbnail: `https://placedog.net/100/60?id=1`
-    //     }
-    // ));
 
     const [file, setFile] = useState();
     const [title, setTitle] = useState();
     const [desc, setDesc] = useState();
     const [eventDate, setEventDate] = useState();
     const [sendToTimeline, setSendToTimeline] = useState(false);
+    const [shareVisible, setShareVisible] = useState(true);
+    const [messageVisible, setMessageVisible] = useState(false);
 
     const filePicker = <input type={'file'} accept={'image/*'} onChange={e => setFile(e.target.files[0])} />;
 
@@ -45,6 +38,8 @@ export default function EventNew() {
             setSendToTimeline(false);
             return;
         }
+        setShareVisible(false);
+        setMessageVisible(true);
         const f = new FormData();
         const token = localStorage.getItem('token');
         f.set('photo', file);
@@ -130,17 +125,17 @@ export default function EventNew() {
                     <div className='editEventForm'>
                         <h2 className='editHeader'>Share a new Event</h2>
                         <label htmlFor="editPhoto">Choose which images to upload:</label>
-                        <button className='updateEventButton' onClick={addInput}>Add Multiple Files</button>
-                        <div className='inputButtons'>
-                            {inputs}
-                        </div>
+                        {/* <button className='updateEventButton' onClick={addInput}>Add Multiple Files</button> */}
+                        {inputs}
                         <label htmlFor="editEventTitle">Title your event:</label>
                         <input className='editEventTitle' placeholder='Event Title' onChange={e => setTitle(e.target.value)}></input>
                         <label htmlFor="editEventTitle">Summarize your event:</label>
                         <textarea className='editEventDesc' placeholder='Event Description' onChange={e => setDesc(e.target.value)}></textarea>
                         <label htmlFor="editEventDesc">Select the date your Event occured:</label>
                         <input className="editEventDate" type='date' onChange={e => setEventDate(e.target.value)}></input>
-                        <button className='updateEventButton' onClick={submitForm}>Share Event</button>
+                        <button className={shareVisible ? "updateEventButton" : "updateEventButton hidden"}
+                        onClick={submitForm}>Share Event</button>
+                        <p className={messageVisible ? 'sharingEvent' : 'sharingEvent hidden'}>Sharing Event, please wait...</p>
                     </div>
                 </div>
             </div>

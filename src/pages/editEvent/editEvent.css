@@ -30,8 +30,9 @@
     justify-content: center;
     width: 85vw;
     max-width: 700px;
-    height: 510px;
-    padding: 0px 2vw;
+    height: -moz-fit-content;
+    height: fit-content;
+    padding: 2vh 2vw 0px 2vw;
     border: 1px solid var(--bordercolor);
     border-radius: 15px;
     background-color: var(--offWhite);
@@ -126,6 +127,32 @@
 
 .smallPlayer {
     display: none;
+}
+
+.youSure {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40vh;
+    margin-left: 40vw;
+    z-index: 4;
+    height: 200px;
+    max-width: 500px;
+    min-width: 300px;
+    width: 50%;
+    border: 1px solid var(--bordercolor);
+    background-color: var(--offWhite);
+    font-size: 18px;
+    border-radius: 10px;
+}
+
+.cancelDelete {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 @media screen and (max-width: 1175px) and (min-width: 775px) {

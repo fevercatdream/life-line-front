@@ -701,7 +701,6 @@ svg:hover {
     width: fit-content;
     min-height: -moz-fit-content;
     min-height: fit-content;
-    max-height: 85%;
     border: 1px solid var(--bordercolor);
     border-radius: 15px;
     z-index: 3;

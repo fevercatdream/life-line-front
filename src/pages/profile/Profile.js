@@ -126,7 +126,6 @@ export default function Profile() {
                 <div className='profileblock'>
                     <div id='blackOut' className={modalVisible ? "blackOut" : "blackOut hidden"}
                          onClick={() => setModalVisible(false)}>
-
                     </div>
                     <div className='navBackground'></div>
                     <NavTabs/>
