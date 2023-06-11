@@ -17,6 +17,8 @@ import Search from '@mui/icons-material/Search';
 // import { Message } from '@mui/icons-material';
 import HighlightOff from "@mui/icons-material/HighlightOff";
 
+import dateFormat from 'dateformat';
+
 
 export default function Profile() {
     const [modalVisible, setModalVisible] = useState(false);
@@ -198,9 +200,10 @@ export default function Profile() {
                             </div>
                             <div className='recentBox'>
                                 <figure id="recentCard" className='recentCard' onClick={() => setModalVisible(true)}>
-
-                                    <img className='recentMedia' src={event?.eventList?.[0]?.photos[0].url ?? "http://placekitten.com/500/325"}
+                                    <div className='recentCardBox'>
+                                        <img className='recentMedia' src={event?.eventList?.[0]?.photos[0].url ?? "http://placekitten.com/500/325"}
                                          alt='placeholder'/>
+                                    </div>
                                     <figcaption className='recentCaption'> {event?.eventList?.[0]?.description ?? "Your future event description"}
                                     </figcaption>
                                     <div className='recentComReac'>
@@ -422,7 +425,7 @@ function PendingFriend({pendingFriendRequest, clearFriendRequest}) {
                 </div>
                 <div className='contentContainer'>
                     <h3 className='commentNotifUser'>{pendingFriendRequest.name}</h3>
-                    <p className='currentTime'><i>{pendingFriendRequest.createdAt}</i></p>
+                    <p className='currentTime'><i>{dateFormat(pendingFriendRequest.createdAt, "mmmm dS, yyyy")}</i></p>
                 </div>
             </div>
             <div className='friendOptions'>
@@ -448,7 +451,7 @@ return (
             </div>
             <div className='contentContainer'>
                 <h3 className='commentNotifUser'>{like.User.name}</h3>
-                <p className='currentTime'><i>{like.createdAt}</i></p>
+                <p className='currentTime'><i>{dateFormat(like.createdAt, "mmmm dS, yyyy")}</i></p>
             </div>
         </div>
         <div className='centeredIcon'>
