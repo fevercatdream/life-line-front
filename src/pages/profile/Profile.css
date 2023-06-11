@@ -415,11 +415,21 @@ svg:hover {
     font-size: 14px;
 }
 
-.centeredIcon {
+.friendOptions {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.centeredIcon, .centeredIcon2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 3%;
+}
+
+.centeredIcon2 {
+    padding-right: 15%;
 }
 
 .commentBtn2 {
