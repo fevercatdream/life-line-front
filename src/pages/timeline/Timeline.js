@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 import './Timeline.css';
 import { HashLink } from 'react-router-hash-link';
 import Carousel from 'react-gallery-carousel';
@@ -29,6 +29,8 @@ export default function TimelineFunc() {
     const [eventModalVisible, setEventModalVisible] = useState(false);
     const [activeEvent, setActiveEvent] = useState();
     const [events, setEvents] = useState([]);
+    const [newEvent, setNewEvent] = useState(false);
+
 
     const [windowSize, setWindowSize] = React.useState({
         width: undefined,
@@ -51,7 +53,7 @@ export default function TimelineFunc() {
             console.log('something went wrong, could not load data');
             return;
         }
-
+        checkLocation();
         const data = await res.json();
         setEvents(data.eventList);
     }
@@ -64,6 +66,17 @@ export default function TimelineFunc() {
     useEffect(() => {
         loadData();
     }, []);
+
+    // check current location, if your timeline show event button otherwise hide event button
+
+    const location = useLocation();
+
+    const checkLocation = async () => {
+        const path = '/timeline';
+        if (location.pathname === path) {
+            setNewEvent(true);
+        }
+    }
 
     return (
         <>
@@ -78,7 +91,7 @@ export default function TimelineFunc() {
                     <HashLink smooth to='/timeline/#LifeLine' className='toTopBtn'><ArrowCircleUp sx={{ fontSize: 45 }} className='hover' /></HashLink>
                     <div className='alternateTimeline'>
                         <Timeline position='alternate'><div className='newEventField'>
-                            <Link to="/newevent"><LibraryAdd sx={{ fontSize: 45 }} className='hover newEventBtn' /></Link>
+                            <Link to="/newevent" className={newEvent ? '' : 'hidden'}><LibraryAdd sx={{ fontSize: 45 }} className='hover newEventBtn' /></Link>
                         </div>                        {eventEls}
                         </Timeline></div>
                     <div className='smallerTimeline'><Timeline

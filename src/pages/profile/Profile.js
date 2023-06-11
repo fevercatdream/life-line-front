@@ -28,7 +28,6 @@ export default function Profile() {
 
     const token = localStorage.getItem('token');
 
-
     const loadData = async () => {
         if (!token) {
             return;
