@@ -82,7 +82,7 @@
     margin: 0px;
 }
 
-.editPhoto, .editThumbnail, .updateEventButton, .deleteEventButton {
+.editPhoto, .editThumbnail, .updateEventButton, .deleteEventButton, .cancelButton {
     width: 200px;
     border: 1px solid var(--bordercolor);
     background-color: purple;
@@ -100,6 +100,10 @@
 
 .deleteEventButton {
     background-color: rgb(175, 4, 4);
+    margin-top: 10px;
+}
+
+.cancelButton {
     margin-top: 10px;
 }
 

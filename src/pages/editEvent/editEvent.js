@@ -148,7 +148,7 @@ export default function EventEdit() {
             <div className='youSure'>
                 <h4>Are you sure you want to delete this event?</h4>
                 <div className='cancelDelete'>
-                    <button className='deleteEventButton' onClick={() => setModalVisible(false)}>Cancel</button>
+                    <button className='cancelButton' onClick={() => setModalVisible(false)}>Cancel</button>
                     <button className='deleteEventButton' onClick={deleteEvent}>Delete</button>
                 </div>
                 <p className={deleteMessage ? "" : "hidden"}>Event Deleted, redirecting to Timeline...</p>
