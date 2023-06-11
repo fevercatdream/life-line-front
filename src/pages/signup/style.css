@@ -27,7 +27,7 @@ body {
     align-items: center;
     align-self: center;
     height: 100%;
-    width: 90vw;
+    width: 99vw;
     background-color: white;
 }
 
@@ -55,6 +55,7 @@ body {
     background-color: rgb(255, 255, 255);
     box-shadow: 5px 5px 10px var(--bordercolor);
     border-radius: 3px;
+    margin-right: 8vw;
 }
 
 .webName {
