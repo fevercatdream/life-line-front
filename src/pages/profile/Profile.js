@@ -232,42 +232,42 @@ export default function Profile() {
                                 </figure>
                                 <div className='recentManyDiv'>
                                     <figure className='recentMany1'>
-                                        <img className='recentMediaSmall' src="https://dummyimage.com/300x200/000/aaa"
+                                        <img className='recentMediaSmall' src={event?.eventList?.[1]?.photos[0].url ?? "http://placekitten.com/300/200"}
                                              alt='placeholder'/>
                                         <div className='recentComReac'>
-                                            <p className='comments2'>5</p>
+                                            <p className='comments2'>{event?.eventList?.[1]?.commentsCount ?? "0"}</p>
                                             <Chat sx={{fontSize: 20}} className='commentBtn'/>
-                                            <p className='likes2'>15</p>
+                                            <p className='likes2'>{event?.eventList?.[1]?.likeCount ?? "0"}</p>
                                             <Favorite sx={{fontSize: 20}} className='likeBtn'/>
                                         </div>
                                     </figure>
                                     <figure className='recentMany3'>
-                                        <img className='recentMediaSmall' src="https://dummyimage.com/300x200/000/aaa"
+                                        <img className='recentMediaSmall' src={event?.eventList?.[2]?.photos[0].url ?? "http://placekitten.com/300/200"}
                                              alt='placeholder'/>
                                         <div className='recentComReac'>
-                                            <p className='comments2'>5</p>
+                                            <p className='comments2'>{event?.eventList?.[2]?.commentsCount ?? "0"}</p>
                                             <Chat sx={{fontSize: 20}} className='commentBtn'/>
-                                            <p className='likes2'>15</p>
+                                            <p className='likes2'>{event?.eventList?.[2]?.likeCount ?? "0"}</p>
                                             <Favorite sx={{fontSize: 20}} className='likeBtn'/>
                                         </div>
                                     </figure>
                                     <figure className='recentMany2'>
-                                        <img className='recentMediaSmall' src="https://dummyimage.com/300x200/000/aaa"
+                                        <img className='recentMediaSmall' src={event?.eventList?.[3]?.photos[0].url ?? "http://placekitten.com/300/200"}
                                              alt='placeholder'/>
                                         <div className='recentComReac'>
-                                            <p className='comments2'>5</p>
+                                            <p className='comments2'>{event?.eventList?.[3]?.commentsCount ?? "0"}</p>
                                             <Chat sx={{fontSize: 20}} className='commentBtn'/>
-                                            <p className='likes2'>15</p>
+                                            <p className='likes2'>{event?.eventList?.[3]?.likeCount ?? "0"}</p>
                                             <Favorite sx={{fontSize: 20}} className='likeBtn'/>
                                         </div>
                                     </figure>
                                     <figure className='recentMany4'>
-                                        <img className='recentMediaSmall' src="https://dummyimage.com/300x200/000/aaa"
+                                        <img className='recentMediaSmall' src={event?.eventList?.[4]?.photos[0].url ?? "http://placekitten.com/300/200"}
                                              alt='placeholder'/>
                                         <div className='recentComReac'>
-                                            <p className='comments2'>5</p>
+                                            <p className='comments2'>{event?.eventList?.[4]?.commentsCount ?? "0"}</p>
                                             <Chat sx={{fontSize: 20}} className='commentBtn'/>
-                                            <p className='likes2'>15</p>
+                                            <p className='likes2'>{event?.eventList?.[4]?.likeCount ?? "0"}</p>
                                             <Favorite sx={{fontSize: 20}} className='likeBtn'/>
                                         </div>
                                     </figure>
