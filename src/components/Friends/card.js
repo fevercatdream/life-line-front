@@ -7,7 +7,7 @@ import Clear from "@mui/icons-material/Clear";
 import Block from "@mui/icons-material/Block";
 import {Link} from "react-router-dom";
 
-export default function FriendCard({user, context}) {
+export default function FriendCard({user, context, cb}) {
     const [pendingFriend, setPendingFriend] = useState();
     const [isFriend, setisFriend] = useState();
 
@@ -29,10 +29,23 @@ export default function FriendCard({user, context}) {
         setPendingFriend(true);
     }
 
+    const deleteFriend = async () => {
+        const res = await sendJSONRequest('DELETE', '/api/friends/remove-friend', {
+            friendId: user.id,
+        }, true)
+        if (res.status !== 200) {
+            console.log("error deleting a friend");
+            return;
+        }
+        if (cb) {
+            cb();
+        }
+    }
+
     let showBlockButton = true;
     let action;
     if (context === 'friend') {
-        action = <button className='deleteFriend'><PersonRemove sx={{ fontSize: 40 }}/></button>;
+        action = <button className='deleteFriend'><PersonRemove sx={{ fontSize: 40 }} onClick={deleteFriend}/></button>;
     } else if (context === 'user') {
         if (isFriend) {
             action = <Person sx={{fontSize: 40}} color={'success'} />
