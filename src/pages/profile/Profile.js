@@ -8,14 +8,16 @@ import 'react-gallery-carousel/dist/index.css';
 
 import {sendJSONRequest} from "../../utils/helpers";
 import NavTabs from '../../components/Navbar/index';
+import { Searchbar } from "../../components/Searchbar"
 
 import Chat from '@mui/icons-material/Chat';
 import Favorite from '@mui/icons-material/Favorite';
 import PersonAddAlt1 from '@mui/icons-material/PersonAddAlt1';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+// eslint-disable-next-line
 import Search from '@mui/icons-material/Search';
-import Clear from '@mui/icons-material/Clear';
-// import { Message } from '@mui/icons-material';
+// eslint-disable-next-line
+import { Message, Clear } from '@mui/icons-material';
 import HighlightOff from "@mui/icons-material/HighlightOff";
 
 import dateFormat from 'dateformat';
@@ -215,8 +217,7 @@ export default function Profile() {
                                     </div>
                                 </div>
                                 <div className='flexRow'>
-                                    <input type="text" className='searchBar' placeholder='future development'></input>
-                                    <button className='searchButton'><Search sx={{fontSize: 20}}/></button>
+                                    <Searchbar />        
                                 </div>
                             </div>
 
