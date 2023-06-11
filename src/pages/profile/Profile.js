@@ -14,6 +14,7 @@ import Favorite from '@mui/icons-material/Favorite';
 import PersonAddAlt1 from '@mui/icons-material/PersonAddAlt1';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import Search from '@mui/icons-material/Search';
+import Clear from '@mui/icons-material/Clear';
 // import { Message } from '@mui/icons-material';
 import HighlightOff from "@mui/icons-material/HighlightOff";
 
@@ -28,6 +29,8 @@ export default function Profile() {
     const [profile, setProfile] = useState();
     const [event, setEvent] = useState({});
     const [loading, setLoading] = useState(true);
+    
+    const [comment, setComment] = useState([]);
 
     const token = localStorage.getItem('token');
 
@@ -42,10 +45,12 @@ export default function Profile() {
             console.log("something went wrong");
             return;
         }
-
+        
         const p = await res.json();
         setProfile(p);
         setLoading(false);
+        setComment(p.comments);
+        console.log(p.comments, "testiiiii")
     }
 
     const loadDataEvent = async () => {
@@ -106,15 +111,27 @@ export default function Profile() {
     if (profile && profile.likes && profile.likes.length > 0) {
         likesEls = profile.likes.map(i =>
             <Like like={i} />);
+        console.log (profile.likes[0].Event.description);
     }
 
     // for comments
     let commentsEls = <span> Comment notifications will appear here.</span>;
 
-    if (profile && profile.comments && profile.comments.length > 0) {
-        console.log(profile.comments[0], "dddd")
-        commentsEls = profile.comments.sort((ca, cb) => new Date(ca.createdAt) - new Date(cb.createdAt)).reverse().map(i =>
-            <Comment comment={i} />);
+    let commentsTest = localStorage.getItem("comment_id")
+
+    // let commentsTest2 = JSON.stringify(localStorage.getItem("comment_id"));
+
+    console.log(commentsTest)
+    // console.log(commentsTest2)
+
+    function handleCommentDissmiss(commentId) {
+        setComment(comment.filter(c => c.id !== commentId))
+    }
+
+    if (comment.length > 0) {
+        
+        commentsEls = comment.filter(comment => !localStorage.getItem("comment_id").split(" ").includes(comment.id)).sort((ca, cb) => new Date(ca.createdAt) - new Date(cb.createdAt)).reverse().map(i =>
+            <Comment comment={i} onCommentDismiss={handleCommentDissmiss}/>);
     }
 
 
@@ -441,6 +458,7 @@ function PendingFriend({pendingFriendRequest, clearFriendRequest}) {
 }
 
 function Like({like}) {
+    
 
 return (
     <div className='profileLikeNotif'>
@@ -451,6 +469,7 @@ return (
             </div>
             <div className='contentContainer'>
                 <h3 className='commentNotifUser'>{like.User.name}</h3>
+                <p className='currentTime2'><b>On Post :</b> {like.Event.title}</p>
                 <p className='currentTime'><i>{dateFormat(like.createdAt, "mmmm dS, yyyy")}</i></p>
             </div>
         </div>
@@ -461,7 +480,12 @@ return (
  )
 }
 
-function Comment({comment}) {
+function Comment({comment, onCommentDismiss}) {
+
+    function fillStorage() {
+        localStorage.setItem(`comment_id`, localStorage.getItem("comment_id") + ` ${comment.id}`);
+        onCommentDismiss(comment.id);
+    }
 
     return (
         <div className='profileCommentNotif'>
@@ -472,11 +496,13 @@ function Comment({comment}) {
                 </div>
                 <div className='contentContainer'>
                     <h3 className='commentNotifUser'>{comment.User.name}</h3>
+                    <p className='currentTime2'><b>On Post :</b> {comment.Event.title}</p>
                     <p className='currentTime'><i>{comment.comment}</i></p>
                 </div>
             </div>
             <div className='centeredIcon'>
                 <Chat sx={{fontSize: 30}} className='commentBtn2'/>
+                <Clear sx={{fontSize: 30}} className='commentBtn2' onClick={fillStorage}/>
             </div>
         </div>
     )

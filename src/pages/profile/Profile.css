@@ -405,14 +405,21 @@ svg:hover {
 }
 
 .commentNotifUser {
-    margin: 10px;
+    margin: 5px;
+    margin-left: 10px;
 }
 
-.currentTime {
+.currentTime, .currentTime2 {
     max-height: 30px;
     overflow: hidden;
-    margin: 10px;
+    margin: 5px;
     font-size: 14px;
+    margin-left: 10px;
+}
+
+.currentTime2 {
+    margin: 0px;
+    margin-left: 10px;
 }
 
 .friendOptions {
@@ -1128,7 +1135,7 @@ svg:hover {
         margin-left: -50px;
     }
 
-    .currentTime {
+    .currentTime, .currentTime2 {
         width: 200px;
         font-size: 12px;
     }
