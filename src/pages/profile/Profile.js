@@ -14,6 +14,7 @@ import Favorite from '@mui/icons-material/Favorite';
 import PersonAddAlt1 from '@mui/icons-material/PersonAddAlt1';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import Search from '@mui/icons-material/Search';
+import Clear from '@mui/icons-material/Clear';
 // import { Message } from '@mui/icons-material';
 import HighlightOff from "@mui/icons-material/HighlightOff";
 
@@ -28,6 +29,9 @@ export default function Profile() {
     const [profile, setProfile] = useState();
     const [event, setEvent] = useState({});
     const [loading, setLoading] = useState(true);
+    
+    const [comment, setComment] = useState([]);
+    const [like, setLike] = useState([]);
 
     const token = localStorage.getItem('token');
 
@@ -42,10 +46,12 @@ export default function Profile() {
             console.log("something went wrong");
             return;
         }
-
+        
         const p = await res.json();
         setProfile(p);
         setLoading(false);
+        setComment(p.comments);
+        setLike(p.likes);
     }
 
     const loadDataEvent = async () => {
@@ -101,25 +107,50 @@ export default function Profile() {
     }
 
     // for Likes
-    let likesEls = <span> Like notifications will appear here.</span>;
 
-    if (profile && profile.likes && profile.likes.length > 0) {
-        likesEls = profile.likes.map(i =>
-            <Like like={i} />);
+    let likesEls = "";
+
+    let likesStorage = localStorage.getItem("like_id")?.split(" ").map(id => parseInt(id)) ?? [];
+
+    let filteredLikes= like.filter(like=> !likesStorage.includes(like.id))
+
+    function handleLikesDissmiss(commentId) {
+        setComment(like.filter(c => c.id !== commentId))
     }
+
+    if (like.length > 0) {
+        likesEls = filteredLikes.map(i =>
+            <Like like={i} onLikeDismiss={handleLikesDissmiss}/>);
+        
+    } 
+
 
     // for comments
-    let commentsEls = <span> Comment notifications will appear here.</span>;
 
-    if (profile && profile.comments && profile.comments.length > 0) {
-        console.log(profile.comments[0], "dddd")
-        commentsEls = profile.comments.sort((ca, cb) => new Date(ca.createdAt) - new Date(cb.createdAt)).reverse().map(i =>
-            <Comment comment={i} />);
+    let commentsEls = "";
+
+    let commentsStorage = localStorage.getItem("comment_id")?.split(" ").map(id => parseInt(id)) ?? [];
+
+    let filteredComments= comment.filter(comment => !commentsStorage.includes(comment.id))
+
+    // comments dismiss
+
+    function handleCommentDissmiss(commentId) {
+        setComment(comment.filter(c => c.id !== commentId))
+    }
+
+    
+
+    if (comment.length > 0) {
+        
+        commentsEls = filteredComments.sort((ca, cb) => new Date(ca.createdAt) - new Date(cb.createdAt)).reverse().map(i =>
+            <Comment comment={i} onCommentDismiss={handleCommentDissmiss}/>);
     }
 
 
-    const userYouKnowImages = profile.known_users.map(k => <img className='suggestFriend1' src={k.profile_url}
-                                                                key={k.id} alt={'placeholder'}/>)
+
+
+    const userYouKnowImages = profile.known_users.map(k => <img className='suggestFriend1' src={k.profile_url} key={k.id} alt={'placeholder'}/>)
 
     // Array for gallery slider images
     const images = [9, 8, 7, 6, 5].map((number) => (
@@ -163,7 +194,7 @@ export default function Profile() {
                                         setLikeVisible(false);
                                         setFriendVisible(false);
                                     }}>
-                                        <p className='notifys'>{profile.comments.length}</p>
+                                        <p className='notifys'>{filteredComments.length}</p>
                                         <Chat sx={{fontSize: 25}} className='commentBtn'/>
                                     </div>
                                     <div className='notifRow' onClick={() => {
@@ -171,7 +202,7 @@ export default function Profile() {
                                         setNotifVisible(false);
                                         setFriendVisible(false);
                                     }}>
-                                        <p className='notifys'>{profile.likes.length}</p>
+                                        <p className='notifys'>{filteredLikes.length}</p>
                                         <Favorite sx={{fontSize: 25}} className='likeBtn'/>
                                     </div>
                                     <div className='notifRow' onClick={() => {
@@ -184,16 +215,18 @@ export default function Profile() {
                                     </div>
                                 </div>
                                 <div className='flexRow'>
-                                    <input type="text" className='searchBar' placeholder='search friends'></input>
+                                    <input type="text" className='searchBar' placeholder='future development'></input>
                                     <button className='searchButton'><Search sx={{fontSize: 20}}/></button>
                                 </div>
                             </div>
 
                             <div className={notifVisible ? "commentModal" : "commentModal hidden"} ref={messagesRef}>
                                 {commentsEls}
+                                <span> Comment notifications will appear here.</span>
                             </div>
                             <div className={likeNotifVisible ? "likeModal" : "likeModal hidden"}>
                                 {likesEls}
+                                <span>Like notifications will appear here.</span>
                             </div>
                             <div className={friendNotifVisible ? "newFriendModal" : "newFriendModal hidden"}>
                                 {pendingFriendsEls}
@@ -440,7 +473,12 @@ function PendingFriend({pendingFriendRequest, clearFriendRequest}) {
     )
 }
 
-function Like({like}) {
+function Like({like, onLikeDismiss}) {
+    
+    function fillStorage() {
+        localStorage.setItem(`like_id`, localStorage.getItem("like_id") + ` ${like.id}`);
+        onLikeDismiss(like.id);
+    }
 
 return (
     <div className='profileLikeNotif'>
@@ -451,17 +489,23 @@ return (
             </div>
             <div className='contentContainer'>
                 <h3 className='commentNotifUser'>{like.User.name}</h3>
+                <p className='currentTime2'><b>Liked your Post :</b> {like.Event.title}</p>
                 <p className='currentTime'><i>{dateFormat(like.createdAt, "mmmm dS, yyyy")}</i></p>
             </div>
         </div>
-        <div className='centeredIcon'>
-            <Favorite sx={{fontSize: 30}} className='commentBtn2'/>
-        </div>
+            <div className='centeredIcon'>
+                <Clear sx={{fontSize: 30}} className='commentBtn2' onClick={fillStorage}/>
+            </div>
     </div>
  )
 }
 
-function Comment({comment}) {
+function Comment({comment, onCommentDismiss}) {
+
+    function fillStorage() {
+        localStorage.setItem(`comment_id`, localStorage.getItem("comment_id") + ` ${comment.id}`);
+        onCommentDismiss(comment.id);
+    }
 
     return (
         <div className='profileCommentNotif'>
@@ -472,11 +516,12 @@ function Comment({comment}) {
                 </div>
                 <div className='contentContainer'>
                     <h3 className='commentNotifUser'>{comment.User.name}</h3>
+                    <p className='currentTime2'><b>Commented on :</b> {comment.Event.title}</p>
                     <p className='currentTime'><i>{comment.comment}</i></p>
                 </div>
             </div>
             <div className='centeredIcon'>
-                <Chat sx={{fontSize: 30}} className='commentBtn2'/>
+                <Clear sx={{fontSize: 30}} className='commentBtn2' onClick={fillStorage}/>
             </div>
         </div>
     )
