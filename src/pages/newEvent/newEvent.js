@@ -19,9 +19,10 @@ export default function EventNew() {
     const [messageVisible, setMessageVisible] = useState(false);
 
     const filePicker = <input type={'file'} accept={'image/*'} onChange={e => setFile(e.target.files[0])} />;
-
+    // eslint-disable-next-line
     const [inputs, setInputs] = useState([filePicker]);
 
+    // eslint-disable-next-line
     const addInput = () => {
         console.log("adding input");
         const i = inputs.slice()

@@ -32,10 +32,10 @@ export default function TimelineFunc() {
     const [newEvent, setNewEvent] = useState(false);
 
 
-    const [windowSize, setWindowSize] = React.useState({
-        width: undefined,
-        height: '',
-    });
+    // const [windowSize, setWindowSize] = React.useState({
+    //     width: undefined,
+    //     height: '',
+    // });
 
 
     const { id } = useParams();
@@ -256,7 +256,9 @@ function Event({ event, toggle, invert }) {
     const d = new Date(event.date);
     const month = d.toLocaleDateString('en-us', { month: 'short' })
     const year = d.toLocaleDateString('en-us', { year: 'numeric' })
+    // eslint-disable-next-line
     const [likeCount, setLikeCount] = useState();
+    // eslint-disable-next-line
     const [commentCount, setCommentCount] = useState();
 
     useEffect(() => {
