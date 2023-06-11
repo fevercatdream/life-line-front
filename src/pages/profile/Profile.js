@@ -17,6 +17,8 @@ import Search from '@mui/icons-material/Search';
 // import { Message } from '@mui/icons-material';
 import HighlightOff from "@mui/icons-material/HighlightOff";
 
+import dateFormat from 'dateformat';
+
 
 export default function Profile() {
     const [modalVisible, setModalVisible] = useState(false);
@@ -24,6 +26,7 @@ export default function Profile() {
     const [likeNotifVisible, setLikeVisible] = useState(false);
     const [friendNotifVisible, setFriendVisible] = useState(false);
     const [profile, setProfile] = useState();
+    const [event, setEvent] = useState({});
     const [loading, setLoading] = useState(true);
 
     const token = localStorage.getItem('token');
@@ -45,6 +48,17 @@ export default function Profile() {
         setLoading(false);
     }
 
+    const loadDataEvent = async () => {
+        const res = await sendJSONRequest('GET', '/api/timeline/view', null, true);
+        if (res.status !== 200) {
+            console.log('something went wrong, could not load data');
+            return;
+        }
+        const data = await res.json();
+        setEvent(data);
+
+    }
+
     const clearFriendRequest = (friendId) => {
         const p = { ...profile }
         const idx = p.pending_friends.findIndex(x => x.friendId === friendId);
@@ -64,6 +78,7 @@ export default function Profile() {
 
     useEffect(() => {
         loadData();
+        loadDataEvent();
     }, [token])
 
     if (!token) {
@@ -185,59 +200,57 @@ export default function Profile() {
                             </div>
                             <div className='recentBox'>
                                 <figure id="recentCard" className='recentCard' onClick={() => setModalVisible(true)}>
-
-                                    <img className='recentMedia' src="https://dummyimage.com/500x325/000/aaa"
+                                    <div className='recentCardBox'>
+                                        <img className='recentMedia' src={event?.eventList?.[0]?.photos[0].url ?? "http://placekitten.com/500/325"}
                                          alt='placeholder'/>
-                                    <figcaption className='recentCaption'>Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                                        ut aliquip ex ea commodo consequat.
+                                    </div>
+                                    <figcaption className='recentCaption'> {event?.eventList?.[0]?.description ?? "Your future event description"}
                                     </figcaption>
                                     <div className='recentComReac'>
-                                        <p className='comments'>5</p>
+                                        <p className='comments'>{event?.eventList?.[0]?.commentsCount ?? "0"}</p>
                                         <Chat sx={{fontSize: 25}} className='commentBtn'/>
-                                        <p className='likes'>15</p>
+                                        <p className='likes'>{event?.eventList?.[0]?.likeCount ?? "0"}</p>
                                         <Favorite sx={{fontSize: 25}} className='likeBtn'/>
                                     </div>
                                 </figure>
                                 <div className='recentManyDiv'>
                                     <figure className='recentMany1'>
-                                        <img className='recentMediaSmall' src="https://dummyimage.com/300x200/000/aaa"
+                                        <img className='recentMediaSmall' src={event?.eventList?.[1]?.photos[0].url ?? "http://placekitten.com/300/200"}
                                              alt='placeholder'/>
                                         <div className='recentComReac'>
-                                            <p className='comments2'>5</p>
+                                            <p className='comments2'>{event?.eventList?.[1]?.commentsCount ?? "0"}</p>
                                             <Chat sx={{fontSize: 20}} className='commentBtn'/>
-                                            <p className='likes2'>15</p>
+                                            <p className='likes2'>{event?.eventList?.[1]?.likeCount ?? "0"}</p>
                                             <Favorite sx={{fontSize: 20}} className='likeBtn'/>
                                         </div>
                                     </figure>
                                     <figure className='recentMany3'>
-                                        <img className='recentMediaSmall' src="https://dummyimage.com/300x200/000/aaa"
+                                        <img className='recentMediaSmall' src={event?.eventList?.[2]?.photos[0].url ?? "http://placekitten.com/300/200"}
                                              alt='placeholder'/>
                                         <div className='recentComReac'>
-                                            <p className='comments2'>5</p>
+                                            <p className='comments2'>{event?.eventList?.[2]?.commentsCount ?? "0"}</p>
                                             <Chat sx={{fontSize: 20}} className='commentBtn'/>
-                                            <p className='likes2'>15</p>
+                                            <p className='likes2'>{event?.eventList?.[2]?.likeCount ?? "0"}</p>
                                             <Favorite sx={{fontSize: 20}} className='likeBtn'/>
                                         </div>
                                     </figure>
                                     <figure className='recentMany2'>
-                                        <img className='recentMediaSmall' src="https://dummyimage.com/300x200/000/aaa"
+                                        <img className='recentMediaSmall' src={event?.eventList?.[3]?.photos[0].url ?? "http://placekitten.com/300/200"}
                                              alt='placeholder'/>
                                         <div className='recentComReac'>
-                                            <p className='comments2'>5</p>
+                                            <p className='comments2'>{event?.eventList?.[3]?.commentsCount ?? "0"}</p>
                                             <Chat sx={{fontSize: 20}} className='commentBtn'/>
-                                            <p className='likes2'>15</p>
+                                            <p className='likes2'>{event?.eventList?.[3]?.likeCount ?? "0"}</p>
                                             <Favorite sx={{fontSize: 20}} className='likeBtn'/>
                                         </div>
                                     </figure>
                                     <figure className='recentMany4'>
-                                        <img className='recentMediaSmall' src="https://dummyimage.com/300x200/000/aaa"
+                                        <img className='recentMediaSmall' src={event?.eventList?.[4]?.photos[0].url ?? "http://placekitten.com/300/200"}
                                              alt='placeholder'/>
                                         <div className='recentComReac'>
-                                            <p className='comments2'>5</p>
+                                            <p className='comments2'>{event?.eventList?.[4]?.commentsCount ?? "0"}</p>
                                             <Chat sx={{fontSize: 20}} className='commentBtn'/>
-                                            <p className='likes2'>15</p>
+                                            <p className='likes2'>{event?.eventList?.[4]?.likeCount ?? "0"}</p>
                                             <Favorite sx={{fontSize: 20}} className='likeBtn'/>
                                         </div>
                                     </figure>
@@ -412,7 +425,7 @@ function PendingFriend({pendingFriendRequest, clearFriendRequest}) {
                 </div>
                 <div className='contentContainer'>
                     <h3 className='commentNotifUser'>{pendingFriendRequest.name}</h3>
-                    <p className='currentTime'><i>{pendingFriendRequest.createdAt}</i></p>
+                    <p className='currentTime'><i>{dateFormat(pendingFriendRequest.createdAt, "mmmm dS, yyyy")}</i></p>
                 </div>
             </div>
             <div className='friendOptions'>
@@ -438,7 +451,7 @@ return (
             </div>
             <div className='contentContainer'>
                 <h3 className='commentNotifUser'>{like.User.name}</h3>
-                <p className='currentTime'><i>{like.createdAt}</i></p>
+                <p className='currentTime'><i>{dateFormat(like.createdAt, "mmmm dS, yyyy")}</i></p>
             </div>
         </div>
         <div className='centeredIcon'>

@@ -471,6 +471,7 @@ svg:hover {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
 }
 
 
@@ -508,24 +509,37 @@ svg:hover {
 }
 
 .recentCard {
-    height: 430px;
-    width: 500px;
+    max-height: 430px;
+    max-width: 500px;
     margin: 0px;
     margin-left: 10px;
     margin-bottom: 20px;
     margin-right: 10px;
-    padding: 20px 20px 20px 20px;
+    padding: 20px 20px 5px 20px;
     z-index: 1;
     background-color: white;
     border-radius: 3px;
     border: 1px solid var(--bordercolor);
 }
 
+.recentCardBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 325px;
+    max-width: 500px;
+    overflow: hidden;
+}
+
 .recentMedia {
+    max-height: 600px;
+    max-width: 600px;
     margin-bottom: 0px;
 }
 
 .recentCaption {
+    width: 100%;
+    margin-top: 10px;
     padding: 5px;
     height: 45px;
     overflow-y: auto;
@@ -534,6 +548,7 @@ svg:hover {
 }
 
 .recentComReac {
+    width: 100%;
     height: 40px;
     display: flex;
     flex-direction: row;
@@ -626,6 +641,7 @@ svg:hover {
 }
 
 .friendHeaderRow {
+    justify-content: space-between;
     z-index: 1;
     color: white;
     font-size: 20px;
@@ -709,8 +725,7 @@ svg:hover {
     padding-top: 5vh;
     width: -moz-fit-content;
     width: fit-content;
-    min-height: -moz-fit-content;
-    min-height: fit-content;
+    max-height: 85vh;
     border: 1px solid var(--bordercolor);
     border-radius: 15px;
     z-index: 3;

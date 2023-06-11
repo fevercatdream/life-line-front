@@ -184,7 +184,7 @@ function Modal({ event, visible }) {
     }
 
     const likeButton = liked ?
-        <Favorite sx={{ fontSize: 25 }} onClick={() => likeEvent(true)} /> :
+        <Favorite sx={{ fontSize: 25 }} style = {{color: "green"}} onClick={() => likeEvent(true)} /> :
         <FavoriteBorder sx={{ fontSize: 25 }} onClick={() => likeEvent(false)} />
 
     return (
