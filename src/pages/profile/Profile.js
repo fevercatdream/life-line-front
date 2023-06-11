@@ -24,6 +24,7 @@ export default function Profile() {
     const [likeNotifVisible, setLikeVisible] = useState(false);
     const [friendNotifVisible, setFriendVisible] = useState(false);
     const [profile, setProfile] = useState();
+    const [event, setEvent] = useState({});
     const [loading, setLoading] = useState(true);
 
     const token = localStorage.getItem('token');
@@ -45,6 +46,17 @@ export default function Profile() {
         setLoading(false);
     }
 
+    const loadDataEvent = async () => {
+        const res = await sendJSONRequest('GET', '/api/timeline/view', null, true);
+        if (res.status !== 200) {
+            console.log('something went wrong, could not load data');
+            return;
+        }
+        const data = await res.json();
+        setEvent(data);
+
+    }
+
     const clearFriendRequest = (friendId) => {
         const p = { ...profile }
         const idx = p.pending_friends.findIndex(x => x.friendId === friendId);
@@ -64,6 +76,7 @@ export default function Profile() {
 
     useEffect(() => {
         loadData();
+        loadDataEvent();
     }, [token])
 
     if (!token) {
@@ -186,17 +199,14 @@ export default function Profile() {
                             <div className='recentBox'>
                                 <figure id="recentCard" className='recentCard' onClick={() => setModalVisible(true)}>
 
-                                    <img className='recentMedia' src="https://dummyimage.com/500x325/000/aaa"
+                                    <img className='recentMedia' src={event?.eventList?.[0]?.photos[0].url ?? "http://placekitten.com/500/325"}
                                          alt='placeholder'/>
-                                    <figcaption className='recentCaption'>Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                                        ut aliquip ex ea commodo consequat.
+                                    <figcaption className='recentCaption'> {event?.eventList?.[0]?.description ?? "Your future event description"}
                                     </figcaption>
                                     <div className='recentComReac'>
-                                        <p className='comments'>5</p>
+                                        <p className='comments'>{event?.eventList?.[0]?.commentsCount ?? "0"}</p>
                                         <Chat sx={{fontSize: 25}} className='commentBtn'/>
-                                        <p className='likes'>15</p>
+                                        <p className='likes'>{event?.eventList?.[0]?.likeCount ?? "0"}</p>
                                         <Favorite sx={{fontSize: 25}} className='likeBtn'/>
                                     </div>
                                 </figure>
