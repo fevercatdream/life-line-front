@@ -331,28 +331,6 @@ svg:hover {
     align-items: center;
 }
 
-.searchButton {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 30px;
-    width: 30px;
-    border-radius: 5px;
-    margin-left: 10px;
-    border: 1px solid var(--bordercolor);
-    background-color: white;
-}
-
-.searchBar {
-    height: 20px;
-    width: 380px;
-    border-radius: 15px;
-    background-color: var(--backgroundFill);
-    border: 1px solid var(--bordercolor);
-    padding: 5px 20px;
-}
-
 /* notification popup modal  */
 
 .commentModal,
@@ -429,7 +407,8 @@ svg:hover {
     align-items: center;
 }
 
-.centeredIcon, .centeredIcon2 {
+.centeredIcon,
+.centeredIcon2 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -860,11 +839,6 @@ svg:hover {
         width: 435px;
     }
 
-    .searchBar {
-        width: 355px;
-        margin-bottom: 20px;
-    }
-
     .commentModal,
     .likeModal,
     .newFriendModal {
@@ -1110,11 +1084,6 @@ svg:hover {
         margin-bottom: 20px;
         width: 300px;
         padding: 0px;
-    }
-
-    .searchBar {
-        width: 220px;
-        margin-bottom: 20px;
     }
 
     .commentModal,
