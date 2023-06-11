@@ -14,8 +14,8 @@ import Favorite from '@mui/icons-material/Favorite';
 import PersonAddAlt1 from '@mui/icons-material/PersonAddAlt1';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import Search from '@mui/icons-material/Search';
-import { Message } from '@mui/icons-material';
-import PersonRemove from "@mui/icons-material/PersonRemove";
+// import { Message } from '@mui/icons-material';
+import HighlightOff from "@mui/icons-material/HighlightOff";
 
 
 export default function Profile() {
@@ -27,7 +27,6 @@ export default function Profile() {
     const [loading, setLoading] = useState(true);
 
     const token = localStorage.getItem('token');
-
 
     const loadData = async () => {
         if (!token) {
@@ -127,7 +126,6 @@ export default function Profile() {
                 <div className='profileblock'>
                     <div id='blackOut' className={modalVisible ? "blackOut" : "blackOut hidden"}
                          onClick={() => setModalVisible(false)}>
-
                     </div>
                     <div className='navBackground'></div>
                     <NavTabs/>
@@ -417,12 +415,12 @@ function PendingFriend({pendingFriendRequest, clearFriendRequest}) {
                     <p className='currentTime'><i>{pendingFriendRequest.createdAt}</i></p>
                 </div>
             </div>
-            <div>
+            <div className='friendOptions'>
                 <div className='centeredIcon' onClick={addFriend}>
                     <PersonAddAlt1 sx={{fontSize: 30}} className='commentBtn2'/>
                 </div>
-                <div className='centeredIcon' onClick={declineFriend}>
-                    <PersonRemove sx={{fontSize: 30}} className='commentBtn2'/>
+                <div className='centeredIcon2' onClick={declineFriend}>
+                    <HighlightOff sx={{fontSize: 30}} className='commentBtn2'/>
                 </div>
             </div>
         </div>
