@@ -23,7 +23,9 @@ import HighlightOff from "@mui/icons-material/HighlightOff";
 import dateFormat from 'dateformat';
 
 const noFace = require('../assets/noimageface.png')
-const noRecent= require('../assets/noimagerecent.png')
+const noRecent = require('../assets/noimagerecent.png')
+const noFriends = require('../assets/nofriends.png')
+const noFriends2 = require('../assets/nofriends2.png')
 
 
 export default function Profile() {
@@ -199,24 +201,24 @@ export default function Profile() {
                             <ProfileInfo profile={profile} />
                             <div className='suggestBox'>
                                 <figure className='suggestFriend'>
-                                    <img className='suggestFriend1' src={user?.users?.[0]?.profilePhoto ?? "http://placekitten.com/300/200"}
-                                         alt='placeholder'/>
-                                    <p className='friendName'>{user?.users?.[0]?.name ?? ''}</p>
-                                </figure>
-                                <figure className='suggestFriend'>
-                                    <img className='suggestFriend1' src={user?.users?.[1]?.profilePhoto ?? "http://placekitten.com/300/200"}
-                                         alt='placeholder'/>
-                                    <p className='friendName'>{user?.users?.[1]?.name ?? ''}</p>
-                                </figure>
-                                <figure className='suggestFriend'>
-                                    <img className='suggestFriend1' src={user?.users?.[2]?.profilePhoto ?? "http://placekitten.com/300/200"}
-                                         alt='placeholder'/>
+                                    <img className='suggestFriend1' src={user?.users?.[2]?.profilePhoto ?? noFriends2}
+                                        alt='placeholder' />
                                     <p className='friendName'>{user?.users?.[2]?.name ?? ''}</p>
                                 </figure>
                                 <figure className='suggestFriend'>
-                                    <img className='suggestFriend1' src={user?.users?.[3]?.profilePhoto ?? "http://placekitten.com/300/200"}
-                                         alt='placeholder'/>
+                                    <img className='suggestFriend1' src={user?.users?.[3]?.profilePhoto ?? noFriends2}
+                                        alt='placeholder' />
                                     <p className='friendName'>{user?.users?.[3]?.name ?? ''}</p>
+                                </figure>
+                                <figure className='suggestFriend'>
+                                    <img className='suggestFriend1' src={user?.users?.[4]?.profilePhoto ?? noFriends2}
+                                        alt='placeholder' />
+                                    <p className='friendName'>{user?.users?.[4]?.name ?? ''}</p>
+                                </figure>
+                                <figure className='suggestFriend'>
+                                    <img className='suggestFriend1' src={user?.users?.[5]?.profilePhoto ?? noFriends2}
+                                        alt='placeholder' />
+                                    <p className='friendName'>{user?.users?.[5]?.name ?? ''}</p>
                                 </figure>
                             </div>
                             <div className='colorBlock5'>
@@ -272,8 +274,10 @@ export default function Profile() {
                                 // onClick={() => setModalVisible(true)}
                                 >
                                     <div className='recentCardBox'>
-                                        <img className='recentMedia' src={event?.eventList?.[0]?.photos[0].url ?? noRecent}
-                                            alt='placeholder' />
+                                        <div className='smallMediaContainer2'>
+                                            <img className='recentMedia' src={event?.eventList?.[0]?.photos[0].url ?? noRecent}
+                                                alt='placeholder' />
+                                        </div>
                                     </div>
                                     <figcaption className='recentCaption'> {event?.eventList?.[0]?.description ?? "Your future event description"}
                                     </figcaption>
@@ -340,24 +344,29 @@ export default function Profile() {
                             <div className='friendBox'>
                                 <div className='friendRow'>
                                     <figure className='friendCard'>
-                                        <img className='friendSmall' src={friend?.friends?.[0]?.profilePhoto ?? 'http://placekitten.com/200/200'}
-                                             alt='placeholder'/>
+                                        <img className='friendSmall' src={friend?.friends?.[0]?.profilePhoto ?? noFriends}
+                                            alt='placeholder' />
                                         <p className='friendName'>{friend?.friends?.[0]?.name ?? ''}</p>
                                     </figure>
                                     <figure className='friendCard'>
-                                        <img className='friendSmall' src={friend?.friends?.[1]?.profilePhoto ?? 'http://placekitten.com/200/200'}
-                                             alt='placeholder'/>
+                                        <img className='friendSmall' src={friend?.friends?.[1]?.profilePhoto ?? noFriends}
+                                            alt='placeholder' />
                                         <p className='friendName'>{friend?.friends?.[1]?.name ?? ''}</p>
                                     </figure>
                                     <figure className='friendCard'>
-                                        <img className='friendSmall' src={friend?.friends?.[2]?.profilePhoto ?? 'http://placekitten.com/200/200'}
-                                             alt='placeholder'/>
+                                        <img className='friendSmall' src={friend?.friends?.[2]?.profilePhoto ?? noFriends}
+                                            alt='placeholder' />
                                         <p className='friendName'>{friend?.friends?.[2]?.name ?? ''}</p>
                                     </figure>
                                     <figure className='friendCard'>
-                                        <img className='friendSmall' src={friend?.friends?.[3]?.profilePhoto ?? 'http://placekitten.com/200/200'}
-                                             alt='placeholder'/>
+                                        <img className='friendSmall' src={friend?.friends?.[3]?.profilePhoto ?? noFriends}
+                                            alt='placeholder' />
                                         <p className='friendName'>{friend?.friends?.[3]?.name ?? ''}</p>
+                                    </figure>
+                                    <figure className='friendCard'>
+                                        <img className='friendSmall' src={friend?.friends?.[4]?.profilePhoto ?? noFriends}
+                                            alt='placeholder' />
+                                        <p className='friendName'>{friend?.friends?.[4]?.name ?? ''}</p>
                                     </figure>
                                 </div>
                             </div>
@@ -427,7 +436,7 @@ function ProfilePic({ profile }) {
     return (
         <div className='profilePic'>
             <div className='colorBlock1'></div>
-            <img className="profileImg" src={profile.profile_url ?? noFace}  alt='placeholder' />
+            <img className="profileImg" src={profile.profile_url ?? noFace} alt='placeholder' />
             <p className='contactName'>{profile.name}</p>
         </div>
     )
