@@ -32,12 +32,6 @@ export default function TimelineFunc() {
     const [newEvent, setNewEvent] = useState(false);
 
 
-    // const [windowSize, setWindowSize] = React.useState({
-    //     width: undefined,
-    //     height: '',
-    // });
-
-
     const { id } = useParams();
 
     const showModal = (event) => {
@@ -90,15 +84,18 @@ export default function TimelineFunc() {
                 <div className='timelineBlock'>
                     <HashLink smooth to='/timeline/#LifeLine' className='toTopBtn'><ArrowCircleUp sx={{ fontSize: 45 }} className='hover' /></HashLink>
                     <div className='alternateTimeline'>
-                        <Timeline position='alternate'><div className='newEventField'>
-                            <Link to="/newevent" className={newEvent ? '' : 'hidden'}><LibraryAdd sx={{ fontSize: 45 }} className='hover newEventBtn' /></Link>
-                        </div>                        {eventEls}
+                        <Timeline position='alternate'>
+                            <div className='newEventField'>
+                                <Link to="/newevent" className={newEvent ? '' : 'hidden'}><LibraryAdd sx={{ fontSize: 45 }} className='hover newEventBtn' /></Link>
+                            </div>
+                            {eventEls}
                         </Timeline></div>
                     <div className='smallerTimeline'><Timeline
                         sx={{ [`& .${timelineOppositeContentClasses.root}`]: { flex: 0.2, }, }}>
                         <div className='newEventField'>
                             <Link to="/newevent"><LibraryAdd sx={{ fontSize: 45 }} className='hover newEventBtn' /></Link>
-                        </div>                        {eventEls}
+                        </div>                        
+                        {eventEls}
                     </Timeline>
                     </div>
                     <Modal event={activeEvent} visible={eventModalVisible} />
@@ -184,7 +181,7 @@ function Modal({ event, visible }) {
     }
 
     const likeButton = liked ?
-        <Favorite sx={{ fontSize: 25 }} style = {{color: "green"}} onClick={() => likeEvent(true)} /> :
+        <Favorite sx={{ fontSize: 25 }} style={{ color: "green" }} onClick={() => likeEvent(true)} /> :
         <FavoriteBorder sx={{ fontSize: 25 }} onClick={() => likeEvent(false)} />
 
     return (
@@ -253,6 +250,9 @@ function Modal({ event, visible }) {
 }
 
 function Event({ event, toggle, invert }) {
+
+    const [editEvent, setEditEvent] = useState(false);
+
     const d = new Date(event.date);
     const month = d.toLocaleDateString('en-us', { month: 'short' })
     const year = d.toLocaleDateString('en-us', { year: 'numeric' })
@@ -260,6 +260,8 @@ function Event({ event, toggle, invert }) {
     const [likeCount, setLikeCount] = useState();
     // eslint-disable-next-line
     const [commentCount, setCommentCount] = useState();
+
+    const { id } = useParams();
 
     useEffect(() => {
         if (!event) {
@@ -270,6 +272,30 @@ function Event({ event, toggle, invert }) {
     }, [event])
 
     console.log(event.eventId);
+
+    const loadData = async () => {
+        const path = id ? `/api/timeline/view/${id}` : '/api/timeline/view';
+        const res = await sendJSONRequest('GET', path, null, true);
+        if (res.status !== 200) {
+            console.log('something went wrong, could not load data');
+            return;
+        }
+        checkLocation();
+    }
+
+    useEffect(() => {
+        loadData();
+    }, []);
+
+    const location = useLocation();
+
+    const checkLocation = async () => {
+        const path = '/timeline';
+        if (location.pathname === path) {
+            setEditEvent(true);
+        }
+    }
+    
     return (
         <TimelineItem>
             <TimelineOppositeContent
@@ -308,7 +334,12 @@ function Event({ event, toggle, invert }) {
                                     <Favorite sx={{ fontSize: 25 }} className='likeBtn' />
                                 </div> */}
                             </div>
-                            <div className='editContainer'><Link to={`/editevent/${event.eventId}/`} className='editIcon3'><Edit sx={{ fontSize: 30 }} className='hover' /></Link></div>
+                            <div className='editContainer'>
+                                <Link to={`/editevent/${event.eventId}/`} className=
+                                {editEvent ? 'editIcon3' : 'editIcon3 hidden'}>
+                                    <Edit sx={{ fontSize: 30 }} className='hover'/>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>

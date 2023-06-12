@@ -51,7 +51,7 @@ export default function Friends() {
                                 <button className='tabWordsUsers2'>All Users</button>
                             </NavLink>
                         </div>
-                        <div className={activePage === 3 ? "blockTab activeTab" : "blockTab"}
+                        {/* <div className={activePage === 3 ? "blockTab activeTab" : "blockTab"}
                         onClick= { () => {
                             setActivePage(3);
                         }}
@@ -59,7 +59,7 @@ export default function Friends() {
                             <NavLink to="/friends/ignored">
                                 <button className='tabWordsBlocked2'>Ignored Users</button>
                             </NavLink>
-                        </div>
+                        </div> */}
                     </div>
                     <div className={friendsClass()}>
                         <Routes>
