@@ -7,6 +7,8 @@ import Clear from "@mui/icons-material/Clear";
 import Block from "@mui/icons-material/Block";
 import {Link} from "react-router-dom";
 
+const noFace = require('../../pages/assets/noimageface.png')
+
 export default function FriendCard({user, context, cb}) {
     const [pendingFriend, setPendingFriend] = useState();
     const [isFriend, setisFriend] = useState();
@@ -63,7 +65,7 @@ export default function FriendCard({user, context, cb}) {
             {showBlockButton && <Block sx={{ fontSize: 35 }} className='blockUser'/> }
             <div className='friendPhotoContainer'>
                 <Link to={`/timeline/${user.id}`}>
-                    <img className="friendPhoto" src={user.profilePhoto} alt={'friend profile'} />
+                    <img className="friendPhoto" src={user.profilePhoto ?? noFace} alt={'friend profile'} />
                 </Link>
             </div>
             <figcaption className='friendBio'>

@@ -22,6 +22,7 @@ import { sendJSONRequest } from "../../utils/helpers";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import ArrowCircleUp from '@mui/icons-material/ArrowCircleUp';
 import NavTabs from "../../components/Navbar";
+import noFace from "../../pages/assets/nofriends3.png"
 
 
 export default function TimelineFunc() {
@@ -109,7 +110,7 @@ function ModalComment({ comment }) {
     return (
         <div className='commentSingle'>
             <div className="friendCommentIcon"><img className='friendCommentPic'
-                src={comment.User.profilePhoto} alt={'profile'}></img></div>
+                src={comment.User.profilePhoto ?? noFace} alt={'profile'}></img></div>
             <div className='friendCommentBox'>
                 <h4 className='friendCommentName'> {comment.User.name} :</h4>
                 <p className="friendCommentText">{comment.comment}</p>
@@ -233,7 +234,7 @@ function Modal({ event, visible }) {
                         <div className="timelineNotif">
                             <p className='comments'>{commentCount}</p>
                             <Chat sx={{ fontSize: 25 }} className='commentBtn' />
-                            <div className='flexRow'><p className='likes2'>{likeCount}</p>{likeButton}</div>
+                            <div className='flexRow3'><p className='likes2'>{likeCount}</p>{likeButton}</div>
                         </div>
                     </div>
                     <div className={commentVisible ? 'flexend' : "flexend hidden"}>

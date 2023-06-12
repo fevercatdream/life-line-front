@@ -233,4 +233,22 @@
         height: 43%;
     }
 
+    .youSure {
+        margin-left: 10vw;
+        height: 175px;
+    }
+
+    .butAreYou {
+        text-align: center;
+    }
+
+    .cancelButton {
+        margin-right: 10px;
+    }
+
+    .cancelButton, .deleteEventButton {
+        width: 150px;
+    }
+
+
 }

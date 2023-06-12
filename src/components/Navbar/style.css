@@ -11,7 +11,8 @@
     justify-content: space-between;
     align-self: center;
     margin-top: 15px;
-    width: 75vw;
+    width: 80vw;
+    margin-left: 5vw;
     height: 100px;
     margin-bottom: 1vh;
     align-items: center;
@@ -74,8 +75,8 @@
 @media screen and (max-width: 1900px) and (min-width: 1176px) {
 
     .friendHead2 {
-        width: 70vw;
-        margin-left: -170px;
+        width: 85vw;
+        margin-left: 8vw;
     }
 
 }
@@ -118,6 +119,7 @@
         width: 100%;
         margin-top: 50px;
         border-top: 1px solid rgb(75, 147, 168);
+        z-index: 5;
     }
 
     .LifeLine {
