@@ -201,22 +201,22 @@ export default function Profile() {
                                 <figure className='suggestFriend'>
                                     <img className='suggestFriend1' src={user?.users?.[2]?.profilePhoto ?? noFriends2}
                                         alt='placeholder' />
-                                    <p className='friendName'>{user?.users?.[2]?.name ?? ''}</p>
+                                    <p className='friendName2'>{user?.users?.[2]?.name ?? ''}</p>
                                 </figure>
                                 <figure className='suggestFriend'>
                                     <img className='suggestFriend1' src={user?.users?.[3]?.profilePhoto ?? noFriends2}
                                         alt='placeholder' />
-                                    <p className='friendName'>{user?.users?.[3]?.name ?? ''}</p>
+                                    <p className='friendName2'>{user?.users?.[3]?.name ?? ''}</p>
                                 </figure>
                                 <figure className='suggestFriend'>
                                     <img className='suggestFriend1' src={user?.users?.[4]?.profilePhoto ?? noFriends2}
                                         alt='placeholder' />
-                                    <p className='friendName'>{user?.users?.[4]?.name ?? ''}</p>
+                                    <p className='friendName2'>{user?.users?.[4]?.name ?? ''}</p>
                                 </figure>
                                 <figure className='suggestFriend'>
                                     <img className='suggestFriend1' src={user?.users?.[5]?.profilePhoto ?? noFriends2}
                                         alt='placeholder' />
-                                    <p className='friendName'>{user?.users?.[5]?.name ?? ''}</p>
+                                    <p className='friendName2'>{user?.users?.[5]?.name ?? ''}</p>
                                 </figure>
                             </div>
                             <div className='colorBlock5'>
@@ -302,18 +302,6 @@ export default function Profile() {
                                     </figure>
                                     <figure className='recentMany3'>
                                         <div className='smallMediaContainer'>
-                                            <img className='recentMediaSmall' src={event?.eventList?.[2]?.photos[0].url ?? noRecent}
-                                                alt='placeholder' />
-                                        </div>
-                                        <div className='recentComReac'>
-                                            <p className='comments2'>{event?.eventList?.[2]?.commentsCount ?? "0"}</p>
-                                            <Chat sx={{ fontSize: 20 }} className='commentBtn' />
-                                            <p className='likes2'>{event?.eventList?.[2]?.likeCount ?? "0"}</p>
-                                            <Favorite sx={{ fontSize: 20 }} className='likeBtn' />
-                                        </div>
-                                    </figure>
-                                    <figure className='recentMany2'>
-                                        <div className='smallMediaContainer'>
                                             <img className='recentMediaSmall' src={event?.eventList?.[3]?.photos[0].url ?? noRecent}
                                                 alt='placeholder' />
                                         </div>
@@ -321,6 +309,18 @@ export default function Profile() {
                                             <p className='comments2'>{event?.eventList?.[3]?.commentsCount ?? "0"}</p>
                                             <Chat sx={{ fontSize: 20 }} className='commentBtn' />
                                             <p className='likes2'>{event?.eventList?.[3]?.likeCount ?? "0"}</p>
+                                            <Favorite sx={{ fontSize: 20 }} className='likeBtn' />
+                                        </div>
+                                    </figure>
+                                    <figure className='recentMany2'>
+                                        <div className='smallMediaContainer'>
+                                            <img className='recentMediaSmall' src={event?.eventList?.[2]?.photos[0].url ?? noRecent}
+                                                alt='placeholder' />
+                                        </div>
+                                        <div className='recentComReac'>
+                                            <p className='comments2'>{event?.eventList?.[2]?.commentsCount ?? "0"}</p>
+                                            <Chat sx={{ fontSize: 20 }} className='commentBtn' />
+                                            <p className='likes2'>{event?.eventList?.[2]?.likeCount ?? "0"}</p>
                                             <Favorite sx={{ fontSize: 20 }} className='likeBtn' />
                                         </div>
                                     </figure>

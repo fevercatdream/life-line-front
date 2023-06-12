@@ -692,18 +692,26 @@ svg:hover {
 }
 
 .friendName,
-.friendLocation {
+.friendLocation, .friendName2 {
     position: absolute;
-    color: black;
+    color: white;
     width: 115px;
     height: 25px;
     overflow: hidden;
     text-align: end;
-    margin: 140px 0px 30px -50px;
-    font-size: 18px;
+    margin: 140px 0px 30px 30px;
+
 }
 
 .friendName {
+
+    margin-bottom: 0px;
+}
+
+.friendName2 {
+    color: black;
+    margin: 140px 0px 30px -30px;
+    font-size: 12px;
     margin-bottom: 0px;
 }
 
@@ -1127,7 +1135,7 @@ svg:hover {
     .likeModal,
     .newFriendModal {
         width: 300px;
-        margin-top: -2050px;
+        margin-top: -2010px;
         margin-left: 0px;
         background-color: var(--offWhite);
     }
@@ -1138,7 +1146,6 @@ svg:hover {
 
     .centeredIcon {
         align-items: baseline;
-        margin-left: -50px;
     }
 
     .currentTime, .currentTime2 {
@@ -1264,6 +1271,20 @@ svg:hover {
 
     .sliderMedia {
         width: 525px;
+    }
+
+    .contentContainer {
+        width: 95%;
+    }
+
+    .friendOptions{
+        width: 20px;
+    }
+
+    .profileCommentNotif,
+    .profileLikeNotif,
+    .profileFriendNotif {
+        width: 90%;
     }
 
 }

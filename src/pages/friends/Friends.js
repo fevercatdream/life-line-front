@@ -32,7 +32,7 @@ export default function Friends() {
             <div className="mainFriendBlock">
             <div className='navBackground'></div>
                     <NavTabs />
-                    <div className='friendSearchBox2'>
+                    <div>
                         <Searchbar onChange={handleSearchChange}/>
                     </div>
                 <div className='friendblock'>
