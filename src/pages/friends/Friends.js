@@ -10,6 +10,7 @@ import Search from '@mui/icons-material/Search';
 
 export default function Friends() {
     const [activePage, setActivePage] = useState(1)
+    const [searchTerm, setSearchTerm] = useState("")
 
     const friendsClass = () => {
         // based on active page return the right string
@@ -22,13 +23,17 @@ export default function Friends() {
         }
     }
 
+    function handleSearchChange(searchTerm) {
+        setSearchTerm(searchTerm)
+    }
+
     return (
         <>
             <div className="mainFriendBlock">
             <div className='navBackground'></div>
                     <NavTabs />
                     <div className='friendSearchBox2'>
-                        <Searchbar />
+                        <Searchbar onChange={handleSearchChange}/>
                     </div>
                 <div className='friendblock'>
                     
@@ -51,7 +56,7 @@ export default function Friends() {
                                 <button className='tabWordsUsers2'>All Users</button>
                             </NavLink>
                         </div>
-                        <div className={activePage === 3 ? "blockTab activeTab" : "blockTab"}
+                        {/* <div className={activePage === 3 ? "blockTab activeTab" : "blockTab"}
                         onClick= { () => {
                             setActivePage(3);
                         }}
@@ -59,12 +64,12 @@ export default function Friends() {
                             <NavLink to="/friends/ignored">
                                 <button className='tabWordsBlocked2'>Ignored Users</button>
                             </NavLink>
-                        </div>
+                        </div> */}
                     </div>
                     <div className={friendsClass()}>
                         <Routes>
                             <Route path={'/'} element={<MyFriends />}/>
-                            <Route path={'/users'} element={<AllUsers />}/>
+                            <Route path={'/users'} element={<AllUsers searchTerm={searchTerm}/>}/>
                             <Route path={'/ignored'} element={<IgnoredUsers />}/>
                         </Routes>
                     </div>

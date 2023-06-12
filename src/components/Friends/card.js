@@ -42,7 +42,7 @@ export default function FriendCard({user, context, cb}) {
         }
     }
 
-    let showBlockButton = true;
+    let showBlockButton = false;
     let action;
     if (context === 'friend') {
         action = <button className='deleteFriend'><PersonRemove sx={{ fontSize: 40 }} onClick={deleteFriend}/></button>;

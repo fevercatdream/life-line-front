@@ -17,6 +17,7 @@ function NavTabs() {
             <Navigate to={'/'}/>
         )
     }
+
     return (
         <nav className='friendHead2'>
             <div className='horizontal'>
