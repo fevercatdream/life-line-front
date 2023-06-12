@@ -8,6 +8,7 @@ import 'react-gallery-carousel/dist/index.css';
 
 import { sendJSONRequest } from "../../utils/helpers";
 import NavTabs from '../../components/Navbar/index';
+// eslint-disable-next-line
 import { Searchbar } from "../../components/Searchbar"
 
 import Chat from '@mui/icons-material/Chat';
