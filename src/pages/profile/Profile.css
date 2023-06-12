@@ -1127,7 +1127,7 @@ svg:hover {
     .likeModal,
     .newFriendModal {
         width: 300px;
-        margin-top: -2050px;
+        margin-top: -2010px;
         margin-left: 0px;
         background-color: var(--offWhite);
     }
@@ -1138,7 +1138,6 @@ svg:hover {
 
     .centeredIcon {
         align-items: baseline;
-        margin-left: -50px;
     }
 
     .currentTime, .currentTime2 {
@@ -1264,6 +1263,20 @@ svg:hover {
 
     .sliderMedia {
         width: 525px;
+    }
+
+    .contentContainer {
+        width: 95%;
+    }
+
+    .friendOptions{
+        width: 20px;
+    }
+
+    .profileCommentNotif,
+    .profileLikeNotif,
+    .profileFriendNotif {
+        width: 90%;
     }
 
 }

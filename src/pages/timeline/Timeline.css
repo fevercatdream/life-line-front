@@ -62,6 +62,8 @@ body {
     bottom: 70px;
     left: 10px;
     z-index: 3;
+    background-color: white;
+    border-radius: 50%;
 }
 
 .editIcon3 {
@@ -162,6 +164,7 @@ body {
 .timelineNotif {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     height: 30px;
     margin-top: 10px;
     align-self: flex-end;
@@ -265,6 +268,8 @@ body {
     justify-content: center;
     max-width: 100px;
     max-height: 100px;
+    min-width: 100px;
+    min-height: 100px;
     overflow: hidden;
     border-radius: 5px;
 }
@@ -328,6 +333,7 @@ body {
 .css-1ami7lv-MuiTimelineConnector-root {
     min-height: 20px;
 }
+
 
 .smallerTimeline {
     display: none;
@@ -415,7 +421,7 @@ body {
     }
 
     .timeLineEvent {
-        width: 70vw;
+        width: 65vw;
         min-height: 100px;
         height: fit-content;
         max-height: 400px;
@@ -449,6 +455,7 @@ body {
         max-width: 35px;
     }
 
+
     .timelineDate {
         font-size: 12px;
         width: 35px;
@@ -461,6 +468,11 @@ body {
 
     .timelineInfo {
     justify-content: space-between;    
+    }
+
+    .friendCommentPic {
+        max-width: 150px;
+        max-height: 150px;
     }
 
 }

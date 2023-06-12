@@ -13,7 +13,7 @@ function Searchbar({onChange}) {
     }
 
     return (
-        <form onSubmit={onBtnClick}>
+        <form onSubmit={onBtnClick} className='friendSearchBox2'>
             <input type="text" className='searchBar' placeholder='search friends' value={searchValue} onChange={e => setSearchValue(e.target.value)}></input>
             <button className='searchButton' type='submit'><Search sx={{fontSize: 20}}/></button>
         </form>

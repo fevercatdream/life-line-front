@@ -146,7 +146,7 @@ export default function EventEdit() {
             </div>
             <div className={modalVisible ? "" : "hidden"}>
             <div className='youSure'>
-                <h4>Are you sure you want to delete this event?</h4>
+                <h4 className='butAreYou'>Are you sure you want to delete this event?</h4>
                 <div className='cancelDelete'>
                     <button className='cancelButton' onClick={() => setModalVisible(false)}>Cancel</button>
                     <button className='deleteEventButton' onClick={deleteEvent}>Delete</button>
