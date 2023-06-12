@@ -183,9 +183,6 @@ export default function Profile() {
         }
     ));
 
-
-
-
     return (
         <>
             <div className="mainProfileBlock">
@@ -253,9 +250,10 @@ export default function Profile() {
                                         <PersonAddAlt1 sx={{ fontSize: 30 }} className='addBtn' />
                                     </div>
                                 </div>
-                                <div className='flexRow'>
-                                    <Searchbar />
-                                </div>
+                                {/* only search on friends page, currently --- more complex to set up on profile page */}
+                                {/* <div className='flexRow'>
+                                    <Searchbar onChange={handleSearchChange}/>
+                                </div> */}
                             </div>
 
                             <div className={notifVisible ? "commentModal" : "commentModal hidden"} ref={messagesRef}>
