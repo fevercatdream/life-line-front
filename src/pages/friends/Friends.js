@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { NavLink, Route, Routes } from "react-router-dom";
 import './Friends.css';
 import NavTabs from "../../components/Navbar";
+import { Searchbar } from "../../components/Searchbar"
 import {MyFriends, AllUsers, IgnoredUsers} from "../../components/Friends";
-
+// eslint-disable-next-line
 import Search from '@mui/icons-material/Search';
 
 
@@ -27,8 +28,7 @@ export default function Friends() {
             <div className='navBackground'></div>
                     <NavTabs />
                     <div className='friendSearchBox2'>
-                        <input type="text" className='searchBar2' placeholder='search friends'></input>
-                        <button className='searchButton'><Search sx={{ fontSize: 20 }} /></button>
+                        <Searchbar />
                     </div>
                 <div className='friendblock'>
                     
