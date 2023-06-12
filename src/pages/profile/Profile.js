@@ -201,22 +201,22 @@ export default function Profile() {
                                 <figure className='suggestFriend'>
                                     <img className='suggestFriend1' src={user?.users?.[2]?.profilePhoto ?? noFriends2}
                                         alt='placeholder' />
-                                    <p className='friendName'>{user?.users?.[2]?.name ?? ''}</p>
+                                    <p className='friendName2'>{user?.users?.[2]?.name ?? ''}</p>
                                 </figure>
                                 <figure className='suggestFriend'>
                                     <img className='suggestFriend1' src={user?.users?.[3]?.profilePhoto ?? noFriends2}
                                         alt='placeholder' />
-                                    <p className='friendName'>{user?.users?.[3]?.name ?? ''}</p>
+                                    <p className='friendName2'>{user?.users?.[3]?.name ?? ''}</p>
                                 </figure>
                                 <figure className='suggestFriend'>
                                     <img className='suggestFriend1' src={user?.users?.[4]?.profilePhoto ?? noFriends2}
                                         alt='placeholder' />
-                                    <p className='friendName'>{user?.users?.[4]?.name ?? ''}</p>
+                                    <p className='friendName2'>{user?.users?.[4]?.name ?? ''}</p>
                                 </figure>
                                 <figure className='suggestFriend'>
                                     <img className='suggestFriend1' src={user?.users?.[5]?.profilePhoto ?? noFriends2}
                                         alt='placeholder' />
-                                    <p className='friendName'>{user?.users?.[5]?.name ?? ''}</p>
+                                    <p className='friendName2'>{user?.users?.[5]?.name ?? ''}</p>
                                 </figure>
                             </div>
                             <div className='colorBlock5'>

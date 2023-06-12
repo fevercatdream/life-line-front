@@ -692,18 +692,26 @@ svg:hover {
 }
 
 .friendName,
-.friendLocation {
+.friendLocation, .friendName2 {
     position: absolute;
-    color: black;
+    color: white;
     width: 115px;
     height: 25px;
     overflow: hidden;
     text-align: end;
-    margin: 140px 0px 30px -30px;
-    font-size: 12px;
+    margin: 140px 0px 30px 30px;
+
 }
 
 .friendName {
+
+    margin-bottom: 0px;
+}
+
+.friendName2 {
+    color: black;
+    margin: 140px 0px 30px -30px;
+    font-size: 12px;
     margin-bottom: 0px;
 }
 
