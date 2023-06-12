@@ -38,6 +38,9 @@ export default function Profile() {
     const [comment, setComment] = useState([]);
     const [like, setLike] = useState([]);
 
+    const [friend, setFriend] = useState([]);
+    const [user, setUser] = useState([]);
+
     const token = localStorage.getItem('token');
 
     const loadData = async () => {
@@ -59,6 +62,7 @@ export default function Profile() {
         setLike(p.likes);
     }
 
+
     const loadDataEvent = async () => {
         const res = await sendJSONRequest('GET', '/api/timeline/view', null, true);
         if (res.status !== 200) {
@@ -68,6 +72,18 @@ export default function Profile() {
         const data = await res.json();
         setEvent(data);
 
+    }
+
+    const loadDataFriends = async () => {
+        const res = await sendJSONRequest('GET', '/api/friends/', null, true);
+        const data = await res.json();
+        setFriend(data);
+    }
+
+    const loadDataUser = async () => {
+        const res = await sendJSONRequest('GET', '/api/friends/all-users', null, true);
+        const data = await res.json();
+        setUser(data)
     }
 
     const clearFriendRequest = (friendId) => {
@@ -90,6 +106,8 @@ export default function Profile() {
     useEffect(() => {
         loadData();
         loadDataEvent();
+        loadDataFriends();
+        loadDataUser();
     }, [token])
 
     if (!token) {
@@ -152,11 +170,6 @@ export default function Profile() {
             <Comment comment={i} onCommentDismiss={handleCommentDissmiss} />);
     }
 
-
-
-
-    const userYouKnowImages = profile.known_users.map(k => <img className='suggestFriend1' src={k.profile_url} key={k.id} alt={'placeholder'} />)
-
     // Array for gallery slider images
     const images = [9, 8, 7, 6, 5].map((number) => (
         {
@@ -185,7 +198,26 @@ export default function Profile() {
                             <ProfilePic profile={profile} />
                             <ProfileInfo profile={profile} />
                             <div className='suggestBox'>
-                                {userYouKnowImages}
+                                <figure className='suggestFriend'>
+                                    <img className='suggestFriend1' src={user?.users?.[0]?.profilePhoto ?? "http://placekitten.com/300/200"}
+                                         alt='placeholder'/>
+                                    <p className='friendName'>{user?.users?.[0]?.name ?? ''}</p>
+                                </figure>
+                                <figure className='suggestFriend'>
+                                    <img className='suggestFriend1' src={user?.users?.[1]?.profilePhoto ?? "http://placekitten.com/300/200"}
+                                         alt='placeholder'/>
+                                    <p className='friendName'>{user?.users?.[1]?.name ?? ''}</p>
+                                </figure>
+                                <figure className='suggestFriend'>
+                                    <img className='suggestFriend1' src={user?.users?.[2]?.profilePhoto ?? "http://placekitten.com/300/200"}
+                                         alt='placeholder'/>
+                                    <p className='friendName'>{user?.users?.[2]?.name ?? ''}</p>
+                                </figure>
+                                <figure className='suggestFriend'>
+                                    <img className='suggestFriend1' src={user?.users?.[3]?.profilePhoto ?? "http://placekitten.com/300/200"}
+                                         alt='placeholder'/>
+                                    <p className='friendName'>{user?.users?.[3]?.name ?? ''}</p>
+                                </figure>
                             </div>
                             <div className='colorBlock5'>
                                 <p className='mayKnow'>Users you may know</p>
@@ -308,28 +340,24 @@ export default function Profile() {
                             <div className='friendBox'>
                                 <div className='friendRow'>
                                     <figure className='friendCard'>
-                                        <img className='friendSmall' src='http://placekitten.com/200/200'
-                                            alt='placeholder' />
-                                        <p className='friendName'>Name is too long for this box</p>
-                                        <p className='friendLocation'>Location is too long for this box</p>
+                                        <img className='friendSmall' src={friend?.friends?.[0]?.profilePhoto ?? 'http://placekitten.com/200/200'}
+                                             alt='placeholder'/>
+                                        <p className='friendName'>{friend?.friends?.[0]?.name ?? ''}</p>
                                     </figure>
                                     <figure className='friendCard'>
-                                        <img className='friendSmall' src='http://placekitten.com/300/200'
-                                            alt='placeholder' />
-                                        <p className='friendName'>Name is too long for this box</p>
-                                        <p className='friendLocation'>Location is too long for this box</p>
+                                        <img className='friendSmall' src={friend?.friends?.[1]?.profilePhoto ?? 'http://placekitten.com/200/200'}
+                                             alt='placeholder'/>
+                                        <p className='friendName'>{friend?.friends?.[1]?.name ?? ''}</p>
                                     </figure>
                                     <figure className='friendCard'>
-                                        <img className='friendSmall' src='http://placekitten.com/200/300'
-                                            alt='placeholder' />
-                                        <p className='friendName'>Name is too long for this box</p>
-                                        <p className='friendLocation'>Location is too long for this box</p>
+                                        <img className='friendSmall' src={friend?.friends?.[2]?.profilePhoto ?? 'http://placekitten.com/200/200'}
+                                             alt='placeholder'/>
+                                        <p className='friendName'>{friend?.friends?.[2]?.name ?? ''}</p>
                                     </figure>
                                     <figure className='friendCard'>
-                                        <img className='friendSmall' src='http://placekitten.com/200/200'
-                                            alt='placeholder' />
-                                        <p className='friendName'>Name is too long for this box</p>
-                                        <p className='friendLocation'>Location is too long for this box</p>
+                                        <img className='friendSmall' src={friend?.friends?.[3]?.profilePhoto ?? 'http://placekitten.com/200/200'}
+                                             alt='placeholder'/>
+                                        <p className='friendName'>{friend?.friends?.[3]?.name ?? ''}</p>
                                     </figure>
                                 </div>
                             </div>
@@ -337,7 +365,7 @@ export default function Profile() {
                             <div className='friendHeaderRow'>
                                 <p className='friendHeader'>Friend List</p>
                                 <Link to="/friends">
-                                    <button className='viewMore'>View <span>103</span> more</button>
+                                    <button className='viewMore'>View more</button>
                                 </Link>
                             </div>
                         </div>
