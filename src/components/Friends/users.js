@@ -19,6 +19,7 @@ export default function AllUsers({searchTerm})
 
     useEffect(() => {
         loadData();
+        // eslint-disable-next-line
     }, [searchTerm])
 
     return (
